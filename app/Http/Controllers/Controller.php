@@ -9,5 +9,18 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests,
+    DispatchesJobs,
+    ValidatesRequests;
+
+    // VIEW NAME
+    protected $viewLogin = 'login';
+    
+    
+    // ROUTE NAME
+    protected $routeHome = 'home';
+    protected $routeLogin = 'login';
+    protected $routeUsers = 'get-users';
+    // KEY NAME
+    protected $danger = 'danger';
 }

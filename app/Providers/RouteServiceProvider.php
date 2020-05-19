@@ -58,22 +58,62 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        $router = [
-            'routes/main/user.php',
+        $auth  = [
+            'routes/auth/auth.php',
+        ];
+
+        $admin = [
+            'routes/admin/user.php',
 
         ];
+        $teacher = [
+            'routes/admin/user.php',
+
+        ];
+        $department = [
+            'routes/department/user.php',
+
+        ];
+        $collaboration = [
+            'routes/collaboration/user.php',
+
+        ];
+        
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
 
-        for($i = 0; $i < count($router); $i++){
-            Route::prefix('api')
-                ->middleware('jwt')
+        // ROUTER LOGIN 
+        for($i = 0; $i < count($auth); $i++){
+            Route::middleware('web')
+                ->prefix('api')
                 ->namespace($this->namespace)
-                ->group(base_path($router[$i]));
+                ->group(base_path($auth[$i]));
         }
-    }
 
+        // ROUTER ADMIN
+        for($i = 0; $i < count($admin); $i++){
+            $this->router('api', 'admin', $admin[$i]);
+        }
+        // // ROUTER TEACHER
+        // for($i = 0; $i < count($teacher); $i++){
+        //     $this->router('api', 'teacher', $teacher[$i]);
+        // }
+        // // ROUTER DEPARTMENT
+        // for($i = 0; $i < count($department); $i++){
+        //     $this->router('api', 'department', $department[$i]);
+        // }
+        // // ROUTER COLLABORATION
+        // for($i = 0; $i < count($collaboration); $i++){
+        //     $this->router('api', 'collaboration', $collaboration[$i]);
+        // }
+    }
+    protected function router($prefix, $middleware, $base){
+        return Route::prefix($prefix)
+            ->middleware($middleware)
+            ->namespace($this->namespace)
+            ->group(base_path($base));
+    }
     /**
      * Define the "api" routes for the application.
      *
@@ -83,21 +123,21 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        $router = [
-            'routes/main/user.php',
+        // $router = [
+        //     'routes/main/user.php',
             
-        ];
+        // ];
 
         Route::prefix('api')
             ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
 
-        for($i = 0; $i < count($router); $i++){
-            Route::prefix('api')
-                ->middleware('jwt')
-                ->namespace($this->namespace)
-                ->group(base_path($router[$i]));
-        }
+        // for($i = 0; $i < count($router); $i++){
+        //     Route::prefix('api')
+        //         ->middleware('jwt')
+        //         ->namespace($this->namespace)
+        //         ->group(base_path($router[$i]));
+        // }
     }
 }
