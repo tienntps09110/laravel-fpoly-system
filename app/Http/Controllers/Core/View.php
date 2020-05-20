@@ -13,16 +13,36 @@ class View extends Controller
         ];
         return $arrayViews[$key];
     }
-    public static function users(String $key){
-        $arrayViews = [
-            'users' => 'users.users',
-            'user'  =>'users.user'
-        ];
-        return $arrayViews[$key];
-    }
     public static function errors(String $key){
         $arrayViews = [
             '404' => 'errors.404'
+        ];
+        return $arrayViews[$key];
+    }
+    public static function admin(String $key){
+        $arrayViews = [
+            'home' => 'admin.home',
+            'create-user'=>'admin.create-user',
+            'users' => 'admin.users',
+            'user'  =>'admin.user'
+        ];
+        return $arrayViews[$key];
+    }
+    public static function teacher(String $key){
+        $arrayViews = [
+            'home' => 'teacher.home'
+        ];
+        return $arrayViews[$key];
+    }
+    public static function department(String $key){
+        $arrayViews = [
+            'home' => 'department.home'
+        ];
+        return $arrayViews[$key];
+    }
+    public static function collaboration(String $key){
+        $arrayViews = [
+            'home' => 'collaboration.home'
         ];
         return $arrayViews[$key];
     }

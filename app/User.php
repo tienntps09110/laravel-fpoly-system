@@ -15,7 +15,15 @@ class User extends Authenticatable
     protected $keyType = 'string';
     
     protected $fillable = [
-        'name', 'email', 'password',
+        'user_name',
+        'user_parent_uuid',
+        'password',
+        'full_name',
+        'email',
+        'phone_number',
+        'avatar_img_path',
+        'remember_token',
+        'soft_deleted'
     ];
 
     protected $hidden = [
@@ -23,7 +31,7 @@ class User extends Authenticatable
     ];
 
     // protected $casts = [
-    //     'email_verified_at' => 'datetime',
+    //     'user_parent_uuid' => 'string'
     // ];
 
     public static function boot(){

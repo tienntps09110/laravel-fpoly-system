@@ -4,6 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
+use App\Model\UserRole;
+use App\Model\Role;
+use App\Http\Controllers\Core\Core;
 
 class AdminMiddleware
 {
@@ -18,6 +21,12 @@ class AdminMiddleware
     {
         if(!Auth::check()){
             return redirect()->route('login'); 
+        }
+        if(Auth::check()){
+            if(Core::role(Auth::user())->code != 'admin'){
+                Auth::logout();
+                return redirect()->route('login'); 
+            }
         }
         return $next($request);
     }

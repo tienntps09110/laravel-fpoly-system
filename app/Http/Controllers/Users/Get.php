@@ -8,14 +8,14 @@ use App\Http\Controllers\Core\Json;
 use App\Http\Controllers\Core\Core;
 use App\Http\Controllers\Core\View;
 use App\User;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 
 class Get extends Controller
 {
     // GET ALL USERS
     public function users(){
         $users = User::all();
-        return view(View::users('users'),['users'=>$users]);
+        return view(View::admin('users'),['users'=>$users]);
     }
     // GET USER DETAIL
     public function user($uuid){
@@ -24,6 +24,6 @@ class Get extends Controller
         if(!$user){
             return Core::notFound();
         }
-        return view(View::users('user'),['user'=>$user]);
+        return view(View::admin('user'),['user'=>$user]);
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
+use App\Http\Controllers\Core\Core;
 
 class CollaborationMiddleware
 {
@@ -17,6 +19,14 @@ class CollaborationMiddleware
     {
         if(!Auth::check()){
             return redirect()->route('login'); 
+        }
+        if(Auth::check()){
+            if(Core::role(Auth::user())->code != 'collaboration'){
+                if(Core::role(Auth::user())->code != 'admin'){
+                    Auth::logout();
+                    return redirect()->route('login'); 
+                }  
+            }
         }
         return $next($request);
     }

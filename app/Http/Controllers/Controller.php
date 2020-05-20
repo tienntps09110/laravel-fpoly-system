@@ -21,6 +21,10 @@ class Controller extends BaseController
     protected $routeHome = 'home';
     protected $routeLogin = 'login';
     protected $routeUsers = 'get-users';
+
+
+    protected $routerAdHome = '';
     // KEY NAME
-    protected $danger = 'danger';
+    protected $danger = 'Danger';
+    protected $success = 'Success';
 }

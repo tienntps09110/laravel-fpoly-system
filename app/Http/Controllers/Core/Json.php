@@ -16,7 +16,7 @@ class Json extends Controller
         }   
         return Json::resJson($notification, $status, $message);
     }
-    public static function resJson($notification, $status, $message){
+    protected static function resJson($notification, $status, $message){
         
         return response()->json(
             [

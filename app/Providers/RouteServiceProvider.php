@@ -64,18 +64,17 @@ class RouteServiceProvider extends ServiceProvider
 
         $admin = [
             'routes/admin/user.php',
-
+            'routes/admin/main.php'
         ];
         $teacher = [
-            'routes/admin/user.php',
-
+            'routes/teacher/main.php'
         ];
         $department = [
-            'routes/department/user.php',
+            'routes/department/main.php',
 
         ];
         $collaboration = [
-            'routes/collaboration/user.php',
+            'routes/collaboration/main.php',
 
         ];
         
@@ -86,27 +85,27 @@ class RouteServiceProvider extends ServiceProvider
         // ROUTER LOGIN 
         for($i = 0; $i < count($auth); $i++){
             Route::middleware('web')
-                ->prefix('api')
+                // ->prefix('api')
                 ->namespace($this->namespace)
                 ->group(base_path($auth[$i]));
         }
 
         // ROUTER ADMIN
         for($i = 0; $i < count($admin); $i++){
-            $this->router('api', 'admin', $admin[$i]);
+            $this->router('admin', 'admin', $admin[$i]);
         }
-        // // ROUTER TEACHER
-        // for($i = 0; $i < count($teacher); $i++){
-        //     $this->router('api', 'teacher', $teacher[$i]);
-        // }
-        // // ROUTER DEPARTMENT
-        // for($i = 0; $i < count($department); $i++){
-        //     $this->router('api', 'department', $department[$i]);
-        // }
-        // // ROUTER COLLABORATION
-        // for($i = 0; $i < count($collaboration); $i++){
-        //     $this->router('api', 'collaboration', $collaboration[$i]);
-        // }
+        // ROUTER TEACHER
+        for($i = 0; $i < count($teacher); $i++){
+            $this->router('teacher', 'teacher', $teacher[$i]);
+        }
+        // ROUTER DEPARTMENT
+        for($i = 0; $i < count($department); $i++){
+            $this->router('department', 'department', $department[$i]);
+        }
+        // ROUTER COLLABORATION
+        for($i = 0; $i < count($collaboration); $i++){
+            $this->router('collaboration', 'collaboration', $collaboration[$i]);
+        }
     }
     protected function router($prefix, $middleware, $base){
         return Route::prefix($prefix)
