@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Core\Json;
 use App\Http\Controllers\Core\Core;
 use App\Http\Controllers\Core\View;
+use App\Http\Controllers\Users\CoreUsers;
 use Auth;
 use App\User;
 use App\Model\Role;
@@ -49,7 +49,7 @@ class Create extends Controller
             'avatar_img_path'=> $req->avatar_img_path,
             'soft_deleted'=> Core::false()
         ];
-        $user = $this->create($data);
+        $user = CoreUsers::create($data);
         $user = User::where('user_name', $user->user_name)->first();
         
         // for($i = 1; $i <= $req->role; $i++){
@@ -59,20 +59,5 @@ class Create extends Controller
         $userRole->save();
         // }
         return Core::toBack($this->success, "Tạo tài khoản thành công");
-    }
-    
-    // CREATE USER
-    protected function create($data){
-        $user = new User;
-        $user->user_name = $data->user_name;
-        $user->user_parent_uuid = $data->user_parent_uuid;
-        $user->password = Hash::make($data->password);
-        $user->full_name = $data->full_name;
-        $user->phone_number = $data->phone_number;
-        $user->email = $data->email;
-        $user->avatar_img_path = $data->avatar_img_path;
-        $user->soft_deleted = $data->soft_deleted;
-        $user->save();
-        return $user;
     }
 }

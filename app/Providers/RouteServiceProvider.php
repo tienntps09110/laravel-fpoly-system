@@ -71,11 +71,11 @@ class RouteServiceProvider extends ServiceProvider
         ];
         $department = [
             'routes/department/main.php',
-
+            'routes/department/teacher.php',
+            'routes/department/student.php'
         ];
         $collaboration = [
             'routes/collaboration/main.php',
-
         ];
         
         Route::middleware('web')

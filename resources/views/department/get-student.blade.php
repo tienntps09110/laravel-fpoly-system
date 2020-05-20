@@ -1,0 +1,3 @@
+DETAIL STUDENTS
+
+{{ $student }}

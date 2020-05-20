@@ -27,7 +27,7 @@ class Core extends Controller
         $role = Role::find($user_role);
         return $role;
     }
-    public static function toBack($key = '', $text = ''){
+    public static function toBack($key = 'Danger', $text = ''){
         return redirect()->back()->with($key, $text);
     }
     public static function homeRole(){

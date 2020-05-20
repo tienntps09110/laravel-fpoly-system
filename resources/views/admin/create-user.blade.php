@@ -1,4 +1,5 @@
 <div>FORM CREATE USER</div>
+{{-- ERROR START --}}
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -11,10 +12,12 @@
 <div>
     {{session('Danger')?session('Danger'):''}}
 </div>
+{{-- ERROR END --}}
 {{-- SUCCESS CREATED ACCOUNT --}}
 <div>
     {{session('Success')?session('Success'):''}}
 </div>
+{{-- END SUCCESS --}}
 <form method="POST" action="">
     @csrf
     User name<input type="text" name="user_name">

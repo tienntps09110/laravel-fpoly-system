@@ -14,16 +14,22 @@ class Get extends Controller
 {
     // GET ALL USERS
     public function users(){
-        $users = User::all();
+        $users = User::whereNotIn('uuid', [Auth::id()])->get();
+        $arrayUsers = [];
+        foreach($users as $user){
+            $user->role = Core::role($user);
+            $arrayUsers[] = $user;
+        }
         return view(View::admin('users'),['users'=>$users]);
+        // return $users;
     }
     // GET USER DETAIL
     public function user($uuid){
-        return Core::role(Auth::user());
         $user = User::find($uuid);
         if(!$user){
             return Core::notFound();
         }
+        $user->role = Core::role($user);
         return view(View::admin('user'),['user'=>$user]);
     }
 }

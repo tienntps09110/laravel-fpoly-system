@@ -36,7 +36,12 @@ class View extends Controller
     }
     public static function department(String $key){
         $arrayViews = [
-            'home' => 'department.home'
+            'home'          => 'department.home',
+            'create-teacher'=> 'department.create-teachers',
+            'create-student'=> 'department.create-students',
+            'get-students'  => 'department.get-students',
+            'get-student'  => 'department.get-student',
+            'update-student'  => 'department.update-student',
         ];
         return $arrayViews[$key];
     }
