@@ -72,7 +72,9 @@ class RouteServiceProvider extends ServiceProvider
         $department = [
             'routes/department/main.php',
             'routes/department/teacher.php',
-            'routes/department/student.php'
+            'routes/department/student.php',
+            'routes/department/classM.php',
+            'routes/department/subject.php'
         ];
         $collaboration = [
             'routes/collaboration/main.php',

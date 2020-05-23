@@ -1,0 +1,3 @@
+GET DETAIL SUBJECT
+
+{{ $subject }}

@@ -11,7 +11,10 @@
   </head>
   <body>
     <div class="container">
-      <a href="{{ route('logout') }}" class="text-center">({{ Auth::user()->full_name }}) LOGOUT</a>
+        <form action="{{ route('logout') }}" method="post">
+          @csrf
+          <button type="submit" class="text-center">({{ Auth::user()->full_name }}) LOGOUT</button>
+        </form>
         <h1 class="text-center text-sucess">HOME ADMIN</h1>
     </div>
     <!-- Optional JavaScript -->
