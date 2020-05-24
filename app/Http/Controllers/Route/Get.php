@@ -13,13 +13,16 @@ class Get extends Controller
         $classM = Get::classM();
         $students = Get::students();
         $subjects = Get::subjects();
+        $classSubjects = Get::classSubjects();
+
 
         return view('welcome',[
             'auth'=> $auth,
             'users'=> $users,
             'classM'=> $classM,
             'students'=>$students,
-            'subjects'=> $subjects
+            'subjects'=> $subjects,
+            'classSubjects'=> $classSubjects
         ]);
     }
     
@@ -171,6 +174,16 @@ class Get extends Controller
                 'method'=> 'DELETE',
                 'route'   => 'delete-subject'
             ],
+        ];
+    }
+    // Route subject
+    public static function classSubjects(){
+        return [
+            [
+                "name"  => 'CREATE CLASS SUBJECT VIEW',
+                'method'=> 'GET',
+                'route'   => 'create-class-subject-view'
+            ]
         ];
     }
 }

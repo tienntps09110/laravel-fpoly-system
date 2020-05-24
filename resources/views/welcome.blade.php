@@ -66,6 +66,17 @@
             @endif
             <br>
           @endforeach
+          <br>
+          {{-- CLASS SUBJECT --}}
+          <div class="alert alert-dark text-center font-weight-bold">CLASS SUBJECT</div>
+          @foreach($classSubjects as $cs)
+            @if($cs['route'] == 'get-subject' || $cs['route'] == 'update-subject-view')
+                {{ $cs['name'] }} ({{ $cs['method'] }}): <a href="{{ route($cs['route'], '1') }}">CLICK</a>
+            @else
+                {{ $cs['name'] }} ({{ $cs['method'] }}): <a href="{{ route($cs['route']) }}">CLICK</a>
+            @endif
+            <br>
+          @endforeach
       </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
