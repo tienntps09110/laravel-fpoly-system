@@ -37,7 +37,7 @@ class Create extends Controller
                 'email'             => $arrayStudents[$i][3],
                 'class_code'        => Str::lower($arrayStudents[$i][4]),
                 'class_id'          => '',
-                'avatar_img_path'   => 'images/students/student.png',
+                'avatar_img_path'   => "https://robohash.org/".$arrayStudents[$i][0] ."?set=set4",
                 'soft_deleted'      => Core::false(),
                 'user_created_uuid' => Core::parent()
             ];

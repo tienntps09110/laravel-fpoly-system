@@ -40,14 +40,14 @@ class Create extends Controller
         }
         
         $data = (object) [
-            'user_name'=> $req->user_name,
-            'user_parent_uuid'=> Core::parent(),
-            'password'=>$req->password,
-            'full_name'=>$req->full_name,
-            'phone_number'=>$req->phone_number,
-            'email'=>$req->email,
-            'avatar_img_path'=> $req->avatar_img_path,
-            'soft_deleted'=> Core::false()
+            'user_name'         => $req->user_name,
+            'user_parent_uuid'  => Core::parent(),
+            'password'          =>$req->password,
+            'full_name'         =>$req->full_name,
+            'phone_number'      =>$req->phone_number,
+            'email'             =>$req->email,
+            'avatar_img_path'   => $req->avatar_img_path,
+            'soft_deleted'      => Core::false()
         ];
         $user = CoreUsers::create($data);
         $user = User::where('user_name', $user->user_name)->first();

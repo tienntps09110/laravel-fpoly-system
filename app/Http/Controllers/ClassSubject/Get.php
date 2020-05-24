@@ -7,5 +7,11 @@ use Illuminate\Http\Request;
 
 class Get extends Controller
 {
-    //
+    public function classSubjects(){
+        
+    }
+    
+    public function classSubjectDetail($id){
+        
+    }
 }

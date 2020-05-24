@@ -8,3 +8,9 @@ Route::post('create-subject', 'Subjects\Create@subjectPost')->name('create-subje
 
 Route::get('get-subjects', 'Subjects\Get@subjects')->name('get-subjects');
 Route::get('get-subject/{id}', 'Subjects\Get@subject')->name('get-subject');
+
+Route::get('update-subject/{id}', 'Subjects\Update@subjectView')->name('update-subject-view');
+
+Route::put('update-subject', 'Subjects\Update@subject')->name('update-subject-put');
+
+Route::delete('delete-subject', 'Subjects\Delete@subject')->name('delete-subject');

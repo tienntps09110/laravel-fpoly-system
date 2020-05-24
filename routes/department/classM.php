@@ -11,8 +11,8 @@ Route::get('class', 'ClassC\Get@classAll')->name('get-class');
 Route::get('class/{id}', 'ClassC\Get@classDetail')->name('get-class-detail');
 
 // UPDATE
-Route::get('update-class/{id}', 'ClassC\Update@classView')->name('create-class-view');
-Route::put('update-class', 'ClassC\Update@classPut')->name('create-class-put');
+Route::get('update-class/{id}', 'ClassC\Update@classView')->name('update-class-view');
+Route::put('update-class', 'ClassC\Update@classPut')->name('update-class-put');
 
 // DELETE
 Route::delete('delete-class', 'ClassC\Create@classDelete')->name('delete-class');

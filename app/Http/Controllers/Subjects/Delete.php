@@ -4,6 +4,13 @@ namespace App\Http\Controllers\Subjects;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Core\Core;
+use App\Http\Controllers\Core\View;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
+use Auth;
+use App\User;
+use App\Model\Subjects;
 
 class Delete extends Controller
 {
