@@ -30,7 +30,7 @@ class Create extends Controller
         if($checkSubject){
             return Core::toBack($this->danger, 'Mã môn học đã tồn tại');
         }
-
+        
         $subject = new Subjects;
         $subject->name = $req->name;
         $subject->code = Str::lower($req->code);

@@ -15,7 +15,6 @@ class Get extends Controller
         $subjects = Get::subjects();
         $classSubjects = Get::classSubjects();
 
-
         return view('welcome',[
             'auth'=> $auth,
             'users'=> $users,
@@ -183,7 +182,17 @@ class Get extends Controller
                 "name"  => 'CREATE CLASS SUBJECT VIEW',
                 'method'=> 'GET',
                 'route'   => 'create-class-subject-view'
-            ]
+            ],
+            [
+                "name"  => 'GET ALL CLASS SUBJECTS',
+                'method'=> 'GET',
+                'route'   => 'get-class-subjects'
+            ],
+            [
+                "name"  => 'GET DETAIL CLASS SUBJECT',
+                'method'=> 'GET',
+                'route'   => 'get-class-subject'
+            ],
         ];
     }
 }
