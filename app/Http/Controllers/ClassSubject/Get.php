@@ -136,6 +136,8 @@ class Get extends Controller
                     'sj.name as subject_name',
                     'sj.code as subject_code',
                     'st.name as study_time_name',
+                    'cs.datetime_start',
+                    'cs.datetime_end',
                     'st.time_start as study_time_start',
                     'st.time_end as study_time_end',
                     'us.user_name as user_name',
