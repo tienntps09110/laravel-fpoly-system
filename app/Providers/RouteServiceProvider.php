@@ -67,7 +67,9 @@ class RouteServiceProvider extends ServiceProvider
             'routes/admin/main.php'
         ];
         $teacher = [
-            'routes/teacher/main.php'
+            'routes/teacher/main.php',
+            'routes/teacher/class-subject.php',
+            'routes/teacher/attendance.php'
         ];
         $department = [
             'routes/department/main.php',

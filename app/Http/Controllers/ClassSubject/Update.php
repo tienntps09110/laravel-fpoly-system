@@ -7,5 +7,7 @@ use Illuminate\Http\Request;
 
 class Update extends Controller
 {
-    //
+    public function classSubject(){
+        
+    }
 }
