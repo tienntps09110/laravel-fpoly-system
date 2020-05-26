@@ -13,6 +13,7 @@ use Auth;
 class Get extends Controller
 {
     public function home(){
-        return view(View::department('home'));
+        return view('department.create-all');
+        // return redirect()->route('create-class-subject-view');
     }
 }

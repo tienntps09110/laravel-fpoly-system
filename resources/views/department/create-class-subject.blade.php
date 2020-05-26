@@ -1,5 +1,5 @@
-@extends('masterlayout.index')
-@section('content')
+@extends('department.home')
+@section('contentPDT')
 @if($errors->any())
     <div class="col-lg-6 mx-auto">
         <div class="alert alert-warning">

@@ -1,3 +1,5 @@
+
+<hr>
 <div>
     @if($errors->any())
         <ul>

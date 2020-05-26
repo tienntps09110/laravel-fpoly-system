@@ -1,3 +1,4 @@
+<hr>
 {{-- ERROR --}}
 <div>
     @if($errors->any())

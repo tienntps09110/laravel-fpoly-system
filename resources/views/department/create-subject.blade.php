@@ -1,7 +1,7 @@
+<hr>
 CREATE SUBJECT
 <br>
 CREATE CLASS
-<hr>
 <div>
     @if($errors->any())
         <ul>
