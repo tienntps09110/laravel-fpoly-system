@@ -15,16 +15,19 @@ use Auth;
 use App\User;
 use App\Model\Role;
 use App\Model\UserRole;
-
+use Validator;
 class CreateTeacher extends Controller
 {
     public function teachersView(){
         return view(View::department('create-teacher'));
     }
     public function teachersPost(Request $req){
-        $req->validate([
+        $validator = Validator::make($req->all(), [
             'excel'=>'required | min:1 | max:255'
         ]);
+        if ($validator->fails()) {
+            return Json::getMess($validator->errors(), 422);
+        }
         $arrayError = [];
         $arrayTeachers = Excel::toArray(new TeacherImport, $req->excel)[0];
 
@@ -52,8 +55,12 @@ class CreateTeacher extends Controller
             $userRole->save();
         }
         if(count($arrayError) != 0){
-            return redirect()->back()->withErrors($arrayError);
+            // return redirect()->back()->withErrors($arrayError);
+            return Json::getMess($arrayError, 422);
+
         }
-        return Core::toBack($this->success, 'Tạo tất cả giảng viên từ file xlsx thành công');
+        // return Core::toBack($this->success, 'Tạo tất cả giảng viên từ file xlsx thành công');
+        return Json::getMess('Tạo tất cả giảng viên từ file xlsx thành công', 200);
+        
     }
 }
