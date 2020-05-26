@@ -76,6 +76,7 @@ class Get extends Controller
                             ->where('cs.user_manager_uuid', Auth::id())
                             ->select(
                                 'dcs.id as id',
+                                'dcs.class_subject_id',
                                 'us.user_name as user_name',
                                 'us.full_name as user_full_name',
                                 'dcs.date'
@@ -97,25 +98,22 @@ class Get extends Controller
         $arrayClassSubjects = [];
         foreach($classSubjects as $detailCs){
             $arrayDays = [];
-            $daysCheck = DB::table('days_class_subject')
-                        ->where('class_subject_id', $detailCs->id)
-                        ->whereDate('date',  '2020-05-27')
+            $daysCheck = DB::table('days_class_subject as dcs')
+                        ->join('users as us', 'dcs.user_manager_uuid', 'us.uuid')
+                        ->where('dcs.class_subject_id', $detailCs->id)
+                        ->whereDate('dcs.date',  Carbon::now()->toDateString())
                         ->first();
             if($daysCheck){
                 $detailCs->user_manager_study_uuid = $daysCheck->user_manager_uuid;
                 $detailCs->user_manager_study_full_name = $daysCheck->full_name;
-
                 $detailCs->date_study = $daysCheck->date;
                 $detailCs->checked = $daysCheck->checked;
-
-
                 $arrayClassSubjects[] = $detailCs;
             }
         }
-
-        return $arrayClassSubjects;
+        // return $arrayClassSubjects;
         return view(View::teacher('get-class-subjects-today'), [
-            'classSubjects' => $classSubjects
+            'classSubjects' => $arrayClassSubjects
         ]);
     }
 

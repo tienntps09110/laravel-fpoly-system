@@ -57,6 +57,7 @@ class View extends Controller
             'create-class-subject'      => 'department.create-class-subject',
             'get-class-subjects'        => 'department.get-class-subjects',
             'get-detail-class-subject'  => 'department.get-detail-class-subject',
+            'update-day-class-subject'  => 'department.update-day-class-subject'
         ];
         return $arrayViews[$key];
     }

@@ -208,6 +208,11 @@ class Get extends Controller
                 'method'=> 'GET',
                 'route'   => 'get-class-subject-teacher'
             ],
+            [
+                "name"  => 'GET CLASS SUBJECT TEACHER TODAY',
+                'method'=> 'GET',
+                'route'   => 'get-class-subject-teacher-today'
+            ],
         ];
     }
 }
