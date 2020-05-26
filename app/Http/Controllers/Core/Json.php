@@ -25,4 +25,12 @@ class Json extends Controller
                 "Status"=>$status
             ]);
     }
+    public static function getMess($message = '', $status = '200'){
+        
+        return response()->json(
+            [
+                "Message"=>$message,
+                "Status"=>$status
+            ]);
+    }
 }

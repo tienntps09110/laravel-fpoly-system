@@ -14,6 +14,10 @@ class Get extends Controller
 {
     public function home(){
         return view('department.create-all');
+<<<<<<< HEAD
         // return redirect()->route('create-class-subject-view');
+=======
+        // return view(View::department('home'));
+>>>>>>> master
     }
 }

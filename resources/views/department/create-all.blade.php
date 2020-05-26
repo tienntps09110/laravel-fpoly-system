@@ -1,5 +1,28 @@
 @extends('department.home')
 @section('contentPDT')
+<<<<<<< HEAD
+=======
+<hr>
+<div>
+    @if($errors->any())
+        <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+        </ul>
+    @endif
+</div>
+<div>
+    {{session('Danger')?session('Danger'):''}}
+</div>
+<div>
+    {{session('Success')?session('Success'):''}}
+    
+</div>
+<div class="alert alert-danger d-none" id="resultAjaxError"></div>
+
+<div class="alert alert-success d-none" id="resultAjaxSuccess"></div>
+>>>>>>> master
 
     <div class="row">
         <div class="col-lg-6">

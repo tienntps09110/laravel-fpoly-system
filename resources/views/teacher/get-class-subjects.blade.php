@@ -1,4 +1,4 @@
-GET ALL CLASS SUBJECTS
+GET ALL CLASS SUBJECTS FOR TEACHER
 <hr>
 @foreach($classSubjects as $classSubject)
     {{ json_encode($classSubject) }}

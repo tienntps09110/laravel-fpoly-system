@@ -1,4 +1,5 @@
 <hr>
+<<<<<<< HEAD
 CREATE SUBJECT
 <br>
 CREATE CLASS
@@ -17,12 +18,15 @@ CREATE CLASS
 <div>
     {{session('Success')?session('Success'):''}}
 </div>
+=======
+<h5>CREATE SUBJECT</h5>
+>>>>>>> master
 <br>
-<form method="post">
+<form method="post" action="{{ route('create-subject-post') }}">
     @csrf
-    <input type="text" name="name">
+    NAME<input type="text" name="name">
     <br>
-    <input type="text" name="code">
+    CODE<input type="text" name="code">
     <button type="submit">Create</button>
     <br>
 </form>
