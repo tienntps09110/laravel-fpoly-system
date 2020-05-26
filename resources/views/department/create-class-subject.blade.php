@@ -256,7 +256,7 @@
     <br>
     DATE TIME END<input type="date" name="datetime_end">
     <br><br><br>
-    {{-- Thứ học (1,2,3,4,5,6,0) --}}
+    {{-- Thứ học (1,2,3,4,5,6,0)
     <br>
     Chủ nhật<input type="checkbox" name="days_study[]" value="0">
     Thứ 2<input type="checkbox" name="days_study[]" value="1">
@@ -269,16 +269,5 @@
     <br>
     {{-- <div class="g-recaptcha" data-sitekey="6LdvEvwUAAAAAHsMacx4FSqP7eM0pknMYvJiSsFV"></div> --}}
 
-<<<<<<< HEAD
-    <button type="submit" >Create</button> --}}
+    {{-- <button type="submit" >Create</button> --}}
 {{-- <script src='https://www.google.com/recaptcha/api.js'></script> --}}
-=======
-<<<<<<< HEAD
-    <button type="submit" >Create</button> --}}
-{{-- <script src='https://www.google.com/recaptcha/api.js'></script> --}}
-=======
-    <button type="submit" >Create</button>
-</form>
-{{-- <script src='https://www.google.com/recaptcha/api.js'></script> --}}
->>>>>>> d9c9c93b6a5d85159639eb837494379a1f30fcd0
->>>>>>> master

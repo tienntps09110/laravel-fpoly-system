@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 
-<hr>
-<div>
-=======
 {{-- <div>
 >>>>>>> master
     @if($errors->any())
