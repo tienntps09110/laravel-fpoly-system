@@ -31,7 +31,10 @@ class View extends Controller
     }
     public static function teacher(String $key){
         $arrayViews = [
-            'home' => 'teacher.home'
+            'home' => 'teacher.home',
+            'get-class-subjects'        => 'teacher.get-class-subjects',
+            'get-detail-class-subject'  => 'teacher.get-detail-class-subject',
+            'get-class-subjects-today'  => 'teacher.get-class-subjects-today',
         ];
         return $arrayViews[$key];
     }

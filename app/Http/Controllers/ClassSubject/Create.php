@@ -119,8 +119,9 @@ class Create extends Controller
                                     ->whereDate('datetime_end', '>', CarBon::now()->toDateString())
                                     ->orderByDesc('id')
                                     ->first();
-        $arrayTeacherDays = json_decode($TeacherCheck->days_week);
+        
         if($TeacherCheck && $req->datetime_start <= $TeacherCheck->datetime_end){
+            $arrayTeacherDays = json_decode($TeacherCheck->days_week);
             for($i = 0; $i < count($arrayDaysStudy); $i++){
                 for($j = 0; $j < count($arrayTeacherDays); $j++){
                     if($arrayDaysStudy[$i] == $arrayTeacherDays[$j]){

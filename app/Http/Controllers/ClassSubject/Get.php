@@ -16,8 +16,8 @@ use App\Model\ClassM;
 use App\Model\StudyTime;
 use App\Model\Subjects;
 use App\Model\DaysClassSubject;
-
 use DB;
+
 class Get extends Controller
 {
     // GET ALL CLASS SUBJECTS
@@ -48,7 +48,81 @@ class Get extends Controller
             'daysClassSubject'=> $daysClassSubject
         ]);
     }
+    // GET CLASS SUBJECT TEACHER
+    public function classSubjectTeacher(){
+        $classSubjects = Get::dbClassSubject()
+                            ->where('user_manager_uuid', Auth::id())
+                            ->whereDate('datetime_end', '>', Carbon::now()->toDateString())
+                            ->get();
+        return view(View::teacher('get-class-subjects'), [
+            'classSubjects' => $classSubjects
+        ]);
+    }
+    // GET DETAIL SUBJECT TEACHER
+     public function detaiClassSubjectTeacher($id){
+        
+        $classSubject = Get::dbClassSubject()
+                        ->where('cs.id', $id)
+                        ->where('cs.user_manager_uuid', Auth::id())
+                        ->first();
 
+        if(!$classSubject){
+            return Core::notFound();
+        }
+        $daysClassSubject = DB::table('days_class_subject as dcs')
+                            ->join('class_subject as cs', 'dcs.class_subject_id', '=', 'cs.id')
+                            ->join('users as us' , 'dcs.user_manager_uuid', '=', 'us.uuid')
+                            ->where('class_subject_id', $id)
+                            ->where('cs.user_manager_uuid', Auth::id())
+                            ->select(
+                                'dcs.id as id',
+                                'us.user_name as user_name',
+                                'us.full_name as user_full_name',
+                                'dcs.date'
+                            )
+                            ->get();
+        
+        return view(View::teacher('get-detail-class-subject'), [
+            'cLassSubject'=> $classSubject,
+            'daysClassSubject'=> $daysClassSubject
+        ]);
+    }
+    // GET CLASS SUBJECT TODAY
+    public function classSubjectTeacherToday(){
+        $classSubjects = Get::dbClassSubject()
+                            ->where('user_manager_uuid', Auth::id())
+                            ->whereDate('datetime_end', '>', Carbon::now()->toDateString())
+                            ->get();
+
+        $arrayClassSubjects = [];
+        foreach($classSubjects as $detailCs){
+            $arrayDays = [];
+            $daysCheck = DB::table('days_class_subject')
+                        ->where('class_subject_id', $detailCs->id)
+                        ->whereDate('date',  '2020-05-27')
+                        ->first();
+            if($daysCheck){
+                $detailCs->user_manager_study_uuid = $daysCheck->user_manager_uuid;
+                $detailCs->user_manager_study_full_name = $daysCheck->full_name;
+
+                $detailCs->date_study = $daysCheck->date;
+                $detailCs->checked = $daysCheck->checked;
+
+
+                $arrayClassSubjects[] = $detailCs;
+            }
+        }
+
+        return $arrayClassSubjects;
+        return view(View::teacher('get-class-subjects-today'), [
+            'classSubjects' => $classSubjects
+        ]);
+    }
+
+
+
+    // ================PROTECTED FUNCTION================
+    
     // GET CLASS SUBJECT
     protected static function dbClassSubject(){
         $classSubjects = DB::table('class_subject as cs')
