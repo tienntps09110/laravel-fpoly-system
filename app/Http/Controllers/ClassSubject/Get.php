@@ -23,7 +23,7 @@ class Get extends Controller
     // GET ALL CLASS SUBJECTS
     public function classSubjects(){
         $classSubjects = Get::dbClassSubject()->get();
-        return $classSubjects;
+        // return $classSubjects;
         return view(View::department('get-class-subjects'), [
             'classSubjects' => $classSubjects
         ]);
@@ -42,11 +42,11 @@ class Get extends Controller
                                 'dcs.date'
                             )
                             ->get();
-        $noti = [
-            'CLassSubject'=> $classSubjects,
-            'DaysClassSubject'=> $daysClassSubject
-        ];
-        return $noti;
+        
+        return view(View::department('get-detail-class-subject'), [
+            'cLassSubject'=> $classSubjects,
+            'daysClassSubject'=> $daysClassSubject
+        ]);
     }
 
     // GET CLASS SUBJECT

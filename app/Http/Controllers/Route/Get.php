@@ -193,6 +193,11 @@ class Get extends Controller
                 'method'=> 'GET',
                 'route'   => 'get-class-subject'
             ],
+            [
+                "name"  => 'DELETE CLASS SUBJECT',
+                'method'=> 'DELETE',
+                'route'   => 'delete-class-subject'
+            ],
         ];
     }
 }
