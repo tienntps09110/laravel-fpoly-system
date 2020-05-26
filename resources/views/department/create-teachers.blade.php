@@ -1,4 +1,4 @@
-<div>
+{{-- <div>
     @if($errors->any())
         <ul>
         @foreach ($errors->all() as $error)
@@ -9,9 +9,9 @@
 </div>
 <div>
     {{session('Success')?session('Success'):''}}
-</div>
+</div> --}}
 CREATE TEACHER EXCEL
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" action="{{ route('create-teachers-excel') }}" enctype="multipart/form-data">
     @csrf
     EXCEL FILE<input type="file" name="excel">
     <button type="submit">CREATE TEACHER</button>

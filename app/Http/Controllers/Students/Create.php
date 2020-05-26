@@ -15,17 +15,19 @@ use Auth;
 use App\User;
 use App\Model\Students;
 use App\Model\ClassM;
-
+use Validator;
 class Create extends Controller
 {
     public function studentsView(){
         return view(View::department('create-student'));
     }
     public function studentsPost(Request $req){
-        $req->validate([
+        $validator = Validator::make($req->all(), [
             'excel'=>'required | min:1 | max:255'
         ]);
-
+        if ($validator->fails()) {
+            return Json::getMess($validator->errors(), 422);
+        }
         $arrayError = [];
         $arrayStudents = Excel::toArray(new StudentsImport, $req->excel)[0];
 
@@ -56,8 +58,10 @@ class Create extends Controller
         }
         
         if(count($arrayError) != 0){
-            return redirect()->back()->withErrors($arrayError);
+            // return redirect()->back()->withErrors($arrayError);
+            return Json::getMess($arrayError, 422);
         }
-        return Core::toBack($this->success, 'Tạo tất cả sinh viên từ file xlsx thành công');
+        // return Core::toBack($this->success, 'Tạo tất cả sinh viên từ file xlsx thành công');
+        return Json::getMess('Tạo tất cả sinh viên từ file xlsx thành công', 200);
     }
 }

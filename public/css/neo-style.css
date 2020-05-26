@@ -1,0 +1,56 @@
+/* =============================== */
+/* css chung                       */
+/* =============================== */
+.dark-screen{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+.message{
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    z-index: 3;
+    border-radius: 30px;
+    padding: 30px;
+}
+.row-center>td{
+    padding-top:50px;
+}
+
+/* =============================== */
+/* css giao vien diem danh         */
+/* =============================== */
+
+
+input[type=checkbox]{
+    transform: scale(2);
+} 
+/* =============================== */
+/* css phong dao tao               */
+/* =============================== */
+/* trang import  */
+.nut-import{
+    height: 150px;
+    padding-top: 20px;
+}
+.nut-import p{
+    font-weight: bold;
+    font-size: 1.3em;
+}
+.nut-import:hover{
+    background-color: #1EBD9E;
+}
+.list-after-import{
+    min-height: 500px;
+    padding: 40px;
+}
+/* trang phan lop */
+.cong-cu-phan-lop,.ket-qua-phan-lop{
+    padding: 40px;
+}
+
