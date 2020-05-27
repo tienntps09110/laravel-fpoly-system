@@ -16,6 +16,10 @@ class Students extends Model
         'avatar_img_path'
     ];
     protected $hidden = [
+        'password',
+        'token',
+        'user_created_uuid',
+        'soft_deleted',
         'created_at',
         'updated_at'
     ];

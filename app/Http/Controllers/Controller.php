@@ -27,4 +27,7 @@ class Controller extends BaseController
     // KEY NAME
     protected $danger = 'Danger';
     protected $success = 'Success';
+
+    // TIME ATTENDANCE
+    protected $timeAttendance = 45;
 }

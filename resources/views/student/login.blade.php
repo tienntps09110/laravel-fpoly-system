@@ -28,12 +28,22 @@
 </head>
 
 <body>
+    <div>
+        @if($errors->any())
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+        @endif
+    </div>
+    
     @if(session('Danger'))
     <div class="alert alert-warning" style="position:fixed; right:10%; top:10%">
         {{session('Danger')}}
     </div>
     @endif
-    <form method="POST">
+    <form method="POST" action="{{ route('student-login-post') }}">
         @csrf
         <div class="d-flex" style="height:100vh;">
             <div class=" login col-lg-3 mx-auto align-self-center">
@@ -42,15 +52,15 @@
                     <i class="fas fa-user-circle    "></i>
                 </div>
                 <div class="text-center text-white">
-                    <h2 class="font-weight-bold">ĐIỂM DANH ONLINE</h2>
+                    <h2 class="font-weight-bold">ĐĂNG NHẬP HỌC SINH</h2>
                 </div>
                 <div class="my-3">
-                    Tên Đăng nhập:
-                    <input type="text" name="user_name" id="username" class="form-control">
+                    Mã số sinh viên:
+                    <input type="text" name="student_code" id="student_code" class="form-control" value="ps09110">
                 </div>
                 <div class="my-3">
                     Mật khẩu:
-                    <input type="password" name="password" id="password" class="form-control">
+                    <input type="password" name="password" id="password" class="form-control" value="1">
                 </div>
                 <div>
                     <input type="checkbox" name="luu-dang-nhap" id="luu-dang-nhap">
@@ -60,8 +70,6 @@
                 <div class="my-3 float-right">
                     <button type="submit" class="btn btn-info">Đăng nhập</button>
                 </div>
-                <br>
-                <a href="{{ route('student-login-view') }}" style="font-size: 10pt">Sinh viên đăng nhập</a>
             </div>
         </div>
     </form> 

@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>UPDATE ATTENDANCE</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,7 +36,7 @@
             {{ session('Success') }}
         </div>
         @endif
-        <form method="post" action="{{ route('attendance-students-post') }}">
+        <form method="post" action="{{ route('attendance-students-update-post') }}">
             @csrf
             <div class="row">
                 @foreach ($students as $student)
@@ -46,7 +46,7 @@
                             <h3 class="float-left">{{ $student->full_name }}</h3>
                             <img class="float-left" style="width:10%" src="{{ $student->avatar_img_path }}" alt="{{ $student->student_code }}">
                             {{-- INPUT ATTENDANCE --}}
-                            <input type="checkbox" name="attendance[]" value="{{ $student->id }}" class="float-right">
+                            <input type="checkbox" class="float-right" name="attendance[]" value="{{ $student->id }}" {{ $student->checked == 'true'?'checked':'' }}>
                         </div>
                     </div>
                 @endforeach
@@ -54,7 +54,7 @@
             <input type="hidden" name="days_class_subject_id" value="{{ $classSubject->dcs_id }}">
             <input type="hidden" name="class_id" value="{{ $classSubject->class_id }}">
             <input type="hidden" name="study_time_id" value="{{ $classSubject->study_time_id }}">
-            <button type="submit" class="btn btn-success float-right" {{ $timeOut=='false'?'':'disabled' }}>Điểm danh</button>
+            <button type="=submit" class="btn btn-success float-right" {{ $timeOut=='false'?'':'disabled' }}>Cập nhật</button>
         </form>
       </div>
       <br><br><br>

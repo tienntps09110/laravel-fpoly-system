@@ -30,16 +30,24 @@ class Get extends Controller
                                     'class_subject.study_time_id'
                                 )
                                 ->firstOrFail();
-        $dayStudyCheck = Attendance::where('days_class_subject_id', $classSubjectCheck->dcs_id)
-        ->first();
-        if($dayStudyCheck){
-            return Core::notFound();
-        }
-        $studyCheck = StudyTime::where('id', $classSubjectCheck->study_time_id)->first();
+        $classSubjectStudy = ClassSubject::where('id', $classSubjectId)->firstOrFail();
+        
+        // $dayStudyCheck = Attendance::where('days_class_subject_id', $classSubjectCheck->dcs_id)
+        // ->first();
+        
+        // if($dayStudyCheck){
+        //     return Core::notFound();
+        // }
+        
+        $studyCheck = StudyTime::where('id', $classSubjectStudy->study_time_id)->first();
+        $timeOut = Core::false();
+        
         if($studyCheck){
             $now = Carbon::now()->toTimeString();
             if($now > Carbon::parse($studyCheck->time_start)->addMinutes(30)->toTimeString()){
-                return Core::notFound();
+                // return Core::notFound();
+                $timeOut = Core::true();
+
             }
         }
         $students = Students::where('class_id', $classSubjectCheck->class_id)
@@ -48,7 +56,52 @@ class Get extends Controller
         
         return view('teacher.get-attendance-today', [
             'classSubject'=> $classSubjectCheck,
-            'students'=> $students
+            'students'    => $students,
+            'timeOut'     => $timeOut
+        ]);
+    }
+    public function attendanceUpdateView($classSubjectId, $dayStudyId){
+
+        $classSubjectCheck =  ClassSubject::join('days_class_subject as dcs', 'class_subject.id', '=', 'dcs.class_subject_id')
+                                ->where('class_subject.id', $classSubjectId)
+                                ->where('dcs.id', $dayStudyId)                                        
+                                ->where('class_subject.datetime_end', '>', Carbon::now()->toDateString())
+                                ->where('class_subject.soft_deleted', Core::false())
+                                ->select(
+                                    'class_subject.id as class_subject_id',
+                                    'class_subject.class_id',
+                                    'dcs.id as dcs_id',
+                                    'class_subject.study_time_id'
+                                )
+                                ->firstOrFail();
+        $classSubjectStudy = ClassSubject::where('id', $classSubjectId)->firstOrFail();
+        
+        $studyCheck = StudyTime::where('id', $classSubjectStudy->study_time_id)->first();
+        
+        $timeOut = Core::false();
+        if($studyCheck){
+            $now = Carbon::now()->toTimeString();
+            if($now > Carbon::parse($studyCheck->time_start)->addMinutes($this->timeAttendance)->toTimeString()){
+                // return Core::notFound();
+                $timeOut = Core::true();
+            }
+        }
+        $students = Students::join('attendance as at', 'students.id', '=', 'at.student_id')
+                            ->where('at.days_class_subject_id', $dayStudyId)
+                            ->where('class_id', $classSubjectCheck->class_id)
+                            ->where('soft_deleted', Core::false())
+                            ->select(
+                                'students.id',
+                                'students.student_code',
+                                'students.full_name',
+                                'students.avatar_img_path',
+                                'at.checked'
+                            )
+                            ->get();
+        return view('teacher.get-attendance-update-today', [
+            'classSubject'=> $classSubjectCheck,
+            'students'    => $students,
+            'timeOut'     => $timeOut
         ]);
     }
 }

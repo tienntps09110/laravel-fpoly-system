@@ -55,7 +55,9 @@ class Get extends Controller
                             ->whereDate('datetime_end', '>', Carbon::now()->toDateString())
                             ->get();
         return view(View::teacher('get-class-subjects'), [
-            'classSubjects' => $classSubjects
+            'classSubjects' => $classSubjects,
+            'Carbon'        => new Carbon,
+            'Core'          => new Core
         ]);
     }
     // GET DETAIL SUBJECT TEACHER
@@ -79,7 +81,8 @@ class Get extends Controller
                                 'dcs.class_subject_id',
                                 'us.user_name as user_name',
                                 'us.full_name as user_full_name',
-                                'dcs.date'
+                                'dcs.date',
+                                'dcs.checked'
                             )
                             ->get();
         
@@ -104,6 +107,7 @@ class Get extends Controller
                         ->whereDate('dcs.date',  Carbon::now()->toDateString())
                         ->first();
             if($daysCheck){
+                $detailCs->day_study_id = $daysCheck->id;
                 $detailCs->user_manager_study_uuid = $daysCheck->user_manager_uuid;
                 $detailCs->user_manager_study_full_name = $daysCheck->full_name;
                 $detailCs->date_study = $daysCheck->date;
@@ -113,7 +117,8 @@ class Get extends Controller
         }
         // return $arrayClassSubjects;
         return view(View::teacher('get-class-subjects-today'), [
-            'classSubjects' => $arrayClassSubjects
+            'classSubjects' => $arrayClassSubjects,
+            'Carbon'        => new Carbon
         ]);
     }
 
@@ -138,6 +143,7 @@ class Get extends Controller
                     'st.name as study_time_name',
                     'cs.datetime_start',
                     'cs.datetime_end',
+                    'cs.days_week',
                     'st.time_start as study_time_start',
                     'st.time_end as study_time_end',
                     'us.user_name as user_name',

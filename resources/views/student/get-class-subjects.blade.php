@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>HOME TEACHER</title>
+    <title>DANH SACH MON HOC</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,17 +11,21 @@
   </head>
   <body>
     <div class="container">
-      <form action="{{ route('logout') }}" method="post">
-        @csrf
-        <button type="submit" class="text-center">({{ Auth::user()->full_name }}) LOGOUT</button>
-      </form>
-        <h1 class="text-center text-sucess">HOME TEACHER</h1>
-        <a href="{{ route('get-class-subjects-teacher') }}">Danh sách lớp dạy</a>
-
-        <br>
-        <a href="{{ route('get-class-subject-teacher-today') }}">Danh sách lớp dạy hôm nay</a>
-        <br>
+        DANH SÁCH MÔN HỌC
+        <h1 class="text-warning">Lịch học của lớp</h1> 
+        <hr>
+        <div class="row">
+            @foreach ($classSubjects as $classSub)
+                <div class="col-12">
+                    <h2>Môn: {{ $classSub->subject_name }}</h2>
+                    <h2>Ca: {{ $classSub->study_time_name }} ( {{ $classSub->study_time_start .' - ' .$classSub->study_time_end  }}  )</h2>
+                    <a href="{{ route('get-class-subject-detail-student', $classSub->id) }}">Chi tiết</a>
+                    <hr>
+                </div>
+            @endforeach
+        </div>
     </div>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
