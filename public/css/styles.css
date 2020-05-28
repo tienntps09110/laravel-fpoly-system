@@ -1,7 +1,7 @@
 /*
     DEMO STYLE
 */
-
+@import "compass/css3";
 @import "https://fonts.googleapis.com/css?family=Poppins:300, 400, 500, 600, 700";
 body {
 	font-family: "Poppins", sans-serif;
@@ -78,11 +78,11 @@ a:focus {
 	background: #2a4054;
 	border-radius: 20px 0 0 0;
 }
-.sidebar-header>div{
+.sidebar-header > div {
 	width: 200px;
-	height:200px ;
-    background-position: center;
-    margin: 20px auto 0 auto;
+	height: 200px;
+	background-position: center;
+	margin: 20px auto 0 auto;
 }
 .fixed-sidebar {
 	position: fixed;

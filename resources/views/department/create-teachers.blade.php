@@ -1,20 +1,13 @@
 
-{{-- <div>
->>>>>>> master
-    @if($errors->any())
-        <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-        </ul>
-    @endif
-</div>
-<div>
-    {{session('Success')?session('Success'):''}}
-</div> --}}
-CREATE TEACHER EXCEL
+<h2 class="text-center alert alert-success">Tạo giáo viên </h2>
 <form method="POST" action="{{ route('create-teachers-excel') }}" enctype="multipart/form-data">
     @csrf
-    EXCEL FILE<input type="file" name="excel">
-    <button type="submit">CREATE TEACHER</button>
+    <div class="form-group col-lg-8 mx-auto">
+        <label for="excel">Excel File</label>
+        <input id="excel" class="form-control" type="file" name="excel">
+    </div>
+    {{-- EXCEL FILE<input type="file" name="excel"> --}}
+    <div class="form-group col-lg-8 mx-auto">
+        <button class="btn btn-primary" type="submit">Lưu</button>
+    </div>
 </form>

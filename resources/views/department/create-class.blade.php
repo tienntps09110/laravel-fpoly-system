@@ -1,14 +1,30 @@
-CREATE CLASS
+<h2 class="alert alert-success text-center">Tạo lớp học</h2> 
 <form id="createClass" method="POST" action="{{ route('create-class-post') }}">
     @csrf
-   NAME<input type="text" name="name">
-   <br>
-   CODE<input type="text" name="code">
-   <br> 
-   Datetime start<input type="date" name="time_start">
-   <br> 
-   Datetime end<input type="date" name="time_end">
-    <button id="BtcreateClass" type="button" >Submit</button>
+    <div class="form-group col-lg-8 mx-auto pd-4">
+      <label for="name">Nhập Tên Lớp *</label>
+      <input type="text" name="name" id="name" required class="form-control" placeholder="Vui lòng nhập tên lớp">
+    </div>
+   {{-- NAME<input type="text" name="name"> --}}
+    <div class="form-group col-lg-8 mx-auto">
+      <label for="code">Nhập mã lớp</label>
+      <input type="text" name="code" id="code" class="form-control" placeholder="Vui lòng nhập mã lóp" required>
+    </div>
+   {{-- CODE<input type="text" name="code"> --}}
+    <div class="form-group col-lg-8 mx-auto">
+        <label for="time_start">Ngày Bắt đầu</label>
+        <input id="time_start" class="form-control" type="date" name="time_start" required>
+    </div>
+
+   {{-- Datetime start<input type="date" name="time_start"> --}}
+   <div class="form-group col-lg-8 mx-auto">
+       <label for="time_end">Ngày kết thức</label>
+       <input id="time_end" class="form-control" type="date" name="time_end">
+   </div>
+   {{-- Datetime end<input type="date" name="time_end"> --}}
+   <div class="form-group col-lg-8 mx-auto">
+    <button id="BtcreateClass" class="btn btn-primary"  type="button" >Lưu</button>
+       </div>
 </form>
 
 <script>

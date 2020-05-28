@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" ></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" ></script>  
-
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/neo-style.css">
     <style>
@@ -42,20 +41,3 @@
     
 </body>
 </html>
-
-
-    <!-- <div class="container">
-      <form action="{{ route('logout') }}" method="post">
-        @csrf
-        <button type="submit" class="text-center">({{ Auth::user()->full_name }}) LOGOUT</button>
-      </form>
-        <h1 class="text-center text-sucess">HOME TEACHER</h1>
-        <a href="{{ route('get-class-subjects-teacher') }}">Danh sách lớp dạy</a>
-
-        <br>
-        <a href="{{ route('get-class-subject-teacher-today') }}">Danh sách lớp dạy hôm nay</a>
-        <br>
-    </div> -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  
