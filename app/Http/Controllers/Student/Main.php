@@ -14,9 +14,9 @@ use DB;
 class Main extends Controller
 {
     public function home(){
-        $classM = ClassM::find(CoreS::user()->class_id);
+        $classM             = ClassM::find(CoreS::user()->class_id);
         $classM->time_start = Carbon::parse($classM->time_start)->toDateString();
-        $classM->time_end = Carbon::parse($classM->time_end)->toDateString();
+        $classM->time_end   = Carbon::parse($classM->time_end)->toDateString();
 
         return view('student.home', [
             'Core'=> new CoreS,

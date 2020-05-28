@@ -32,7 +32,7 @@
         <br>
         <a href="{{ route('get-class-subjects-student') }}" style="font-size: 20pt">>>Danh sách môn học</a>
         <br>
-        <a href="{{ route('get-class-subjects-days-student') }}" style="font-size: 20pt">>>Danh sách ngày học của môn học</a>
+        <a href="{{ route('get-class-subjects-days-student') }}" style="font-size: 20pt">>>Lịch học</a>
         
     </div>
     
