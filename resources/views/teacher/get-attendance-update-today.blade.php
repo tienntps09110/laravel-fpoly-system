@@ -1,20 +1,13 @@
+@extends('teacher.home')
+@section('content-teacher')
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>UPDATE ATTENDANCE</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-      <div class="container">
-        <div class="alert alert-warning"><h3 class="text-center">ĐIỂM DANH</h3></div>
-        <hr>
-        {{-- ERROR --}}
+<div class="container-fluid p-4">
+    <div class="box p-4">
+        <div class="text-center">
+            <h3>Danh sách Điểm danh</h3>
+            <span class=" text-danger">Lớp: WD14301</span>  <span class="ml-5 text-danger">Môn:PHP</span> 
+        </div>
+        <!-- ERROR -->
         <div>
             @if($errors->any())
                 <ul>
@@ -30,12 +23,101 @@
             {{ session('Danger') }}
         </div>
         @endif
-        {{-- SUCCESSFULLY --}}
+        <!-- END ERROR  -->
+        <!-- SUCCESSFULLY   -->
         @if(session('Success'))
         <div class="alert alert-success font-weight-bold text-center">
             {{ session('Success') }}
         </div>
         @endif
+        <!-- END SUCCESSFULLY   -->
+        
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>Mã Sinh viên</th>
+                <th>Họ và Tên</th>
+                <th class="text-center">Hình</th>
+                <th class="text-center">
+                    <button class="btn btn-warning" id="kiem-tra-vang">Vắng</button>
+                    <button class="btn btn-dark" id="kiem-tra-tong">Tổng</button>
+                </th>
+            </tr>
+
+            <form method="post" action="{{ route('attendance-students-update-post') }}">
+                @csrf
+                    
+                    @foreach ($students as $key => $student)
+                        <!-- <div class="col-12">
+                            <div class="alert">
+                                <h6 class="float-left">{{ $student->student_code }}| </h6>
+                                <h3 class="float-left">{{ $student->full_name }}</h3>
+                                <img class="float-left" style="width:10%" src="{{ $student->avatar_img_path }}" alt="{{ $student->student_code }}">
+                                {{-- INPUT ATTENDANCE --}}
+                                <input type="checkbox" class="float-right" name="attendance[]" value="{{ $student->id }}" {{ $student->checked == 'true'?'checked':'' }}>
+                            </div>
+                        </div> -->
+                        
+                        <tr class="row-center">
+                            <td>{{ ++$key }}</td>
+                            <td>{{ $student->student_code }}</td>
+                            <td>{{ $student->full_name }}</td>
+                            <th class="text-center">
+                                <img src="{{ $student->avatar_img_path }}" alt="{{ $student->avatar_img_path }}" height="100px" width="70px">
+                            </th>
+                            <td class="text-center">
+                                <div class="checkbox">
+                                    <input type="checkbox"  name="attendance[]"  class="checkbox-vang" 
+                                             value="{{ $student->id }}" {{ $student->checked == 'true'?'checked':'' }} >
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </div>
+                <input type="hidden" name="days_class_subject_id" value="{{ $classSubject->dcs_id }}">
+                <input type="hidden" name="class_id" value="{{ $classSubject->class_id }}">
+                <input type="hidden" name="study_time_id" value="{{ $classSubject->study_time_id }}">
+                <tr class="row-center">
+                    <td colspan="4" align="right" class="text-secondary font-italic small"> Nhấn nút Lưu để hoàn tất điểm danh</td>
+                    <td class="text-center">
+                        <button type="submit" class="btn btn-success float-right" id="Luu" {{ $timeOut=='false'?'':'disabled' }}>Lưu lại</button>
+                    </td>
+                </tr>
+            </form>
+
+             
+        </table>
+    </div>
+</div>
+<!-- 
+      <div class="container">
+        <div class="alert alert-warning"><h3 class="text-center">ĐIỂM DANH</h3></div>
+        <hr>
+    {{-- ERROR --}}
+        <div>
+            @if($errors->any())
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            @endif
+        </div>
+        {{-- DANGER --}}
+        @if(session('Danger'))
+        <div class="alert alert-danger font-weight-bold text-center">
+            {{ session('Danger') }}
+        </div>
+        @endif
+
+
+    {{-- SUCCESSFULLY --}}
+        @if(session('Success'))
+        <div class="alert alert-success font-weight-bold text-center">
+            {{ session('Success') }}
+        </div>
+        @endif
+
         <form method="post" action="{{ route('attendance-students-update-post') }}">
             @csrf
             <div class="row">
@@ -56,12 +138,5 @@
             <input type="hidden" name="study_time_id" value="{{ $classSubject->study_time_id }}">
             <button type="=submit" class="btn btn-success float-right" {{ $timeOut=='false'?'':'disabled' }}>Cập nhật</button>
         </form>
-      </div>
-      <br><br><br>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+      </div> -->
+@endsection

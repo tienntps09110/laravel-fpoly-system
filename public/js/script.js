@@ -2,6 +2,30 @@ $(document).ready(function() {
 	$('#sidebarCollapse').click(function() {
 		$('#sidebar').toggleClass('active');
 	});
+
+	// diem-danh 
+	$("#kiem-tra-tong").hide();
+	$("#kiem-tra-tong").click(function(){
+		$(":checked").closest('tr').show('1000');
+		$("#kiem-tra-vang").show();
+		$("#kiem-tra-tong").hide();
+	})
+	$("#kiem-tra-vang").click(function(){
+		$(":checked").closest('tr').hide('1000');
+		$("#kiem-tra-tong").show();
+		$("#kiem-tra-vang").hide();
+	})
+	$("#Luu").click(function(){
+		$('body').prepend('<div class="dark-screen"></div>');
+		$('body').prepend('<div class="message"> Đã Lưu thành công </div>');
+		$(".message").add(".dark-screen").click(function(){
+			$(".message").add(".dark-screen").remove();
+		})
+	})
+	
+
+	// end diem-danh
+
 });
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
@@ -85,4 +109,6 @@ var myChartRadian = new Chart(ctxRadian, {
 	// 	]
 	// }
 	// }
+ 
+ 
 });

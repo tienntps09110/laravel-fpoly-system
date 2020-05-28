@@ -1,3 +1,5 @@
+@extends('teacher.home')
+@section('content-teacher')
 GET ALL CLASS SUBJECTS FOR TEACHER
 <hr>
 
@@ -23,3 +25,4 @@ GET ALL CLASS SUBJECTS FOR TEACHER
         <hr>
     @endforeach
 </div>
+@endsection
