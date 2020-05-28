@@ -359,13 +359,25 @@
     <br>
     DATE TIME END<input type="date" name="datetime_end">
     <br><br><br>
-    Thứ học (1,2,3,4,5,6,0)
+<<<<<<< HEAD
+    {{-- Thứ học (1,2,3,4,5,6,0)
     <br>
-    <input type="text" name="days_study[]" value="1">
-    <input type="text" name="days_study[]" value="3">
-    <input type="text" name="days_study[]" value="5">
-    <br>
-    <div class="g-recaptcha" data-sitekey="6LdvEvwUAAAAAHsMacx4FSqP7eM0pknMYvJiSsFV"></div>
+=======
+    {{-- Thứ học (1,2,3,4,5,6,0) --}}
+    {{-- <br>
+>>>>>>> master
+    Chủ nhật<input type="checkbox" name="days_study[]" value="0">
+    Thứ 2<input type="checkbox" name="days_study[]" value="1">
+    Thứ 3<input type="checkbox" name="days_study[]" value="2">
+    Thứ 4<input type="checkbox" name="days_study[]" value="3">
+    Thứ 5<input type="checkbox" name="days_study[]" value="4">
+    Thứ 6<input type="checkbox" name="days_study[]" value="5">
+    Thứ 7<input type="checkbox" name="days_study[]" value="6"> --}}
 
-    <button type="submit" >Create</button> --}}
+<<<<<<< HEAD
+    {{-- <button type="submit" >Create</button> --}}
 {{-- <script src='https://www.google.com/recaptcha/api.js'></script> --}}
+=======
+    {{-- <div class="g-recaptcha" data-sitekey="6LdvEvwUAAAAAHsMacx4FSqP7eM0pknMYvJiSsFV"></div> --}}
+{{-- <script src='https://www.google.com/recaptcha/api.js'></script> --}}
+>>>>>>> master

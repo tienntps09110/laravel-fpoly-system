@@ -60,6 +60,8 @@ class RouteServiceProvider extends ServiceProvider
     {
         $auth  = [
             'routes/auth/auth.php',
+            'routes/student/auth.php',
+
         ];
 
         $admin = [
@@ -67,7 +69,9 @@ class RouteServiceProvider extends ServiceProvider
             'routes/admin/main.php'
         ];
         $teacher = [
-            'routes/teacher/main.php'
+            'routes/teacher/main.php',
+            'routes/teacher/class-subject.php',
+            'routes/teacher/attendance.php'
         ];
         $department = [
             'routes/department/main.php',
@@ -82,7 +86,9 @@ class RouteServiceProvider extends ServiceProvider
         $collaboration = [
             'routes/collaboration/main.php',
         ];
-        
+        $student = [
+            'routes/student/main.php'
+        ];
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
@@ -110,6 +116,10 @@ class RouteServiceProvider extends ServiceProvider
         // ROUTER COLLABORATION
         for($i = 0; $i < count($collaboration); $i++){
             $this->router('collaboration', 'collaboration', $collaboration[$i]);
+        }
+        // ROUTER STUDENT
+        for($i = 0; $i < count($student); $i++){
+            $this->router('student', 'student', $student[$i]);
         }
     }
     protected function router($prefix, $middleware, $base){

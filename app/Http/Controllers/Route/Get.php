@@ -193,6 +193,26 @@ class Get extends Controller
                 'method'=> 'GET',
                 'route'   => 'get-class-subject'
             ],
+            [
+                "name"  => 'DELETE CLASS SUBJECT',
+                'method'=> 'DELETE',
+                'route'   => 'delete-class-subject'
+            ],
+            [
+                "name"  => 'GET ALL CLASS SUBJECT TEACHER',
+                'method'=> 'GET',
+                'route'   => 'get-class-subjects-teacher'
+            ],
+            [
+                "name"  => 'GET DETAIL CLASS SUBJECT TEACHER',
+                'method'=> 'GET',
+                'route'   => 'get-class-subject-teacher'
+            ],
+            [
+                "name"  => 'GET CLASS SUBJECT TEACHER TODAY',
+                'method'=> 'GET',
+                'route'   => 'get-class-subject-teacher-today'
+            ],
         ];
     }
 }

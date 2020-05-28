@@ -17,7 +17,6 @@ use App\Model\StudyTime;
 use App\Model\Subjects;
 use App\Model\DaysClassSubject;
 
-
 class Create extends Controller
 {
     public function classSubjectView(){
@@ -50,33 +49,45 @@ class Create extends Controller
             'days_study'        => 'required | min:1 | max:255'
         ]);
         $arrayDaysStudy = $req->days_study;
+
+        // CHECK TIME START <> END
+        if($req->datetime_start > $req->datetime_end){
+            return Core::toBack($this->danger, 'Thời gian kết thúc không thể nhỏ hơn thời gian bắt đầu');
+        }
+
+        // CHECK CLASS
         $class = ClassM::where('id', $req->class_id)
                         ->where('soft_deleted', Core::false())
                         ->first();
         if(!$class){
             return Core::toBack($this->danger, 'Không tìm thấy lớp theo yêu cầu');
         }
+
+        // CHECK SUBJECT
         $subjects = Subjects::where('id', $req->subject_id)
                             ->where('soft_deleted', Core::false())
                             ->first();
         if(!$subjects){
             return Core::toBack($this->danger, 'Không tìm thấy môn học theo yêu cầu');
         }
+
+        // CHECK STUDY TIME
         $studyTime  = StudyTime::where('id', $req->study_time_id)
                             ->where('soft_deleted', Core::false())
                             ->first();
         if(!$studyTime){
             return Core::toBack($this->danger, 'Không tìm thấy ca học theo yêu cầu');
         }
+
+        // CHECK TEACHER
         $user = User::where('uuid', $req->teacher_uuid)
                             ->where('soft_deleted', Core::false())
                             ->first();
         if(!$user){
             return Core::toBack($this->danger, 'Không tìm thấy giảng viên theo yêu cầu');
         }
-        if($req->datetime_start > $req->datetime_end){
-            return Core::toBack($this->danger, 'Thời gian kết thúc không thể nhỏ hơn thời gian bắt đầu');
-        }
+
+        // CHECK TIME TEACHER AND CLASS
         $TimeCheck = ClassSubject::where('class_id', $req->class_id)
                                     ->where('study_time_id', $req->study_time_id)
                                     ->where('days_week', json_encode($arrayDaysStudy))    
@@ -87,6 +98,8 @@ class Create extends Controller
                 return Core::toBack($this->danger, 'Ca học của lớp trong khoảng thời gian đã có môn học');
             }
         }
+
+        // CHECK SUBJECT AND TIME
         $SubjectCheck = ClassSubject::where('class_id', $req->class_id)
                                     ->where('subject_id', $req->subject_id)    
                                     ->whereDate('datetime_end', '>', CarBon::now()->toDateString())
@@ -105,14 +118,19 @@ class Create extends Controller
                                     ->whereDate('datetime_end', '>', CarBon::now()->toDateString())
                                     ->orderByDesc('id')
                                     ->first();
-
-        if($TeacherCheck){
-            if($req->datetime_start <= $TeacherCheck->datetime_end
-                && json_encode($arrayDaysStudy) == $TeacherCheck->days_week){
-                return Core::toBack($this->danger, 'Giảng viên bận vào ca này trong khoảng thời gian này');
+        
+        if($TeacherCheck && $req->datetime_start <= $TeacherCheck->datetime_end){
+            $arrayTeacherDays = json_decode($TeacherCheck->days_week);
+            for($i = 0; $i < count($arrayDaysStudy); $i++){
+                for($j = 0; $j < count($arrayTeacherDays); $j++){
+                    if($arrayDaysStudy[$i] == $arrayTeacherDays[$j]){
+                        return Core::toBack($this->danger, 'Giảng viên bận vào ca này trong khoảng thời gian này');
+                    }
+                }
             }
-        }
-
+        } 
+        
+        // INSERT DATA
         $classSubject = new ClassSubject;
         $classSubject->class_id          = $req->class_id;
         $classSubject->subject_id        = $req->subject_id;
@@ -124,6 +142,7 @@ class Create extends Controller
         $classSubject->soft_deleted      = Core::false();
         $classSubject->save();
         
+        // INSERT DAYS STUDY
         Create::insertDaysClassSubject($classSubject->id,$req->teacher_uuid, $arrayDays);
 
         return Core::toBack($this->success, 'Tạo phân công giảng dạy thành công');
