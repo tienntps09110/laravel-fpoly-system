@@ -49,4 +49,45 @@ class Core extends Controller
         }
         return $redirectRole;
     }
+    public static function dayString($code){
+        
+        switch($code){
+            case 0:
+                return 'Chủ nhật';
+            break;
+            case 1:
+                return 'thứ hai';
+            break;
+            case 2:
+                return 'thứ ba';
+            break;
+            case 3:
+                return 'thứ tư';
+            break;
+            case 4:
+                return 'thứ năm';
+            break;
+            case 5:
+                return 'thứ sáu';
+            break;
+            case 6:
+                return 'thứ bảy';
+            break;
+            default:
+                return 'không xác định';
+        }
+    }
+    public static function token($length){
+        $token = "";
+        $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+        $codeAlphabet.= "0123456789";
+        $max = strlen($codeAlphabet);
+    
+        for ($i=0; $i < $length; $i++) {
+            $token .= $codeAlphabet[random_int(0, $max-1)];
+        }
+    
+        return $token;
+    }
 }

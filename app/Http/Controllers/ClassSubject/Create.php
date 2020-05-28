@@ -17,7 +17,6 @@ use App\Model\StudyTime;
 use App\Model\Subjects;
 use App\Model\DaysClassSubject;
 
-
 class Create extends Controller
 {
     public function classSubjectView(){

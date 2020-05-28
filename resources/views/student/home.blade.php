@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>HOME TEACHER</title>
+    <title>HOME STUDENT</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,17 +11,31 @@
   </head>
   <body>
     <div class="container">
-      <form action="{{ route('logout') }}" method="post">
-        @csrf
-        <button type="submit" class="text-center">({{ Auth::user()->full_name }}) LOGOUT</button>
-      </form>
-        <h1 class="text-center text-sucess">HOME TEACHER</h1>
-        <a href="{{ route('get-class-subjects-teacher') }}">Danh sách lớp dạy</a>
+        <h1> HOME</h1>
+        <form action="{{ route('student-logout') }}" method="POST">
+            @csrf
+            <button type="submit">LOGOUT ({{ $Core::user()->full_name }})</button>
+        </form>
+        <br>
+        <div class="row">
+            <div class="col-3">
+                <img src="{{ $Core::user()->avatar_img_path }}" alt="{{ $Core::user()->student_code }}">
+            </div>
+            <div class="col-9">
+                <h3>Lớp: {{ $classM->name }} ({{ $classM->time_start }} - {{ $classM->time_end }})</h3>
+                <h3>MSSV: {{ $Core::user()->student_code }}</h3>
+                <h3>Họ và tên: {{ $Core::user()->full_name }}</h3>
+                {{-- <h3>{{ $Core::user()}}</h3> --}}
+            </div>
+        </div>
 
         <br>
-        <a href="{{ route('get-class-subject-teacher-today') }}">Danh sách lớp dạy hôm nay</a>
+        <a href="{{ route('get-class-subjects-student') }}" style="font-size: 20pt">>>Danh sách môn học</a>
         <br>
+        <a href="{{ route('get-class-subjects-days-student') }}" style="font-size: 20pt">>>Lịch học</a>
+        
     </div>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

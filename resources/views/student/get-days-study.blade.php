@@ -1,7 +1,9 @@
+
+
 <!doctype html>
 <html lang="en">
   <head>
-    <title>HOME TEACHER</title>
+    <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,16 +13,21 @@
   </head>
   <body>
     <div class="container">
-      <form action="{{ route('logout') }}" method="post">
-        @csrf
-        <button type="submit" class="text-center">({{ Auth::user()->full_name }}) LOGOUT</button>
-      </form>
-        <h1 class="text-center text-sucess">HOME TEACHER</h1>
-        <a href="{{ route('get-class-subjects-teacher') }}">Danh sách lớp dạy</a>
+        <div class="alert alert-primary">THÔNG TIN CHI TIẾT HỌC TỪNG NGÀY</div>
+        <div class="row">
+            @foreach ($classSubjectDays as $detail)
+                <div class="col-12">
+                    <h3>Lớp: {{ $detail->class_name }}</h3>
+                    <h3>Ngày: {{ $detail->date }}</h3>
+                    <h3>Môn: {{ $detail->subject_name }}</h3>
+                    <h3>Ca học: {{ $detail->study_time_name }} ({{ $detail->study_time_start }} - {{ $detail->study_time_end }})</h3>
+                    <h3>Ngày: {{ $detail->day_name }}</h3>
+                    {{-- <h3>Ca học: {{ json_encode($detail) }}</h3> --}}
 
-        <br>
-        <a href="{{ route('get-class-subject-teacher-today') }}">Danh sách lớp dạy hôm nay</a>
-        <br>
+                    <hr>
+                </div>
+            @endforeach
+        </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
