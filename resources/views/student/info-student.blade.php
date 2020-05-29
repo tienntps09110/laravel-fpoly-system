@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-3 p-4">
             <div class="text-center">
-                <img src="{{ $Core::user()->avatar_img_path }}" alt="{{ $Core::user()->student_code }}">
+                <img src="{{ $CoreS::user()->avatar_img_path }}" alt="{{ $CoreS::user()->student_code }}">
                 <button class="btn btn-link mt-3 btn-block" id="btn-change-avatar">+ Thay đổi hình đại diện</button>
             </div>
         </div>
@@ -15,7 +15,7 @@
                     <div class="col-lg-6 p-3">
                         <div class="row">
                             <div class="col-6">Họ và Tên: </div>
-                            <div class="col-6 font-weight-bold"> {{ $Core::user()->full_name }} </div>
+                            <div class="col-6 font-weight-bold"> {{ $CoreS::user()->full_name }} </div>
                         </div>
                     </div>
                     <div class="col-lg-6 p-3">
@@ -30,7 +30,7 @@
                     <div class="col-lg-6 p-3">
                         <div class="row">
                             <div class="col-6">Mssv: </div>
-                            <div class="col-6 font-weight-bold">{{ $Core::user()->student_code }}</div>
+                            <div class="col-6 font-weight-bold">{{ $CoreS::user()->student_code }}</div>
                         </div>
                     </div>
                      

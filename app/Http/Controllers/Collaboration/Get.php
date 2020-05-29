@@ -7,29 +7,24 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Core\Json;
 use App\Http\Controllers\Core\Core;
 use App\Http\Controllers\Core\View;
+use Auth;
 use Carbon\Carbon;
 use App\User;
-use Auth;
 use App\Model\Attendance;
+use App\Model\Subjects;
+use DB;
+
 class Get extends Controller
 {
     public function home(){
-        return view(View::collaboration('home'));
+        return view('collaboration.full-dashboard',[
+            'countMonth'=> json_encode(Get::countMonth()),
+            'countClass'=> json_encode(Get::countClass()),
+            'noteTeacher'=> json_encode(Get::noteTeacher())
+        ]);
     }
-    // COUNT USERS
-    public function countUsers(){
-        $teacher;
-        $student;
-        $classM;
-        return Get::countMonth();
-        $data = [
-            'teacher'=>$teacher,
-            'student'=>$student,
-            'classM' =>$classM
-        ];
-        return $data;
-    }
-    // 1 THÁNG GẦN NHẤT SỐ LIỆU FAIL ĐIỂM DANH
+
+    // 1 THÁNG GẦN NHẤT SỐ LIỆU NGHỈ HỌC
     protected static function countMonth(){
         // 
         $daysDefault = 28;
@@ -47,28 +42,62 @@ class Get extends Controller
             $daysDefault -= 7;
             $count = Get::getCountStudentFail($time);
             
-            $labels[] = Carbon::parse($time['dateStart'])->format('d/m') .'-' .Carbon::parse($time['dateStart'])->format('d/m');
+            $labels[] = Carbon::parse($time['dateStart'])->format('d/m') .'-' .Carbon::parse($time['dateEnd'])->format('d/m');
             $data[] = $count;
         }
-        return (object) [
+        return [
             'labels'=>$labels,
             'data'  => $data
         ];
-
-    //    echo $lastMonth;
-        $data = [11, 43, 54, 43];
     }
-    // TỔNG SỐ FAILL CỦA TẤT CẢ LỚP
+    // TỔNG SỐ FAIL ĐIỂM DANH CỦA TẤT CẢ LỚP
     protected static function countClass(){
         $labels = [];
         $data = [];
+        $subjects = Subjects::where('soft_deleted', Core::false())->get();
+        foreach($subjects as $subject){
+            $count = Get::getFailAttendance($subject->id);
+            $labels[] = $subject->name;
+            $data[]   = $count;
+        }
+        return [
+            'labels'=> $labels,
+            'data'  => $data
+        ];
+    }
+
+    // GET NOTE TEACHER TAKE 15
+    public static function noteTeacher(){
+        return DB::table('days_class_subject as dcs')
+                    ->join('class_subject as cs', 'dcs.class_subject_id', '=', 'cs.id')
+                    ->join('class as c', 'cs.class_id', '=', 'c.id')
+                    ->join('subjects as s', 'cs.subject_id', '=', 's.id')
+                    ->join('users as teacher', 'cs.user_manager_uuid', 'teacher.uuid')
+                    ->whereNotNull('dcs.note')
+                    ->select(
+                        'teacher.full_name as teacher_full_name',
+                        'c.name as class_name',
+                        's.name as subject_name',
+                        'dcs.note'
+                    )
+                    ->take(15)
+                    ->get();
+    }
+
+    // COUNT IN DB
+    protected static function getFailAttendance($subjectId){
+        return DB::table('attendance as ad')
+                ->join('days_class_subject as dcs', 'ad.days_class_subject_id', 'dcs.id')
+                ->join('class_subject as cs', 'dcs.class_subject_id', '=', 'cs.id')
+                ->where('ad.checked', Core::false())
+                ->where('cs.subject_id', $subjectId)
+                ->count();
     }
     protected static function getCountStudentFail($data){
-        $attendance = Attendance::where('created_at', '>=', $data['dateStart'])
-                                ->where('created_at', '<=', $data['dateEnd'])
-                                ->orderByDesc('id')
-                                ->where('checked', Core::false())
-                                ->count();
-        return $attendance;
+        return Attendance::where('created_at', '>=', $data['dateStart'])
+                ->where('created_at', '<=', $data['dateEnd'])
+                ->orderByDesc('id')
+                ->where('checked', Core::false())
+                ->count();
     }
 }

@@ -3,7 +3,6 @@
   <div class="fixed-sidebar">
     <div class="sidebar-header">
       <div class="rounded-circle" style="background-image:url('{{ Auth::user()->avatar_img_path }}')"> </div>
-      <!-- <img class="rounded-circle" src="{{ Auth::user()->avatar_img_path }}" alt="">  -->
  </div>
 
  <ul class="list-unstyled components">

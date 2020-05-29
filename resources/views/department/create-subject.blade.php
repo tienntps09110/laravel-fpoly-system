@@ -12,6 +12,15 @@
         <label for="code">Nhập mã môn *</label>
         <input id="code" class="form-control" type="text" name="code" required>
     </div>
+    <div class="form-group col-lg-8 mx-auto">
+        <label for="code">Nhập số ngày vắng tối đa *</label>
+        {{-- <input id="day_fail" class="form-control" type="number" name="day_fail" required> --}}
+        <select name="day_fail">
+            @for($i = 1; $i <= 10; $i++)
+                <option value="{{ $i }}">{{ $i }}</option>
+            @endfor
+        </select>
+    </div>
     {{-- CODE<input type="text" name="code"> --}}
     <div class="form-group col-lg-8 mx-auto">
         <button class="btn btn-primary" type="submit">Lưu</button>

@@ -1,7 +1,7 @@
 <nav id="sidebar">
     <div class="fixed-sidebar">
         <div class="sidebar-header">
-            <div class="avatar"></div>
+            <div class="avatar" style="background-image: url({{ Auth::user()->avatar_img_path }})"></div>
         </div>
     
         <ul class="list-unstyled components">

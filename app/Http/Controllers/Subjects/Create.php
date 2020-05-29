@@ -25,8 +25,9 @@ class Create extends Controller
     }
     public function subjectPost(Request $req){
         $validator = Validator::make($req->all(), [
-            'name' => 'required | min:1 | max:255',
-            'code' => 'required | min:1 | max:255'
+            'name'      => 'required | min:1 | max:255',
+            'code'      => 'required | min:1 | max:255',
+            'day_fail'  => 'required | min:1 | max:255'
         ]);
         if ($validator->fails()) {
             return Json::getMess($validator->errors(), 422);
@@ -40,6 +41,7 @@ class Create extends Controller
         $subject = new Subjects;
         $subject->name = $req->name;
         $subject->code = Str::lower($req->code);
+        $subject->days_fail = $req->day_fail;
         $subject->soft_deleted = Core::false();
         $subject->save();
         // return Core::toBack($this->success, 'Tạo môn học thành công');

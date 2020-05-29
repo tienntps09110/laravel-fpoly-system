@@ -75,7 +75,9 @@
                 <input type="hidden" name="class_id" value="{{ $classSubject->class_id }}">
                 <input type="hidden" name="study_time_id" value="{{ $classSubject->study_time_id }}">
                 <tr class="row-center">
-                    <td colspan="4" align="right" class="text-secondary font-italic small"> Nhấn nút Lưu để hoàn tất điểm danh</td>
+                    <td colspan="4" align="right" class="text-secondary font-italic small"> Nhấn nút Lưu để hoàn tất điểm danh
+                        <textarea type="text" class="form-control" name="note" placeholder="Ghi chú..."></textarea>
+                    </td>
                     <td class="text-center">
                         <button type="submit" class="btn btn-success float-right" id="Luu" {{ $timeOut=='false'?'':'disabled' }}>Lưu lại</button>
                     </td>

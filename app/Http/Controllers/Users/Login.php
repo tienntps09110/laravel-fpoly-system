@@ -22,6 +22,12 @@ class Login extends Controller
     }
     // METHOD POST LOGIN
     public function login(Request $req){
+        $req->validate([
+            '_token'   => 'required | min:1 | max:255',
+            'user_name'=> 'required | min:1 | max:255',
+            'password' => 'required | min:1 | max:255'
+        ]);
+        
         $data = [
             'user_name'=> $req->user_name,
             'password'=> $req->password,

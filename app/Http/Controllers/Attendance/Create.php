@@ -20,13 +20,13 @@ class Create extends Controller
 {
     public function attendance(Request $req){
         $req->validate([
-            'attendance'            => 'required | min:1 | max:255',
+            'attendance'            => '           min:1 | max:255',
             'days_class_subject_id' => 'required | min:1 | max:255',
             'class_id'              => 'required | min:1 | max:255',
             'study_time_id'         => 'required | min:1 | max:255',
             'note'                  => '           min:1 | max:255'
         ]);
-        // return $req;
+
         $data = [
             'attendance'            => $req->attendance,
             'days_class_subject_id' => $req->days_class_subject_id,
@@ -34,7 +34,6 @@ class Create extends Controller
             'study_time_id'         => $req->study_time_id,
             'note'                  => $req->note
         ];
-
         $studyCheck = StudyTime::where('id', $req->study_time_id)->first();
         if($studyCheck){
             $now = Carbon::now()->toTimeString();
@@ -53,19 +52,27 @@ class Create extends Controller
                             ->whereNotIn('id', $req->attendance)
                             ->select('id')
                             ->get();
+
         $dayClassSubject = DaysClassSubject::find($req->days_class_subject_id);
         $updateFunction = Core::false();
         $createFunction = Core::false();
+        
         if($dayClassSubject && $dayClassSubject->checked == 'true'){
             $updateFunction = Create::update($studentsHave, $studentsNot, $data);
+            $dayClassSubject->note = $req->note?$req->note:null;
+            $dayClassSubject->save();
             return Core::toBack($this->success, 'Cập nhật điểm danh thành công');
         }
+
         $createFunction = Create::create($studentsHave, $studentsNot, $data);
         $dayClassSubject->checked = Core::true();
         $dayClassSubject->note = $req->note?$req->note:null;
         $dayClassSubject->save();
+
         return Core::toBack($this->success, 'Điểm danh thành công');
     }
+
+    // CREATE AND UPDATE
     protected static function create($studentsHave, $studentsNot, $data){
         return Create::insert($studentsHave, $studentsNot, $data['days_class_subject_id']);
     }
@@ -75,6 +82,7 @@ class Create extends Controller
                         ->delete();
         return Create::insert($studentsHave, $studentsNot, $data['days_class_subject_id']);
     }
+
     // INSERT ATTENDANCE
     protected static function insert($studentsHave, $studentsNot, $dayClassSubjectId){
         foreach($studentsHave as $studeH){
