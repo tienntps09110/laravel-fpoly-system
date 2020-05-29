@@ -27,9 +27,18 @@ class Get extends Controller
                                     'class_subject.id as class_subject_id',
                                     'class_subject.class_id',
                                     'dcs.id as dcs_id',
-                                    'class_subject.study_time_id'
+                                    'class_subject.study_time_id',
+                                    'checked'
                                 )
                                 ->firstOrFail();
+            
+        // redirect to update attendance
+        if($classSubjectCheck && $classSubjectCheck->checked == Core::true()){
+            return redirect()->route('get-attendance-class-subject-update-today',[
+                    'classSubjectId'=>$classSubjectCheck->class_subject_id,
+                    'dayStudyId'=>$classSubjectCheck->dcs_id
+                ]);
+        }
         $classSubjectStudy = ClassSubject::where('id', $classSubjectId)->firstOrFail();
         
         // $dayStudyCheck = Attendance::where('days_class_subject_id', $classSubjectCheck->dcs_id)
@@ -44,7 +53,7 @@ class Get extends Controller
         
         if($studyCheck){
             $now = Carbon::now()->toTimeString();
-            if($now > Carbon::parse($studyCheck->time_start)->addMinutes(30)->toTimeString()){
+            if($now > Carbon::parse($studyCheck->time_start)->addMinutes($this->timeAttendance)->toTimeString()){
                 // return Core::notFound();
                 $timeOut = Core::true();
 
@@ -97,6 +106,7 @@ class Get extends Controller
                                 'students.avatar_img_path',
                                 'at.checked'
                             )
+                            ->orderBy('id')
                             ->get();
         return view('teacher.get-attendance-update-today', [
             'classSubject'=> $classSubjectCheck,

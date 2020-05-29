@@ -62,7 +62,7 @@ class Create extends Controller
         }
         $createFunction = Create::create($studentsHave, $studentsNot, $data);
         $dayClassSubject->checked = Core::true();
-        $dayClassSubject->checked = $req->note?$req->note:null;
+        $dayClassSubject->note = $req->note?$req->note:null;
         $dayClassSubject->save();
         return Core::toBack($this->success, 'Điểm danh thành công');
     }

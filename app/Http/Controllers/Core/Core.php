@@ -77,6 +77,8 @@ class Core extends Controller
                 return 'không xác định';
         }
     }
+
+    // GET TOKEN
     public static function token($length){
         $token = "";
         $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -87,7 +89,6 @@ class Core extends Controller
         for ($i=0; $i < $length; $i++) {
             $token .= $codeAlphabet[random_int(0, $max-1)];
         }
-    
         return $token;
     }
 }

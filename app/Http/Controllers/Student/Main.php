@@ -20,7 +20,7 @@ class Main extends Controller
         $classM->time_end   = Carbon::parse($classM->time_end)->toDateString();
 
         return view('student.info-student', [
-            'Core' => new CoreS,
+            'CoreS' => new CoreS,
             'classM' => $classM
         ]);
     }
@@ -28,7 +28,8 @@ class Main extends Controller
     {
         $classSubjects = Main::classSubjects();
         return view('student.get-class-subjects', [
-            'classSubjects' => $classSubjects
+            'classSubjects' => $classSubjects,
+            'CoreS'              => new CoreS
         ]);
     }
 
@@ -39,10 +40,24 @@ class Main extends Controller
         if ($data == Core::false()) {
             return Core::notFound();
         }
+        // return CoreS::user()->id;
+        $countdayStudy = DB::table('attendance as ad')
+                            ->join('days_class_subject as dcs', 'ad.days_class_subject_id', 'dcs.id')
+                            ->join('class_subject as cs', 'dcs.class_subject_id', '=', 'cs.id')
+                            ->where('ad.student_id', CoreS::user()->id)
+                            ->where('ad.checked', Core::false())
+                            ->where('cs.subject_id', $data['classSubject']->subject_id)
+                            ->where('cs.class_id', $data['classSubject']->class_id)
+                            ->count();
+                            
         // return json_encode($classSubject);
         return view('student.get-class-subject', [
-            'cLassSubject'      => $data['classSubject'],
-            'daysClassSubject'  => $data['daysClassSubject']
+            'classSubject'      => $data['classSubject'],
+            'daysClassSubject'  => $data['daysClassSubject'],
+            'countdayStudy'     => $countdayStudy,
+            'CoreS'              => new CoreS,
+            'Core'              => new Core,
+            'Carbon'            => new Carbon
         ]);
     }
     // GET CLASS SUBJECTS ALL
@@ -64,7 +79,8 @@ class Main extends Controller
         }
         $data = collect($data)->sortBy('date')->values()->all();
         return view('student.get-days-study', [
-            'classSubjectDays' => $data
+            'classSubjectDays' => $data,
+            'CoreS'              => new CoreS
         ]);
     }
     // GET CLASS SUBJECT DETAIL
@@ -96,7 +112,8 @@ class Main extends Controller
         }
         return $data = [
             'classSubject'      => $classSubject,
-            'daysClassSubject'  => $daysClassSubject->get()
+            'daysClassSubject'  => $daysClassSubject->get(),
+            'CoreS'              => new CoreS
         ];
     }
     protected static function classSubjects()

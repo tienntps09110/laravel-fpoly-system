@@ -1,7 +1,7 @@
 <nav id="sidebar">
     <div class="fixed-sidebar">
         <div class="sidebar-header">
-            <div class="avatar"></div>
+            <div class="avatar"><img src="{{ $CoreS::user()->avatar_img_path }}" width="200rem"></div>
         </div>
     
         <ul class="list-unstyled components">

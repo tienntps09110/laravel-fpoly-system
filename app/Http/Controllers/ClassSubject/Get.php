@@ -87,8 +87,10 @@ class Get extends Controller
                             ->get();
         
         return view(View::teacher('get-detail-class-subject'), [
-            'cLassSubject'=> $classSubject,
-            'daysClassSubject'=> $daysClassSubject
+            'cLassSubject'      => $classSubject,
+            'daysClassSubject'  => $daysClassSubject,
+            'Core'              => new Core,
+            'Carbon'            => new Carbon
         ]);
     }
     // GET CLASS SUBJECT TODAY

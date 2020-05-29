@@ -23,7 +23,7 @@
                         <td> {{ $detailCs->class_name }} </td>
                         <td>{{ $detailCs->subject_name }}</td>
                         <td>{{ $detailCs->study_time_name }}</td>
-                        <td> {{ $Carbon::parse($detailCs->datetime_start)->toDateString() .' - ' .$Carbon::parse($detailCs->datetime_end)->toDateString() }} </td>
+                        <td> {{ $Carbon::parse($detailCs->datetime_start)->format('d/m/Y') .' - ' .$Carbon::parse($detailCs->datetime_end)->format('d/m/Y') }} </td>
                         <td> @for($i = 0; $i < count(json_decode($detailCs->days_week)); $i++)
                                 {{ $Core::dayString(json_decode($detailCs->days_week)[$i]) .', ' }}
                             @endfor   

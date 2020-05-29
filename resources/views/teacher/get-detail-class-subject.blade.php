@@ -23,9 +23,8 @@
                         <th scope="row"> {{ $cLassSubject->id }} </th>
                         <td>  {{ $cLassSubject->subject_name }} </td>
                         {{-- <td> {{ $Carbon::parse($cLassSubject->datetime_start)->toDateString() .' - ' .$Carbon::parse($cLassSubject->datetime_end)->toDateString() }}  </td> --}}
-                        <td> {{ $cLassSubject->datetime_start }} </td>
-                        <td> {{ $cLassSubject->datetime_end }} </td>
-    
+                        <td> {{ $Carbon::parse($cLassSubject->datetime_start)->format('d/m/Y') }} </td>
+                        <td> {{ $Carbon::parse($cLassSubject->datetime_end)->format('d/m/Y') }} </td>
                       </tr>
                 </tbody>
               </table>
@@ -48,7 +47,7 @@
                         <tr>
                             <th scope="row"> {{ ++$key }} </th>
                             <td> {{$daysDetail->user_full_name }} </td>
-                            <td> {{ $daysDetail->date }} </td>
+                            <td> {{ $Carbon::parse($daysDetail->date)->format('d/m/Y') }} </td>
                             <td class="{{ $daysDetail->checked =="false" ? "badge badge-danger" :"badge badge-success"  }}" > {{ $daysDetail->checked =="false" ? "Chưa Dạy" :"Đã dạy" }} </td>
                           </tr>
                         @endforeach    

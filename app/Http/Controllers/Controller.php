@@ -29,5 +29,5 @@ class Controller extends BaseController
     protected $success = 'Success';
 
     // TIME ATTENDANCE
-    protected $timeAttendance = 999999999;
+    protected $timeAttendance = 2000;
 }

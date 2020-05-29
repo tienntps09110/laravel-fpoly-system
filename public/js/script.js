@@ -17,7 +17,7 @@ $(document).ready(function() {
 	})
 	$("#Luu").click(function(){
 		$('body').prepend('<div class="dark-screen"></div>');
-		$('body').prepend('<div class="message"> Đã Lưu thành công </div>');
+		$('body').prepend('<div class="message"> Vui lòng chờ... </div>');
 		$(".message").add(".dark-screen").click(function(){
 			$(".message").add(".dark-screen").remove();
 		})

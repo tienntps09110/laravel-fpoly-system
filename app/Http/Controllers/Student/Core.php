@@ -29,8 +29,10 @@ class Core extends Controller
                 ->where('cs.soft_deleted', CoreG::false())
                 ->select(
                     'cs.id',
+                    'cs.class_id',
                     'c.name as class_name',
                     'c.code as class_code',
+                    'cs.subject_id',
                     'sj.name as subject_name',
                     'sj.code as subject_code',
                     'st.name as study_time_name',

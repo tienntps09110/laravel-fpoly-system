@@ -52,26 +52,4 @@
     </div>
     
 </div>
-<form action="{{ route('student-logout') }}" method="POST">
-    @csrf
-    <button type="submit">LOGOUT ({{ $Core::user()->full_name }})</button>
-</form>
-<br>
-{{-- <div class="row">
-    <div class="col-3">
-        <img src="{{ $Core::user()->avatar_img_path }}" alt="{{ $Core::user()->student_code }}">
-    </div>
-    <div class="col-9">
-        <h3>Lớp: {{ $classM->name }} ({{ $classM->time_start }} - {{ $classM->time_end }}) </h3>
-        <h3>MSSV: {{ $Core::user()->student_code }} </h3>
-        <h3>Họ và tên: {{ $Core::user()->full_name }} </h3>
-        <h3>{{ $Core::user()}}</h3>
-    </div>
-</div> --}}
-
-<br>
-<a href="{{ route('get-class-subjects-student') }}" style="font-size: 20pt">>>Danh sách môn học</a>
-<br>
-<a href=" {{ route('get-class-subjects-days-student') }} " style="font-size: 20pt">>>Lịch học</a>
-
 @endsection
