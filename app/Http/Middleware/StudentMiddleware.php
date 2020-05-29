@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Model\Students;
+use Auth;
 
 class StudentMiddleware
 {
@@ -16,6 +17,7 @@ class StudentMiddleware
      */
     public function handle($request, Closure $next)
     {
+        Auth::logout();
         if (!$request->session()->has('student_code') && !$request->session()->has('token')) {
             $request->session()->forget('student_code');
             $request->session()->forget('token');

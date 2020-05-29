@@ -17,6 +17,8 @@ class DepartmentMiddleware
      */
     public function handle($request, Closure $next)
     {
+        $request->session()->forget('student_code');
+        $request->session()->forget('token');
         if(!Auth::check()){
             return redirect()->route('login'); 
         }

@@ -24,13 +24,15 @@ class Create extends Controller
             'days_class_subject_id' => 'required | min:1 | max:255',
             'class_id'              => 'required | min:1 | max:255',
             'study_time_id'         => 'required | min:1 | max:255',
+            'note'                  => '           min:1 | max:255'
         ]);
         // return $req;
         $data = [
             'attendance'            => $req->attendance,
             'days_class_subject_id' => $req->days_class_subject_id,
             'class_id'              => $req->class_id,
-            'study_time_id'         => $req->study_time_id
+            'study_time_id'         => $req->study_time_id,
+            'note'                  => $req->note
         ];
 
         $studyCheck = StudyTime::where('id', $req->study_time_id)->first();
@@ -60,6 +62,7 @@ class Create extends Controller
         }
         $createFunction = Create::create($studentsHave, $studentsNot, $data);
         $dayClassSubject->checked = Core::true();
+        $dayClassSubject->checked = $req->note?$req->note:null;
         $dayClassSubject->save();
         return Core::toBack($this->success, 'Điểm danh thành công');
     }
