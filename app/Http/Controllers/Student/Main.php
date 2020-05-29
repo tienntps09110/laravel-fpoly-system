@@ -13,27 +13,30 @@ use DB;
 
 class Main extends Controller
 {
-    public function home(){
+    public function home()
+    {
         $classM             = ClassM::find(CoreS::user()->class_id);
         $classM->time_start = Carbon::parse($classM->time_start)->toDateString();
         $classM->time_end   = Carbon::parse($classM->time_end)->toDateString();
 
-        return view('student.home', [
-            'Core'=> new CoreS,
-            'classM'=> $classM
+        return view('student.info-student', [
+            'Core' => new CoreS,
+            'classM' => $classM
         ]);
     }
-    public function classSubjectsView(){
+    public function classSubjectsView()
+    {
         $classSubjects = Main::classSubjects();
         return view('student.get-class-subjects', [
-            'classSubjects'=> $classSubjects
+            'classSubjects' => $classSubjects
         ]);
     }
-    
+
     // DETAIL CLASS SUBJECT DAYS
-    public function classSubjectDetailView($classSubjectId){
+    public function classSubjectDetailView($classSubjectId)
+    {
         $data = Main::classSubjectDetail($classSubjectId);
-        if($data == Core::false()){
+        if ($data == Core::false()) {
             return Core::notFound();
         }
         // return json_encode($classSubject);
@@ -43,12 +46,13 @@ class Main extends Controller
         ]);
     }
     // GET CLASS SUBJECTS ALL
-    public function classSubjectAll(){
+    public function classSubjectAll()
+    {
         $classSubjects = Main::classSubjects();
         $data = [];
-        foreach($classSubjects as $classSub){
+        foreach ($classSubjects as $classSub) {
             $classDetail = Main::classSubjectDetail($classSub->id, 'date')['daysClassSubject'];
-            foreach( $classDetail as $cD){
+            foreach ($classDetail as $cD) {
                 $cD->day_name   = Core::dayString(Carbon::parse($cD->date)->dayOfWeek);
                 $cD->class_name = $classSub->class_name;
                 $cD->subject_name = $classSub->subject_name;
@@ -59,35 +63,35 @@ class Main extends Controller
             }
         }
         $data = collect($data)->sortBy('date')->values()->all();
-        return view('student.get-days-study',[
-            'classSubjectDays'=> $data
+        return view('student.get-days-study', [
+            'classSubjectDays' => $data
         ]);
-        
     }
     // GET CLASS SUBJECT DETAIL
-    protected static function classSubjectDetail($classSubjectId, $method = 'default'){
+    protected static function classSubjectDetail($classSubjectId, $method = 'default')
+    {
         $classSubject = CoreS::dbClassSubject()
-                        ->where('cs.id', $classSubjectId)
-                        ->where('cs.class_id', CoreS::user()->class_id)
-                        ->first();
-        
-        if(!$classSubject){
+            ->where('cs.id', $classSubjectId)
+            ->where('cs.class_id', CoreS::user()->class_id)
+            ->first();
+
+        if (!$classSubject) {
             return Core::false();
         }
         $daysClassSubject = DB::table('days_class_subject as dcs')
-                            ->join('class_subject as cs', 'dcs.class_subject_id', '=', 'cs.id')
-                            ->join('users as us' , 'dcs.user_manager_uuid', '=', 'us.uuid')
-                            ->where('class_subject_id', $classSubjectId)
-                            ->where('cs.class_id', CoreS::user()->class_id)
-                            ->select(
-                                'dcs.id as id',
-                                'dcs.class_subject_id',
-                                'us.user_name as user_name',
-                                'us.full_name as user_full_name',
-                                'dcs.date',
-                                'dcs.checked'
-                            );
-        if($method != 'default'){
+            ->join('class_subject as cs', 'dcs.class_subject_id', '=', 'cs.id')
+            ->join('users as us', 'dcs.user_manager_uuid', '=', 'us.uuid')
+            ->where('class_subject_id', $classSubjectId)
+            ->where('cs.class_id', CoreS::user()->class_id)
+            ->select(
+                'dcs.id as id',
+                'dcs.class_subject_id',
+                'us.user_name as user_name',
+                'us.full_name as user_full_name',
+                'dcs.date',
+                'dcs.checked'
+            );
+        if ($method != 'default') {
             $daysClassSubject->where('dcs.date', '>=', Carbon::now()->toDateString());
         }
         return $data = [
@@ -95,11 +99,12 @@ class Main extends Controller
             'daysClassSubject'  => $daysClassSubject->get()
         ];
     }
-    protected static function classSubjects(){
+    protected static function classSubjects()
+    {
         $classSubjects = CoreS::dbClassSubject()
-                            ->where('class_id', CoreS::user()->class_id)
-                            ->where('datetime_end', '>', Carbon::now()->toDateString())
-                            ->get();
+            ->where('class_id', CoreS::user()->class_id)
+            ->where('datetime_end', '>', Carbon::now()->toDateString())
+            ->get();
         return $classSubjects;
     }
 }
