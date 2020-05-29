@@ -1,6 +1,5 @@
 @extends('department.home')
 @section('contentPDT')
-<hr>
 <div>
     @if($errors->any())
         <ul>
@@ -21,17 +20,25 @@
 
 <div class="alert alert-success d-none" id="resultAjaxSuccess"></div>
     <div class="row">
-        <div class="col-lg-6">
-            @include('department.create-class')
+        <div class="col-lg-6 p-5 card-alert">
+            <div class="box border ">
+                @include('department.create-class')
+            </div>
         </div>
-        <div class="col-lg-6">
-        @include('department.create-students')
-        </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 p-5 card-alert">
+            <div class="box border ">
             @include('department.create-subject')
+            </div>
         </div>
-        <div class="col-lg-6">
-            @include('department.create-teachers')
+        <div class="col-lg-6 p-5 card-alert">
+            <div class="box border ">
+                @include('department.create-students')
+            </div>
+        </div>
+        <div class="col-lg-6 p-5 card-alert">
+            <div class="box border ">
+                @include('department.create-teachers')
+            </div>
         </div>
     </div>
 @endsection

@@ -1,31 +1,43 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>HOME TEACHER</title>
+    <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <base href="{{ asset('') }}">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
+     
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" ></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" ></script>  
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/neo-style.css">
+    <style>
+    .toggle-off.btn {
+        background: yellow;
+    }
+</style>
+</head>
   <body>
-    <div class="container">
-      <form action="{{ route('logout') }}" method="post">
-        @csrf
-        <button type="submit" class="text-center">({{ Auth::user()->full_name }}) LOGOUT</button>
-      </form>
-        <h1 class="text-center text-sucess">HOME TEACHER</h1>
-        <a href="{{ route('get-class-subjects-teacher') }}">Danh sách lớp dạy</a>
-
-        <br>
-        <a href="{{ route('get-class-subject-teacher-today') }}">Danh sách lớp dạy hôm nay</a>
-        <br>
-    </div>
+      <div class="wrapper">
+          <!-- sidebar -->
+          @include('teacher.sidebar')
+         
+          <div id="content">
+            <!-- navbar -->
+              @include('teacher.navbar')
+            <!-- content -->
+              @yield('content-teacher')
+          </div>
+      </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+     
+    <script src="js/script.js" ></script>
+    
+</body>
 </html>
