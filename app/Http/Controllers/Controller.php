@@ -30,4 +30,9 @@ class Controller extends BaseController
 
     // TIME ATTENDANCE
     protected $timeAttendance = 2000;
+
+    // NAME FILE EXCEL
+    protected $nameExcelTeacher = 'PROQ_TEACHERS_';
+    protected $nameExcelStudent = 'PROQ_STUDENTS_';
+
 }

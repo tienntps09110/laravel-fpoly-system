@@ -15,7 +15,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">Danh sách <span style="float: left;"><i class="fas fa-list"></i></span> </a>
+                <a href="{{ route('get-class-subjects') }}">Danh sách <span style="float: left;"><i class="fas fa-list"></i></span> </a>
             </li>
             <li>
                 <a href="#">Tổng quát</a>

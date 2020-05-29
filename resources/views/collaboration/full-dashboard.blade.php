@@ -22,6 +22,13 @@
         {{ $countClass }}
         <hr>
         {{ $noteTeacher }}
+
+        <h1>EXPORT EXCEL</h1>
+        <ul>
+          <li><a href="{{ route('collaboration-excel-teacher') }}">TEACHERS</a></li>
+          <li><a href="{{ route('collaboration-excel-student') }}">STUDENTS</a></li>
+          
+        </ul>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

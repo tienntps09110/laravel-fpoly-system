@@ -14,8 +14,22 @@ use App\Model\DaysClassSubject;
 
 class Update extends Controller
 {
-    public function daysClassSubjectView(){
-        return view(View::department('update-day-class-subject'));
+    public function daysClassSubjectView($id){
+        $dayClassSubject = DaysClassSubject::where('id', $id)
+                                            ->firstOrFail();
+        $users = User::where('soft_deleted', Core::false())
+                        ->get();
+        $teachers = [];
+        foreach($users as $user){
+            $role = Core::role($user);
+            if($role->code == 'teacher'){
+                $teachers[] = $user;
+            }
+        }
+        return view(View::department('update-day-class-subject'),[
+            'dayClassSubject'=> $dayClassSubject,
+            'teachers'       => $teachers
+        ]);
     }
     public function daysClassSubject(Request $req){
         $req->validate([
@@ -30,7 +44,7 @@ class Update extends Controller
             return Core::toBack($this->danger, 'Ngày không tồn tại hoặc đã hết hạn');
         }
         $daysClassSubject->user_manager_uuid = $req->user_manager_uuid;
-        $daysClassSubject->save();
+        // $daysClassSubject->save();
         return Core::toBack($this->success, 'Thay đổi giáo viên dạy thế thành công');
     }
 }
