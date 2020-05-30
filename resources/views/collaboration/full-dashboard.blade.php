@@ -1,20 +1,105 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>HOME COLLABORTION</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="container">
-      <form action="{{ route('logout') }}" method="post">
-        @csrf
-        <button type="submit" class="text-center">({{ Auth::user()->full_name }}) LOGOUT</button>
-      </form>
+  @extends('collaboration.home')
+  @section('content.collaboration')
+  <div class="container-fluid">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-4 p-3 card-alert">
+              <div class="box border d-flex flex-wrap align-content-center justify-content-center">
+                  <div class="text-center">
+                      Giáo viên <i class="fas fa-chalkboard-teacher    "></i>
+                      </br>
+                      <p id="chu-noi">5000</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-4 p-3">
+              <div class="box border d-flex flex-wrap align-content-center justify-content-center">
+                  <div class="text-center">
+                      Giáo viên <i class="fas fa-chalkboard-teacher    "></i>
+                      </br>
+                      <p id="chu-noi">5000</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-sm-4 p-3">
+              <div class="box border d-flex flex-wrap align-content-center justify-content-center">
+                  <div class="text-center">
+                      Giáo viên <i class="fas fa-chalkboard-teacher    "></i>
+                      </br>
+                      <p id="chu-noi">5000</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- hàng 2 - Biểu đồ theo tháng -->
+<div class="container-fluid   p-3">
+  <div class="container  ">
+      <div class="box-bieu-do">
+          <h5>Biểu đồ điểm danh theo tháng</h5>
+          <div class=" col-lg bieu-do">
+              <div class="card">
+                  <div class="card-body">
+                      <canvas id="myChart" width="400" height="150"></canvas>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- hàng 3 - nhận xét GV  & Biểu đồ hình tròn điểm danh theo lớp -->
+<div class="container-fluid   p-3">
+  <div class="container">
+      <div class="row">
+          <!-- nhận xét GV -->
+          <div class="col-12 p-3">
+              <div class="nhan-xet">
+                  <h5>Nhận xét giáo viên</h5>
+                  <div class="table-responsive">
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th  class="th-lg">Giáo viên</th>
+                                  <th class="th-lg" >Lớp</th>
+                                  <th class="th-lg" >Môn</th>
+                                  <th class="th-lg">Nhận xé 1t</th>
+                              </tr>
+
+                          </thead>
+                          {{--  {{ $noteTeacher }}  --}}
+                          <tbody>
+                              @foreach ($noteTeacher as $item)
+                              <tr>
+                                <td scope="row">{{ $item->teacher_full_name }}</td>
+                                <td> {{ $item->class_name }}</td>
+                                <td>{{ $item->subject_name }}</td>
+                                <td> {{ $item->note }} </td>
+                            </tr>
+                              @endforeach
+
+                          </tbody>
+                      </table>
+
+                  </div>
+              </div>
+          </div>
+          <!-- Biểu đồ hình tròn điểm danh theo lớp -->
+          <div class="col-lg-6 p-3">
+              <div class="diem-danh-lop">
+                  <h5>Biểu đồ sinh viên vắng của môn học</h5>
+                  <div>
+                      <div class="card-body">
+                          <canvas id="myChartRadian" width="500" height=""></canvas>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+    {{--  <div class="container">
         <h1 class="text-center text-sucess">HOME COLLABORTION</h1>
         {{ $countMonth }}
 
@@ -29,11 +114,9 @@
           <li><a href="{{ route('collaboration-excel-student') }}">STUDENTS</a></li>
           
         </ul>
-    </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+    </div>  --}}
+<script>
+    let dataRes = {!! json_encode($countMonth) !!};
+    let dataRadianRes = {!! json_encode($countClass) !!}
+</script>
+@endsection

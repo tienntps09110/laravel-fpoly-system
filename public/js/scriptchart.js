@@ -1,12 +1,13 @@
+let dataClient = JSON.parse(dataRes);
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
 	type: 'line',
 	data: {
-		labels: [ 'Tiền', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange' ],
+		labels: dataClient.labels,
 		datasets: [
 			{
 				label: '# of Votes',
-				data: [ 12, 19, 3, 5, 2, 3 ],
+				data: dataClient.data,
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
@@ -40,15 +41,16 @@ var myChart = new Chart(ctx, {
 	}
 });
 
+let dataRadiantClient = JSON.parse(dataRadianRes);
 var ctxRadian = document.getElementById('myChartRadian');
 var myChartRadian = new Chart(ctxRadian, {
 	type: 'doughnut',
 	data: {
-		labels: [ 'Tiền', 'Linh', 'Bình', 'Lợi' ],
+		labels: dataRadiantClient.labels,
 		datasets: [
 			{
 				label: '# of Votes',
-				data: [ 12, 19, 3, 5 ],
+				data: dataRadiantClient.data,
 				backgroundColor: [
 					'rgba(255, 99, 132, 0.2)',
 					'rgba(54, 162, 235, 0.2)',
@@ -80,6 +82,4 @@ var myChartRadian = new Chart(ctxRadian, {
 	// 	]
 	// }
 	// }
- 
- 
 });
