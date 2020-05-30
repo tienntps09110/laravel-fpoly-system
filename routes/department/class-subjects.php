@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('create-class-subject', 'ClassSubject\Create@classSubjectView')->name('create-class-subject-view');
 
+Route::post('check-class-subject', 'ClassSubject\Create@CheckCreateSubject')->name('check-class-subject-post');
+
 Route::post('create-class-subject', 'ClassSubject\Create@classSubjectPost')->name('create-class-subject-post');
 
 Route::get('class-subjects', 'ClassSubject\Get@classSubjects')->name('get-class-subjects');

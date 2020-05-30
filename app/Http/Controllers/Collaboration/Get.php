@@ -21,7 +21,7 @@ class Get extends Controller
         return view('collaboration.full-dashboard', [
             'countMonth' => json_encode(Get::countMonth()),
             'countClass' => json_encode(Get::countClass()),
-            'noteTeacher' => json_encode(Get::noteTeacher())
+            'noteTeacher' => Get::noteTeacher()
         ]);
     }
 
