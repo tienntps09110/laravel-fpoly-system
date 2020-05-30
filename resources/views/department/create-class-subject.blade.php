@@ -35,7 +35,7 @@
                 <div class="modal-body">
                     <table class="table table-light">
                         @foreach ($teachers as $teacher)
-                        <tr><td> <input type="radio" value="{{ $teacher->uuid }}" id="{{ $teacher->full_name }}" name="gv"> <label for="{{ $teacher->full_name }}"> {{ $teacher->full_name }} </label></td></tr>
+                        <tr><td> <input type="radio" value="{{ $teacher->uuid }}" id="teacher" name="gv"> <label for="{{ $teacher->full_name }}"> {{ $teacher->full_name }} </label></td></tr>
                         @endforeach
                     </table>
                 </div>
@@ -56,7 +56,8 @@
                             <div class="container-fluid my-4">
                                 <label for="lop"> Lớp 
                                     <select name="class_id" id="lop" class="form-control"> 
-                                            @foreach ($class as $classDetail)
+                                        <option selected disabled>Chọn lớp</option>    
+                                        @foreach ($class as $classDetail)
                                                 <option value="{{ $classDetail->id }}">{{ $classDetail->name }}</option>
                                             @endforeach
                                     </select>
@@ -65,7 +66,7 @@
                             <div class="container-fluid ">
                                 <label for="thu-hoc"> Chọn Các Thứ học trong tuần   
                                     <select name="" id="thu-hoc" class="form-control" >
-                                        <option value="">Chọn thứ </option>
+                                        <option selected disabled>Chọn thứ </option>
                                         <option value="0">Chủ nhật</option>
                                         <option value="1">Thứ hai</option>
                                         <option value="2">Thứ ba</option>
@@ -133,6 +134,7 @@
                             <div class="container-fluid my-4">
                                 <label for="ca"> Ca
                                     <select name="study_time_id" id="ca" class="form-control">
+                                        <option selected disabled>Chọn ca</option>
                                         @foreach ($studyTime as $studyTimeDetail)
                                             <option value="{{ $studyTimeDetail->id }}">{{ $studyTimeDetail->name }} ({{ $studyTimeDetail->time_start . ' - ' .$studyTimeDetail->time_end }})</option>
                                         @endforeach
@@ -157,19 +159,66 @@
     </div>
 </form>
 <script>
-    $(document).ready(function(){
-        var nameGvChecked = null;
-        var idGvChecked = null;
+    var nameGvChecked = null;
+    var idGvChecked = null;
+    var classM = $("#lop");
+    var subject = $("#mon");
+    var studyTime = $("#ca");
+    var teacher = null;
+    var fromDate = $('#from-date');
+    var toDate = $('#to-date');
+    var dayStudy = $('#thu-hoc');
 
+    $(document).ready(function(){    
         $("input[name='gv']").click(function(){
             nameGvChecked = $(this).next().text();
             idGvChecked = $(this).attr('value');
         })
         $("#chon-gv").click(function(){
             $(".modal").hide()
-            $("#chon-giao-vien").next().html( "<input id='chon-giao-vien' type='text' value='"+nameGvChecked+"' disabled class='form-control ml-3'>");
-            $("#chon-giao-vien").next().append( "<input name='teacher_uuid' type='text' value='"+idGvChecked+"' hidden class='form-control ml-3'>");
+            $("#chon-giao-vien").next().html( "<input id='chon-giao-vien'  class='teacher' type='text' value='"+nameGvChecked+"' disabled class='form-control ml-3'>");
+            $("#chon-giao-vien").next().append( "<input class='teacher' name='teacher_uuid' type='text' value='"+idGvChecked+"' hidden class='form-control ml-3'>");
+            teacher = idGvChecked;
+            checkCreateClass();
         })
-    })
+        classM.change(function(){
+            checkCreateClass();
+        });
+        subject.change(function(){
+            checkCreateClass();
+        })
+        studyTime.change(function(){
+            checkCreateClass();
+        })
+        fromDate.change(function(){
+            checkCreateClass();
+        })
+        toDate.change(function(){
+            checkCreateClass();
+        })
+    });
+    
+    function checkCreateClass(){
+        $.ajax({
+            type:'POST',
+            url:'{{ route('check-class-subject-post') }}',
+            data:{
+                _token: '{{ csrf_token() }}',
+                class_id:classM.val()?classM.val():null,
+                subject_id:subject.val()?subject.val():null,
+                study_id:studyTime.val()?studyTime.val():null,
+                user_manager_uuid:teacher?teacher:null,
+                date_start:fromDate.val()?fromDate.val():null,
+                date_end:toDate.val()?toDate.val():null,
+                day_study:dayStudy.val()?dayStudy.val():null
+            },
+            success:function(data) {
+                console.log(data);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    }
 </script>
 @endsection

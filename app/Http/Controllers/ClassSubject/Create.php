@@ -38,6 +38,22 @@ class Create extends Controller
             'teachers' => $arrayTeacher
         ]);
     }
+    public function CheckCreateSubject(Request $req){
+        $req->validate([
+           'class_id'           => 'max:255',
+           'subject_id'         => 'max:255',
+           'study_id'           => 'max:255',
+           'user_manager_uuid'  => 'max:255',
+           'date_start'         => 'max:255',
+           'date_end'           => 'max:255',
+           'day_study'          => 'max:255'
+        ]);
+        return $req;
+        
+    }
+    private static function checkClass($class_id){
+        
+    }
     public function classSubjectPost(Request $req){
         $req->validate([
             'class_id'          => 'required | min:1 | max:255',
