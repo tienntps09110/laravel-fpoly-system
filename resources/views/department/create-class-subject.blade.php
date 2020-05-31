@@ -126,9 +126,9 @@
                             <div class="container-fluid my-4">
                                 <h5>Giáo viên Phụ trách</h5>
                                 <div class="form-inline">
-                                    <button id="chon-giao-vien" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <button id="chon-giao-vien" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" disabled>
                                         Chọn giảng viên
-                                    </button>                                    <div></div>
+                                    </button><div></div>
                                 </div>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                                     
                             </div>
                             <div class="container-fluid my-4">
-                                <button type="submit" class="btn  btn-primary mt-4">Xác nhận</button>
+                                <button type="submit" class="btn  btn-primary mt-4" id="submit-form" disabled>Xác nhận</button>
                             </div>
                         </div>
                     </div>
@@ -190,7 +190,9 @@
             toDate.val('');
             studyTime.html('');
             studyTime.append('<option selected disabled>Chọn ca</option>');
-            
+            if(teacher){
+                $("#chon-giao-vien").next().html('');
+            }
             studyTime.prop( "disabled", true );
             dayStudy.prop( "disabled", false );
         })
@@ -206,9 +208,11 @@
             toDate.prop( "disabled", false );
         })
         toDate.change(function(){
+            studyTime.prop( "disabled", false );
             checkCreateClass(2);
         })
         studyTime.change(function(){
+            $('#chon-giao-vien').prop("disabled", false);
             checkCreateClass(3);
         })
     });
@@ -283,7 +287,7 @@
     }
     function getTeacher(){
         teacher.click(function(){
-            console.log(teacher);
+            // console.log(teacher);
             nameGvChecked = $(this).next().text();
             idGvChecked = $(this).attr('value');
         })
@@ -292,6 +296,7 @@
             $("#chon-giao-vien").next().html( "<input id='chon-giao-vien'  class='teacher' type='text' value='"+nameGvChecked+"' disabled class='form-control ml-3'>");
             $("#chon-giao-vien").next().append( "<input class='teacher' name='teacher_uuid' type='text' value='"+idGvChecked+"' hidden class='form-control ml-3'>");
             teacher = idGvChecked;
+            $('#submit-form').prop("disabled", false);
             checkCreateClass(4);
         })
     }
