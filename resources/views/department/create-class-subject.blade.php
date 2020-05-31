@@ -33,10 +33,10 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-light">
-                        @foreach ($teachers as $teacher)
-                        <tr><td> <input type="radio" value="{{ $teacher->uuid }}" id="teacher" name="gv"> <label for="{{ $teacher->full_name }}"> {{ $teacher->full_name }} </label></td></tr>
-                        @endforeach
+                    <table class="table table-light" id="teacher-show">
+                        {{-- @foreach ($teachers as $teacher) --}}
+                        {{-- <tr><td> <input type="radio" value="{{ $teacher->uuid }}" id="teacher" name="gv"> <label for="{{ $teacher->full_name }}"> {{ $teacher->full_name }} </label></td></tr> --}}
+                        {{-- @endforeach --}}
                     </table>
                 </div>
                 <div class="modal-footer">
@@ -65,7 +65,7 @@
                             </div>
                             <div class="container-fluid ">
                                 <label for="thu-hoc"> Chọn Các Thứ học trong tuần   
-                                    <select name="" id="thu-hoc" class="form-control" >
+                                    <select name="" id="thu-hoc" disabled class="form-control" >
                                         <option selected disabled>Chọn thứ </option>
                                         <option value="0">Chủ nhật</option>
                                         <option value="1">Thứ hai</option>
@@ -77,6 +77,7 @@
                                     </select>   
                                 </label>
                                 <script>
+                                    var arrayDay = [];
                                     $(document).ready(function(){
                                         $("#thu-hoc").change(function(){
                                             var t = $(this).val();
@@ -85,9 +86,10 @@
                                             $('#result-weekday').append(`<div class="badge badge-pill badge-primary" style="padding:0.3em 0.5em;font-weight:normal">
                                                                             <span class='small'>${show_t}</span> 
                                                                             <span class='close-badge' id='${t}'><i class="fas fa-times" style="cursor:pointer;transform:scale(0.8)" ></i></span>
-                                                                            <input class='' id='' name='days_study[]' value='${t}' hidden>  
+                                                                            <input class='days_study' id='' name='days_study[]' value='${t}' hidden>  
                                                                         </div>
                                                                         `);
+                                            arrayDay.push(t);
                                             $("#thu-hoc").val("");
                                             $("#thu-hoc").children("option[value='"+t+"']").hide();
                                             $(".close-badge").click(function(){
@@ -125,7 +127,7 @@
                                 <h5>Giáo viên Phụ trách</h5>
                                 <div class="form-inline">
                                     <button id="chon-giao-vien" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                                        Chon
+                                        Chọn giảng viên
                                     </button>                                    <div></div>
                                 </div>
                             </div>
@@ -172,28 +174,42 @@
     var dayStudy = $('#thu-hoc');
 
     $(document).ready(function(){    
-        $("input[name='gv']").click(function(){
-            nameGvChecked = $(this).next().text();
-            idGvChecked = $(this).attr('value');
-        })
-        $("#chon-gv").click(function(){
-            $(".modal").hide()
-            $("#chon-giao-vien").next().html( "<input id='chon-giao-vien'  class='teacher' type='text' value='"+nameGvChecked+"' disabled class='form-control ml-3'>");
-            $("#chon-giao-vien").next().append( "<input class='teacher' name='teacher_uuid' type='text' value='"+idGvChecked+"' hidden class='form-control ml-3'>");
-            teacher = idGvChecked;
-            checkCreateClass();
-        })
         classM.change(function(){
+            fromDate.val('');
+            fromDate.prop( "disabled", true );
+            toDate.val('');
+            toDate.prop( "disabled", true );
+            studyTime.html('');
+            studyTime.append('<option selected disabled>Chọn ca</option>');
+            studyTime.prop( "disabled", true );
+            subject.prop( "disabled", false );
             checkCreateClass(1);
         });
         subject.change(function(){
+            fromDate.val('');
+            toDate.val('');
+            studyTime.html('');
+            studyTime.append('<option selected disabled>Chọn ca</option>');
+            
+            studyTime.prop( "disabled", true );
+            dayStudy.prop( "disabled", false );
+        })
+        dayStudy.change(function(){
+            fromDate.val('');
+            toDate.val('');
             fromDate.prop( "disabled", false );
+            studyTime.html('')
+            studyTime.append('<option selected disabled>Chọn ca</option>');
+            studyTime.prop( "disabled", true );
         })
         fromDate.change(function(){
             toDate.prop( "disabled", false );
         })
         toDate.change(function(){
             checkCreateClass(2);
+        })
+        studyTime.change(function(){
+            checkCreateClass(3);
         })
     });
     
@@ -209,7 +225,7 @@
                 user_manager_uuid:teacher?teacher:null,
                 date_start:fromDate.val()?fromDate.val():null,
                 date_end:toDate.val()?toDate.val():null,
-                day_study:dayStudy.val()?dayStudy.val():null,
+                day_study:arrayDay?arrayDay:null,
                 function:redirect
             },
             success:function(data) {
@@ -217,7 +233,6 @@
                     case 1:
                         // CHECKSUBJECT
                         subject.html('');
-                        subject.prop( "disabled", false );
                         subject.append('<option selected disabled>Chọn môn</option>');
                         for(sub of data){
                             subject.append('<option value="'+sub.id+'">'+sub.name+'</option>');
@@ -228,17 +243,36 @@
                         console.log('DATA: ' + JSON.stringify(data));
 
                         if(typeof data == 'string'){
-                            console.log(data);
+                            // console.log(data);
                             toDate.val('');
+                            fromDate.val('');
                             $('#danger').html(data);
                             setTimeout( ()=>{$('#danger').html('');}, 3000);
+                        }else{
+                            for(study of data){
+                                studyTime.prop( "disabled", false);
+                                studyTime.append(`
+                                        <option value="${study.id}">${study.name} (${study.time_start} -  ${study.time_end})</option>
+                                        `);
+                            }
                         }
-                        for(study of data){
-                            studyTime.prop( "disabled", false);
-                            studyTime.append(`
-                                    <option value="${study.id}">${study.name} (${study.time_start} -  ${study.time_end})</option>
-                                    `);
+                    break;
+                    case 3:
+                        console.log(data);
+
+                        for(teacher of data){
+                            let result = `
+                                <tr>
+                                    <td>
+                                        <input type="radio" value="${teacher.uuid}" id="teacher" name="gv"> 
+                                        <label for="${teacher.full_name}"> ${teacher.full_name} </label>
+                                    </td>
+                                </tr>
+                            `;
+                            $('#teacher-show').append(result);
                         }
+                        teacher = $('#teacher-show tr td input[name="gv"]');
+                        getTeacher();
                     break;
                 }
             },
@@ -246,6 +280,20 @@
                 console.log(data);
             }
         });
+    }
+    function getTeacher(){
+        teacher.click(function(){
+            console.log(teacher);
+            nameGvChecked = $(this).next().text();
+            idGvChecked = $(this).attr('value');
+        })
+        $("#chon-gv").click(function(){
+            $(".modal").hide()
+            $("#chon-giao-vien").next().html( "<input id='chon-giao-vien'  class='teacher' type='text' value='"+nameGvChecked+"' disabled class='form-control ml-3'>");
+            $("#chon-giao-vien").next().append( "<input class='teacher' name='teacher_uuid' type='text' value='"+idGvChecked+"' hidden class='form-control ml-3'>");
+            teacher = idGvChecked;
+            checkCreateClass(4);
+        })
     }
 </script>
 @endsection

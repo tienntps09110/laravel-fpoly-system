@@ -56,10 +56,56 @@ class Create extends Controller
             case 2:
                 return Create::checkTimeStudy($req);
             break;
+            case 3:
+                return Create::checkTeacher($req);
+            break;
             default:
                 return "Not found function";
         }
         
+    }
+    // CHECK TEACHER
+    private static function checkTeacher($data){
+        $arrayDaysStudy = $data->day_study;
+        $arrayTeacher = [];
+        $users = User::where('soft_deleted', Core::false())
+                    ->get();
+        
+        $arrayUser = [];
+        foreach($users as $user){
+            if(Core::role($user)->code == 'teacher'){
+                $arrayUser[] = $user;
+            }
+        }
+        foreach($arrayUser as $teacher){
+            $TeacherCheck = ClassSubject::where('user_manager_uuid', $teacher->uuid)    
+                        ->where('study_time_id', $data->study_id)
+                        ->whereDate('datetime_end', '>', CarBon::now()->toDateString())
+                        ->orderByDesc('id')
+                        ->first();
+
+            if($TeacherCheck && $data->datetime_start <= $TeacherCheck->datetime_end){
+                $arrayTeacherDays = json_decode($TeacherCheck->days_week);
+                for($i = 0; $i < count($arrayDaysStudy); $i++){
+                    for($j = 0; $j < count($arrayTeacherDays); $j++){
+                        if($arrayDaysStudy[$i] == $arrayTeacherDays[$j]){
+                            $arrayTeacher[] = $teacher->uuid;
+                        }
+                    }
+                }
+            } 
+        }
+        $teachersLast = User::where('soft_deleted', Core::false())
+                    ->whereNotIn('uuid', $arrayTeacher)
+                    ->select('uuid', 'full_name')
+                    ->get();
+        $arrayTeacher = [];
+        foreach($teachersLast as $tc){
+            if(Core::role($tc)->code == 'teacher'){
+                $arrayTeacher[] = $tc;
+            }
+        }
+        return $arrayTeacher;
     }
     // CHECK SUBJECT OF CLASS
     private static function checkSubject($data){
@@ -83,36 +129,34 @@ class Create extends Controller
                                     ->where('datetime_end', '>', Carbon::now())
                                     ->get();
         $pluckStudyId = [];
-
+        $arrayDataDay = $data->day_study;
         foreach($classSubjects as $study){
-            // GIUA
             if(
+                // GIUA
                 $data->date_start > $study->datetime_start && 
-                $data->date_end < $study->datetime_end
-            ){
-                $pluckStudyId[] = $study->study_time_id;
-            }
-            // NAM TRUOC VA GIUA
-            elseif(
+                $data->date_end < $study->datetime_end ||
+                // NAM TRUOC VA GIUA
                 $data->date_start < $study->datetime_start &&
-                $data->date_end < $study->datetime_end
-            ){
-                $pluckStudyId[] = $study->study_time_id;
-            }
-            // NAM GIUA VA SAU
-            elseif(
+                $data->date_end < $study->datetime_end ||
+
+                 // NAM GIUA VA SAU
                 $data->date_start > $study->datetime_start &&
                 $data->date_start < $study->datetime_end &&
-                $data->date_end > $study->datetime_end
-            ){
-                $pluckStudyId[] = $study->study_time_id;
-            }
-            // BAO GOM
-            elseif(
+                $data->date_end > $study->datetime_end || 
+                
+                // BAO GOM
                 $data->date_start < $study->datetime_start &&
                 $data->date_end > $study->datetime_end
+
             ){
-                $pluckStudyId[] = $study->study_time_id;
+                $arrayDay = json_decode($study->days_week);
+                for($i = 0; $i < count($arrayDay); $i++){
+                    for($j = 0; $j < count($arrayDataDay); $j++){
+                        if($arrayDay[$i] == $arrayDataDay[$j]){
+                            $pluckStudyId[] = $study->study_time_id;
+                        }
+                    }
+                }
             }
         }
         $studyTime = StudyTime::whereNotIn('id', $pluckStudyId)
@@ -168,11 +212,11 @@ class Create extends Controller
             return Core::toBack($this->danger, 'Không tìm thấy giảng viên theo yêu cầu');
         }
 
-        // CHECK TIME TEACHER AND CLASS
+        // CHECK TIME AND CLASS
         $TimeCheck = ClassSubject::where('class_id', $req->class_id)
                                     ->where('study_time_id', $req->study_time_id)
-                                    ->where('days_week', json_encode($arrayDaysStudy))    
-                                    ->whereDate('datetime_end', '>', CarBon::now()->toDateString())
+                                    ->where('days_week', json_encode($arrayDaysStudy))
+                                    ->where('datetime_end', '>', CarBon::now())
                                     ->get();
         foreach($TimeCheck as $TimeCheckDetail){
             if($req->datetime_start < $TimeCheckDetail->datetime_end){
@@ -191,14 +235,14 @@ class Create extends Controller
             }
         }
         
-        // DAYS STUDY
+        // DAYS TEACHER STUDY
         $arrayDays = Create::dayTimeStudy($req->datetime_start, $req->datetime_end, $arrayDaysStudy);
 
         $TeacherCheck = ClassSubject::where('user_manager_uuid', $req->teacher_uuid)    
-                                    ->where('study_time_id', $req->study_time_id)
-                                    ->whereDate('datetime_end', '>', CarBon::now()->toDateString())
-                                    ->orderByDesc('id')
-                                    ->first();
+                            ->where('study_time_id', $req->study_time_id)
+                            ->whereDate('datetime_end', '>', CarBon::now()->toDateString())
+                            ->orderByDesc('id')
+                            ->first();
         
         if($TeacherCheck && $req->datetime_start <= $TeacherCheck->datetime_end){
             $arrayTeacherDays = json_decode($TeacherCheck->days_week);
