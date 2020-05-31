@@ -46,13 +46,78 @@ class Create extends Controller
            'user_manager_uuid'  => 'max:255',
            'date_start'         => 'max:255',
            'date_end'           => 'max:255',
-           'day_study'          => 'max:255'
+           'day_study'          => 'max:255',
+           'function'           => 'required | max:1'
         ]);
-        return $req;
+        switch($req->function){
+            case 1:
+                return Create::checkSubject($req);
+            break;
+            case 2:
+                return Create::checkTimeStudy($req);
+            break;
+            default:
+                return "Not found function";
+        }
         
     }
-    private static function checkClass($class_id){
-        
+    // CHECK SUBJECT OF CLASS
+    private static function checkSubject($data){
+        $pluckSubjectId = ClassSubject::where('class_id', $data->class_id)
+                            ->where('datetime_end', '>', Carbon::now())
+                            ->pluck('subject_id')
+                            ->toArray();
+        $subjects = Subjects::whereNotIn('id', $pluckSubjectId)
+                            ->get();
+        return $subjects;
+    }
+    // CHECK TIME STUDY
+    private static function checkTimeStudy($data){
+        if($data->date_start > $data->date_end){
+            return 'Ngày bắt đầu không thể nhỏ hơn ngày kết thúc';
+        }
+        if($data->date_start < Carbon::now() || $data->date_end < Carbon::now() ){
+            return 'Không thể chọn ngày ở quá khứ';
+        }
+        $classSubjects = ClassSubject::where('class_id', $data->class_id)
+                                    ->where('datetime_end', '>', Carbon::now())
+                                    ->get();
+        $pluckStudyId = [];
+
+        foreach($classSubjects as $study){
+            // GIUA
+            if(
+                $data->date_start > $study->datetime_start && 
+                $data->date_end < $study->datetime_end
+            ){
+                $pluckStudyId[] = $study->study_time_id;
+            }
+            // NAM TRUOC VA GIUA
+            elseif(
+                $data->date_start < $study->datetime_start &&
+                $data->date_end < $study->datetime_end
+            ){
+                $pluckStudyId[] = $study->study_time_id;
+            }
+            // NAM GIUA VA SAU
+            elseif(
+                $data->date_start > $study->datetime_start &&
+                $data->date_start < $study->datetime_end &&
+                $data->date_end > $study->datetime_end
+            ){
+                $pluckStudyId[] = $study->study_time_id;
+            }
+            // BAO GOM
+            elseif(
+                $data->date_start < $study->datetime_start &&
+                $data->date_end > $study->datetime_end
+            ){
+                $pluckStudyId[] = $study->study_time_id;
+            }
+        }
+        $studyTime = StudyTime::whereNotIn('id', $pluckStudyId)
+                            ->get();
+        return $studyTime;
     }
     public function classSubjectPost(Request $req){
         $req->validate([

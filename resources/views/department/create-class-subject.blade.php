@@ -12,10 +12,10 @@
         </div>
     </div>
 @endif
-<div>
+<div id="danger">
     {{session('Danger')?session('Danger'):''}}
 </div>
-<div>
+<div id="success">
     {{session('Success')?session('Success'):''}}
 </div>
 <form method="post">
@@ -106,20 +106,21 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="container-fluid my-4">
+                                <div class="container-fluid my-4">
+                                    <label for="from-date">Từ ngày
+                                        <input type="date" disabled name="datetime_start" id="from-date" class="form-control">
+                                    </label>
+                                </div>
                                 <label for="mon"> Môn
-                                    <select name="subject_id" id="mon" class="form-control">
+                                    <select name="subject_id" id="mon" disabled class="form-control">
                                         <option selected disabled>Chọn môn</option>
-                                            @foreach ($subjects as $subject)
-                                                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                                            @endforeach
+                                            {{-- @foreach ($subjects as $subject) --}}
+                                                {{-- <option value="{{ $subject->id }}">{{ $subject->name }}</option> --}}
+                                            {{-- @endforeach --}}
                                     </select>
                                 </label>
                             </div>       
-                            <div class="container-fluid my-4">
-                                <label for="from-date">Từ ngày
-                                    <input type="date" name="datetime_start" id="from-date" class="form-control">
-                                </label>
-                            </div>
+                        
                             <div class="container-fluid my-4">
                                 <h5>Giáo viên Phụ trách</h5>
                                 <div class="form-inline">
@@ -132,20 +133,21 @@
 
                         <div class="col-lg-4">
                             <div class="container-fluid my-4">
+                                <div class="container-fluid my-4">
+                                    <label for="to-date">Đến ngày
+                                        <input type="date" disabled name="datetime_end" id="to-date" class="form-control">
+                                    </label>
+                                </div>
                                 <label for="ca"> Ca
-                                    <select name="study_time_id" id="ca" class="form-control">
+                                    <select name="study_time_id" id="ca" disabled class="form-control">
                                         <option selected disabled>Chọn ca</option>
+                                        {{-- 
                                         @foreach ($studyTime as $studyTimeDetail)
                                             <option value="{{ $studyTimeDetail->id }}">{{ $studyTimeDetail->name }} ({{ $studyTimeDetail->time_start . ' - ' .$studyTimeDetail->time_end }})</option>
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
                                 </label>
                                     
-                            </div>
-                            <div class="container-fluid my-4">
-                                <label for="to-date">Đến ngày
-                                    <input type="date" name="datetime_end" id="to-date" class="form-control">
-                                </label>
                             </div>
                             <div class="container-fluid my-4">
                                 <button type="submit" class="btn  btn-primary mt-4">Xác nhận</button>
@@ -182,23 +184,20 @@
             checkCreateClass();
         })
         classM.change(function(){
-            checkCreateClass();
+            checkCreateClass(1);
         });
         subject.change(function(){
-            checkCreateClass();
-        })
-        studyTime.change(function(){
-            checkCreateClass();
+            fromDate.prop( "disabled", false );
         })
         fromDate.change(function(){
-            checkCreateClass();
+            toDate.prop( "disabled", false );
         })
         toDate.change(function(){
-            checkCreateClass();
+            checkCreateClass(2);
         })
     });
     
-    function checkCreateClass(){
+    function checkCreateClass(redirect){
         $.ajax({
             type:'POST',
             url:'{{ route('check-class-subject-post') }}',
@@ -210,10 +209,37 @@
                 user_manager_uuid:teacher?teacher:null,
                 date_start:fromDate.val()?fromDate.val():null,
                 date_end:toDate.val()?toDate.val():null,
-                day_study:dayStudy.val()?dayStudy.val():null
+                day_study:dayStudy.val()?dayStudy.val():null,
+                function:redirect
             },
             success:function(data) {
-                console.log(data);
+                switch(redirect){
+                    case 1:
+                        // CHECKSUBJECT
+                        subject.html('');
+                        subject.prop( "disabled", false );
+                        subject.append('<option selected disabled>Chọn môn</option>');
+                        for(sub of data){
+                            subject.append('<option value="'+sub.id+'">'+sub.name+'</option>');
+                        }
+                    break;
+                    case 2:
+                        // CHECK AND RETURN STUDY DAY
+                        console.log('DATA: ' + JSON.stringify(data));
+
+                        if(typeof data == 'string'){
+                            console.log(data);
+                            toDate.val('');
+                            $('#danger').html(data);
+                            setTimeout( ()=>{$('#danger').html('');}, 3000);
+                        }
+                        for(study of data){
+                            studyTime.append(`
+                                       hellp
+                                    `);
+                        }
+                    break;
+                }
             },
             error: function(data) {
                 console.log(data);
