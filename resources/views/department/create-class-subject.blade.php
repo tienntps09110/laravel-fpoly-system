@@ -234,8 +234,9 @@
                             setTimeout( ()=>{$('#danger').html('');}, 3000);
                         }
                         for(study of data){
+                            studyTime.prop( "disabled", false);
                             studyTime.append(`
-                                       hellp
+                                    <option value="${study.id}">${study.name} (${study.time_start} -  ${study.time_end})</option>
                                     `);
                         }
                     break;
