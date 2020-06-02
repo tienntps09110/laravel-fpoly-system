@@ -35,14 +35,14 @@
   </div>
 </div>
 <!-- hàng 2 - Biểu đồ theo tháng -->
-<div class="container-fluid   p-3">
+<div class="container-fluid   p-lg-3">
   <div class="container  ">
       <div class="box-bieu-do">
           <h5>Biểu đồ điểm danh theo tháng</h5>
           <div class=" col-lg bieu-do">
-              <div class="card">
+              <div class="card" style="border:none">
                   <div class="card-body">
-                      <canvas id="myChart" width="400" height="150"></canvas>
+                      <canvas style="border: none" id="myChart" width="80vw" height="40vh"></canvas>
                   </div>
               </div>
           </div>
@@ -50,7 +50,7 @@
   </div>
 </div>
 <!-- hàng 3 - nhận xét GV  & Biểu đồ hình tròn điểm danh theo lớp -->
-<div class="container-fluid   p-3">
+<div class="container-fluid   p-lg-3">
   <div class="container">
       <div class="row">
           <!-- nhận xét GV -->
@@ -72,10 +72,10 @@
                           <tbody>
                               @foreach ($noteTeacher as $item)
                               <tr>
-                                <td scope="row">{{ $item->teacher_full_name }}</td>
-                                <td> {{ $item->class_name }}</td>
-                                <td>{{ $item->subject_name }}</td>
-                                <td> {{ $item->note }} </td>
+                                <td id="responsive-td1" scope="row">{{ $item->teacher_full_name }}</td>
+                                <td id="responsive-td2"> {{ $item->class_name }}</td>
+                                <td id="responsive-td3">{{ $item->subject_name }}</td>
+                                <td id="responsive-td4"> {{ $item->note }} </td>
                             </tr>
                               @endforeach
 

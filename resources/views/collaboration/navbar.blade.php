@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-bg">
     <div class="container-fluid">
-        <div class="col-lg-3 text-h2-navbar my-2 text-center" style="color: #FFFFFF;"><h3>Phòng Đào Tạo</h3></div>
+        <div class="col-lg-3 text-h2-navbar my-2 text-center" style="color: #FFFFFF;"><h3>Công tác sinh viên</h3></div>
         <div class="col-lg-7">
             <div>
                 <form class="form-inline form-search my-2 my-lg-0 mr-5">

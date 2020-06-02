@@ -14,6 +14,22 @@
     <link rel="stylesheet" href="css/styles.css">
     {{--  <link rel="stylesheet" href="css/bootstrap.css">  --}}
     {{--  <link rel="stylesheet" href="css/bootstrap.min.css">  --}}
+    <style>
+      @media screen and (max-width:655px){
+        #responsive-td1{
+          min-width: 160px;
+          max-width: 190px;
+        }
+        #responsive-td3{
+          min-width: 160px;
+          max-width: 190px;
+        }
+        #responsive-td4{
+          min-width: 230px;
+          max-width: 190px;
+        }
+      }
+    </style>
 
 </head>
   <body>
