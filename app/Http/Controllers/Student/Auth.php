@@ -18,11 +18,17 @@ use App\Model\ClassM;
 
 class Auth extends Controller
 {
-    public function loginView(){
+    public function loginView(Request $req){
         if(session()->has('student_code') && session()->has('token')){
             return redirect()->route('student-home');    
         }
-        return view('student.login');
+        $cookieStudentCode = $req->cookie('student_code')?$req->cookie('student_code'):null;
+        $cookiePassword = $req->cookie('student_password')?$req->cookie('student_password'):null;
+
+        return view('student.login', [
+            'cookieStudentCode' => $cookieStudentCode,
+            'cookieStudentPassword' => $cookiePassword
+        ]);
     }
     public function logout(Request $req){
         $req->session()->forget('student_code');
@@ -32,7 +38,8 @@ class Auth extends Controller
     public function loginPost(Request $req){
         $req->validate([
             'student_code'=> 'required | min:1 | max:255',
-            'password'    => 'required | min:1 | max:255'
+            'password'    => 'required | min:1 | max:255',
+            'remember'    => '           min:1 | max:255',
         ]);
         
         $studentCheck = Students::where('student_code', $req->student_code)
@@ -51,7 +58,22 @@ class Auth extends Controller
                 ]);
         $studentCheck->token = $token;
         $studentCheck->save();
-        return redirect()->route('student-home');
+        if($req->remember){
+            return redirect()
+                ->route('student-home')
+                ->cookie(
+                    'student_code', $req->student_code, 999*99
+                )
+                ->cookie(
+                    'student_password', $req->password, 999*99
+                );
+        }
+        return redirect()->route('student-home')
+                ->cookie(
+                    'student_code', '', 0
+                )->cookie(
+                    'student_password', '', 0
+                );
 
     }
 }

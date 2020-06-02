@@ -56,14 +56,14 @@
                 </div>
                 <div class="my-3">
                     Mã số sinh viên:
-                    <input type="text" name="student_code" id="student_code" class="form-control" value="ps09110">
+                    <input type="text" name="student_code" value="{{ $cookieStudentCode }}" id="student_code" class="form-control" value="ps09110">
                 </div>
                 <div class="my-3">
                     Mật khẩu:
-                    <input type="password" name="password" id="password" class="form-control" value="1">
+                    <input type="password" name="password" value="{{ $cookieStudentPassword }}" id="password" class="form-control" value="1">
                 </div>
                 <div>
-                    <input type="checkbox" name="luu-dang-nhap" id="luu-dang-nhap">
+                    <input type="checkbox" name="remember" id="luu-dang-nhap">
                     <span class="small">Lưu đăng nhập</span>
                     <span class="small float-right">Quên mật khẩu</span>
                 </div>
