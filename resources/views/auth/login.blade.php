@@ -58,14 +58,14 @@
                 </div>
                 <div class="my-3">
                     Tên Đăng nhập:
-                    <input type="text" name="user_name" id="username" class="form-control">
+                    <input type="text" name="user_name" id="username" value="{{ $cookieUserName }}" class="form-control">
                 </div>
                 <div class="my-3">
                     Mật khẩu:
-                    <input type="password" name="password" id="password" class="form-control">
+                    <input type="password" name="password" id="password" value="{{ $cookiePassword }}" class="form-control">
                 </div>
                 <div>
-                    <input type="checkbox" name="luu-dang-nhap" id="luu-dang-nhap">
+                    <input type="checkbox" name="remember" id="luu-dang-nhap">
                     <span class="small">Lưu đăng nhập</span>
                     <span class="small float-right">Quên mật khẩu</span>
                 </div>
