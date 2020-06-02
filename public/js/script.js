@@ -3,17 +3,23 @@ $(document).ready(function() {
 		$('#sidebar').toggleClass('active');
 	});
 
-	// diem-danh 
-	$("#kiem-tra-tong").hide();
-	$("#kiem-tra-tong").click(function(){
-		$(":checked").closest('tr').show('1000');
-		$("#kiem-tra-vang").show();
-		$("#kiem-tra-tong").hide();
+	// nút up
+	$(".nut-up").click(function(){
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
 	})
-	$("#kiem-tra-vang").click(function(){
+
+	// diem-danh 
+	$(".kiem-tra-tong").hide();
+	$(".kiem-tra-tong").click(function(){
+		$(":checked").closest('tr').show('1000');
+		$(".kiem-tra-vang").show();
+		$(".kiem-tra-tong").hide();
+	})
+	$(".kiem-tra-vang").click(function(){
 		$(":checked").closest('tr').hide('1000');
-		$("#kiem-tra-tong").show();
-		$("#kiem-tra-vang").hide();
+		$(".kiem-tra-tong").show();
+		$(".kiem-tra-vang").hide();
 	})
 	$("#Luu").click(function(){
 		$('body').prepend('<div class="dark-screen"></div>');

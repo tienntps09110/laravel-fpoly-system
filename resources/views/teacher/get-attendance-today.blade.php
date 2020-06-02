@@ -47,10 +47,15 @@
                         <td> {{ $student->student_code }} </td>
                         <td> {{ $student->full_name }} </td>
                         <th class="text-center">
-                            <img src="{{ $student->avatar_img_path }}" alt="{{ $student->avatar_img_path }}" height="100px" width="70px">
+                            <img src="{{ $student->avatar_img_path }}" alt="{{ $student->avatar_img_path }}"  width="100px">
                         </th>
                         <td class="text-center">
-                                <input type="checkbox" name="attendance[]" value="{{ $student->id }}" class="float-right">
+                                <div class="confirm-switch mx-auto">
+                                    <input type="checkbox" id="default-switch{{ $student->id }}" value="{{ $student->id }}" name="attendance[]">
+                                    <label for="default-switch{{ $student->id }}"></label>
+                                </div>
+
+                                {{-- <input type="checkbox" name="attendance[]" value="{{ $student->id }}" class=""> --}}
                             
                             {{-- <div class="slideTwo">  
                                 <input type="checkbox" value="None" id="slideTwo" name="check" checked />
@@ -67,7 +72,7 @@
                             <textarea type="text" class="form-control" name="note" placeholder="Ghi chú..."></textarea>
                         </td>
                         <td class="text-center">
-                            <button type="submit" class="btn btn-success float-right" id="Luu" {{ $timeOut=='false'?'':'disabled' }}>Lưu lại</button>
+                            <button type="submit" class="btn btn-success " id="Luu" {{ $timeOut=='false'?'':'disabled' }}>Lưu lại</button>
                         </td>
                     </tr>
                 </form>

@@ -2,6 +2,9 @@
 @section('content-teacher')
 
 <div class="container-fluid p-4">
+    <div class="nut-up">
+        <i class="fas fa-chevron-circle-up    "></i>
+    </div>
     <div class="alert alert-warning"><h3 class="text-center">CẬP NHẬT ĐIỂM DANH</h3></div>
     <div class="box p-4">
         <!-- ERROR -->
@@ -36,8 +39,8 @@
                 <th>Họ và Tên</th>
                 <th class="text-center">Hình</th>
                 <th class="text-center">
-                    <button class="btn btn-warning" id="kiem-tra-vang">Vắng</button>
-                    <button class="btn btn-dark" id="kiem-tra-tong">Tổng</button>
+                    <button class="btn btn-warning kiem-tra-vang">Vắng</button>
+                    <button class="btn btn-dark kiem-tra-tong">Tổng</button>
                 </th>
             </tr>
 
@@ -45,28 +48,26 @@
                 @csrf
                     
                     @foreach ($students as $key => $student)
-                        <!-- <div class="col-12">
-                            <div class="alert">
-                                <h6 class="float-left">{{ $student->student_code }}| </h6>
-                                <h3 class="float-left">{{ $student->full_name }}</h3>
-                                <img class="float-left" style="width:10%" src="{{ $student->avatar_img_path }}" alt="{{ $student->student_code }}">
-                                {{-- INPUT ATTENDANCE --}}
-                                <input type="checkbox" class="float-right" name="attendance[]" value="{{ $student->id }}" {{ $student->checked == 'true'?'checked':'' }}>
-                            </div>
-                        </div> -->
+                         
                         
                         <tr class="row-center">
                             <td>{{ ++$key }}</td>
                             <td>{{ $student->student_code }}</td>
                             <td>{{ $student->full_name }}</td>
                             <th class="text-center">
-                                <img src="{{ $student->avatar_img_path }}" alt="{{ $student->avatar_img_path }}" height="100px" width="70px">
+                                <img src="{{ $student->avatar_img_path }}" alt="{{ $student->avatar_img_path }}"   width="100px">
                             </th>
                             <td class="text-center">
-                                <div class="checkbox">
+                                <div class="confirm-switch mx-auto">
+                                    <input type="checkbox" id="default-switch{{ $student->id }}" value="{{ $student->id }}" name="attendance[]"
+                                        {{ $student->checked == 'true'?'checked':'' }}>
+                                    <label for="default-switch{{ $student->id }}"></label>
+                                </div>
+
+                                {{-- <div class="checkbox">
                                     <input type="checkbox"  name="attendance[]"  class="checkbox-vang" 
                                              value="{{ $student->id }}" {{ $student->checked == 'true'?'checked':'' }} >
-                                </div>
+                                </div> --}}
                             </td>
                         </tr>
                     @endforeach
@@ -78,13 +79,13 @@
                     <td colspan="4" class="text-secondary font-italic small"> 
                         <textarea type="text" class="form-control" name="note" placeholder="Ghi chú..."></textarea>
                     </td>
+                    
                     <td class="text-center">
-                        <button type="submit" class="btn btn-success float-right" id="Luu" {{ $timeOut=='false'?'':'disabled' }}>Lưu lại</button>
+                       
+                        <button type="submit" class="btn btn-success " id="Luu" {{ $timeOut=='false'?'':'disabled' }}>Lưu lại</button>
                     </td>
                 </tr>
             </form>
-
-             
         </table>
     </div>
 </div>
