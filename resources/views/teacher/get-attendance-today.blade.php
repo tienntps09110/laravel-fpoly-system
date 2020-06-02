@@ -25,27 +25,14 @@
         </div>
         @endif
         {{-- end-successfully --}}
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Mã sinh viên</th>
-                    <th>Họ và Tên</th>
-                    <th class="text-center">Hình</th>
-                    <th class="text-center">
-                        <button class="btn btn-warning" id="kiem-tra-vang">Vắng</button>
-                        <button class="btn btn-dark" id="kiem-tra-tong">Tổng</button>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <form method="post" action="{{ route('attendance-students-post') }}">
-                    @csrf
-                    @foreach ($students  as $key=> $student)
-                    <tr class="row-center">
-                        <td >{{ ++$key }} </td>
-                        <td> {{ $student->student_code }} </td>
-                        <td> {{ $student->full_name }} </td>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Mã sinh viên</th>
+                        <th>Họ và Tên</th>
+                        <th class="text-center">Hình</th>
                         <th class="text-center">
                             <img src="{{ $student->avatar_img_path }}" alt="{{ $student->avatar_img_path }}"  width="100px">
                         </th>

@@ -1,4 +1,21 @@
 $(document).ready(function() {
+	$('#table_id').DataTable({
+		sProcessing: 'Đang xử lý...',
+		sLengthMenu: 'Xem _MENU_ mục',
+		sZeroRecords: 'Không tìm thấy dòng nào phù hợp',
+		sInfo: 'Đang xem _START_ đến _END_ trong tổng số _TOTAL_ mục',
+		sInfoEmpty: 'Đang xem 0 đến 0 trong tổng số 0 mục',
+		sInfoFiltered: '(được lọc từ _MAX_ mục)',
+		sInfoPostFix: '',
+		sSearch: 'Tìm:',
+		sUrl: '',
+		oPaginate: {
+			sFirst: 'Đầu',
+			sPrevious: 'Trước',
+			sNext: 'Tiếp',
+			sLast: 'Cuối'
+		}
+	});
 	$('#sidebarCollapse').click(function() {
 		$('#sidebar').toggleClass('active');
 	});
@@ -24,13 +41,10 @@ $(document).ready(function() {
 	$("#Luu").click(function(){
 		$('body').prepend('<div class="dark-screen"></div>');
 		$('body').prepend('<div class="message"> Vui lòng chờ... </div>');
-		$(".message").add(".dark-screen").click(function(){
-			$(".message").add(".dark-screen").remove();
-		})
-	})
-	
+		$('.message').add('.dark-screen').click(function() {
+			$('.message').add('.dark-screen').remove();
+		});
+	});
 
 	// end diem-danh
-
 });
-

@@ -48,8 +48,6 @@
                 @csrf
                     
                     @foreach ($students as $key => $student)
-                         
-                        
                         <tr class="row-center">
                             <td>{{ ++$key }}</td>
                             <td>{{ $student->student_code }}</td>

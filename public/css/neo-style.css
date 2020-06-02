@@ -167,6 +167,10 @@
     transform: rotate(180deg);
     color: #1ebd9e;
 }
-
-/* ============================== */
-/*  */
+@media screen and (max-width: 750px) {
+    .table td {
+        word-wrap: break-word !important;
+        min-width: 260px !important ;
+        max-width: 260px !important;
+    }
+}
