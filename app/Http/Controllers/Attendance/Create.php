@@ -24,7 +24,7 @@ class Create extends Controller
             'days_class_subject_id' => 'required | min:1 | max:255',
             'class_id'              => 'required | min:1 | max:255',
             'study_time_id'         => 'required | min:1 | max:255',
-            'note'                  => '           min:1 | max:255'
+            'note'                  => '                   max:255'
         ]);
 
         $data = [
@@ -34,6 +34,9 @@ class Create extends Controller
             'study_time_id'         => $req->study_time_id,
             'note'                  => $req->note
         ];
+        if(!$req->attendance){
+            $data['attendance'] = [];
+        }
         $studyCheck = StudyTime::where('id', $req->study_time_id)->first();
         if($studyCheck){
             $now = Carbon::now()->toTimeString();
@@ -44,12 +47,12 @@ class Create extends Controller
     
         $studentsHave = Students::where('class_id', $req->class_id)
                             ->where('soft_deleted', Core::false())
-                            ->whereIn('id', $req->attendance)
+                            ->whereIn('id', $data['attendance'])
                             ->select('id')
                             ->get();
         $studentsNot = Students::where('class_id', $req->class_id)
                             ->where('soft_deleted', Core::false())
-                            ->whereNotIn('id', $req->attendance)
+                            ->whereNotIn('id', $data['attendance'])
                             ->select('id')
                             ->get();
 
