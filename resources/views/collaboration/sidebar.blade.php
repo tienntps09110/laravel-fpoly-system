@@ -23,9 +23,10 @@
 
 	<ul class="list-unstyled CTAs">
 		<li>
-			<button href="#" class="btn btn-default logout ml-5">Logout <i class="fas fa-sign-out-alt"></i>
-
-			</button>
+			<form action="{{ route('logout') }}" method="post">
+				@csrf
+				<button type="submit" class="btn btn-default logout ml-5"> LOGOUT <i class="fas fa-sign-out-alt"></i> </button> 
+			</form>
 		</li>
 	</ul>
 </nav>

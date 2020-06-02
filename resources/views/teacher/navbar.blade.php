@@ -2,12 +2,12 @@
               <div class="container-fluid">
                   <div class="col-lg-3 text-h2-navbar text-center" style="color: #FFFFFF;"><h3>Giảng Viên</h3></div>
                   <div class="col-lg-7">
-                      <div>
-                          <form class="form-inline form-search my-2 my-lg-0 mr-5">
-                              <span class="icone"> <i class="fas fa-search"></i></span>
-                              <input class="form-control col-lg-6 ml-auto input-search" type="search" placeholder="Search..." aria-label="Search">
-                            </form>
-                      </div>
+                        <form class="form-inline form-search">
+                            <div class="col-12">
+                                <input class="input-search col-lg-6" type="search" placeholder="Search..." aria-label="Search">
+                            </div>
+                            <span class="icone"> <i class="fas fa-search"></i></span>
+                        </form>
                   </div>
                   <div class="col-lg-2">
                       <div class="collapse navbar-collapse" id="navbarSupportedContent">

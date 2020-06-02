@@ -6,15 +6,18 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <base href="{{asset('')}}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
     <!-- style.css -->
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 
     <style>
+        body{
+            background-color: white;
+        }
         .login{
             padding: 30px;
             background-color: rgba(42,64,84);
@@ -23,11 +26,20 @@
         .login>*{
             color: white;
         }
+        #bg{
+            height: 100vh;
+            position: absolute;
+            right:0;
+        }
+         
     </style>
      
 </head>
 
 <body>
+    <div id='bg'>
+        <img src="images/bg/login-bg-2.jpg" alt="images/bg/login-bg-1.jpg" height="100%">
+    </div>
     @if(session('Danger'))
     <div class="alert alert-warning" style="position:fixed; right:10%; top:10%">
         {{session('Danger')}}

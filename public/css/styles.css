@@ -59,34 +59,32 @@ a:focus {
 	width: 100%;
 	align-items: stretch;
 }
-
 #sidebar {
-	min-width: 250px;
-	max-width: 250px;
-	background: #2a4054;
-	color: #fff;
-	transition: all 0.3s;
-	-webkit-border-radius: 20px 0 0 20px;
-	border-radius: 20px 0 0 20px;
+	width: 20%;
 }
 
 #sidebar.active {
 	margin-left: -250px;
 }
-.fixed-sidebar #sidebar .sidebar-header {
-	padding: 20px;
+#sidebar .sidebar-header {
+	width: 100%;
 	background: #2a4054;
-	border-radius: 20px 0 0 0;
 }
 .sidebar-header > div {
-	width: 200px;
-	height: 200px;
-	background-position: center;
+	width: 90%;
 	margin: 20px auto 0 auto;
+}
+.rounded-circle>img{
+	border-radius: 50%;
 }
 .fixed-sidebar {
 	position: fixed;
-	width: 15.8%;
+	width: 17vw;
+	height: 100vh;
+	background: #2a4054;
+	color: #fff;
+	transition: all 0.3s;
+	z-index: 2;
 }
 #sidebar ul.components {
 	padding: 20px 0;
@@ -174,16 +172,28 @@ a.article {
 	min-height: 100vh;
 	transition: all 0.3s;
 }
-.input-search {
-	border-radius: 20px;
-}
 .form-search {
 	position: relative;
+	width: 100%;
+}
+.input-search {
+	border-radius: 20px;
+	width: 100%;
+	float: right;
+	padding: 10px;
+	border: none;
+	outline: none;
+}
+.input-search:focus {
+	border: 2px solid #1ebd9e;
 }
 .icone {
 	position: absolute;
 	z-index: 1;
-	margin-left: 96%;
+	top: 50%;
+	right: 7%;
+	transform: translatey(-50%);
+	float: right;
 	color: #cbcbcb;
 }
 .text-h2-navbar {
@@ -196,7 +206,10 @@ a.article {
 
 @media (max-width: 768px) {
 	#sidebar {
-		margin-left: -250px;
+		width: 0;
+	}
+	.fixed-sidebar {
+		left: -250px;
 	}
 	#sidebar.active {
 		margin-left: 0;

@@ -2,37 +2,39 @@
 @section('content-teacher')
 <div class="container-fluid p-4">
         <div class="content box p-5">
-            <table class="table">
-                <h3 >Danh sách lớp dạy  <span class="float-right">{{ $Carbon::now()->format('d/m/Y') }} </span> </h3>
-                <tr> 
-                    <th>#</th>
-                    <th>Lớp</th>
-                    <th>Môn</th>
-                    <th class='text-center'>Ca</th>
-                    <th></th>
-                </tr>
-                @foreach ($classSubjects as $key => $detailCs)
-                    <tr>
-                        <td>{{ ++$key }}</td>
-                        <td>{{ $detailCs->class_name }}</td>
-                        <td>{{ $detailCs->subject_name }}</td>
-                        <td class='text-center'>{{ $detailCs->study_time_name }} ({{ $detailCs->study_time_start .' - ' .$detailCs->study_time_end  }})</td>
-                        <td>
-                            <a class="float-right btn btn-primary" 
-                                href="
-                                        {{ route(
-                                            $detailCs->checked == 'true'?'get-attendance-class-subject-update-today': 'get-attendance-class-subject-today',[
-                                                'classSubjectId'=>$detailCs->id,
-                                                'dayStudyId'=>$detailCs->day_study_id
-                                            ]) 
-                                        }}
-                                    "
-                            >{{ $detailCs->checked == 'true'?'Chỉnh sửa': 'Điểm danh' }}</a>
-                        </td>
+            <div class="table-responsive">
+                <table class="table">
+                    <h3 >Danh sách lớp dạy  <span class="float-right">{{ $Carbon::now()->format('d/m/Y') }} </span> </h3>
+                    <tr> 
+                        <th>#</th>
+                        <th>Lớp</th>
+                        <th>Môn</th>
+                        <th class='text-center'>Ca</th>
+                        <th></th>
                     </tr>
-                @endforeach
-                
-            </table>
+                    @foreach ($classSubjects as $key => $detailCs)
+                        <tr>
+                            <td>{{ ++$key }}</td>
+                            <td>{{ $detailCs->class_name }}</td>
+                            <td>{{ $detailCs->subject_name }}</td>
+                            <td class='text-center'>{{ $detailCs->study_time_name }} ({{ $detailCs->study_time_start .' - ' .$detailCs->study_time_end  }})</td>
+                            <td>
+                                <a class="float-right btn btn-primary" 
+                                    href="
+                                            {{ route(
+                                                $detailCs->checked == 'true'?'get-attendance-class-subject-update-today': 'get-attendance-class-subject-today',[
+                                                    'classSubjectId'=>$detailCs->id,
+                                                    'dayStudyId'=>$detailCs->day_study_id
+                                                ]) 
+                                            }}
+                                        "
+                                >{{ $detailCs->checked == 'true'?'Chỉnh sửa': 'Điểm danh' }}</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    
+                </table>
+            </div>
         </div>
     </div>
 

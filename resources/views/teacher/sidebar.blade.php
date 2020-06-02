@@ -2,7 +2,10 @@
 <nav id="sidebar">
   <div class="fixed-sidebar">
     <div class="sidebar-header">
-      <div class="rounded-circle" style="background-image:url('{{ Auth::user()->avatar_img_path }}')"> </div>
+      {{-- <div class="rounded-circle" style="background-image:url('{{ Auth::user()->avatar_img_path }}')"> --}}
+      <div class="rounded-circle">
+        <img src="{{ Auth::user()->avatar_img_path }}" alt="{{ Auth::user()->avatar_img_path }}" width="100%" >
+      </div>
  </div>
 
  <ul class="list-unstyled components">
