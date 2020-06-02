@@ -25,7 +25,8 @@
         </div>
         @endif
         {{-- end-successfully --}}
-        <table class="table">
+        <div class="table-responsive">
+             <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
@@ -78,5 +79,6 @@
                 </form>
             </tbody>
         </table>
+        </div>
     </div>
  @endsection

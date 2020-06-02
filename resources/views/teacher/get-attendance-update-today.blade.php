@@ -39,7 +39,7 @@
                 <th>Họ và Tên</th>
                 <th class="text-center">Hình</th>
                 <th class="text-center">
-                    <button class="btn btn-warning " id="kiem-tra-vang">Vắng</button>
+                    <button class="btn btn-warning" id="kiem-tra-vang">Vắng</button>
                     <button class="btn btn-dark" id="kiem-tra-tong">Tổng</button>
                 </th>
             </tr>
