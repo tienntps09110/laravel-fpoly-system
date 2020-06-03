@@ -31,7 +31,7 @@
                   <div class="text-center">
                       Lớp học <i class="fas fa-chalkboard-teacher    "></i>
                       </br>
-                    <a href="{{ route('collaboration-excel-class') }}">
+                    <a href="{{ route('collaboration-excel-class') }}" title="Xuất tệp tin excel">
                       <p id="chu-noi">{{ $countAll->class }}</p>
                     </a>
                   </div>
