@@ -27,6 +27,7 @@ class Get extends Controller
                                     'class_subject.id as class_subject_id',
                                     'class_subject.class_id',
                                     'dcs.id as dcs_id',
+                                    'dcs.note as dcs_note',
                                     'class_subject.study_time_id',
                                     'checked'
                                 )
@@ -80,6 +81,7 @@ class Get extends Controller
                                     'class_subject.id as class_subject_id',
                                     'class_subject.class_id',
                                     'dcs.id as dcs_id',
+                                    'dcs.note as dcs_note',
                                     'class_subject.study_time_id'
                                 )
                                 ->firstOrFail();

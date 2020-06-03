@@ -62,6 +62,7 @@ class Create extends Controller
             return Json::getMess($arrayError, 422);
         }
         // return Core::toBack($this->success, 'Tạo tất cả sinh viên từ file xlsx thành công');
+        Core::pushRealTime('collaboration-component-count-all');
         return Json::getMess('Tạo tất cả sinh viên từ file xlsx thành công', 200);
     }
 }
