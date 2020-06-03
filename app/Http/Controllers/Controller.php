@@ -34,5 +34,6 @@ class Controller extends BaseController
     // NAME FILE EXCEL
     protected $nameExcelTeacher = 'PROQ_TEACHERS_';
     protected $nameExcelStudent = 'PROQ_STUDENTS_';
+    protected $nameExcelClass   = 'PROQ_CLASS_';
 
 }

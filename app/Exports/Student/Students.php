@@ -26,6 +26,7 @@ class Students implements FromCollection, WithHeadings, ShouldAutoSize
                             'c.name'
                         )
                         ->orderBy('c.id')
+                        ->orderBy('students.id')
                         ->get();
 
         return $students;
