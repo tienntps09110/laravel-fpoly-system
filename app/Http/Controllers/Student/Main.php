@@ -8,7 +8,7 @@ use App\Http\Controllers\Core\Core;
 use App\Http\Controllers\Student\Core as CoreS;
 use Carbon\Carbon;
 use App\Model\ClassSubject;
-use App\Model\classM;
+use App\Model\ClassM;
 use DB;
 
 class Main extends Controller

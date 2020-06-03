@@ -38,9 +38,9 @@ class Update extends Controller
         if($req->avatar_img_path){
             $tmpName = $_FILES["avatar_img_path"]["tmp_name"];
             $typeImage = Str::afterLast($_FILES["avatar_img_path"]['type'], '/');
-            $name = public_path() .'/images/students/'.$student->student_code .Str::random(15) .'.' .$typeImage;
-            $avatar_img_path = 'images/students/'.$student->student_code .Str::random(15) .'.' .$typeImage;
-            move_uploaded_file($tmpName, $name);
+            $name = '/images/students/'.$student->student_code .Str::random(15) .'.' .$typeImage;
+            $avatar_img_path = $name;
+            move_uploaded_file($tmpName, public_path() .$name);
         }
         $student->full_name = $full_name;
         $student->phone_number = $phone_number;
