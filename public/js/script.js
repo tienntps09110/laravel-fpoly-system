@@ -16,29 +16,29 @@ $(document).ready(function() {
 			sLast: 'Cuối'
 		}
 	});
-	$('#sidebarCollapse').click(function() {
-		$('#sidebar').toggleClass('active');
-	});
+	// $('#sidebarCollapse').click(function() {
+	// 	$('#sidebar').toggleClass('active');
+	// });
 
 	// nút up
-	$(".nut-up").click(function(){
+	$('.nut-up').click(function() {
 		document.body.scrollTop = 0;
 		document.documentElement.scrollTop = 0;
-	})
+	});
 
-	// diem-danh 
-	$("#kiem-tra-tong").hide();
-	$("#kiem-tra-tong").click(function(){
-		$(":checked").closest('tr').show('1000');
-		$("#kiem-tra-vang").show();
-		$("#kiem-tra-tong").hide();
-	})
-	$("#kiem-tra-vang").click(function(){
-		$(":checked").closest('tr').hide('1000');
-		$("#kiem-tra-tong").show();
-		$("#kiem-tra-vang").hide();
-	})
-	$("#Luu").click(function(){
+	// diem-danh
+	$('#kiem-tra-tong').hide();
+	$('#kiem-tra-tong').click(function() {
+		$(':checked').closest('tr').show('1000');
+		$('#kiem-tra-vang').show();
+		$('#kiem-tra-tong').hide();
+	});
+	$('#kiem-tra-vang').click(function() {
+		$(':checked').closest('tr').hide('1000');
+		$('#kiem-tra-tong').show();
+		$('#kiem-tra-vang').hide();
+	});
+	$('#Luu').click(function() {
 		$('body').prepend('<div class="dark-screen"></div>');
 		$('body').prepend('<div class="message"> Vui lòng chờ... </div>');
 		$('.message').add('.dark-screen').click(function() {
@@ -47,4 +47,8 @@ $(document).ready(function() {
 	});
 
 	// end diem-danh
+	$('#toggleSidebar').click(function() {
+		$('#sidebar').toggleClass('active');
+		$('.fixed-sidebar').toggleClass('active');
+	});
 });

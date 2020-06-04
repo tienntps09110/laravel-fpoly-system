@@ -19,7 +19,7 @@
                                   <a class="nav-link" style="color:#FFFFFF" href="#"><i class="fas fa-envelope"></i></a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="#"><i class="fas fa-bars"></i></a>
+                                  <a class="nav-link" style="cursor: pointer" id="toggleSidebar"><i class="fas fa-bars"></i></a>
                               </li>
                           </ul>
                       </div>

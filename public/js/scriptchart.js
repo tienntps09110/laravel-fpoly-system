@@ -30,15 +30,17 @@ var myChart = new Chart(ctx, {
 	},
 	options: {
 		responsive: true,
-		scales: {
-			yAxes: [
-				{
-					ticks: {
-						beginAtZero: true
-					}
-				}
-			]
-		}
+		maintainAspectRatio: true
+
+		// scales: {
+		// 	yAxes: [
+		// 		{
+		// 			ticks: {
+		// 				beginAtZero: true
+		// 			}
+		// 		}
+		// 	]
+		// }
 	}
 });
 
@@ -71,16 +73,9 @@ var myChartRadian = new Chart(ctxRadian, {
 				borderWidth: 1
 			}
 		]
+	},
+	options: {
+		responsive: true,
+		maintainAspectRatio: true
 	}
-	// options: {
-	// scales: {
-	// 	yAxes: [
-	// 		{
-	// 			ticks: {
-	// 				beginAtZero: true
-	// 			}
-	// 		}
-	// 	]
-	// }
-	// }
 });

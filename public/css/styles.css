@@ -64,7 +64,7 @@ a:focus {
 }
 
 #sidebar.active {
-	margin-left: -250px;
+	margin-left: 0;
 }
 #sidebar .sidebar-header {
 	width: 100%;
@@ -74,7 +74,7 @@ a:focus {
 	width: 90%;
 	margin: 20px auto 0 auto;
 }
-.rounded-circle>img{
+.rounded-circle > img {
 	border-radius: 50%;
 }
 .fixed-sidebar {
