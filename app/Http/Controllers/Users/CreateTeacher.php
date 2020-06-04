@@ -60,6 +60,7 @@ class CreateTeacher extends Controller
 
         }
         // return Core::toBack($this->success, 'Tạo tất cả giảng viên từ file xlsx thành công');
+        Core::pushRealTime('collaboration-component-count-all');
         return Json::getMess('Tạo tất cả giảng viên từ file xlsx thành công', 200);
         
     }

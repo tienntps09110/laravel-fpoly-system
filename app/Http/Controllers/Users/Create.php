@@ -58,6 +58,7 @@ class Create extends Controller
         $userRole->role_id = $req->role;
         $userRole->save();
         // }
+        Core::pushRealTime('collaboration-component-count-all');
         return Core::toBack($this->success, "Tạo tài khoản thành công");
     }
 }

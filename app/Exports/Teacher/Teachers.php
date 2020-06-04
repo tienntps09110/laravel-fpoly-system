@@ -22,6 +22,9 @@ class Teachers implements FromCollection, WithHeadings, ShouldAutoSize
         $arrayUser = [];
 
         foreach($users as $user){
+            if(Core::role($user)->code != 'teacher'){
+                continue;
+            }
             $role = Core::role($user)->name;
             unset($user->uuid);
             $user->role_name = $role;

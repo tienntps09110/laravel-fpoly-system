@@ -12,17 +12,62 @@ use Carbon\Carbon;
 use App\User;
 use App\Model\Attendance;
 use App\Model\Subjects;
+use App\Model\Students;
+use App\Model\ClassM;
 use DB;
 
 class Get extends Controller
 {
     public function home()
     {
-        return view('collaboration.full-dashboard', [
-            'countMonth' => json_encode(Get::countMonth()),
-            'countClass' => json_encode(Get::countClass()),
-            'noteTeacher' => Get::noteTeacher()
+        return view('collaboration.full-dashboard');
+    }
+
+    /*
+        COMPONENT DASHBOARD HOME COLLABORATION
+    */
+    public function CountAllGet(){
+        return view('collaboration/component-home.count-all', [
+            'countAll'      => Get::countAll()
         ]);
+    }
+    public function DashboardMonth(){
+        return view('collaboration/component-home.dashboard-month', [
+            'countMonth'    => json_encode(Get::countMonth()),
+        ]);
+    }
+    public function DashboardRadius(){
+        return view('collaboration/component-home.dashboard-radius', [
+            'countClass'    => json_encode(Get::countClass()),
+        ]);
+    }
+    public function noteTeacherGet(){
+        return view('collaboration/component-home.note-teachers', [
+            'noteTeacher'   => Get::noteTeacher(),
+        ]);
+    }
+    /*
+        END  COMPONENT DASHBOARD 
+    */
+
+    // Tong so giao vien, hoc sinh, lop hoc
+    protected static function countAll(){
+        $teachers   = User::where('soft_deleted', Core::false())->get();
+        $arrayTeacher = [];
+        foreach($teachers as $teacherDetail){
+            if(Core::role($teacherDetail)->code == 'teacher'){
+                $arrayTeacher[] = $teacherDetail->uuid;
+            }
+        }
+        $students = Students::where('soft_deleted', Core::false())
+                            ->count();
+        $class = ClassM::where('soft_deleted', Core::false())
+                        ->count();
+        return (object) [
+            'teachers'=>count($arrayTeacher),
+            'students' =>$students,
+            'class'   => $class
+        ];
     }
 
     // 1 THÁNG GẦN NHẤT SỐ LIỆU NGHỈ HỌC
@@ -57,11 +102,15 @@ class Get extends Controller
     {
         $labels = [];
         $data = [];
-        $subjects = Subjects::where('soft_deleted', Core::false())->get();
+        $subjects = Subjects::where('soft_deleted', Core::false())
+                            ->get();
         foreach ($subjects as $subject) {
             $count = Get::getFailAttendance($subject->id);
             $labels[] = $subject->name;
             $data[]   = $count;
+            if(count($data) > 4){
+                break;
+            }
         }
         return [
             'labels' => $labels,
