@@ -1,6 +1,5 @@
 <h2 class="alert alert-success text-center">Tạo lớp học</h2> 
-<form id="createClass" method="POST" action="{{ route('create-class-post') }}">
-    @csrf
+<form id="createClass">
     <div class="form-group col-lg-8 mx-auto pd-4">
       <label for="name">Nhập Tên Lớp *</label>
       <input type="text" name="name" id="name" required class="form-control" placeholder="Vui lòng nhập tên lớp">
@@ -29,7 +28,7 @@
 
 <script>
     $('#BtcreateClass').click( () => {
-        let _token      = $("#createClass input[name='_token']").val();
+        let _token      = '{{ csrf_token() }}';
         let name        = $("#createClass input[name='name']").val();
         let code        = $("#createClass input[name='code']").val();
         let time_start  = $("#createClass input[name='time_start']").val();

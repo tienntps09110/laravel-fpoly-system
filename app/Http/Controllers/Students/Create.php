@@ -25,6 +25,8 @@ class Create extends Controller
         $validator = Validator::make($req->all(), [
             'excel'=>'required | min:1 | max:255'
         ]);
+        // return $req;
+        // return gettype($req->excel);
         if ($validator->fails()) {
             return Json::getMess($validator->errors(), 422);
         }
