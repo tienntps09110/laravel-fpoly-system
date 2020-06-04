@@ -1,14 +1,7 @@
-<div class="container">
-    <div class="box-bieu-do">
-        <h5>Biểu đồ điểm danh theo tháng</h5>
-        <div class=" col-lg bieu-do">
-            <div class="card" style="border:none">
-                <div class="card-body">
-                    <canvas style="border: none" id="myChart" width="80vw" height="40vh"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <div class="container myChart" style="width:100%;height:80vh">
+        <h2 class="text-center">Biểu đồ thể hiện theo tháng </h2>
+        <canvas style="border: none" id="myChart"></canvas>
 </div>
 
 {{-- DATA --}}
@@ -45,15 +38,7 @@
 	},
 	options: {
 		responsive: true,
-		scales: {
-			yAxes: [
-				{
-					ticks: {
-						beginAtZero: true
-					}
-				}
-			]
-		}
+		maintainAspectRatio:true
 	}
 });
 

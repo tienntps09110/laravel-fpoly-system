@@ -1,12 +1,8 @@
-<div class="diem-danh-lop">
-    <h5>Biểu đồ sinh viên vắng của môn học</h5>
-    <div>
-        <div class="card-body">
-            <canvas id="myChartRadian" width="500" height=""></canvas>
-        </div>
-    </div>
-</div>
 
+		<h5 class="text-center p-4">Biểu đồ sinh viên vắng của môn học</h5>
+		<div id="chartRadian">
+				<canvas id="myChartRadian"></canvas>
+			</div>   
 {{-- DATA --}}
 <script>
     var dataRadiantClient = JSON.parse({!! json_encode($countClass) !!});
@@ -38,18 +34,22 @@
 				borderWidth: 1
 			}
 		]
+	},
+	options: {
+		responsive: true,
+		maintainAspectRatio:true,
+		layout: {
+            padding: {
+                left: 50,
+                right: 0,
+                top: 0,
+                bottom: 0
+            }
+		},
+		legend:{
+			align:'start'
+		}
 	}
-	// options: {
-	// scales: {
-	// 	yAxes: [
-	// 		{
-	// 			ticks: {
-	// 				beginAtZero: true
-	// 			}
-	// 		}
-	// 	]
-	// }
-	// }
 });
 
 </script>

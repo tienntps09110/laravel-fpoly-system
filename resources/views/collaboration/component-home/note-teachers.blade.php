@@ -1,4 +1,4 @@
-<div class="nhan-xet">
+{{--  <div class="nhan-xet">  --}}
     <h5>Nhận xét giáo viên</h5>
     <div class="table-responsive">
         <table class="table">
@@ -25,4 +25,4 @@
         </table>
 
     </div>
-</div>
+{{--  </div>  --}}

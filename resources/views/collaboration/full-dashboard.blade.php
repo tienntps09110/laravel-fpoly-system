@@ -15,12 +15,13 @@
 <div class="container-fluid p-lg-3">
   <div class="container">
       <div class="row">
-
           <!-- nhận xét GV -->
           <div id="note-teachers" class="col-12 p-3"></div>
 
           <!-- Biểu đồ hình tròn điểm danh theo lớp -->
-          <div id="dashboard-radius" class="col-lg-6 p-3"></div>
+          <div id="dashboard-radius" class="col-lg-12">
+
+          </div>
 
       </div>
   </div>
