@@ -83,23 +83,31 @@ a:focus {
 	height: 100vh;
 	background: #2a4054;
 	color: #fff;
-	transition: all 0.3s;
 	z-index: 2;
 }
-#sidebar ul.components {
-	padding: 20px 0;
-	text-align: center;
-	border-bottom: 1px solid #47748b;
+.fixed-sidebar.active{
+	left:0;
 }
-
+#sidebar ul.components  {
+	padding: 20px 0;
+	border-bottom: 1px solid #47748b;
+	transition: all 0.3s;
+}
+#sidebar ul.components > li:first-child{
+	padding: 0.5em 1.5em;
+	border-bottom: 1px solid #47748b;
+	background-color: #1EBD9E;
+}
+#sidebar ul.components svg {
+	margin-right: 0.5em;
+}
 #sidebar ul p {
 	color: #fff;
 	padding: 10px;
 }
 
 #sidebar ul li a {
-	padding: 10px;
-	font-size: 1.1em;
+	padding: 1.5em;
 	display: block;
 }
 
@@ -132,34 +140,33 @@ ul ul a {
 	background: #6d7fcc;
 }
 
-ul.CTAs {
-	/* padding-top: -120px !important; */
-}
+ 
 
 ul.CTAs a {
 	text-align: center;
 	font-size: 0.9em !important;
 	display: block;
 	border-radius: 5px;
-	margin-bottom: 5px;
+	/* margin-bottom: 5px; */
 }
 a.article {
 	color: #fff !important;
 }
-.avatar {
-	width: 100%;
-	height: 22vh;
-	background-color: #ddd;
-	border-radius: 50%;
-}
+ 
 .logout {
-	color: #359ade;
-	font-weight: bold;
-	font-size: 1.2em;
+	padding: 0 1.5em;
+	float: right;
+	display: block;
 }
-.list-unstyled {
-	line-height: 4em;
+.logout:hover {
+	color: white;
 }
+ 
+ 
+
+
+ 
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -167,6 +174,14 @@ a.article {
 .navbar-bg {
 	background-color: #6c859e !important;
 }
+.nav-link {
+	font-size: 1.5em;
+	padding: 0.5em;
+}
+.nav-link:hover svg{
+	color:#1EBD9E;
+}
+
 #content {
 	width: 100%;
 	min-height: 100vh;
@@ -185,60 +200,66 @@ a.article {
 	outline: none;
 }
 .input-search:focus {
-	border: 2px solid #1ebd9e;
+	border: 1px solid #1ebd9e;
+	box-shadow: 0 0 4px #1ebd9e;
 }
 .icone {
 	position: absolute;
 	z-index: 1;
 	top: 50%;
-	right: 7%;
+	right: 0;
+	margin-right: 2rem;
 	transform: translatey(-50%);
 	float: right;
 	color: #cbcbcb;
 }
-.text-h2-navbar {
-	color: #fff;
-	font-family: "Poppins", sans-serif;
+.title-navbar {
+	color: white;
+	font-size: 1.5rem;
+	padding: 1rem;
 }
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
 	#sidebar {
 		width: 0;
 	}
 	.fixed-sidebar {
-		left: -250px;
+		left: -70%;
 	}
 	#sidebar.active {
 		margin-left: 0;
 	}
-	#sidebarCollapse span {
-		display: none;
+	.navbar{
+		padding-bottom: 40px !important;
+	}
+	#navbar-icon{
+		justify-content: flex-end!important;
+		position: absolute;
+		top: 0;
+	}
+	 
+	.nav-link{
+		font-size: 1.5rem;
+		padding: 0.6em 0.4rem ;
+	}
+	.fixed-sidebar{
+		transition: all 0.3s;
+		width: 70%;
 	}
 }
-.nav-link {
-	font-size: 1.5em;
-}
-/* giangvien */
-.span-teacher {
-	font-size: 0.8em;
-}
-.li-teacher {
-	line-height: 1em;
-	font-family: "Poppins", sans-serif;
-}
-.date-teach {
-	font-family: "Poppins", sans-serif;
-}
-/* cong tac sinh vien */
+
+/****** giangvien ******/
+ 
+/******* cong tac sinh vien *******/
 .box {
 	min-height: 150px;
 	border-radius: 20px;
 	/* padding: 20px; */
 	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-	font-size: 1.5em;
+	font-size: 1.1em;
 	background-color: white;
 }
 #chu-noi {

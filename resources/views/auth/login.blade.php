@@ -48,7 +48,7 @@
     <form method="POST">
         @csrf
         <div class="d-flex" style="height:100vh;">
-            <div class=" login col-lg-3 mx-auto align-self-center">
+            <div class=" login col-lg-3 col-md-6 mx-auto align-self-center">
 
                 <div class="text-center text-white" style="font-size:8em">
                     <i class="fas fa-user-circle    "></i>
@@ -66,7 +66,7 @@
                 </div>
                 <div>
                     <input type="checkbox" name="remember" id="luu-dang-nhap">
-                    <span class="small">Lưu đăng nhập</span>
+                    <label for="luu-dang-nhap" class="small">Lưu đăng nhập</label>
                     <span class="small float-right">Quên mật khẩu</span>
                 </div>
                 <div class="my-3 float-right">
