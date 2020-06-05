@@ -46,6 +46,8 @@ class Create extends Controller
         $class->soft_deleted = Core::false();
         $class->save();
         // return Core::toBack($this->success, 'Tạo lớp thành công');
+        Core::pushRealTime('collaboration-component-count-all');
         return Json::getMess('Tạo lớp thành công');
     }
+    
 }

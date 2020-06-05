@@ -269,10 +269,9 @@ class Create extends Controller
         
         // INSERT DAYS STUDY
         Create::insertDaysClassSubject($classSubject->id,$req->teacher_uuid, $arrayDays);
-
+        
         return Core::toBack($this->success, 'Tạo phân công giảng dạy thành công');
     }
-
     // INSERT DAYS CLASS SUBJECT
     protected static function insertDaysClassSubject(String $class_subject_id, String $user_manager_uuid, Array $arrayDays){
         for($i = 0; $i < count($arrayDays); $i++){
