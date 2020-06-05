@@ -27,7 +27,7 @@ class Create extends Controller
             'study_time_id'         => 'required | min:1 | max:255',
             'note'                  => '                   max:255'
         ]);
-
+        // return $req;
         $data = [
             'attendance'            => $req->attendance,
             'days_class_subject_id' => $req->days_class_subject_id,

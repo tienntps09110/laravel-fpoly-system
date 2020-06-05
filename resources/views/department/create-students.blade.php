@@ -4,7 +4,7 @@
 <form id="createStudents" enctype="multipart/form-data">
     @csrf
     <div class="form-group col-lg-8 mx-auto">
-        <label for="excel">Excel File</label>
+        <label for="excelStudent">Excel File</label>
         <input id="excelStudent" class="form-control" type="file" name="excelStudent">
     </div>
     {{-- EXCEL FILE<input type="file" name="excel"> --}}
@@ -20,10 +20,9 @@
         let messSuccess = $("#resultAjaxSuccess");
         let messError   = $("#resultAjaxError");
         let formData = new FormData();
-        console.log(excel[0].value);
+        // console.log(excel[0].value);
         formData.append('excel', excel[0].files[0]);
-        formData.append('name', 'xin chao');
-        console.log(formData.get('excel'));
+        // console.log(formData.get('excel'));
         $.ajax({
             type:'POST',
             data: formData,
