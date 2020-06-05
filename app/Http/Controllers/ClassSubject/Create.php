@@ -122,7 +122,7 @@ class Create extends Controller
         if($data->date_start > $data->date_end){
             return 'Ngày bắt đầu không thể nhỏ hơn ngày kết thúc';
         }
-        if($data->date_start < Carbon::now() || $data->date_end < Carbon::now() ){
+        if($data->date_start < Carbon::now()->toDateString() || $data->date_end < Carbon::now()->toDateString() ){
             return 'Không thể chọn ngày ở quá khứ';
         }
         $classSubjects = ClassSubject::where('class_id', $data->class_id)

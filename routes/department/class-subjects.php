@@ -15,7 +15,6 @@ Route::get('class-subject/{id}', 'ClassSubject\Get@classSubjectDetail')->name('g
 
 Route::delete('delete-class-subject', 'ClassSubject\Delete@classSubject')->name('delete-class-subject');
 
-
 Route::get('update-day-class-subject/{id}', 'DaysClassSubject\Update@daysClassSubjectView')->name('update-day-class-subject-view');
 
 Route::put('update-day-class-subject', 'DaysClassSubject\Update@daysClassSubject')->name('update-day-class-subject-put');

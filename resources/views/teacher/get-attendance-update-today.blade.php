@@ -70,7 +70,7 @@
                     <input type="hidden" name="study_time_id" value="{{ $classSubject->study_time_id }}">
                     <tr class="row-center">
                         <td colspan="4" class="text-secondary font-italic small"> 
-                            <textarea type="text" class="form-control" name="note" placeholder="Ghi chú..."></textarea>
+                        <textarea type="text" class="form-control" name="note" placeholder="Ghi chú...">{{$classSubject->dcs_note}}</textarea>
                         </td>
                         <td class="text-center">
                             <button type="submit" class="btn btn-success " id="luu" {{ $timeOut=='false'?'':'disabled' }}>Lưu lại</button>

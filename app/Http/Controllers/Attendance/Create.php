@@ -38,6 +38,10 @@ class Create extends Controller
         if(!$req->attendance){
             $data['attendance'] = [];
         }
+        $teacherCheck = DaysClassSubject::where('user_manager_uuid', Auth::id())
+                                        ->where('id', $req->days_class_subject_id)
+                                        ->whereDate('date', Carbon::now()->toDateString())
+                                        ->firstOrFail(); 
         $studyCheck = StudyTime::where('id', $req->study_time_id)->first();
         if($studyCheck){
             $now = Carbon::now()->toTimeString();

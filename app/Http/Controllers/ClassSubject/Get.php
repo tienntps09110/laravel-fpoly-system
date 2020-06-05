@@ -22,7 +22,9 @@ class Get extends Controller
 {
     // GET ALL CLASS SUBJECTS
     public function classSubjects(){
-        $classSubjects = Get::dbClassSubject()->get();
+        $classSubjects = Get::dbClassSubject()
+                            ->orderBy('c.code', 'asc')
+                            ->get();
         // return $classSubjects;
         return view(View::department('get-class-subjects'), [
             'classSubjects' => $classSubjects
@@ -107,6 +109,7 @@ class Get extends Controller
                         ->join('users as us', 'dcs.user_manager_uuid', 'us.uuid')
                         ->where('dcs.class_subject_id', $detailCs->id)
                         ->whereDate('dcs.date',  Carbon::now()->toDateString())
+                        ->where('dcs.user_manager_uuid', Auth::id())
                         ->first();
             if($daysCheck){
                 $detailCs->day_study_id = $daysCheck->id;
@@ -117,9 +120,37 @@ class Get extends Controller
                 $arrayClassSubjects[] = $detailCs;
             }
         }
+        $daysClassSubject = Get::dbClassSubject()
+                                            ->join('days_class_subject as dcs', 'cs.id', '=', 'dcs.class_subject_id')
+                                            ->join('users as us_day', 'dcs.user_manager_uuid', 'us_day.uuid')
+                                            ->where('dcs.user_manager_uuid', Auth::id())
+                                            ->whereDate('date', Carbon::now()->toDateString())
+                                            ->select(
+                                                'cs.id',
+                                                'c.name as class_name',
+                                                'c.code as class_code',
+                                                'sj.name as subject_name',
+                                                'sj.code as subject_code',
+                                                'st.name as study_time_name',
+                                                'cs.datetime_start',
+                                                'cs.datetime_end',
+                                                'cs.days_week',
+                                                'st.time_start as study_time_start',
+                                                'st.time_end as study_time_end',
+                                                'us.user_name as user_name',
+                                                'us.full_name as user_full_name',
+                                                'dcs.id as day_study_id',
+                                                'dcs.user_manager_uuid as user_manager_study_uuid',
+                                                'us_day.full_name as user_manager_study_full_name',
+                                                'dcs.date as date_study',
+                                                'dcs.checked as checked'
+                                            )
+                                            ->get()
+                                            ->toArray();
+        // return $daysClassSubject + $arrayClassSubjects;
         // return $arrayClassSubjects;
         return view(View::teacher('get-class-subjects-today'), [
-            'classSubjects' => $arrayClassSubjects,
+            'classSubjects' => $arrayClassSubjects + $daysClassSubject,
             'Carbon'        => new Carbon
         ]);
     }
