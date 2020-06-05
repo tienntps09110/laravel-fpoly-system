@@ -20,10 +20,9 @@
         let messSuccess = $("#resultAjaxSuccess");
         let messError   = $("#resultAjaxError");
         let formData = new FormData();
-        console.log(excel[0].value);
+        // console.log(excel[0].value);
         formData.append('excel', excel[0].files[0]);
-        formData.append('name', 'xin chao');
-        console.log(formData.get('excel'));
+        // console.log(formData.get('excel'));
         $.ajax({
             type:'POST',
             data: formData,
