@@ -18,9 +18,24 @@
     border-radius: 30px;
     padding: 30px;
 }
-.row-center > td {
-    padding-top: 50px;
+.row-center{
+    transition: all 0.3s;
 }
+.row-center > td {
+    padding-top: 50px;  
+}
+
+.btn-primary-neo{
+    border:1px solid #2a4054;
+    color:white ;
+    background-color: #2a4054;
+}
+.btn-primary-neo:hover{
+    border:1px solid #2a4054;
+    color:#2a4054;
+    background-color: white;
+}
+
 
 /* =============================== */
 /* css giao vien diem danh         */
@@ -31,18 +46,42 @@
     bottom: 10px;
     right:10px;
     color: #1ebd9e;
-    font-size: 2em;
+    font-size: 3em;
     z-index: 1;
     opacity: 0.5;
     transition: all 0.3s;
 }
 .nut-up:hover{
     opacity: 1;
-    font-size: 2.5em;
+    font-size: 3.5em;
+}
+#kiem-tra-vang{
+    background: none;
+    border:2px solid #e54641;
+    color: #e54641;
+    transition: all 0.3s;
+    padding: 0.3em 0.5em ;
+    border-radius: 0.2em;
+}
+#kiem-tra-vang:hover{
+    background-color: #e54641 ;
+    color: white;
 }
 
 #kiem-tra-tong{
     display: none;
+}
+#luu{
+    background: #1ebd9e;
+    border:2px solid #1ebd9e;
+    color: white;
+    transition: all 0.3s;
+    padding: 0.3em 0.5em ;
+    border-radius: 0.2em;
+}
+#luu:hover{
+    background-color: #00ffcd ;
+    color: black;
 }
 
 .confirm-switch {
@@ -121,6 +160,19 @@
   .confirm-switch{
       transform: scale(2);
   }
+
+.badge-primary-neo{
+    font-size: 90%;
+    margin: 0.1em;
+    font-weight: 500;
+    color: #fff;
+    background-color: #1ebd9e;
+}
+
+/* **********   Danh sách lớp dạy ************* */
+
+
+
 /* =============================== */
 /* css phong dao tao               */
 /* =============================== */
@@ -159,18 +211,29 @@
 }
 #ten-mon {
     color: #1ebd9e;
+    font-size: 1.2em;
 }
 #backward {
-    font-size: 2em;
+    font-size: 1.2em;
     float: right;
     margin-right: 5vw;
     transform: rotate(180deg);
     color: #1ebd9e;
 }
-@media screen and (max-width: 750px) {
-    .table td {
+@media screen and (max-width: 1000px) {
+    .row-width-200 {
         word-wrap: break-word !important;
-        min-width: 260px !important ;
-        max-width: 260px !important;
+        min-width: 200px !important ;
+        max-width: 200px !important;
+    }
+    .row-width-300 {
+        word-wrap: break-word !important;
+        min-width: 300px !important ;
+        max-width: 400px !important;
+    }
+    .row-width-400 {
+        word-wrap: break-word !important;
+        min-width: 400px !important ;
+        max-width: 400px !important;
     }
 }

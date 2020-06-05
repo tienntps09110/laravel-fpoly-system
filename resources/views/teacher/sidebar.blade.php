@@ -1,32 +1,42 @@
 
-<nav id="sidebar">
+<nav id="sidebar" >
   <div class="fixed-sidebar">
     <div class="sidebar-header">
-      {{-- <div class="rounded-circle" style="background-image:url('{{ Auth::user()->avatar_img_path }}')"> --}}
       <div class="rounded-circle">
         <img src="{{ Auth::user()->avatar_img_path }}" alt="{{ Auth::user()->avatar_img_path }}" width="100%" >
       </div>
  </div>
 
  <ul class="list-unstyled components">
-     <div class="text-center" style="background-color: #1EBD9E;"> 
-       <span class="span-teacher" >Giảng viên: </span> 
+     <li class="text-center">
+       <span class="small" style="display:block">Giảng viên:</span>
         {{ Auth::user()->full_name }}
-     </div>
-     <li class="date-teach">
-       <a href="{{ route('get-class-subject-teacher-today') }}">Trang chủ</a>
      </li>
      <li class="date-teach">
-       <a href="{{ route('get-class-subjects-teacher') }}">Danh sách lớp dạy</a>
+       <a href="{{ route('get-class-subject-teacher-today') }}"> <i class="fas fa-home    "></i> Trang chủ</a>
      </li>
+     <li class="date-teach">
+       <a href="{{ route('get-class-subject-teacher-today') }}"> <i class="fas fa-edit    "></i> Điểm danh</a>
+     </li>
+     <li class="date-teach">
+       <a href="{{ route('get-class-subjects-teacher') }}"> <i class="fas fa-list    "></i> Danh sách lớp dạy</a>
+     </li>
+     <li class="date-teach">
+       <a  > <i class="fas fa-envelope    "></i> Hộp thư</a>
+     </li>
+     
  </ul>
  <ul class="list-unstyled CTAs">
    <li>
      <form action="{{ route('logout') }}" method="post">
          @csrf
-         <button type="submit" class="btn btn-default logout ml-5"> LOGOUT <i class="fas fa-sign-out-alt"></i> </button> 
+         <button type="submit" class="btn btn-link logout"> <i class="fas fa-sign-out-alt"></i> Đăng xuất  </button> 
      </form>
    </li>
  </ul>
   </div>
         </nav>
+
+        {{-- mobie sidebar --}}
+
+        

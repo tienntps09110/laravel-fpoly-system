@@ -1,0 +1,25 @@
+.table-input-search {
+	border-radius: 2em;
+	padding: 10px;
+	margin: 4px 10px;
+    outline: none;
+    border: 1px solid #1ebd9e;
+}
+.table-input-search:focus {
+	border: 1px solid #1ebd9e;
+	box-shadow: 0 0 5px #1ebd9e;
+}
+.length-select{
+    padding: 4px 10px;
+    border:1px solid #1ebd9e;
+}
+#table_detail_class_subject tr>*{
+    padding: 20px;
+}
+#table_detail_class_subject_wrapper{
+    min-height: 400px;
+}
+.current{
+    background:linear-gradient(to bottom,#34f1cc, #1ebd9e) !important;
+    border:1px solid black !important;
+}
