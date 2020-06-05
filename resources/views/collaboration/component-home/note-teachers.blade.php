@@ -1,5 +1,5 @@
 {{--  <div class="nhan-xet">  --}}
-    <h5>Nhận xét giáo viên</h5>
+    <h4 class="text-center" style="font-weight:bold">Nhận xét giáo viên</h5>
     <div class="table-responsive">
         <table class="table">
             <thead>

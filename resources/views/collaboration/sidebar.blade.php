@@ -21,10 +21,10 @@
    </ul>
    <ul class="list-unstyled CTAs">
 	 <li>
-	   <form action="{{ route('logout') }}" method="post">
-		   @csrf
-		   <button type="submit" class="btn btn-default logout ml-5"> LOGOUT <i class="fas fa-sign-out-alt"></i> </button> 
-	   </form>
+		<form action="{{ route('logout') }}" method="post">
+			@csrf
+			<button type="submit" class="btn btn-link logout"> <i class="fas fa-sign-out-alt"></i> Đăng xuất  </button> 
+		</form>
 	 </li>
    </ul>
 	</div>

@@ -84,19 +84,20 @@ a:focus {
 	background: #2a4054;
 	color: #fff;
 	z-index: 2;
+	box-shadow: 5px 10px 10px #888888;
 }
-.fixed-sidebar.active{
-	left:0;
+.fixed-sidebar.active {
+	left: 0;
 }
-#sidebar ul.components  {
+#sidebar ul.components {
 	padding: 20px 0;
 	border-bottom: 1px solid #47748b;
 	transition: all 0.3s;
 }
-#sidebar ul.components > li:first-child{
+#sidebar ul.components > li:first-child {
 	padding: 0.5em 1.5em;
 	border-bottom: 1px solid #47748b;
-	background-color: #1EBD9E;
+	background-color: #1ebd9e;
 }
 #sidebar ul.components svg {
 	margin-right: 0.5em;
@@ -140,8 +141,6 @@ ul ul a {
 	background: #6d7fcc;
 }
 
- 
-
 ul.CTAs a {
 	text-align: center;
 	font-size: 0.9em !important;
@@ -152,7 +151,7 @@ ul.CTAs a {
 a.article {
 	color: #fff !important;
 }
- 
+
 .logout {
 	padding: 0 1.5em;
 	float: right;
@@ -161,11 +160,6 @@ a.article {
 .logout:hover {
 	color: white;
 }
- 
- 
-
-
- 
 
 /* ---------------------------------------------------
     CONTENT STYLE
@@ -178,8 +172,8 @@ a.article {
 	font-size: 1.5em;
 	padding: 0.5em;
 }
-.nav-link:hover svg{
-	color:#1EBD9E;
+.nav-link:hover svg {
+	color: #1ebd9e;
 }
 
 #content {
@@ -227,32 +221,32 @@ a.article {
 		width: 0;
 	}
 	.fixed-sidebar {
-		left: -70%;
+		left: -80%;
 	}
 	#sidebar.active {
 		margin-left: 0;
 	}
-	.navbar{
+	.navbar {
 		padding-bottom: 40px !important;
 	}
-	#navbar-icon{
-		justify-content: flex-end!important;
+	#navbar-icon {
+		justify-content: flex-end !important;
 		position: absolute;
 		top: 0;
 	}
-	 
-	.nav-link{
+
+	.nav-link {
 		font-size: 1.5rem;
-		padding: 0.6em 0.4rem ;
+		padding: 0.6em 0.4rem;
 	}
-	.fixed-sidebar{
+	.fixed-sidebar {
 		transition: all 0.3s;
 		width: 70%;
 	}
 }
 
 /****** giangvien ******/
- 
+
 /******* cong tac sinh vien *******/
 .box {
 	min-height: 150px;

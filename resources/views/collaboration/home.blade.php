@@ -32,16 +32,16 @@
         }
         #chartRadian{
           width:100%;
-          height:20vh
+          height:10vh
         }
         #note-teachers{
          margin-top: 20px
         }
         .myChart{
-          height:45vh !important;
+          height:50vh !important;
         }
         #dashboard-radius{
-          height:60vh !important;
+          height:45vh !important;
         }
       }
       .myChart{
@@ -90,7 +90,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     {{-- <script src="js/script.js" ></script> --}}
-    <script src="js/scriptchart.js"></script>
+    <script src="js/script.js"></script>
 
     
 </body>

@@ -1,5 +1,5 @@
 
-		<h5 class="text-center p-4">Biểu đồ sinh viên vắng của môn học</h5>
+		<h4 class="text-center p-4"style="font-weight:bold">Biểu đồ sinh viên vắng của môn học</h4>
 		<div id="chartRadian">
 				<canvas id="myChartRadian"></canvas>
 			</div>   
@@ -31,16 +31,19 @@
 					'rgba(153, 102, 255, 1)',
 					'rgba(255, 159, 64, 1)'
 				],
-				borderWidth: 1
+				borderWidth: 1,
 			}
 		]
 	},
 	options: {
+		Axes:{
+			weight:29
+		},
 		responsive: true,
 		maintainAspectRatio:true,
 		layout: {
             padding: {
-                left: 50,
+                left: 0,
                 right: 0,
                 top: 0,
                 bottom: 0
