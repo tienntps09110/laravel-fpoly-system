@@ -1,8 +1,9 @@
 <nav id="sidebar">
     <div class="fixed-sidebar">
         <div class="sidebar-header">
-            <div class="avatar" style="background-image: url({{ Auth::user()->avatar_img_path }})"></div>
-        </div>
+            <div class="rounded-circle">
+                <img src="{{ Auth::user()->avatar_img_path }}" alt="{{ Auth::user()->avatar_img_path }}" width="100%" >
+              </div>        </div>
     
         <ul class="list-unstyled components">
             <p class="text-center" style="background-color: #1EBD9E;">{{ Auth::user()->full_name }}</p>
@@ -23,16 +24,16 @@
             <li>
                 <a href="{{ route('get-class-subjects') }}">Danh sách sinh viên<span style="float: left;"><i class="fas fa-list"></i></span> </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="#">Tổng quát</a>
-            </li>
+            </li> --}}
         </ul>
     
         <ul class="list-unstyled CTAs">
             <li>
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
-                    <button type="submit" class="btn btn-default logout ml-5"> LOGOUT <i class="fas fa-sign-out-alt"></i> </button> 
+                    <button type="submit" class="btn btn-link logout"> <i class="fas fa-sign-out-alt"></i> Đăng xuất  </button> 
                 </form>
             </li>
         </ul>
