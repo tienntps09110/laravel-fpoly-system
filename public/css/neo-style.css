@@ -35,6 +35,13 @@
     color:#2a4054;
     background-color: white;
 }
+.alert-danger-neo{
+    background-color: #e54641;
+    color: #ffdc63;
+}
+.alert-success-neo{
+    background-color: #1ebd9e;
+}
 
 
 /* =============================== */

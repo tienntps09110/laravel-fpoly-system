@@ -19,14 +19,14 @@
         </div>
         {{-- DANGER --}}
         @if(session('Danger'))
-        <div class="alert alert-danger font-weight-bold text-center">
+        <div class="alert alert-danger-neo font-weight-bold text-center">
             {{ session('Danger') }}
         </div>
         @endif
         <!-- END ERROR  -->
         <!-- SUCCESSFULLY   -->
         @if(session('Success'))
-        <div class="alert alert-success font-weight-bold text-center">
+        <div class="alert alert-success-neo font-weight-bold text-center">
             {{ session('Success') }}
         </div>
         @endif
@@ -58,7 +58,7 @@
                                 <td class="text-center">
                                     <div class="confirm-switch mx-auto">
                                         <input class='{{ $student->checked == 'true'?'checked':'' }}' type="checkbox" id="default-switch{{ $student->id }}" value="{{ $student->id }}" name="attendance[]"
-                                            {{ $student->checked == 'true'?'checked':'' }} disabled>
+                                            {{ $student->checked == 'true'?'checked':'' }} >
                                         <label for="default-switch{{ $student->id }}"></label>
                                     </div>
                                 </td>

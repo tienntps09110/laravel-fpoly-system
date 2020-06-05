@@ -47,18 +47,21 @@ $(document).ready(function() {
 	})
 	
 	$("input[checked]").closest('.row-center').css("background-color","#ebfffb");
-	$(".row-center").click(function(){
-		if($(this).find('input').hasClass('checked')){
-			$(this).find('input').toggleClass('checked');
-			$(this).find('input').removeAttr('checked');
-			$(this).css('background-color','white');
+	$("input[name='attendance[]']").click(function(){
+		if($(this).hasClass('checked')){
+			$(this).toggleClass('checked');
+			$(this).removeAttr('checked');
+			$(this).closest('tr').css('background-color','white');
 		}else{
-			$(this).find('input').toggleClass('checked');
-			$(this).find('input').attr('checked','');
-			$(this).css('background-color','#ebfffb');
+			$(this).toggleClass('checked');
+			$(this).attr('checked','');
+			$(this).closest('tr').css('background-color','#ebfffb');
 		}
 	})
-	
+	$(".row-center").children().not($('td').add('th').has('input')).click(function(){
+		$(this).parent().find('input').click();
+	})
+
 	// ****************************************
 	// datatable
 	// ****************************************

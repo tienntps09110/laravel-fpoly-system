@@ -14,13 +14,13 @@
         </div>
         {{-- DANGER --}}
         @if(session('Danger'))
-        <div class="alert alert-danger font-weight-bold text-center">
+        <div class="alert alert-danger-neo font-weight-bold text-center">
             {{ session('Danger') }}
         </div>
         @endif
         {{-- SUCCESSFULLY --}}
         @if(session('Success'))
-        <div class="alert alert-success font-weight-bold text-center">
+        <div class="alert alert-success-neo font-weight-bold text-center">
             {{ session('Success') }}
         </div>
         @endif
