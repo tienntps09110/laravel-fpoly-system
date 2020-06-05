@@ -89,7 +89,7 @@
     console.log(routeCountAll);
     channel.bind('dashboard', function(data) {
         let dataParse = JSON.parse(JSON.stringify(data));
-        // console.log(dataParse.data);
+        console.log(dataParse.data);
         switch(dataParse.data.route_name){
             case routeCountAll:
                 loadAjax(compoCountAll, routeCountAll);
@@ -104,7 +104,7 @@
                 loadAjax(compoDashBoardRadius, routeDashRadius);
             break;
             default:
-                console.log('hehe');
+                console.log('not found function realtime');
         }
     
     });

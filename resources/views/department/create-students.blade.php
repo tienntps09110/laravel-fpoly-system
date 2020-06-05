@@ -4,7 +4,7 @@
 <form id="createStudents" enctype="multipart/form-data">
     @csrf
     <div class="form-group col-lg-8 mx-auto">
-        <label for="excel">Excel File</label>
+        <label for="excelStudent">Excel File</label>
         <input id="excelStudent" class="form-control" type="file" name="excelStudent">
     </div>
     {{-- EXCEL FILE<input type="file" name="excel"> --}}

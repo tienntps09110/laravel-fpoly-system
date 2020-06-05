@@ -23,12 +23,10 @@ class Create extends Controller
     }
     public function studentsPost(Request $req){
         $validator = Validator::make($req->all(), [
-            'excel'=>'required | min:1 | max:255'
+            'excel'=>'required | file | max: 10000'
         ]);
-        // return $req;
-        // return gettype($req->excel);
         if ($validator->fails()) {
-            return Json::getMess($validator->errors(), 422);
+            return Json::getMess('Vui lòng nhập file excel sinh viên', 422);
         }
         $arrayError = [];
         $arrayStudents = Excel::toArray(new StudentsImport, $req->excel)[0];

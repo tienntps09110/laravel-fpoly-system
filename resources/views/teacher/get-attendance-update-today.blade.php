@@ -58,7 +58,7 @@
                                 <td class="text-center">
                                     <div class="confirm-switch mx-auto">
                                         <input class='{{ $student->checked == 'true'?'checked':'' }}' type="checkbox" id="default-switch{{ $student->id }}" value="{{ $student->id }}" name="attendance[]"
-                                            {{ $student->checked == 'true'?'checked':'' }} disabled>
+                                            {{ $student->checked == 'true'?'checked':'' }}>
                                         <label for="default-switch{{ $student->id }}"></label>
                                     </div>
                                 </td>
