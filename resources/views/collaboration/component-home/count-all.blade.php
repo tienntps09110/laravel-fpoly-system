@@ -1,4 +1,4 @@
-<div class="col-sm-4 p-3 card-alert">
+<div class="col-sm-4 p-1 card-alert">
     <div class="box border d-flex flex-wrap align-content-center justify-content-center">
       <div class="text-center">
           Giáo viên <i class="fas fa-chalkboard-teacher    "></i>
@@ -9,7 +9,7 @@
       </div>
     </div>
 </div>
-<div class="col-sm-4 p-3">
+<div class="col-sm-4 p-1">
     <div class="box border d-flex flex-wrap align-content-center justify-content-center">
       <div class="text-center">
           Sinh viên <i class="fas fa-chalkboard-teacher    "></i>
@@ -20,7 +20,7 @@
       </div>
     </div>
 </div>
-<div class="col-sm-4 p-3">
+<div class="col-sm-4 p-1">
     <div class="box border d-flex flex-wrap align-content-center justify-content-center">
         <div class="text-center">
             Lớp học <i class="fas fa-chalkboard-teacher    "></i>

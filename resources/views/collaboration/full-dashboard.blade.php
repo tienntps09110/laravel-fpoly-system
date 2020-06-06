@@ -9,7 +9,7 @@
   </div>
 </div>
 <!-- hàng 2 - Biểu đồ theo tháng -->
-<div id="component-dashboard-month" class="container-fluid p-lg-3"></div>
+<div id="component-dashboard-month" class="container-fluid p-3"></div>
 
 <!-- hàng 3 - nhận xét GV  & Biểu đồ hình tròn điểm danh theo lớp -->
 <div class="container-fluid p-lg-3">
@@ -19,7 +19,7 @@
           <div id="note-teachers" class="col-12 p-3"></div>
 
           <!-- Biểu đồ hình tròn điểm danh theo lớp -->
-          <div id="dashboard-radius" class="col-lg-12">
+          <div id="dashboard-radius" class="col-lg-6 mb-4">
 
           </div>
 
@@ -86,10 +86,8 @@
     });
 
     let channel = pusher.subscribe('dashboard-home');
-    console.log(routeCountAll);
     channel.bind('dashboard', function(data) {
         let dataParse = JSON.parse(JSON.stringify(data));
-        console.log(dataParse.data);
         switch(dataParse.data.route_name){
             case routeCountAll:
                 loadAjax(compoCountAll, routeCountAll);
