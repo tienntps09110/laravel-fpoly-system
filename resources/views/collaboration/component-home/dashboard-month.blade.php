@@ -1,5 +1,5 @@
 
-    <div class="container myChart" style="width:100%;height:85vh">
+    <div class="container myChart" style="width:100%;">
         <h4 class="text-center p-4"style="font-weight:bold">Biểu đồ thể hiện theo tháng </h4>
         <canvas style="border: none" id="myChart"></canvas>
 </div>

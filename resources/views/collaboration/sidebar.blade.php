@@ -13,7 +13,7 @@
 		 <span class="span-teacher" > {{ Auth::user()->full_name }} </span>   
 	   </div>
 	   <li class="date-teach">
-		 <a href="{{ route('get-class-subject-teacher-today') }}">Trang chủ</a>
+		 <a href="{{ route('get-class-subject-teacher-today') }}"> <i class="fas fa-home"></i> Trang chủ</a>
 	   </li>
 	   {{--  <li class="date-teach">
 		 <a href="{{ route('get-class-subjects-teacher') }}">Danh sách lớp dạy</a>

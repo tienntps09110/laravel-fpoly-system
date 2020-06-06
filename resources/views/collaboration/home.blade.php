@@ -8,14 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <base href="{{ asset('') }}">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" >
-    <script defer src="js/solid.min.js" ></script>
-    <script defer src="js/fontawesome.min.js" ></script>  
+    <link rel="stylesheet" href="css/bootstrap.min.css" >  
     <link rel="stylesheet" href="css/styles.css">
-    {{--  <link rel="stylesheet" href="css/bootstrap.css">  --}}
-    {{--  <link rel="stylesheet" href="css/bootstrap.min.css">  --}}
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
+    <link rel="stylesheet" href="css/neo-style.css">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/pusher.min.js"></script>
+    <script src="js/Chart.js"></script>
     <style>
       @media screen and (max-width:655px){
         #responsive-td1{
@@ -32,16 +30,23 @@
         }
         #chartRadian{
           width:100%;
-          height:10vh
+          left: 0;
+          min-height: auto;
+          position: absolute
         }
         #note-teachers{
          margin-top: 20px
         }
-        .myChart{
-          height:50vh !important;
+        #myChart{
+          margin-left: -20px
         }
         #dashboard-radius{
-          height:45vh !important;
+          height:40vh !important;
+        }
+      }
+      @media screen and (max-width:768px){
+        #note-teachers {
+          margin-top: 20px
         }
       }
       .myChart{
@@ -50,6 +55,7 @@
       box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
       font-size: 1.5em;
       background-color: white;
+      padding: 1em
       }
       #dashboard-radius{
         box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
@@ -57,14 +63,17 @@
         background-color: white;
         border-radius: 20px;
         width:100%;
-        height:90vh
+        min-height:auto
         }
         #note-teachers{
           box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
           font-size: 1.5em;
           background-color: white;
           border-radius: 20px;
-          margin-bottom: 20px
+          margin-bottom: 15px
+        }
+        #myChartRadian{
+          margin-bottom: 10px
         }
 
     </style>
@@ -83,15 +92,10 @@
           </div>
       </div>
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    {{-- <script src="js/script.js" ></script> --}}
-    <script src="js/script.js"></script>
-
+    <script src="js/bootstrap.js"></script>
+    <script src="js/scriptchart.js"></script>
+    <script defer src="js/solid.min.js" ></script>
+    <script defer src="js/fontawesome.min.js" ></script>
     
 </body>
 </html>
