@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Attendance;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Events\Dashboard\DashboardHome;
 use App\Http\Controllers\Core\Core;
 use App\Http\Controllers\Core\View;
 use Illuminate\Support\Str;
@@ -26,7 +27,7 @@ class Create extends Controller
             'study_time_id'         => 'required | min:1 | max:255',
             'note'                  => '                   max:255'
         ]);
-
+        // return $req;
         $data = [
             'attendance'            => $req->attendance,
             'days_class_subject_id' => $req->days_class_subject_id,
@@ -37,6 +38,10 @@ class Create extends Controller
         if(!$req->attendance){
             $data['attendance'] = [];
         }
+        $teacherCheck = DaysClassSubject::where('user_manager_uuid', Auth::id())
+                                        ->where('id', $req->days_class_subject_id)
+                                        ->whereDate('date', Carbon::now()->toDateString())
+                                        ->firstOrFail(); 
         $studyCheck = StudyTime::where('id', $req->study_time_id)->first();
         if($studyCheck){
             $now = Carbon::now()->toTimeString();
@@ -64,6 +69,7 @@ class Create extends Controller
             $updateFunction = Create::update($studentsHave, $studentsNot, $data);
             $dayClassSubject->note = $req->note?$req->note:null;
             $dayClassSubject->save();
+            Create::pushRealTime();
             return Core::toBack($this->success, 'Cập nhật điểm danh thành công');
         }
 
@@ -71,8 +77,21 @@ class Create extends Controller
         $dayClassSubject->checked = Core::true();
         $dayClassSubject->note = $req->note?$req->note:null;
         $dayClassSubject->save();
-
+        Create::pushRealTime();
         return Core::toBack($this->success, 'Điểm danh thành công');
+    }
+
+    // REAL TIME
+    protected static function pushRealTime(){
+        $data = (object)[
+            'channel'=> 'dashboard-home',
+            'route_name'=> route('collaboration-component-note-teachers')
+        ];
+        event(new DashboardHome($data));
+        $data->route_name = route('collaboration-component-dashboard-month');
+        event(new DashboardHome($data));
+        $data->route_name = route('collaboration-component-dashboard-radius');
+        event(new DashboardHome($data));
     }
 
     // CREATE AND UPDATE

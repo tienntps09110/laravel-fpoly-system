@@ -23,10 +23,10 @@ class Create extends Controller
     }
     public function studentsPost(Request $req){
         $validator = Validator::make($req->all(), [
-            'excel'=>'required | min:1 | max:255'
+            'excel'=>'required | file | max: 10000'
         ]);
         if ($validator->fails()) {
-            return Json::getMess($validator->errors(), 422);
+            return Json::getMess('Vui lòng nhập file excel sinh viên', 422);
         }
         $arrayError = [];
         $arrayStudents = Excel::toArray(new StudentsImport, $req->excel)[0];
@@ -62,6 +62,7 @@ class Create extends Controller
             return Json::getMess($arrayError, 422);
         }
         // return Core::toBack($this->success, 'Tạo tất cả sinh viên từ file xlsx thành công');
+        Core::pushRealTime('collaboration-component-count-all');
         return Json::getMess('Tạo tất cả sinh viên từ file xlsx thành công', 200);
     }
 }

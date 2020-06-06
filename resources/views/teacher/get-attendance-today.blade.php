@@ -1,7 +1,7 @@
 @extends('teacher.home')
 @section('content-teacher')
-    <div class="container">
-        <div class="alert alert-warning"><h3 class="text-center">ĐIỂM DANH</h3></div>
+    <div class="container box p-lg-5 p-3">
+        <div><h3 class="text-center">ĐIỂM DANH</h3></div>
         {{-- ERROR --}}
         <div>
             @if($errors->any())
@@ -14,13 +14,13 @@
         </div>
         {{-- DANGER --}}
         @if(session('Danger'))
-        <div class="alert alert-danger font-weight-bold text-center">
+        <div class="alert alert-danger-neo font-weight-bold text-center">
             {{ session('Danger') }}
         </div>
         @endif
         {{-- SUCCESSFULLY --}}
         @if(session('Success'))
-        <div class="alert alert-success font-weight-bold text-center">
+        <div class="alert alert-success-neo font-weight-bold text-center">
             {{ session('Success') }}
         </div>
         @endif
@@ -34,8 +34,8 @@
                     <th>Họ và Tên</th>
                     <th class="text-center">Hình</th>
                     <th class="text-center">
-                        <button class="btn btn-warning" id="kiem-tra-vang">Vắng</button>
-                        <button class="btn btn-dark" id="kiem-tra-tong">Tổng</button>
+                        <button class="" id="kiem-tra-vang">Vắng</button>
+                        <button class="btn btn-primary-neo" id="kiem-tra-tong">Tổng</button>
                     </th>
                 </tr>
             </thead>
@@ -43,27 +43,20 @@
                 <form method="post" action="{{ route('attendance-students-post') }}">
                     @csrf
                     @foreach ($students  as $key=> $student)
-                    <tr class="row-center">
-                        <td >{{ ++$key }} </td>
-                        <td> {{ $student->student_code }} </td>
-                        <td> {{ $student->full_name }} </td>
-                        <th class="text-center">
-                            <img src="{{ $student->avatar_img_path }}" alt="{{ $student->avatar_img_path }}"  width="100px">
-                        </th>
-                        <td class="text-center">
+                        <tr class="row-center">
+                            <td >{{ ++$key }} </td>
+                            <td> {{ $student->student_code }} </td>
+                            <td> {{ $student->full_name }} </td>
+                            <th class="text-center">
+                                <img src="{{ $student->avatar_img_path }}" alt="{{ $student->avatar_img_path }}"  width="100px">
+                            </th>
+                            <td class="text-center">
                                 <div class="confirm-switch mx-auto">
                                     <input type="checkbox" id="default-switch{{ $student->id }}" value="{{ $student->id }}" name="attendance[]">
                                     <label for="default-switch{{ $student->id }}"></label>
                                 </div>
-
-                                {{-- <input type="checkbox" name="attendance[]" value="{{ $student->id }}" class=""> --}}
-                            
-                            {{-- <div class="slideTwo">  
-                                <input type="checkbox" value="None" id="slideTwo" name="check" checked />
-                                <label class="labelSlide" for="slideTwo"></label>
-                              </div> --}}
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                     @endforeach        
                     <input type="hidden" name="days_class_subject_id" value="{{ $classSubject->dcs_id }}">
                     <input type="hidden" name="class_id" value="{{ $classSubject->class_id }}">
@@ -73,7 +66,7 @@
                             <textarea type="text" class="form-control" name="note" placeholder="Ghi chú..."></textarea>
                         </td>
                         <td class="text-center">
-                            <button type="submit" class="btn btn-success " id="Luu" {{ $timeOut=='false'?'':'disabled' }}>Lưu lại</button>
+                            <button type="submit" class=" " id="luu" {{ $timeOut=='false'?'':'disabled' }}>Lưu lại</button>
                         </td>
                     </tr>
                 </form>

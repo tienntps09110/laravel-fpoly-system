@@ -122,7 +122,7 @@ class Create extends Controller
         if($data->date_start > $data->date_end){
             return 'Ngày bắt đầu không thể nhỏ hơn ngày kết thúc';
         }
-        if($data->date_start < Carbon::now() || $data->date_end < Carbon::now() ){
+        if($data->date_start < Carbon::now()->toDateString() || $data->date_end < Carbon::now()->toDateString() ){
             return 'Không thể chọn ngày ở quá khứ';
         }
         $classSubjects = ClassSubject::where('class_id', $data->class_id)
@@ -269,10 +269,9 @@ class Create extends Controller
         
         // INSERT DAYS STUDY
         Create::insertDaysClassSubject($classSubject->id,$req->teacher_uuid, $arrayDays);
-
+        
         return Core::toBack($this->success, 'Tạo phân công giảng dạy thành công');
     }
-
     // INSERT DAYS CLASS SUBJECT
     protected static function insertDaysClassSubject(String $class_subject_id, String $user_manager_uuid, Array $arrayDays){
         for($i = 0; $i < count($arrayDays); $i++){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Core;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Events\Dashboard\DashboardHome;
 use App\Http\Controllers\Core\View;
 use App\Model\UserRole;
 use App\Model\Role;
@@ -90,5 +91,14 @@ class Core extends Controller
             $token .= $codeAlphabet[random_int(0, $max-1)];
         }
         return $token;
+    }
+
+    // REAL TIME
+    public static function pushRealTime($route, $channel = 'dashboard-home'){
+        $data = (object)[
+            'channel'=> $channel,
+            'route_name'=> route($route)
+        ];
+        event(new DashboardHome($data));
     }
 }

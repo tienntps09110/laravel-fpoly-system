@@ -9,6 +9,10 @@ UPDATE DAY CLAS SUBJECT
         </ul>
     @endif
 </div> 
+{{-- ERROR  --}}
+<div>
+    {{session('Danger')?session('Danger'):''}}
+</div> 
 {{-- SUCCESSFULLY  --}}
 <div>
     {{session('Success')?session('Success'):''}}

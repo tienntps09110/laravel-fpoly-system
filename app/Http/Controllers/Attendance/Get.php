@@ -13,20 +13,27 @@ use App\Model\Students;
 use App\Model\StudyTime;
 use App\Model\ClassSubject;
 use App\Model\Attendance;
+use App\Model\DaysClassSubject;
 use DB;
 class Get extends Controller
 {
     public function attendanceView($classSubjectId, $dayStudyId){
+        $teacherCheck = DaysClassSubject::where('user_manager_uuid', Auth::id())
+                                        ->where('id', $dayStudyId)
+                                        ->whereDate('date', Carbon::now()->toDateString())
+                                        ->firstOrFail();
 
         $classSubjectCheck =  ClassSubject::join('days_class_subject as dcs', 'class_subject.id', '=', 'dcs.class_subject_id')
                                 ->where('class_subject.id', $classSubjectId)
                                 ->where('dcs.id', $dayStudyId)                                        
                                 ->where('class_subject.datetime_end', '>', Carbon::now()->toDateString())
                                 ->where('class_subject.soft_deleted', Core::false())
+                                ->where('dcs.user_manager_uuid', Auth::id())
                                 ->select(
                                     'class_subject.id as class_subject_id',
                                     'class_subject.class_id',
                                     'dcs.id as dcs_id',
+                                    'dcs.note as dcs_note',
                                     'class_subject.study_time_id',
                                     'checked'
                                 )
@@ -50,7 +57,7 @@ class Get extends Controller
         
         $studyCheck = StudyTime::where('id', $classSubjectStudy->study_time_id)->first();
         $timeOut = Core::false();
-        
+        // return Carbon::parse($studyCheck->time_start)->addMinutes($this->timeAttendance)->toTimeString();
         if($studyCheck){
             $now = Carbon::now()->toTimeString();
             if($now > Carbon::parse($studyCheck->time_start)->addMinutes($this->timeAttendance)->toTimeString()){
@@ -70,7 +77,10 @@ class Get extends Controller
         ]);
     }
     public function attendanceUpdateView($classSubjectId, $dayStudyId){
-
+        $teacherCheck = DaysClassSubject::where('user_manager_uuid', Auth::id())
+                                        ->where('id', $dayStudyId)
+                                        ->whereDate('date', Carbon::now()->toDateString())
+                                        ->firstOrFail();
         $classSubjectCheck =  ClassSubject::join('days_class_subject as dcs', 'class_subject.id', '=', 'dcs.class_subject_id')
                                 ->where('class_subject.id', $classSubjectId)
                                 ->where('dcs.id', $dayStudyId)                                        
@@ -80,6 +90,7 @@ class Get extends Controller
                                     'class_subject.id as class_subject_id',
                                     'class_subject.class_id',
                                     'dcs.id as dcs_id',
+                                    'dcs.note as dcs_note',
                                     'class_subject.study_time_id'
                                 )
                                 ->firstOrFail();
