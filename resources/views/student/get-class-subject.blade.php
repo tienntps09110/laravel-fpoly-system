@@ -27,7 +27,9 @@
             <div class="col-3 p-3 text-center">{{ $classSubject->user_full_name }}</div>
             <div class="col-3 p-3 text-center">Lớp học:</div>
             <div class="col-3 p-3 text-center">{{ $classSubject->class_name }}</div>
-            <div class="col-3 p-3 text-center">Số ngày nghỉ:</div>
+            <div class="col-3 p-3 text-center">Số ngày nghỉ tối đa:</div>
+            <div class="col-3 p-3 text-center">{{ $classSubject->subject_days_fail }} ngày</div>
+            <div class="col-3 p-3 text-center">Số ngày nghỉ hiện tại:</div>
             <div class="col-3 p-3 text-center">{{ $countdayStudy }} ngày</div>
         </div>
         <div class="px-5">

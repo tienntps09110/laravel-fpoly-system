@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" >  
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/neo-style.css">
+    <link rel="stylesheet" href="css/loading-tien.css">
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/pusher.min.js"></script>
     <script src="js/Chart.js"></script>

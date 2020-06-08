@@ -13,7 +13,8 @@ Route::get('component-note-teachers', 'Collaboration\Get@noteTeacherGet')->name(
 
 // ROUTE SEACH STUDENT
 
-Route::get('search-student', 'Collaboration\SearchStudent@getSearch')->name('search-student-view');
+Route::get('search-student', 'Collaboration\SearchStudent@getSearchView')->name('search-student-view');
+Route::post('search-student', 'Collaboration\SearchStudent@getSearch')->name('search-student-post');
 
 
 

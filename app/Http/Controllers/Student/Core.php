@@ -35,6 +35,7 @@ class Core extends Controller
                     'cs.subject_id',
                     'sj.name as subject_name',
                     'sj.code as subject_code',
+                    'sj.days_fail as subject_days_fail',
                     'st.name as study_time_name',
                     'cs.datetime_start',
                     'cs.datetime_end',

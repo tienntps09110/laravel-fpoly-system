@@ -16,6 +16,9 @@ class Json extends Controller
         }   
         return Json::resJson($notification, $status, $message);
     }
+    public static function getOne($data, $status = '200', $message = ''){
+        return Json::resJson($data, $status, $message); 
+    }
     protected static function resJson($notification, $status, $message){
         
         return response()->json(
