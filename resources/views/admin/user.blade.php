@@ -1,2 +1,0 @@
-{{-- DETAIL USER --}}
-{{ $user }}

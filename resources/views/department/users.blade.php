@@ -37,7 +37,7 @@
                                     <img src="{{$user->avatar_img_path}}" alt="{{$user->avatar_img_path}}" height="100px">
                                 </td>
                                 <td>
-                                    <a href=" " class="btn btn-link">Chi tiết</a>
+                                    <a href="{{ route('get-user', $user->uuid) }}" class="btn btn-link">Chi tiết</a>
                                 </td>
                             </tr>
                         @endforeach 

@@ -69,7 +69,7 @@ class SearchStudent extends Controller
                 ->join('attendance as at', 'dcs.id', '=', 'at.days_class_subject_id')
                 ->where('dcs.class_subject_id', $detailCS->class_subject_id)
                 ->where('at.student_id', $studentCheck->id)
-                ->where('at.checked', Core::true())
+                ->where('at.checked', Core::false())
                 ->count();
             $infoSubject->class_subject_id = $detailCS->class_subject_id;
             $infoSubject->class_name = $detailCS->class_name;

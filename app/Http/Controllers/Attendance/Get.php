@@ -22,7 +22,7 @@ class Get extends Controller
                                         ->where('id', $dayStudyId)
                                         ->whereDate('date', Carbon::now()->toDateString())
                                         ->firstOrFail();
-
+        
         $classSubjectCheck =  ClassSubject::join('days_class_subject as dcs', 'class_subject.id', '=', 'dcs.class_subject_id')
                                 ->where('class_subject.id', $classSubjectId)
                                 ->where('dcs.id', $dayStudyId)                                        
@@ -44,7 +44,7 @@ class Get extends Controller
             return redirect()->route('get-attendance-class-subject-update-today',[
                     'classSubjectId'=>$classSubjectCheck->class_subject_id,
                     'dayStudyId'=>$classSubjectCheck->dcs_id
-                ]);
+                ])->with('Success', 'Điểm danh thành công');
         }
         $classSubjectStudy = ClassSubject::where('id', $classSubjectId)->firstOrFail();
         

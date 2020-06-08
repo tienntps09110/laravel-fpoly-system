@@ -27,7 +27,8 @@ class Get extends Controller
                             ->get();
         // return $classSubjects;
         return view(View::department('get-class-subjects'), [
-            'classSubjects' => $classSubjects
+            'classSubjects' => $classSubjects,
+            'Core'          => new Core
         ]);
     }
     // GET DAYS CLASS SUBJECT

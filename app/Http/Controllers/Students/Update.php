@@ -24,17 +24,21 @@ class Update extends Controller
             'full_name'         => 'required | min:1 | max:255',
             'phone_number'      => 'required | min:1 | max:255',
             'email'             => 'required | min:1 | max:255',
-            'avatar_img_path'   => 'min:1 | max:255'
+            'sex'               => 'required | min:1 | max:255',
+            'address'               => 'required | min:1 | max:255',
+            'avatar_img_path'   => 'min:1 | max:30000'
         ]);
         $student = Students::find($req->id);
         if(!$student){
             return Core::toBack($this->danger, 'Không tìm thấy sinh viên yêu cầu');
         }
         $full_name = $req->full_name?$req->full_name:$student->full_name;
+        $sex = $req->sex?$req->sex:'Không xác định';
         $phone_number = $req->phone_number?$req->phone_number:$student->phone_number;
         $email = $req->email?$req->email:$student->email;
+        $address = $req->address?$req->address:$student->address;
         $avatar_img_path = $student->avatar_img_path;
-        
+
         if($req->avatar_img_path){
             $tmpName = $_FILES["avatar_img_path"]["tmp_name"];
             $typeImage = Str::afterLast($_FILES["avatar_img_path"]['type'], '/');
@@ -43,8 +47,10 @@ class Update extends Controller
             move_uploaded_file($tmpName, public_path() .$name);
         }
         $student->full_name = $full_name;
+        $student->sex = $sex;
         $student->phone_number = $phone_number;
         $student->email = $email;
+        $student->address = $address;
         $student->avatar_img_path = $avatar_img_path;
         $student->save();
         

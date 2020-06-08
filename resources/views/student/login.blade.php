@@ -63,7 +63,7 @@
                     <input type="password" name="password" value="{{ $cookieStudentPassword }}" id="password" class="form-control" value="1">
                 </div>
                 <div>
-                    <input type="checkbox" name="remember" id="luu-dang-nhap">
+                    <input type="checkbox" name="remember" id="luu-dang-nhap" checked>
                     <span class="small">Lưu đăng nhập</span>
                     <span class="small float-right">Quên mật khẩu</span>
                 </div>

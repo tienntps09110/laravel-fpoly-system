@@ -24,9 +24,10 @@
               <td class="row-width-200 text-center">{{ $detailCs->subject_name }}</td>
               <td>{{ $detailCs->study_time_name }}</td>
               <td class="row-width-300 text-center"> {{ $Carbon::parse($detailCs->datetime_start)->format('d/m/Y') .' - ' .$Carbon::parse($detailCs->datetime_end)->format('d/m/Y') }} </td>
-              <td class="row-width-200" style="max-width:300px"> @for($i = 0; $i < count(json_decode($detailCs->days_week)); $i++)
-                    <span class="badge badge-pill badge-primary badge-primary-neo" style="">{{ $Core::dayString(json_decode($detailCs->days_week)[$i])}}</span>  
-                  @endfor   
+              <td class="row-width-200" style="max-width:300px">
+                @for($i = 0; $i < count(json_decode($detailCs->days_week)); $i++)
+                  <span class="badge badge-pill badge-primary badge-primary-neo" style="">{{ $Core::dayString(json_decode($detailCs->days_week)[$i])}}</span>  
+                @endfor
               </td>
               <td>
                   <a class="btn btn-primary-neo" href="{{ route('get-class-subject-teacher', $detailCs->id) }}">Thông tin</a>        

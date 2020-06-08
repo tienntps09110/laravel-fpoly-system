@@ -45,7 +45,7 @@ class Main extends Controller
                             ->join('days_class_subject as dcs', 'ad.days_class_subject_id', 'dcs.id')
                             ->join('class_subject as cs', 'dcs.class_subject_id', '=', 'cs.id')
                             ->where('ad.student_id', CoreS::user()->id)
-                            ->where('ad.checked', Core::true())
+                            ->where('ad.checked', Core::false())
                             ->where('cs.subject_id', $data['classSubject']->subject_id)
                             ->where('cs.class_id', $data['classSubject']->class_id)
                             ->count();

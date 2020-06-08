@@ -13,8 +13,11 @@
 		 <span class="span-teacher" > {{ Auth::user()->full_name }} </span>   
 	   </div>
 	   <li class="date-teach">
-		 <a href="{{ route('get-class-subject-teacher-today') }}"> <i class="fas fa-home"></i> Trang chủ</a>
+		 <a href="{{ route('collaboration-home') }}"> <i class="fas fa-home"></i> Trang chủ</a>
 	   </li>
+	   <li class="date-teach">
+		<a href="{{ route('search-student-view') }}"> <i class="fas fa-home"></i> Tra cứu sinh viên</a>
+	  </li>
 	   {{--  <li class="date-teach">
 		 <a href="{{ route('get-class-subjects-teacher') }}">Danh sách lớp dạy</a>
 	   </li>  --}}

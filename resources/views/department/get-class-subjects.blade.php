@@ -33,9 +33,9 @@
                                 <td  class="row-width-200">{{$classSubject->subject_name }}</td>
                                 <td>{{$classSubject->user_name }}</td>
                                 <td class="row-width-200">
-                                    {{-- @for($i = 0; $i < count(json_decode($classSubject->days_week)); $i++ ) --}}
-                                        {{$classSubject->days_week }}
-                                    {{-- @endfor --}}
+                                    @for($i = 0; $i < count(json_decode($classSubject->days_week)); $i++)
+                                        <span class="badge badge-pill badge-primary badge-primary-neo" style="">{{ $Core::dayString(json_decode($classSubject->days_week)[$i])}}</span>  
+                                    @endfor   
                                 </td>
                                 <td>{{$classSubject->study_time_name }}</td>
                                 <td>{{$classSubject->study_time_start }}</td>

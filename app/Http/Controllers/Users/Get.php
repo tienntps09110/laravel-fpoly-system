@@ -17,10 +17,16 @@ class Get extends Controller
         $users = User::whereNotIn('uuid', [Auth::id()])->get();
         $arrayUsers = [];
         foreach($users as $user){
-            $user->role = Core::role($user);
+            $role = Core::role($user);
+            if($role->code != 'teacher'){
+                continue;
+            }
+            $user->role = $role;
+            $user->role_id = $role->id;
             $arrayUsers[] = $user;
         }
-        return view(View::admin('users'),['users'=>$users]);
+        $arrayUsers = collect($arrayUsers)->sortBy('role_id')->values()->all();
+        return view('department.users',['users'=>$arrayUsers]);
         // return $users;
     }
     // GET USER DETAIL
@@ -30,6 +36,6 @@ class Get extends Controller
             return Core::notFound();
         }
         $user->role = Core::role($user);
-        return view(View::admin('user'),['user'=>$user]);
+        return view('department.user',['user'=>$user]);
     }
 }

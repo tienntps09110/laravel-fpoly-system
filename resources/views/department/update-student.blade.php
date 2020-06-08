@@ -24,9 +24,16 @@ UPDATE STUDENT
     <br><br>
     full_name<input type="text" name="full_name" value="{{ $student->full_name }}">
     <br><br>
+    SEX <select name="sex">
+        <option value="Nam" {{ $student->sex == 'Nam'?'selected':'' }}>Nam</option>
+        <option value="Nữ" {{ $student->sex == 'Nữ'?'selected':'' }}>Nữ</option>
+    </select>
+    <br>
     phone_number<input type="text" name="phone_number" value="{{ $student->phone_number }}">
     <br><br>
     email<input type="text" name="email" value="{{ $student->email }}">
+    <br><br>
+    address<input type="text" name="address" value="{{ $student->address }}">
     <br><br>
     avatar_img_path<input type="file" name="avatar_img_path" value="{{ $student->avatar_img_path }}">
     <br><br>

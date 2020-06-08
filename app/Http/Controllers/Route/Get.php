@@ -63,11 +63,11 @@ class Get extends Controller
                 'method'=> 'GET',
                 'route'   => 'create-user-view'
             ],
-            [
-                "name"  => 'UPDATE USER',
-                'method'=> 'GET',
-                'route'   => 'update-user-view'
-            ],
+            // [
+            //     "name"  => 'UPDATE USER',
+            //     'method'=> 'GET',
+            //     'route'   => 'update-user-view'
+            // ],
             [
                 "name"  => 'DELETE USER',
                 'method'=> 'DELETE',
