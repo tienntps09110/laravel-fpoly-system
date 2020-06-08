@@ -35,12 +35,23 @@
     color:#2a4054;
     background-color: white;
 }
+.btn-success-neo{
+    border:1px solid #1ebd9e;
+    color:black ;
+    background-color: #1ebd9e;
+}
+.btn-success-neo:hover{
+    border:1px solid #1ebd9e;
+    color:#1ebd9e;
+    background-color: white;
+}
 .alert-danger-neo{
     background-color: #e54641;
     color: #ffdc63;
 }
 .alert-success-neo{
     background-color: #1ebd9e;
+    border-radius: 0.3rem;
 }
 
 

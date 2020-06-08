@@ -1,5 +1,5 @@
 
-<h2 class="text-center alert alert-success">Tạo giáo viên </h2>
+<h4 class="alert-success-neo m-4 p-2 text-center">Tạo giáo viên</h4> 
 <form method="POST" action="{{ route('create-teachers-excel') }}" enctype="multipart/form-data">
     @csrf
     <div class="form-group col-lg-8 mx-auto">
@@ -7,8 +7,8 @@
         <input id="excelTeachers" class="form-control" type="file" name="excelTeachers">
     </div>
     {{-- EXCEL FILE<input type="file" name="excel"> --}}
-    <div class="form-group col-lg-8 mx-auto">
-        <button id="BtcreateTeachers" class="btn btn-primary" type="button">Lưu</button>
+    <div class="form-group col-lg-8 mx-auto text-right">
+        <button id="BtcreateTeachers" class="btn btn-primary-neo" type="button">Lưu</button>
     </div>
 </form>
 

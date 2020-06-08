@@ -15,14 +15,19 @@
                 <a href="{{route('create-class-subject-view')}}">Phân lớp <span style="float: left;"><i class="fas fa-divide"></i></span>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('get-class-subjects') }}">Danh sách môn của lớp<span style="float: left;"><i class="fas fa-list"></i></span> </a>
-            </li>
-            <li>
-                <a href="{{ route('get-class-subjects') }}">Danh sách giáo viên<span style="float: left;"><i class="fas fa-list"></i></span> </a>
-            </li>
-            <li>
-                <a href="{{ route('get-class-subjects') }}">Danh sách sinh viên<span style="float: left;"><i class="fas fa-list"></i></span> </a>
+            <li> <a> <i class="fas fa-list"></i> Danh sách</a> 
+                <ul>
+                    <li>
+                        <a href="{{ route('get-class-subjects') }}">DS Môn của lớp<span style="float: left;"><i class="fas fa-list"></i></span> </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('get-users') }}">DS Giáo viên<span style="float: left;"><i class="fas fa-list"></i></span> </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('get-students') }}">DS Sinh viên<span style="float: left;"><i class="fas fa-list"></i></span> </a>
+                    </li>
+                </ul>
+                
             </li>
             {{-- <li>
                 <a href="#">Tổng quát</a>
