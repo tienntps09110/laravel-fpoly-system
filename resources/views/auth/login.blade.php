@@ -62,10 +62,10 @@
                 </div>
                 <div class="my-3">
                     Mật khẩu:
-                    <input type="password" name="password" id="password" value="{{ $cookiePassword }}" class="form-control">
+                    <input type="password" name="password" id="password" value="{{ $cookiePassword }}" class="form-control" >
                 </div>
                 <div>
-                    <input type="checkbox" name="remember" id="luu-dang-nhap">
+                    <input type="checkbox" name="remember" id="luu-dang-nhap" checked>
                     <label for="luu-dang-nhap" class="small">Lưu đăng nhập</label>
                     <span class="small float-right">Quên mật khẩu</span>
                 </div>

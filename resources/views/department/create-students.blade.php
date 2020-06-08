@@ -1,6 +1,6 @@
 {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 {{-- CREATE STUDENT EXCEL --}}
-<h2 class="text-center alert alert-success">Tạo học sinh </h2>
+<h4 class="alert-success-neo m-4 p-2 text-center">Tạo học sinh</h4> 
 <form id="createStudents" enctype="multipart/form-data">
     @csrf
     <div class="form-group col-lg-8 mx-auto">
@@ -8,8 +8,8 @@
         <input id="excelStudent" class="form-control" type="file" name="excelStudent">
     </div>
     {{-- EXCEL FILE<input type="file" name="excel"> --}}
-    <div class="form-group col-lg-8 mx-auto">
-        <button id="BtcreateStudent" type="button" class="btn btn-primary">Lưu</button>
+    <div class="form-group col-lg-8 mx-auto text-right">
+        <button id="BtcreateStudent" type="button" class="btn btn-primary-neo">Lưu</button>
     </div>
 </form>
 

@@ -1,4 +1,4 @@
-<h2 class="alert alert-success text-center">Tạo lớp học</h2> 
+<h4 class="alert-success-neo m-4 p-2 text-center">Tạo lớp học</h4> 
 <form id="createClass">
     <div class="form-group col-lg-8 mx-auto pd-4">
       <label for="name">Nhập Tên Lớp *</label>
@@ -21,9 +21,9 @@
        <input id="time_end" class="form-control" type="date" name="time_end">
    </div>
    {{-- Datetime end<input type="date" name="time_end"> --}}
-   <div class="form-group col-lg-8 mx-auto">
-    <button id="BtcreateClass" class="btn btn-primary"  type="button" >Lưu</button>
-       </div>
+    <div class="form-group col-lg-8 mx-auto text-right">
+        <button id="BtcreateClass" class="btn btn-primary-neo "  type="button" >Lưu</button>
+    </div>
 </form>
 
 <script>

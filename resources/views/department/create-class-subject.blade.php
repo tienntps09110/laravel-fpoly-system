@@ -1,5 +1,6 @@
 @extends('department.home')
 @section('contentPDT')
+
 @if($errors->any())
     <div class="col-lg-6 mx-auto">
         <div class="alert alert-warning">
@@ -12,16 +13,21 @@
         </div>
     </div>
 @endif
-<div id="danger">
-    {{session('Danger')?session('Danger'):''}}
+
+ 
+@if(session('Danger'))
+<div class="alert-danger-neo text-center">
+    {{session('Danger')}}
 </div>
-<div id="success">
-    {{session('Success')?session('Success'):''}}
+@elseif(session('Success'))
+<div id="success" class="alert-success-neo text-center">
+    {{session('Success')}}
 </div>
+@endif
 <form method="post">
     @csrf
     <!-- content -->
-    <div class="px-5">
+    <div class="px-lg-5">
         <!-- Danh sách Giáo viên chưa có lịch dạy (ẩn) -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -45,118 +51,97 @@
                 </div>
               </div>
             </div>
-          </div>
+        </div>
         <!-- Công cụ Phân lớp -->
         <div class="container-fluid py-3">
-            <div class="box cong-cu-phan-lop">
-                <h3 class="text-center">Công cụ Phân lớp</h3>
+            <div class="box cong-cu-phan-lop p-4">
+                <h3 class="alert-success-neo mx-lg-4 p-2 text-center">Công cụ Phân lớp</h3> 
                 <div class="">
                     <div class="row">
-                        <div class="col-lg-4">
-                            <div class="container-fluid my-4">
-                                <label for="lop"> Lớp 
-                                    <select name="class_id" id="lop" class="form-control"> 
-                                        <option selected disabled>Chọn lớp</option>    
-                                        @foreach ($class as $classDetail)
-                                                <option value="{{ $classDetail->id }}">{{ $classDetail->name }}</option>
-                                            @endforeach
-                                    </select>
-                                </label> 
-                            </div>
-                            <div class="container-fluid ">
-                                <label for="thu-hoc"> Chọn Các Thứ học trong tuần   
-                                    <select name="" id="thu-hoc" disabled class="form-control" >
-                                        <option selected disabled>Chọn thứ </option>
-                                        <option value="0">Chủ nhật</option>
-                                        <option value="1">Thứ hai</option>
-                                        <option value="2">Thứ ba</option>
-                                        <option value="3">Thứ tư</option>
-                                        <option value="4">Thứ năm</option>
-                                        <option value="5">Thứ sáu</option>
-                                        <option value="6">Thứ bảy</option>
-                                    </select>   
-                                </label>
-                                <script>
-                                    var arrayDay = [];
-                                    $(document).ready(function(){
-                                        $("#thu-hoc").change(function(){
-                                            var t = $(this).val();
-                                            var show_t = $("#thu-hoc").children("option[value='"+t+"']").text();
-                                            
-                                            $('#result-weekday').append(`<div class="badge badge-pill badge-primary" style="padding:0.3em 0.5em;font-weight:normal">
-                                                                            <span class='small'>${show_t}</span> 
-                                                                            <span class='close-badge' id='${t}'><i class="fas fa-times" style="cursor:pointer;transform:scale(0.8)" ></i></span>
-                                                                            <input class='days_study' id='' name='days_study[]' value='${t}' hidden>  
-                                                                        </div>
-                                                                        `);
-                                            arrayDay.push(t);
-                                            $("#thu-hoc").val("");
-                                            $("#thu-hoc").children("option[value='"+t+"']").hide();
-                                            $(".close-badge").click(function(){
-                                                $(this).parent().remove();
-                                                var unhide_target = $(this).attr("id");
-                                                $("#thu-hoc").children("option[value="+unhide_target+"]").show();
-                                            })
+                        <div class="col-lg-4 px-5 py-2">
+                            <label for="lop"> Lớp    </label> 
+                                <select name="class_id" id="lop" class="form-control"> 
+                                    <option selected disabled>Chọn lớp</option>    
+                                    @foreach ($class as $classDetail)
+                                            <option value="{{ $classDetail->id }}">{{ $classDetail->name }}</option>
+                                        @endforeach
+                                </select>
+                         
+                        </div>
+                        <div class="col-lg-4 px-5 py-2">
+                            <label for="mon"> Môn </label>
+                            <select name="subject_id" id="mon" disabled class="form-control">
+                                <option selected disabled>Chọn môn</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 px-5 py-2">
+                            <label for="thu-hoc"> Chọn Các Thứ học trong tuần   </label>
+                            <select name="" id="thu-hoc" disabled class="form-control" >
+                                <option selected disabled>Chọn thứ </option>
+                                <option value="0">Chủ nhật</option>
+                                <option value="1">Thứ hai</option>
+                                <option value="2">Thứ ba</option>
+                                <option value="3">Thứ tư</option>
+                                <option value="4">Thứ năm</option>
+                                <option value="5">Thứ sáu</option>
+                                <option value="6">Thứ bảy</option>
+                            </select>   
+                            <div id='result-weekday'></div>
+                            <script>
+                                var arrayDay = [];
+                                $(document).ready(function(){
+                                    $("#thu-hoc").change(function(){
+                                        var t = $(this).val();
+                                        var show_t = $("#thu-hoc").children("option[value='"+t+"']").text();
+                                        
+                                        $('#result-weekday').append(`<div class="badge badge-pill badge-primary" style="padding:0.3em 0.5em;font-weight:normal">
+                                                                        <span class='small'>${show_t}</span> 
+                                                                        <span class='close-badge' id='${t}'><i class="fas fa-times" style="cursor:pointer;transform:scale(0.8)" ></i></span>
+                                                                        <input class='days_study' id='' name='days_study[]' value='${t}' hidden>  
+                                                                    </div>
+                                                                    `);
+                                        arrayDay.push(t);
+                                        $("#thu-hoc").val("");
+                                        $("#thu-hoc").children("option[value='"+t+"']").hide();
+                                        $(".close-badge").click(function(){
+                                            $(this).parent().remove();
+                                            var unhide_target = $(this).attr("id");
+                                            $("#thu-hoc").children("option[value="+unhide_target+"]").show();
                                         })
-                                    })    
-                                </script>
-                            </div>
-                            <div class="container-fluid">
-                                <div id='result-weekday'></div>
-                            </div>
-
+                                    })
+                                })    
+                            </script>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="container-fluid my-4">
-                                <div class="container-fluid my-4">
-                                    <label for="from-date">Từ ngày
-                                        <input type="date" disabled name="datetime_start" id="from-date" class="form-control">
-                                    </label>
-                                </div>
-                                <label for="mon"> Môn
-                                    <select name="subject_id" id="mon" disabled class="form-control">
-                                        <option selected disabled>Chọn môn</option>
-                                            {{-- @foreach ($subjects as $subject) --}}
-                                                {{-- <option value="{{ $subject->id }}">{{ $subject->name }}</option> --}}
-                                            {{-- @endforeach --}}
-                                    </select>
-                                </label>
-                            </div>       
-                        
-                            <div class="container-fluid my-4">
-                                <h5>Giáo viên Phụ trách</h5>
-                                <div class="form-inline">
-                                    <button id="chon-giao-vien" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" disabled>
-                                        Chọn giảng viên
-                                    </button><div></div>
-                                </div>
-                            </div>
+                        <div class="col-lg-4 px-5 py-2">
+                            <label for="from-date">Từ ngày</label>
+                            <input type="date" disabled name="datetime_start" id="from-date" class="form-control">
                         </div>
-
-                        <div class="col-lg-4">
-                            <div class="container-fluid my-4">
-                                <div class="container-fluid my-4">
-                                    <label for="to-date">Đến ngày
-                                        <input type="date" disabled name="datetime_end" id="to-date" class="form-control">
-                                    </label>
-                                </div>
-                                <label for="ca"> Ca
-                                    <select name="study_time_id" id="ca" disabled class="form-control">
-                                        <option selected disabled>Chọn ca</option>
-                                        {{-- 
-                                        @foreach ($studyTime as $studyTimeDetail)
-                                            <option value="{{ $studyTimeDetail->id }}">{{ $studyTimeDetail->name }} ({{ $studyTimeDetail->time_start . ' - ' .$studyTimeDetail->time_end }})</option>
-                                        @endforeach --}}
-                                    </select>
-                                </label>
-                                    
+                        <div class="col-lg-4 px-5 py-2">
+                            <label for="to-date">Đến ngày</label>
+                            <input type="date" disabled name="datetime_end" id="to-date" class="form-control">
+                            
+                        </div>
+                        <div class="col-lg-4 px-5 py-2">
+                            <label for="ca"> Ca</label>
+                            <select name="study_time_id" id="ca" disabled class="form-control">
+                                <option selected disabled>Chọn ca</option>
+                            </select>
+                            
+                        </div>
+                        <div class="col-lg-4 px-5 py-2">
+                                <label for=""> Giáo viên Phụ trách</label>
+                                <button id="chon-giao-vien" type="button" class="btn btn-block btn-primary-neo" data-toggle="modal" data-target="#exampleModalCenter" disabled>
+                                    Chọn giảng viên
+                                </button><div></div>
                             </div>
-                            <div class="container-fluid my-4">
-                                <button type="submit" class="btn  btn-primary mt-4" id="submit-form" disabled>Xác nhận</button>
+                        <div class="col-lg-4 px-5 py-2">
+                                
                             </div>
+                        <div class="col-lg-4 px-5 py-2">
+                            <label for=" ">  &nbsp; </label>
+                            <button type="submit" class="btn  btn-block btn-success-neo" id="submit-form" disabled>Xác nhận</button>
                         </div>
                     </div>
- 
                 </div>
             </div>
         </div>
@@ -250,8 +235,8 @@
                             // console.log(data);
                             toDate.val('');
                             fromDate.val('');
-                            $('#danger').html(data);
-                            setTimeout( ()=>{$('#danger').html('');}, 3000);
+                            $(".navbar").after("<div id='danger' class='alert-danger-neo text-center'>"+data+"</div>")
+                            setTimeout( ()=>{$(".navbar").next().fadeOut();}, 3000);
                         }else{
                             for(study of data){
                                 studyTime.prop( "disabled", false);
@@ -293,8 +278,8 @@
         })
         $("#chon-gv").click(function(){
             $(".modal").hide()
-            $("#chon-giao-vien").next().html( "<input id='chon-giao-vien'  class='teacher' type='text' value='"+nameGvChecked+"' disabled class='form-control ml-3'>");
-            $("#chon-giao-vien").next().append( "<input class='teacher' name='teacher_uuid' type='text' value='"+idGvChecked+"' hidden class='form-control ml-3'>");
+            $("#chon-giao-vien").parent().next().html( "<label for=''>  &nbsp; </label> <input id='chon-giao-vien'  class='teacher  btn-block text-center' type='text' value='"+nameGvChecked+"' disabled class='form-control ml-3'>");
+            $("#chon-giao-vien").parent().next().append( "<input class='teacher' name='teacher_uuid' type='text' value='"+idGvChecked+"' hidden class='form-control ml-3'>");
             teacher = idGvChecked;
             $('#submit-form').prop("disabled", false);
             checkCreateClass(4);
