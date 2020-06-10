@@ -1,15 +1,15 @@
 @extends('collaboration.home')
 @section('content.collaboration')
 
-<div class="container-fluid p-lg-4">
-    <div class="col-12 mb-5">
-        <div id="form-search" class="float-right">
+<div class="container-fluid mb-4">
+    <div class="col-12">
+        <div id="form-search"  class="float-right">
             <input type="search" name="search-student" id="search" class="form-control" value="ps09110" required>
-            <button type="button" class="btn btn-primary float-right mt-2">Tìm kiếm</button>
+            <button type="button" style="border-radius:20px" class="btn btn-primary float-right mt-2">Tìm kiếm</button>
         </div>
-    </div><br><br>
-    <div class="content box p-lg-5 p-3">
-        <h3 class="text-center">Thông tin sinh viên</h3>
+    </div>
+    <div class="contain content box p-lg-5 p-3">
+        <h4 class="text-center">Thông tin sinh viên <i class="fas fa-address-card"></i> </h4>
        <div id="info-student" class="mt-3"></div>
     </div>
 </div>

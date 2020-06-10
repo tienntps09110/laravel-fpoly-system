@@ -44,6 +44,9 @@
         #dashboard-radius{
           height:40vh !important;
         }
+        .card-text{
+           font-size: 1rem !important
+         }
       }
       @media screen and (max-width:768px){
         #note-teachers {
@@ -73,10 +76,37 @@
           border-radius: 20px;
           margin-bottom: 15px
         }
+        #search{
+          margin-right: 21px;
+          margin-top: 10px;
+          border-radius: 20px;  
+        }
+        #form-search{
+          display: flex
+        }
+        .contain{
+          margin-top: 70px
+        }
         #myChartRadian{
           margin-bottom: 10px
         }
-
+        .card-text{
+          color: #000 !important
+        }
+        .text-muted{
+          color: #ffffff !important
+        }
+       @media and(max-width:500px){
+        .card-info li span{
+            margin-right:50px
+         }
+       }
+       /* .card-info{
+         display: flex;
+         flex-flow: column;
+         align-items:left        
+         } */
+        
     </style>
 
 </head>
