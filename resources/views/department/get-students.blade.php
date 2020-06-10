@@ -17,7 +17,7 @@
                       <th scope="col">#</th>
                       <th scope="col">Mã số</th>
                       <th scope="col" class="row-width-200">Họ và tên</th>
-                      <th scope="col" class="row-width-200">Giới tính</th>
+                      <th scope="col">Giới tính</th>
                       <th scope="col">Lớp</th>
                       {{-- <th scope="col" class="row-width-200">Bắt đầu khóa</th>
                       <th scope="col" class="row-width-200">Kết thúc khóa</th> --}}
@@ -33,7 +33,7 @@
                             <td>{{++$key}}</td>
                             <td>{{$student->student_code}}</td>
                             <td class="row-width-200">{{$student->full_name}}</td>
-                            <td class="row-width-200">{{$student->sex}}</td>
+                            <td >{{$student->sex}}</td>
                             <td>{{$student->class->name}}</td>
                             {{-- <td class="row-width-200">{{$student->class->time_start}}</td>
                             <td class="row-width-200">{{$student->class->time_end}}</td> --}}

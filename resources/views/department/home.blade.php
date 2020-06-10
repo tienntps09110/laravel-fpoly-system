@@ -71,6 +71,17 @@
     }
     /* danh sách */
     /* danh sách lớp */
+    /* danh sách sinh viên */
+    #avatar{
+        height: calc(400px*0.8);
+        max-height: 100%;
+        width: calc(300px*0.8);
+        max-width: 100%;
+        margin: 0 auto;
+        background-position: center center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
     
     </style>
 </head>
