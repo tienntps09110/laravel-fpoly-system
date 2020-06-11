@@ -39,7 +39,7 @@
                             <td class="row-width-200">{{$student->class->time_end}}</td> --}}
                             <td>{{$student->phone_number}}</td>
                             <td>{{$student->email}}</td>
-                            <td>
+                            <td class="text-center">
                                 <img src="{{$student->avatar_img_path}}" alt="{{$student->avatar_img_path}}" height="100px">
                             </td>
                             <td>

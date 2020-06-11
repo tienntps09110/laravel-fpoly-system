@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="col-lg-4 text-center">
                             <div id="avatar" style="background-image:url({{ $student->avatar_img_path }})"></div>
-                            <a href="department/students" class="btn btn-link" style="font-size:3rem"> <i class="fas fa-chevron-circle-left    "></i> </a>
+                            <a href="{{ route('get-students')}}" class="btn btn-link" style="font-size:3rem"> <i class="fas fa-chevron-circle-left    "></i> </a>
                             {{-- <img src="{{ $student->avatar_img_path }}" alt="{{ $student->avatar_img_path }}" style="width:100%"> --}}
                         </div>
                         <div class="col-lg-8 ">

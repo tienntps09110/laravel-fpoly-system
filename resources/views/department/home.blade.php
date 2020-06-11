@@ -22,6 +22,9 @@
 
     <style>
     /* sửa style.css */
+    .title {
+        font-size: 1.8em;
+    }
     .navbar {
         margin-bottom:0;
     }
