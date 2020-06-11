@@ -16,7 +16,7 @@
 		 <a href="{{ route('collaboration-home') }}"> <i class="fas fa-home"></i> Trang chủ</a>
 	   </li>
 	   <li class="date-teach">
-		<a href="{{ route('search-student-view') }}"> <i class="fas fa-home"></i> Tra cứu sinh viên</a>
+		<a href="{{ route('search-student-view') }}"> <i class="fas fa-search"></i> Tra cứu sinh viên</a>
 	  </li>
 	   {{--  <li class="date-teach">
 		 <a href="{{ route('get-class-subjects-teacher') }}">Danh sách lớp dạy</a>

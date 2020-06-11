@@ -7,7 +7,7 @@
                     <th  class="th-lg">Giáo viên</th>
                     <th class="th-lg" >Lớp</th>
                     <th class="th-lg" >Môn</th>
-                    <th class="th-lg">Nhận xé 1t</th>
+                    <th class="th-lg">Nhận xét</th>
                 </tr>
 
             </thead>

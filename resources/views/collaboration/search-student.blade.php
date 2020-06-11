@@ -5,7 +5,7 @@
     <div class="col-12">
         <div id="form-search"  class="float-right">
             <input type="search" name="search-student" id="search" class="form-control" value="ps09110" required>
-            <button type="button" style="border-radius:20px" class="btn btn-primary float-right mt-2">Tìm kiếm</button>
+            <button type="button" style="border-radius:20px" class="btn btn-primary btn-primary-neo float-right mt-2">Tìm kiếm</button>
         </div>
     </div>
     <div class="contain content box p-lg-5 p-3">
