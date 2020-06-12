@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Core\Core;
 use App\Http\Controllers\Core\View;
+use App\Http\Controllers\Core\Json;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Auth;
@@ -32,7 +33,7 @@ class Get extends Controller
         ]);
     }
     // GET DAYS CLASS SUBJECT
-    public function classSubjectDetail($id){
+    public function classSubjectDetail(Request $req, $id){
         $classSubjects = Get::dbClassSubject()->where('cs.id', $id)->first();
 
         $daysClassSubject = DB::table('days_class_subject as dcs')
@@ -44,11 +45,17 @@ class Get extends Controller
                                 'us.full_name as user_full_name',
                                 'dcs.date'
                             )
+                            ->orderBy('dcs.date', 'asc')
                             ->get();
-        
+        if($req->get_json){
+            // return $daysClassSubject;
+            return view('department.get-ajax-days-class-subject', [
+                'Carbon'          => new Carbon,
+                'daysClassSubject'=> $daysClassSubject
+            ]);
+        }
         return view(View::department('get-detail-class-subject'), [
             'cLassSubject'=> $classSubjects,
-            'daysClassSubject'=> $daysClassSubject,
             'Carbon'          => new Carbon,
             'Core'          => new Core,
         ]);

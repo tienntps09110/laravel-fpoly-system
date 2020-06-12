@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Core\Core;
 use App\Http\Controllers\Core\View;
+use App\Http\Controllers\Core\Json;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Auth;
@@ -19,6 +20,7 @@ class Update extends Controller
         $dayClassSubject = DaysClassSubject::where('id', $id)
                                             ->firstOrFail();
         $users = User::where('soft_deleted', Core::false())
+                        ->whereNotIn('uuid', [$dayClassSubject->user_manager_uuid])
                         ->get();
         $teachers = [];
         // return $dayClassSubject;
@@ -68,16 +70,19 @@ class Update extends Controller
                             ->where('soft_deleted', Core::false())
                             ->first();
         if(!$teacherCheck){
-            return Core::toBack($this->danger, 'Không tìm thấy giáo viên, vui lòng thử lại');
+            // return Core::toBack($this->danger, 'Không tìm thấy giáo viên, vui lòng thử lại');
+            return Json::getMess('Không tìm thấy giáo viên, vui lòng thử lại', 422);
         }
         $daysClassSubject = DaysClassSubject::where('id', $req->id)
                                             ->where('checked', Core::false())
                                             ->first();
         if(!$daysClassSubject || $daysClassSubject && $daysClassSubject->date < Carbon::now()->toDateString()){
-            return Core::toBack($this->danger, 'Ngày không tồn tại hoặc đã hết hạn');
+            // return Core::toBack($this->danger, 'Ngày không tồn tại hoặc đã hết hạn');
+            return Json::getMess('Ngày không tồn tại hoặc đã hết hạn', 422);
         }
         $daysClassSubject->user_manager_uuid = $req->user_manager_uuid;
         $daysClassSubject->save();
-        return Core::toBack($this->success, 'Thay đổi giáo viên dạy thế thành công');
+        // return Core::toBack($this->success, 'Thay đổi giáo viên dạy thế thành công');
+        return Json::getMess('Thay đổi giáo viên dạy thế thành công');
     }
 }

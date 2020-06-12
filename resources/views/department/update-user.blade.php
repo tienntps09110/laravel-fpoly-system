@@ -28,7 +28,7 @@
 
 <div class="px-lg-5">
     <div class="container-fluid py-3">
-        <form method="POST" action="{{ route('update-user-put') }}">
+        <form method="POST" action="{{ route('update-user-put') }}" enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="box cong-cu-phan-lop p-4">
