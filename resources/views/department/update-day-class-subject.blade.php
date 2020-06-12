@@ -1,35 +1,59 @@
- 
-    UPDATE DAY CLAS SUBJECT
-    {{-- ERROR  --}}
-    <div>
-        @if($errors->any())
-            <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-            </ul>
-        @endif
-    </div> 
-    {{-- ERROR  --}}
-    <div>
-        {{session('Danger')?session('Danger'):''}}
-    </div> 
-    {{-- SUCCESSFULLY  --}}
-    <div>
-        {{session('Success')?session('Success'):''}}
-    </div> 
-    <form action="{{ route('update-day-class-subject-put') }}" method="POST">
-        @method('put')
-        @csrf
-        <input type="hidden" name="id" value="{{ $dayClassSubject->id }}">
-        <input type="hidden" name="class_subject_id" value="{{ $dayClassSubject->class_subject_id }}">
-
-        <select name="user_manager_uuid" >
-            @foreach ($teachers as $teacher)
-                <option value="{{ $teacher->uuid }}" {{ $teacher->uuid == $dayClassSubject->user_manager_uuid?'selected':'' }}>{{ $teacher->full_name }}</option>
-            @endforeach
-        </select>
-        <button type="submit" class="btn btn-primary">UPDATE</button>
-    </form>
- 
-
+<button id="open-modal" type="button" style="display:none;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Đổi giáo viên</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Recipient:</label>
+                    <select id="select-manager" name="user_manager_uuid" class="form-control">
+                        @foreach ($teachers as $teacher)
+                            <option value="{{ $teacher->uuid }}" {{ $teacher->uuid == $dayClassSubject->user_manager_uuid?'selected':'' }}>{{ $teacher->full_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="change-teacher" type="button" data-dismiss="modal" class="btn btn-primary btn-primary-neo">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        var resultAjaxSuccess = $('#resultAjaxSuccess');
+        $('#open-modal').click();
+        $('#change-teacher').click(()=>{
+            var selectManager = $('#select-manager option:selected')[0].value;
+            $.ajax({
+                url: '{{ route('update-day-class-subject-put') }}',
+                method: 'PUT',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: '{{ $dayClassSubject->id }}',
+                    class_subject_id: '{{ $dayClassSubject->class_subject_id }}',
+                    user_manager_uuid: selectManager
+                },
+                success(data){
+                    resultAjaxSuccess.html('');
+                    resultAjaxSuccess.text(data.Message).removeClass('d-none');
+                    setTimeout(()=> {resultAjaxSuccess.html('').addClass('d-none')}, 4000);
+                    $("#load-days-cs").html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
+                    loadAjax($("#load-days-cs"), window.location + '?get_json=ddsaahJIDSA3213hIHAO0e12jkUADI9231jdiI11');
+                },
+                error(data){
+                    console.log(data)
+                }
+            })
+        })
+    });
+    function loadAjax(component, route){
+        component.load(route);
+    };
+</script>
