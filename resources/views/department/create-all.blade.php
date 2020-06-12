@@ -14,11 +14,10 @@
     </div>
     <div>
         {{session('Success')?session('Success'):''}}
-        
     </div>
-    <div class="alert alert-danger-neo text-center d-none" id="resultAjaxError"></div>
+    {{-- <div class="alert alert-danger-neo text-center d-none" id="resultAjaxError"></div>
 
-    <div class="alert alert-success-neo text-center d-none" id="resultAjaxSuccess"></div>
+    <div class="alert alert-success-neo text-center d-none" id="resultAjaxSuccess"></div> --}}
     <div class="container-fluid">
         <div class="p-3 row">
             <div class="col-lg-6 p-lg-3 py-2 ">

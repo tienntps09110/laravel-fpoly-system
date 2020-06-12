@@ -34,26 +34,30 @@
             },
             success:function(data) {
                 if(data.Status == 200){
-                    messSuccess.html(data.Message).removeClass('d-none');
-                    setTimeout( () => { messSuccess.addClass('d-none').html('')  }, 3000);
+                    // messSuccess.html(data.Message).removeClass('d-none');
+                    // setTimeout( () => { messSuccess.addClass('d-none').html('')  }, 3000);
+                    toastMess (data.Message, 5000,'success');
                     console.log(data);
                 }else{
-                    messError.removeClass('d-none');
+                    // messError.removeClass('d-none');
                     if(typeof data.Message == 'object'){
                         $.each(data.Message, function(key, value){
-                            messError.append(this + '<br>');
+                            // messError.append(this + '<br>');
+                            toastMess (this, 6000,'error');
                         });
                     }else{
-                        messError.html(data.Message);
+                        // messError.html(data.Message);
+                        toastMess (data.Message, 5000,'error');
                     }
-                    setTimeout( () => { messError.addClass('d-none').html('')  }, 3000);
-                    console.log(data);
+                    // setTimeout( () => { messError.addClass('d-none').html('')  }, 3000);
+                    // console.log(data);
                 }
             },
             error: function(data) {
-                messError.html(data).removeClass('d-none');
-                setTimeout( () => { messError.addClass('d-none').html('')  }, 3000);
-                console.log(data.Message);
+                // messError.html(data).removeClass('d-none');
+                // setTimeout( () => { messError.addClass('d-none').html('')  }, 3000);
+                // toastMess (data, 5000,'error');
+                console.log(data);
             }
         });
     });
