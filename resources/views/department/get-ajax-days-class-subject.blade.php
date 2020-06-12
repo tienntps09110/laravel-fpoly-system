@@ -19,29 +19,6 @@
                     </td>
                 </tr>
             @endforeach
-            <div id="ajax-update"></div>
-            <script>
-                $(document).ready(function(){
-                    // console.log(resultAjaxSuccess)
-                    var buttonChangeTeacher = $('.button-change-teacher');
-                    buttonChangeTeacher.each(function(){
-                        $(this).click( ()=> {
-                            $('#ajax-update')
-                            .html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>')
-                            .attr('style', 'position: fixed; top: 50%; z-index: 100; left: 50%;');
-                            $.ajax({
-                                method: 'GET',
-                                url: $(this).attr('data'),
-                                success(data){
-                                    // console.log(data)
-                                    $('#ajax-update').html('').attr('style', '')
-                                    $('#ajax-update').html(data)
-                                }
-                            })
-                        })
-                    })
-                })
-            </script>
       </tbody>
     </table>
 </div>
@@ -55,7 +32,7 @@
             $(this).click( ()=> {
                 $('#ajax-update')
                 .html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>')
-                .attr('style', 'position: fixed; top: 50%; z-index: 100; left: 50%;');
+                .attr('style', 'position: fixed; top: 50%; z-index: 2; left: 50%;');
                 $.ajax({
                     method: 'GET',
                     url: $(this).attr('data'),

@@ -17,9 +17,16 @@
 <form method="post" action="{{ route('update-subject-put') }}">
     @method('put')
     @csrf
-    <input type="hidden" name="id" value="{{ $subject->id }}">
-    Name<input type="text" name="name" value="{{ $subject->name }}">
-    <br>
-    Code<input type="text" name="code" value="{{ $subject->code }}">
-    <button type="submit">Update</button>
+    <div class="form-group">
+        <label for="name" class="col-form-label">Tên môn:</label>
+        <input type="hidden" name="id" value="{{ $subject->id }}">
+        <input class="form-control" type="text" id="name" name="name" value="{{ $subject->name }}">
+    </div>
+    <div class="form-group">
+        <label for="" class="col-form-label">Code:</label>
+        <input class="form-control" type="text" name="code" value="{{ $subject->code }}">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary-neo" type="submit">Update</button>
+    </div>
 </form>

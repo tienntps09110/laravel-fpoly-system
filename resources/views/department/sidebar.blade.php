@@ -18,13 +18,19 @@
             <li> <a> <i class="fas fa-list"></i> Danh sách</a> 
                 <ul>
                     <li>
-                        <a href="{{ route('get-class-subjects') }}">DS Môn của lớp<span style="float: left;"><i class="fas fa-list"></i></span> </a>
+                        <a href="{{ route('get-class-subjects') }}">DS Tổng hợp<span style="float: left;"><i class="fas fa-list"></i></span> </a>
                     </li>
                     <li>
-                        <a href="{{ route('get-users') }}">DS Giáo viên<span style="float: left;"><i class="fas fa-list"></i></span> </a>
+                        <a href="{{ route('get-users') }}">DS Giảng viên<span style="float: left;"><i class="fas fa-list"></i></span> </a>
                     </li>
                     <li>
-                        <a href="{{ route('get-students') }}">DS Sinh viên<span style="float: left;"><i class="fas fa-list"></i></span> </a>
+                        <a href="{{ route('get-students') }}"> DS Sinh viên<span style="float: left;"><i class="fas fa-list"></i></span> </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('get-class') }}">  DS Lớp học <span style="float: left;"><i class="fas fa-list"></i></span> </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('get-subjects') }}"> DS Môn học<span style="float: left;"><i class="fas fa-list"></i></span> </a>
                     </li>
                 </ul>
                 

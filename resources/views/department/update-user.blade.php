@@ -34,11 +34,11 @@
             <div class="box cong-cu-phan-lop p-4">
                 <h3 class="alert-primary-neo mx-lg-4 p-3 text-center">CẬP NHẬT THÔNG TIN CÁN BỘ NHÂN VIÊN</h3> 
 
-                <div class="py-lg-  pl-lg-5">
+                <div class="py-lg-5  pl-lg-5">
                     <div class="row">
                         <div class="col-lg-4 text-center">
                             <div id="avatar" style="background-image:url({{ $user->avatar_img_path }})"></div>
-                            <a href="{{ route('get-users')}}" class="btn btn-link" style="font-size:3rem"> <i class="fas fa-chevron-circle-left    "></i> </a>
+                            <a href="{{ route('get-users')}}" class="btn btn-link" id="backward_2"> <i class="fas fa-sign-out-alt    "></i> </a>
                             {{-- <img src="{{ $student->avatar_img_path }}" alt="{{ $student->avatar_img_path }}" style="width:100%"> --}}
                         </div>
                         <div class="col-lg-8 ">

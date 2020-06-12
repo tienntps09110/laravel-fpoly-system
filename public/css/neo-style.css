@@ -272,6 +272,11 @@
         transform: rotate(180deg);
         color: #1ebd9e;
     }
+    #backward_2 {
+        font-size: 3em;
+        transform: rotate(180deg);
+        color: #1ebd9e;
+    }
     .row-thong-tin-chung{
         display:block;
         padding:0.5em 1em;

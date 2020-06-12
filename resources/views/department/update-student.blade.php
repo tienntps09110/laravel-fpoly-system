@@ -35,18 +35,18 @@
                 @method('put')
                 @csrf
                 <input type="hidden" name="id" value="{{ $student->id }}">
-                <div class="py-lg-  pl-lg-5">
+                <div class="py-lg-5  pl-lg-5">
                     <div class="row">
                         <div class="col-lg-4 text-center">
                             <div id="avatar" style="background-image:url({{ $student->avatar_img_path }})"></div>
-                            <a href="{{ route('get-students')}}" class="btn btn-link" style="font-size:3rem"> <i class="fas fa-chevron-circle-left    "></i> </a>
+                            <a href="{{ route('get-students')}}" class="btn btn-link"   id="backward_2"  > <i class="fas fa-sign-out-alt    "></i> </a>
                             {{-- <img src="{{ $student->avatar_img_path }}" alt="{{ $student->avatar_img_path }}" style="width:100%"> --}}
                         </div>
                         <div class="col-lg-8 ">
                             <div class="row">
                                 <div class="col-lg-6 px-5 py-2">
                                     <label for=""> Mã số Sinh viên:   </label> 
-                                    <input type="text" class="form-control" disabled value="{{ $student->student_code }}">
+                                    <span class="form-control"> {{ $student->student_code }}</span>
                                 </div>
                                 <div class="col-lg-6 px-5 py-2">
                                     <label for="full_name"> Họ và Tên: </label>

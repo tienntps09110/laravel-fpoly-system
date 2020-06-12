@@ -1,15 +1,27 @@
-UPDATE CLASS
 <form method="post">
-    @method('put')
-    @csrf
-    CODE <input type="text" value="{{ $classMs->code }}">
-    <br>
-    NAME <input type="text" value="{{ $classMs->name }}">
-    <br>
-    TIME START <input type="text" value="{{ $classMs->time_start }}">
-    <br>
-    TIME END <input type="text" value="{{ $classMs->time_end }}">
-    <br>
-    <button type="submit">UPDATE</button>
+@method('put')
+@csrf
+    <div class="form-group">
+        <label for="recipient-name" class="col-form-label">Mã lớp học:</label>
+        <input class="form-control" type="text" value="{{ $classMs->code }}">
+    </div>
+    <div class="form-group">
+        <label for="recipient-name" class="col-form-label">Tên lớp học:</label>
+        <input class="form-control" type="text" value="{{ $classMs->name }}">
+    </div>
+    <div class="form-group">
+        <label for="recipient-name" class="col-form-label">Thời gian bắt đầu:</label>
+        <input class="form-control" type="text" value="{{ $classMs->time_start }}">
+    </div>
+    <div class="form-group">
+        <label for="recipient-name" class="col-form-label">Thời gian kết thúc:</label>
+        <input class="form-control" type="text" value="{{ $classMs->time_end }}">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary-neo" type="submit">Update</button>
+    </div>
+
 </form>
-<img src="https://robohash.org/pss432fas?set=set4 " alt="">
+   
+
+ 
