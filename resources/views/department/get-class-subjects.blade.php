@@ -70,15 +70,6 @@
                                 $("select[name='table_all_classes_length']").addClass('length-select');
                             })
                         </script>
-                      {{-- @foreach ($daysClassSubject as $key=> $daysDetail)
-                          <tr>
-                              <td scope="row"> {{ ++$key }} </td>
-                              <td class="row-width-200"> {{$daysDetail->user_full_name }} </td>
-                              <td> {{ $Carbon::parse($daysDetail->date)->format('d/m/Y') }} </td>
-                              <td class="{{ $daysDetail->checked =="false" ? "text-danger" :"text-success"  }}" > {{ $daysDetail->checked =="false" ? "Chưa Dạy" :"Đã dạy" }} </td>
-                            </tr>
-                          @endforeach    
-                     --}}
                   </tbody>
                 </table>
               </div>

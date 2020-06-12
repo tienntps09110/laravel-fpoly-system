@@ -7,7 +7,6 @@
     <div class="box p-4">
         <div class="title p-lg-4 text-center">
             Danh sách Cán bộ - Giáo viên Toàn trường
-           
         </div>
          
         <div class="p-lg-4">
@@ -37,7 +36,7 @@
                                     <img src="{{$user->avatar_img_path}}" alt="{{$user->avatar_img_path}}" height="100px">
                                 </td>
                                 <td>
-                                    <a href="{{ route('get-user', $user->uuid) }}" class="btn btn-link">Chi tiết</a>
+                                    <a href="{{ route('update-user-view', $user->uuid) }}" class="btn btn-link">Cập nhật</a>
                                 </td>
                             </tr>
                         @endforeach 

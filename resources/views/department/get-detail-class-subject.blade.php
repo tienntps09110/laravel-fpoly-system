@@ -2,7 +2,7 @@
 @section('contentPDT')
 <div class="container-fluid  p-4">
     <div class="box p-4">
-         
+       
         {{-- {{ json_encode($cLassSubject) }} --}}
 
         <div class="title p-lg-4 ">
@@ -44,7 +44,7 @@
                         <tr>
                             <td>{{++$key}}</td>
                             <td class="row-width-200">{{ $daysDetail->user_full_name }}</td>
-                            <td  class="row-width-200">{{ $daysDetail->date }}</td>
+                            <td  class="row-width-200">  {{ $Carbon::parse($daysDetail->date)->format('d/m/Y') }}</td>
                             <td>
                                 <a class="btn btn-link"  href="{{ route('update-day-class-subject-view', $daysDetail->id) }}">Đổi người dạy</a>
                             </td>

@@ -53,6 +53,11 @@
     background-color: #1ebd9e;
     border-radius: 0.3rem;
 }
+.alert-primary-neo{
+    background-color: #2a4054;
+    border-radius: 0.3rem;
+    color: #fff;
+}
 
 
 /* =============================== */

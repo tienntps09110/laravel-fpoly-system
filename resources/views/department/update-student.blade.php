@@ -30,7 +30,7 @@
     <div class="container-fluid py-3">
         <form  action="{{ route('update-student-put') }}" method="POST" enctype="multipart/form-data">
             <div class="box cong-cu-phan-lop p-4">
-                <h3 class="alert-success-neo mx-lg-4 p-2 text-center">Cập nhật thông tin</h3> 
+                <h3 class="alert-success-neo mx-lg-4 p-3 text-center">Cập nhật thông tin</h3> 
 
                 @method('put')
                 @csrf
