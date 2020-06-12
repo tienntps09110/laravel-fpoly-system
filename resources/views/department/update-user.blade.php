@@ -46,7 +46,7 @@
                                 <div class="col-lg-6 px-5 py-2">
                                     <label for=""> Tên đăng nhập:   </label> 
                                     <input type="hidden" value="{{ $user->uuid }}" name="uuid">
-                                    <input type="text" class="form-control" disabled value="{{ $user->user_name }}">
+                                    <span   class="form-control"  >{{ $user->user_name }}</span>
                                 </div>
                                 <div class="col-lg-6 px-5 py-2">
                                     <label for="full_name"> Họ và Tên: </label>

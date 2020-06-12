@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="recipient-name" class="col-form-label">Recipient:</label>
+                    <label for="recipient-name" class="col-form-label">Giáo viên mới:</label>
                     <select id="select-manager" name="user_manager_uuid" class="form-control">
                         @foreach ($teachers as $teacher)
                             <option value="{{ $teacher->uuid }}" {{ $teacher->uuid == $dayClassSubject->user_manager_uuid?'selected':'' }}>{{ $teacher->full_name }}</option>
@@ -19,8 +19,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="change-teacher" type="button" data-dismiss="modal" class="btn btn-primary btn-primary-neo">Send message</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button id="change-teacher" type="button" data-dismiss="modal" class="btn btn-primary btn-primary-neo">Xác nhận</button>
             </div>
         </div>
     </div>

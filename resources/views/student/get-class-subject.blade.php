@@ -8,22 +8,20 @@
             Chi tiết Môn: <span class="display-4 font-weight-bold ml-lg-4" id="ten-mon">{{ $classSubject->subject_name }} </span>
             <a href="{{ route('get-class-subjects-student') }}" id='backward'><i class="fas fa-sign-out-alt    "></i></a>
         </div>
-        <div class="">
-            <div class="row py-3 mt-2 ">
-                {{-- {{ json_encode($classSubject) }} --}}
-                <div class="col-lg-3 p-lg-3 p-1 text-center ">Ngày bắt đầu:</div>
-                <div class="col-lg-3 p-lg-3 p-1 text-center font-weight-bold ">{{ $Carbon::parse($classSubject->datetime_start)->format('d/m/Y') }}</div>
-                <div class="col-lg-3 p-lg-3 p-1 text-center">Ngày kết thúc:</div>
-                <div class="col-lg-3 p-lg-3 p-1 text-center font-weight-bold"> {{ $Carbon::parse($classSubject->datetime_end)->format('d/m/Y') }}</div>
-                <div class="col-lg-3 p-lg-3 p-1 text-center">Giáo viên phụ trách:</div>
-                <div class="col-lg-3 p-lg-3 p-1 text-center font-weight-bold">{{ $classSubject->user_full_name }}</div>
-                <div class="col-lg-3 p-lg-3 p-1 text-center">Lớp học:</div>
-                <div class="col-lg-3 p-lg-3 p-1 text-center font-weight-bold">{{ $classSubject->class_name }}</div>
-                <div class="col-lg-3 p-lg-3 p-1 text-center">Số ngày nghỉ tối đa:</div>
-                <div class="col-lg-3 p-lg-3 p-1 text-center font-weight-bold">{{ $classSubject->subject_days_fail }} ngày</div>
-                <div class="col-lg-3 p-lg-3 p-1 text-center">Số ngày nghỉ hiện tại:</div>
-                <div class="col-lg-3 p-lg-3 p-1 text-center font-weight-bold">{{ $countdayStudy }} ngày</div>
-            </div>
+        <div class="row py-3 mt-2 ">
+            {{-- {{ json_encode($classSubject) }} --}}
+            <div class="col-lg-3 p-lg-3 p-1 text-center ">Ngày bắt đầu:</div>
+            <div class="col-lg-3 p-lg-3 p-1 text-center font-weight-bold ">{{ $Carbon::parse($classSubject->datetime_start)->format('d/m/Y') }}</div>
+            <div class="col-lg-3 p-lg-3 p-1 text-center">Ngày kết thúc:</div>
+            <div class="col-lg-3 p-lg-3 p-1 text-center font-weight-bold"> {{ $Carbon::parse($classSubject->datetime_end)->format('d/m/Y') }}</div>
+            <div class="col-lg-3 p-lg-3 p-1 text-center">Giáo viên phụ trách:</div>
+            <div class="col-lg-3 p-lg-3 p-1 text-center font-weight-bold">{{ $classSubject->user_full_name }}</div>
+            <div class="col-lg-3 p-lg-3 p-1 text-center">Lớp học:</div>
+            <div class="col-lg-3 p-lg-3 p-1 text-center font-weight-bold">{{ $classSubject->class_name }}</div>
+            <div class="col-lg-3 p-lg-3 p-1 text-center">Số ngày nghỉ tối đa:</div>
+            <div class="col-lg-3 p-lg-3 p-1 text-center font-weight-bold">{{ $classSubject->subject_days_fail }} ngày</div>
+            <div class="col-lg-3 p-lg-3 p-1 text-center">Số ngày nghỉ hiện tại:</div>
+            <div class="col-lg-3 p-lg-3 p-1 text-center font-weight-bold">{{ $countdayStudy }} ngày</div>
         </div>
 
         <div class="px-lg-5">
@@ -62,32 +60,6 @@
                     </tbody>
                 </table>
             </div>
-
-            <script>
-                    $(document).ready(function(){
-                        $('#datatable').DataTable({
-                            language:{
-                                sProcessing: 'Đang xử lý...',
-                                sLengthMenu: 'Xem _MENU_ mục',
-                                sZeroRecords: 'Không tìm thấy dòng nào phù hợp',
-                                sInfo: 'Đang xem <b> _START_ </b> đến <b> _END_ </b> trong tổng số <b> _TOTAL_ </b> mục',
-                                sInfoEmpty: 'Đang xem 0 đến 0 trong tổng số 0 mục',
-                                sInfoFiltered: '(được lọc từ _MAX_ mục)',
-                                sInfoPostFix: '',
-                                sSearch: 'Tìm:',
-                                sUrl: '',
-                                oPaginate: {
-                                    sFirst: 'Đầu',
-                                    sPrevious: 'Trước',
-                                    sNext: 'Tiếp',
-                                    sLast: 'Cuối'
-                                }
-                            }
-                        });
-                        $('#datatable_filter').find('input').addClass('table-input-search');
-                        $("select[name='datatable_length']").addClass('length-select');
-                    })
-            </script>
         </div>
     </div>
 </div>

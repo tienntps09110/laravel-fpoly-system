@@ -23,7 +23,7 @@
       </div>
       <div class="p-lg-4    ">
           <div class="table-responsive">
-              <table class="stripe " id="table_detail_class_subject" >
+              <table class="stripe " id="datatable" >
                 <thead class="">
                   <tr>
                     <th scope="col">#</th>
