@@ -13,10 +13,10 @@
     padding: 4px 10px;
     border:1px solid #1ebd9e;
 }
-#table_detail_class_subject tr>*{
-    padding: 20px;
+#table_detail_class_subject tr>*, #datatable tr>*{
+    padding:  1em ;
 }
-#table_detail_class_subject_wrapper{
+#table_detail_class_subject_wrapper, #datatable_wrapper{
     min-height: 400px;
 }
 .current{
