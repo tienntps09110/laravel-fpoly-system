@@ -1,5 +1,5 @@
 
-		<h4 class="text-center p-4"style="font-weight:bold">Biểu đồ sinh viên vắng của môn học</h4>
+		<div class="text-center alert-primary-neo p-2 mb-3" >Biểu đồ sinh viên vắng của môn học</div>
 		<div id="chartRadian">
 				<canvas id="myChartRadian"></canvas>
 			</div>   

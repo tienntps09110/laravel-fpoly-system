@@ -7,8 +7,8 @@
           <div class="col-sm-4 p-3 card-alert">
               <div class="box border d-flex flex-wrap align-content-center justify-content-center">
                   <div class="text-center">
-                      Giáo viên <i class="fas fa-chalkboard-teacher    "></i>
-                      </br>
+                      Giảng viên <i class="fas fa-chalkboard-teacher    "></i>
+                      
                       <p id="chu-noi">5000</p>
                   </div>
               </div>
@@ -17,7 +17,7 @@
               <div class="box border d-flex flex-wrap align-content-center justify-content-center">
                   <div class="text-center">
                       Giáo viên <i class="fas fa-chalkboard-teacher    "></i>
-                      </br>
+                    
                       <p id="chu-noi">5000</p>
                   </div>
               </div>
@@ -26,7 +26,7 @@
               <div class="box border d-flex flex-wrap align-content-center justify-content-center">
                   <div class="text-center">
                       Giáo viên <i class="fas fa-chalkboard-teacher    "></i>
-                      </br>
+                       
                       <p id="chu-noi">5000</p>
                   </div>
               </div>

@@ -1,30 +1,32 @@
 
   @extends('collaboration.home')
   @section('content.collaboration')
-  <div class="container-fluid">
-  <div class="container">
-      <div class="row" id="render-count-all">
-          
-      </div>
-  </div>
+<!-- hàng 1 - các Nút tổng số lượng  -->
+<div class="container-fluid ">
+    <div class="container">
+        <div class="row" id="render-count-all"></div>
+    </div>
 </div>
 <!-- hàng 2 - Biểu đồ theo tháng -->
-<div id="component-dashboard-month" class="container-fluid p-3"></div>
+<div class="container-fluid ">
+    <div class="container">
+        <div id="component-dashboard-month" class="  py-3"></div>
+    </div>
+</div>
+<!-- hàng 3 - nhận xét GV -->
+<div class="container-fluid ">
+    <div class="container">
+        <div id="note-teachers" class="  py-3"></div>
+    </div>
+</div>
 
-<!-- hàng 3 - nhận xét GV  & Biểu đồ hình tròn điểm danh theo lớp -->
-<div class="container-fluid p-lg-3">
-  <div class="container">
-      <div class="row">
-          <!-- nhận xét GV -->
-          <div id="note-teachers" class="col-12 p-3"></div>
-
-          <!-- Biểu đồ hình tròn điểm danh theo lớp -->
-          <div id="dashboard-radius" class="col-lg-6 mb-4">
-
-          </div>
-
-      </div>
-  </div>
+<!-- hàng 4 - Biểu đồ hình tròn điểm danh theo lớp -->
+<div class="container-fluid ">
+    <div class="container">
+        <div id="dashboard-radius" class="col-lg-6  py-3"></div>
+    </div>
+</div>
+    <!-- Biểu đồ hình tròn điểm danh theo lớp -->
 </div>
 <script>
     // COMPONENT REALTIME

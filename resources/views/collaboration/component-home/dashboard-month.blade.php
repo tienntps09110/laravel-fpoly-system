@@ -1,6 +1,6 @@
 
-    <div class="container myChart" style="width:100%;">
-        <h4 class="text-center p-4"style="font-weight:bold">Biểu đồ thể hiện theo tháng </h4>
+    <div class="myChart"  >
+        <div class="text-center alert-primary-neo mb-3 p-lg-2">Biểu đồ thể hiện theo tháng </div>
         <canvas style="border: none" id="myChart"></canvas>
 </div>
 

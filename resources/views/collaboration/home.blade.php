@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Trang Công tác sinh viên</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,6 +15,8 @@
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/pusher.min.js"></script>
     <script src="js/Chart.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
     <style>
       @media screen and (max-width:655px){
         #responsive-td1{
@@ -57,7 +59,7 @@
         border-radius: 20px;
       /* padding: 20px; */
       box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-      font-size: 1.5em;
+      font-size: 1.3em;
       background-color: white;
       padding: 1em
       }
@@ -71,10 +73,11 @@
         }
         #note-teachers{
           box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-          font-size: 1.5em;
+          /* font-size: 1em; */
           background-color: white;
           border-radius: 20px;
-          margin-bottom: 15px
+          margin-bottom: 15px;
+          padding: 1em
         }
         #search{
           margin-right: 21px;
@@ -118,8 +121,8 @@
           <div id="content">
               {{--  navbar  --}}
             @include('collaboration.navbar')
-<!-- hàng 1 - các Nút tổng số lượng  -->
-        @yield('content.collaboration')
+
+            @yield('content.collaboration')
           </div>
       </div>
     <!-- Optional JavaScript -->
@@ -127,6 +130,7 @@
     <script src="js/scriptchart.js"></script>
     <script defer src="js/solid.min.js" ></script>
     <script defer src="js/fontawesome.min.js" ></script>
+    <script src="js/script.js" ></script>
     
 </body>
 </html>

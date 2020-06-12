@@ -202,6 +202,7 @@ a.article {
 	width: 100%;
 	min-height: 100vh;
 	transition: all 0.3s;
+	padding: 2em 0;
 }
 .form-search {
 	position: relative;
@@ -281,6 +282,8 @@ a.article {
 #chu-noi {
 	font-weight: 700;
 	font-size: 1.5em;
+	color: #2a4054;
+	display: block;
 }
 .box-bieu-do {
 	padding: 30px;
