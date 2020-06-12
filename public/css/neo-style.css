@@ -1,262 +1,302 @@
 /* =============================== */
 /* css chung                       */
 /* =============================== */
-.dark-screen {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 2;
-}
-.message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    z-index: 3;
-    border-radius: 30px;
-    padding: 30px;
-}
-.row-center{
-    transition: all 0.3s;
-}
-.row-center > td {
-    padding-top: 50px;  
-}
+    .dark-screen {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 2;
+    }
+    .message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        z-index: 3;
+        border-radius: 30px;
+        padding: 30px;
+    }
+    .row-center{
+        transition: all 0.3s;
+    }
+    .row-center > td {
+        padding-top: 50px;  
+    }
 
-.btn-primary-neo{
-    border:1px solid #2a4054;
-    color:white ;
-    background-color: #2a4054;
-}
-.btn-primary-neo:hover{
-    border:1px solid #2a4054;
-    color:#2a4054;
-    background-color: white;
-}
-.btn-success-neo{
-    border:1px solid #1ebd9e;
-    color:black ;
-    background-color: #1ebd9e;
-}
-.btn-success-neo:hover{
-    border:1px solid #1ebd9e;
-    color:#1ebd9e;
-    background-color: white;
-}
-.alert-danger-neo{
-    background-color: #e54641;
-    color: #ffdc63;
-}
-.alert-success-neo{
-    background-color: #1ebd9e;
-    border-radius: 0.3rem;
-}
-.alert-primary-neo{
-    background-color: #2a4054;
-    border-radius: 0.3rem;
-    color: #fff;
-}
-
+    .btn-primary-neo{
+        border:1px solid #2a4054;
+        color:white ;
+        background-color: #2a4054;
+    }
+    .btn-primary-neo:hover{
+        border:1px solid #2a4054;
+        color:#2a4054;
+        background-color: white;
+    }
+    .btn-success-neo{
+        border:1px solid #1ebd9e;
+        color:black ;
+        background-color: #1ebd9e;
+    }
+    .btn-success-neo:hover{
+        border:1px solid #1ebd9e;
+        color:#1ebd9e;
+        background-color: white;
+    }
+    .alert-danger-neo, .badge-danger-neo{
+        background-color: #e54641;
+        color: #ffdc63;
+    }
+    .alert-success-neo ,.badge-success-neo{
+        background-color: #1ebd9e;
+        border-radius: 0.3rem;
+    }
+    .alert-primary-neo, .badge-primary-neo{
+        background-color: #2a4054;
+        border-radius: 0.3rem;
+        color: #fff;
+    }
+ 
 
 /* =============================== */
 /* css giao vien diem danh         */
 /* =============================== */
+    .nut-up{
+        position: fixed;
+        bottom: 10px;
+        right:10px;
+        color: #1ebd9e;
+        font-size: 3em;
+        z-index: 1;
+        opacity: 0.5;
+        transition: all 0.3s;
+    }
+    .nut-up:hover{
+        opacity: 1;
+        font-size: 3.5em;
+    }
+    #kiem-tra-vang{
+        background: none;
+        border:2px solid #e54641;
+        color: #e54641;
+        transition: all 0.3s;
+        padding: 0.3em 0.5em ;
+        border-radius: 0.2em;
+    }
+    #kiem-tra-vang:hover{
+        background-color: #e54641 ;
+        color: white;
+    }
 
-.nut-up{
-    position: fixed;
-    bottom: 10px;
-    right:10px;
-    color: #1ebd9e;
-    font-size: 3em;
-    z-index: 1;
-    opacity: 0.5;
-    transition: all 0.3s;
-}
-.nut-up:hover{
-    opacity: 1;
-    font-size: 3.5em;
-}
-#kiem-tra-vang{
-    background: none;
-    border:2px solid #e54641;
-    color: #e54641;
-    transition: all 0.3s;
-    padding: 0.3em 0.5em ;
-    border-radius: 0.2em;
-}
-#kiem-tra-vang:hover{
-    background-color: #e54641 ;
-    color: white;
-}
+    #kiem-tra-tong{
+        display: none;
+    }
+    #luu{
+        background: #1ebd9e;
+        border:2px solid #1ebd9e;
+        color: white;
+        transition: all 0.3s;
+        padding: 0.3em 0.5em ;
+        border-radius: 0.2em;
+    }
+    #luu:hover{
+        background-color: #00ffcd ;
+        color: black;
+    }
 
-#kiem-tra-tong{
-    display: none;
-}
-#luu{
-    background: #1ebd9e;
-    border:2px solid #1ebd9e;
-    color: white;
-    transition: all 0.3s;
-    padding: 0.3em 0.5em ;
-    border-radius: 0.2em;
-}
-#luu:hover{
-    background-color: #00ffcd ;
-    color: black;
-}
+    .confirm-switch {
+        width: 35px;
+        height: 17px;
+        border-radius: 8.5px;
+        background: #2a405430;
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .confirm-switch input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+    
+    .confirm-switch input + label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .confirm-switch input + label:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border-radius: 8.5px;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+        cursor: pointer;
+    }
+    
+    .confirm-switch input + label:after {
+        content: "";
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #fff;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+        box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+    }
+    
+    .confirm-switch input:checked + label:after {
+        left: 19px;
+    }
+    
+    .confirm-switch input:checked + label:before {
+        background: #2a4054;
+    }
 
-.confirm-switch {
-    width: 35px;
-    height: 17px;
-    border-radius: 8.5px;
-    background: #2a405430;
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .confirm-switch input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-  }
-  
-  .confirm-switch input + label {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .confirm-switch input + label:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border-radius: 8.5px;
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-  
-  .confirm-switch input + label:after {
-    content: "";
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: #fff;
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
-    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-  }
-  
-  .confirm-switch input:checked + label:after {
-    left: 19px;
-  }
-  
-  .confirm-switch input:checked + label:before {
-    background: #2a4054;
-  }
+    .confirm-switch{
+        transform: scale(2);
+    }
 
-  .confirm-switch{
-      transform: scale(2);
-  }
-
-.badge-primary-neo{
-    font-size: 90%;
-    margin: 0.1em;
-    font-weight: 500;
-    color: #fff;
-    background-color: #1ebd9e;
-}
-
-/* **********   Danh sách lớp dạy ************* */
+    .badge-primary-neo{
+        font-size: 90%;
+        margin: 0.1em;
+        font-weight: 500;
+        color: #fff;
+        background-color: #1ebd9e;
+    }
 
 
 
 /* =============================== */
 /* css phong dao tao               */
 /* =============================== */
-/* trang import  */
-.nut-import {
-    height: 150px;
-    padding-top: 20px;
-}
-.nut-import p {
-    font-weight: bold;
-    font-size: 1.3em;
-}
-.nut-import:hover {
-    background-color: #1ebd9e;
-}
-.list-after-import {
-    min-height: 500px;
-    padding: 40px;
-}
-/* trang phan lop */
-.cong-cu-phan-lop,
-.ket-qua-phan-lop {
-    padding: 40px;
-}
+    /* trang import  */
+    
+    .daotao-create{
+        height:100%;
+    }
+    
+    .nut-import {
+        height: 150px;
+        padding-top: 20px;
+    }
+    .nut-import p {
+        font-weight: bold;
+        font-size: 1.3em;
+    }
+    .nut-import:hover {
+        background-color: #1ebd9e;
+    }
+    .list-after-import {
+        min-height: 500px;
+        padding: 40px;
+    }
+    /* trang phan lop */
+     
+    .ket-qua-phan-lop {
+        padding: 40px;
+    }
+    .teacher{
+        color: white ;
+        background-color: #6d7fcc;
+        border: 1px solid #6d7fcc;
+        padding: .3rem;
+        border-radius: .3em;
+    }
+    #result-weekday{
+        padding-top: 0.8rem;
+    }
+    #success, #danger{
+        padding: 1rem;
+        font-size: 1.3em;
+    }
+    /* Trang danh sách */
+            /* danh sách sinh viên */
+        #avatar,.avatar{
+            height: calc(400px*0.8);
+            max-height: 100%;
+            width: calc(300px*0.8);
+            max-width: 100%;
+            margin: 0 auto;
+            background-position: center center;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+
 /* ============================ */
 /* css student                  */
 /* ============================ */
-.title {
-    font-size: 2em;
-}
-.btn-link {
-    color: #1ebd9e;
-}
-.table-center > * > * {
-    text-align: center;
-}
-#ten-mon {
-    color: #1ebd9e;
-    font-size: 1.2em;
-}
-#backward {
-    font-size: 1.2em;
-    float: right;
-    margin-right: 5vw;
-    transform: rotate(180deg);
-    color: #1ebd9e;
-}
-@media screen and (max-width: 1000px) {
-    .row-width-200 {
-        word-wrap: break-word !important;
-        min-width: 200px !important ;
-        max-width: 200px !important;
+    .title {
+        font-size: 1.8em;
     }
-    .row-width-300 {
-        word-wrap: break-word !important;
-        min-width: 300px !important ;
-        max-width: 400px !important;
+    .btn-link {
+        color: #1ebd9e;
     }
-    .row-width-400 {
-        word-wrap: break-word !important;
-        min-width: 400px !important ;
-        max-width: 400px !important;
+    .table-center > * > * {
+        text-align: center;
     }
-}
+    #ten-mon {
+        color: #1ebd9e;
+        font-size: 1.2em;
+    }
+    #backward {
+        font-size: 1.2em;
+        float: right;
+        margin-right: 5vw;
+        transform: rotate(180deg);
+        color: #1ebd9e;
+    }
+    .row-thong-tin-chung{
+        display:block;
+        padding:0.5em 1em;
+        margin:0.1em;
+        background: aliceblue;
+        overflow: auto;
+        white-space: nowrap;
+    }
+ /* ============================= */
+/* Media 1000px                   */
+/* ============================== */
+    @media screen and (max-width: 1000px) {
+        .row-width-200 {
+            word-wrap: break-word !important;
+            min-width: 200px !important ;
+            max-width: 200px !important;
+        }
+        .row-width-300 {
+            word-wrap: break-word !important;
+            min-width: 300px !important ;
+            max-width: 400px !important;
+        }
+        .row-width-400 {
+            word-wrap: break-word !important;
+            min-width: 400px !important ;
+            max-width: 400px !important;
+        }
+    }

@@ -1,20 +1,29 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Trang Sinh viên</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
     <base href="{{ asset('') }}">
+    <link rel="shortcut icon" href="laravel-icon.svg" type="image/svg">
     <!-- Bootstrap CSS -->
-     
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" ></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" ></script>  
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <script defer src="js/solid.min.js" ></script>
+    <script defer src="js/fontawesome.min.js" ></script>
+    
+    
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/neo-style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
+    {{-- <script src="js/jquery-3.5.1.js"></script> --}}
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="css/datatable-neo.css">
+
+
 </head>
   <body>
       <div class="wrapper">
@@ -31,10 +40,11 @@
       </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-     
+    {{-- <script src="js/jquery-3.5.1.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script> --}}
+    {{-- <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.min.js"></script> --}}
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script src="js/script.js" ></script>
     
 </body>

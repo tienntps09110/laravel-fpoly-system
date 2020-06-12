@@ -21,71 +21,7 @@
     
 
     <style>
-    /* sửa style.css */
-    .title {
-        font-size: 1.8em;
-    }
-    .navbar {
-        margin-bottom:0;
-    }
-    .cong-cu-phan-lop{
-        padding: 0;
-    }
-    /* tạo mới css  */
-    /* nut tạo lớp, giảng viên,  */
-    .daotao-create{
-        height:100%;
-    }
-    /* sidebar */
-    #sidebar ul.components li{
-        position: relative;
-    }
-    #sidebar ul>li:hover>a {
-        color: #6c859e;
-        background: #fff;
-    }
-    #sidebar ul.components li:hover>ul{
-        display: inline;
-    }
-    #sidebar ul.components li ul{
-        display: none;
-        position: absolute;
-        bottom: 0;
-        left: 100%;
-        width: 100%;
-        list-style: none;
-        padding: 0;
-    }
-
-    /* phan cong giang day */
-    .teacher{
-	    color: white ;
-        background-color: #6d7fcc;
-        border: 1px solid #6d7fcc;
-        padding: .3rem;
-        border-radius: .3em;
-    }
-    #result-weekday{
-        padding-top: 0.8rem;
-    }
-    #success, #danger{
-        padding: 1rem;
-        font-size: 1.3em;
-    }
-    /* danh sách */
-    /* danh sách lớp */
-    /* danh sách sinh viên */
-    #avatar{
-        height: calc(400px*0.8);
-        max-height: 100%;
-        width: calc(300px*0.8);
-        max-width: 100%;
-        margin: 0 auto;
-        background-position: center center;
-        background-size: 100%;
-        background-repeat: no-repeat;
-    }
-    
+  
     </style>
 </head>
   <body>
@@ -125,7 +61,6 @@
       </div>
     
     <script src="js/popper.min.js"></script>
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.js" ></script>    
 </body>
