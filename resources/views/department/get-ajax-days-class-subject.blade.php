@@ -22,7 +22,7 @@
             <div id="ajax-update"></div>
             <script>
                 $(document).ready(function(){
-                    console.log(resultAjaxSuccess)
+                    // console.log(resultAjaxSuccess)
                     var buttonChangeTeacher = $('.button-change-teacher');
                     buttonChangeTeacher.each(function(){
                         $(this).click( ()=> {

@@ -19,8 +19,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="change-teacher" type="button" data-dismiss="modal" class="btn btn-primary btn-primary-neo">Send message</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button id="change-teacher" type="button" data-dismiss="modal" class="btn btn-primary btn-primary-neo">Đổi giáo viên</button>
             </div>
         </div>
     </div>
@@ -41,9 +41,15 @@
                     user_manager_uuid: selectManager
                 },
                 success(data){
-                    toastMess (data.Message, 5000,'success');
-                    $("#load-days-cs").html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
-                    loadAjax($("#load-days-cs"), window.location + '?get_json=ddsaahJIDSA3213hIHAO0e12jkUADI9231jdiI11');
+                    // console.log(data)
+                    status = 'success';
+                    if(data.Status != 200){
+                        status = 'error';
+                    }else{
+                        $("#load-days-cs").html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
+                        loadAjax($("#load-days-cs"), window.location + '?get_json=ddsaahJIDSA3213hIHAO0e12jkUADI9231jdiI11');
+                    }
+                    toastMess (data.Message, 5000, status);
                 },
                 error(data){
                     console.log(data)
