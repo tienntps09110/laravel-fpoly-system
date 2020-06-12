@@ -41,9 +41,7 @@
                     user_manager_uuid: selectManager
                 },
                 success(data){
-                    resultAjaxSuccess.html('');
-                    resultAjaxSuccess.text(data.Message).removeClass('d-none');
-                    setTimeout(()=> {resultAjaxSuccess.html('').addClass('d-none')}, 4000);
+                    toastMess (data.Message, 5000,'success');
                     $("#load-days-cs").html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
                     loadAjax($("#load-days-cs"), window.location + '?get_json=ddsaahJIDSA3213hIHAO0e12jkUADI9231jdiI11');
                 },

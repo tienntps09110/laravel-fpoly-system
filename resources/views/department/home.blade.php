@@ -19,8 +19,29 @@
     <link rel="stylesheet" href="css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="css/datatable-neo.css">
     <link rel="stylesheet" href="css/loading-tien.css">
-    
-
+    <link rel="stylesheet" href="css/jquery.toast.css">
+    <script src="js/jquery.toast.js"></script>
+    <script>
+        function toastMess (mess = '', time = 4000, status = 'success'){   
+            $.toast({
+                text: mess, 
+                heading: 'Thông báo', 
+                icon: status,
+                showHideTransition: 'fade',
+                allowToastClose: true,
+                hideAfter: time, 
+                stack: 5,
+                position: 'top-right', 
+                textAlign: 'left',
+                loader: true,
+                loaderBg: '#9EC600',
+                beforeShow: function () {},
+                afterShown: function () {},
+                beforeHide: function () {},
+                afterHidden: function () {}
+            });
+        }
+    </script>
     <style>
     /* sửa style.css */
     .title {

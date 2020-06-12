@@ -44,8 +44,8 @@ class Create extends Controller
                                         ->firstOrFail(); 
         $studyCheck = StudyTime::where('id', $req->study_time_id)->first();
         if($studyCheck){
-            $now = Carbon::now()->toTimeString();
-            if($now > Carbon::parse($studyCheck->time_start)->addMinutes($this->timeAttendance)->toTimeString()){
+            $now = Carbon::now();
+            if($now > Carbon::parse($teacherCheck->date .' ' .$studyCheck->time_start)->addMinutes($this->timeAttendance)){
                 return Core::toBack($this->danger, 'Đã hết giờ điểm danh');
             }
         }

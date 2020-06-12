@@ -57,13 +57,12 @@ class Get extends Controller
         
         $studyCheck = StudyTime::where('id', $classSubjectStudy->study_time_id)->first();
         $timeOut = Core::false();
-        // return Carbon::parse($studyCheck->time_start)->addMinutes($this->timeAttendance)->toTimeString();
+        // return Carbon::parse($teacherCheck->date .' ' .$studyCheck->time_start)->addMinutes($this->timeAttendance)->toTimeString();
         if($studyCheck){
-            $now = Carbon::now()->toTimeString();
-            if($now > Carbon::parse($studyCheck->time_start)->addMinutes($this->timeAttendance)->toTimeString()){
+            $now = Carbon::now();
+            if($now > Carbon::parse($teacherCheck->date .' ' .$studyCheck->time_start)->addMinutes($this->timeAttendance)->toTimeString()){
                 // return Core::notFound();
                 $timeOut = Core::true();
-
             }
         }
         $students = Students::where('class_id', $classSubjectCheck->class_id)
@@ -99,9 +98,10 @@ class Get extends Controller
         $studyCheck = StudyTime::where('id', $classSubjectStudy->study_time_id)->first();
         
         $timeOut = Core::false();
+        // return Carbon::parse($teacherCheck->date .' ' .$studyCheck->time_start)->addMinutes($this->timeAttendance);
         if($studyCheck){
-            $now = Carbon::now()->toTimeString();
-            if($now > Carbon::parse($studyCheck->time_start)->addMinutes($this->timeAttendance)->toTimeString()){
+            $now = Carbon::now();
+            if($now > Carbon::parse($teacherCheck->date .' ' .$studyCheck->time_start)->addMinutes($this->timeAttendance)){
                 // return Core::notFound();
                 $timeOut = Core::true();
             }
