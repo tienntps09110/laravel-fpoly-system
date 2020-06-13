@@ -88,9 +88,9 @@ $(document).ready(function() {
 		$('#datatable_filter').find('input').addClass('table-input-search');
 		$("select[name='datatable_length']").addClass('length-select');
 		
-		if($('body').width() < 1000){
-			$(".title").next().children(':even').css("background-color","aliceblue");
-		}
+		// if($('body').width() < 1000){
+		// 	$(".title").children(':even').css("background-color","aliceblue");
+		// }
 		
 	}
 	 

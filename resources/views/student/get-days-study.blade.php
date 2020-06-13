@@ -3,7 +3,7 @@
 
     <div class="container-fluid  p-4">
       <div class="box p-4">
-        <div class="title p-4">Lịch học</div>
+        <div class="title p-2 mb-5 alert-primary-neo text-center">Lịch học</div>
         <div class="px-lg-5 table-responsive ">
               <table class="stripe text-center" id="datatable" >
                   <thead>
@@ -28,31 +28,7 @@
                           </tr>
                       @endforeach
                   </tbody>
-                  <script>
-                        $(document).ready(function(){
-                            $('#datatable').DataTable({
-                                language:{
-                                    sProcessing: 'Đang xử lý...',
-                                    sLengthMenu: 'Xem _MENU_ mục',
-                                    sZeroRecords: 'Không tìm thấy dòng nào phù hợp',
-                                    sInfo: 'Đang xem <b> _START_ </b> đến <b> _END_ </b> trong tổng số <b> _TOTAL_ </b> mục',
-                                    sInfoEmpty: 'Đang xem 0 đến 0 trong tổng số 0 mục',
-                                    sInfoFiltered: '(được lọc từ _MAX_ mục)',
-                                    sInfoPostFix: '',
-                                    sSearch: 'Tìm:',
-                                    sUrl: '',
-                                    oPaginate: {
-                                        sFirst: 'Đầu',
-                                        sPrevious: 'Trước',
-                                        sNext: 'Tiếp',
-                                        sLast: 'Cuối'
-                                    }
-                                }
-                            });
-                            $('#datatable_filter').find('input').addClass('table-input-search');
-                            $("select[name='datatable_length']").addClass('length-select');
-                        })
-                </script>
+                  
 
               </table>
               <!-- (Chi tiết môn học (ẩn)) -->

@@ -4,7 +4,7 @@
   <div class="fixed-sidebar">
     <div class="sidebar-header">
       <div class="rounded-circle">
-        <img src="{{ $CoreS::user()->avatar_img_path }}" alt="{{ $CoreS::user()->avatar_img_path }}"   >
+        <img src="{{ $CoreS::user()->avatar_img_path }}" alt="{{ $CoreS::user()->avatar_img_path }}"  width="100%"  >
         {{-- <div class="avatar" style="background-image: url({{ $CoreS::user()->avatar_img_path }})"></div> --}}
       </div>
     </div>

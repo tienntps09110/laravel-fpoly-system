@@ -5,13 +5,13 @@
 
 <div class="container-fluid  p-4">
     <div class="box p-4">
-        <div class="title p-lg-4 text-center">
-            Danh sách Cán bộ - Giáo viên Toàn trường
+        <div class="title p-2 mb-3 text-center alert-primary-neo">
+            Danh sách Giảng viên Toàn trường
         </div>
          
         <div class="p-lg-4">
             <div class="table-responsive">
-                <table class="stripe " id="table_all_users" >
+                <table class="stripe text-center" id="table_all_users" >
                   <thead class="">
                     <tr>
                       <th scope="col">#</th>

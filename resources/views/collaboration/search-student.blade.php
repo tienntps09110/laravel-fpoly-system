@@ -2,15 +2,20 @@
 @section('content.collaboration')
 
 <div class="container-fluid mb-4">
-    <div class="col-12">
-        <div id="form-search"  class="float-right">
-            <input type="search" name="search-student" id="search" class="form-control" value="ps09110" required>
-            <button type="button" style="border-radius:20px" class="btn btn-primary btn-primary-neo float-right mt-2">Tìm kiếm</button>
-        </div>
-    </div>
     <div class="contain content box p-lg-5 p-3">
-        <h4 class="text-center">Thông tin sinh viên <i class="fas fa-address-card"></i> </h4>
-       <div id="info-student" class="mt-3"></div>
+        <div class="d-flex justify-content-end">
+                <div id="form-search"  class="  col-lg-4 ">
+                        <input type="search" name="search-student" id="search" class="form-control" value="ps09110" required>
+                        <button type="button" style="border-radius:20px" class="btn btn-primary-neo mt-2">Tìm kiếm</button>
+                    </div>
+        </div>
+        <div class="text-center p-2">
+            <div class="title alert-primary-neo p-2">
+                <i class="fas fa-address-card"></i> 
+                Thông tin sinh viên 
+            </div>
+        </div>
+       <div id="info-student" class=" "></div>
     </div>
 </div>
 <script>

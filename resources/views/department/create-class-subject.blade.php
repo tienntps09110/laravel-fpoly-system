@@ -59,7 +59,7 @@
                 <div class="">
                     <div class="row">
                         <div class="col-lg-4 px-5 py-2">
-                            <label for="lop"> Lớp    </label> 
+                            <label for="lop"> <span class="px-3 font-weight-bold" >1</span>    Lớp    </label> 
                                 <select name="class_id" id="lop" class="form-control"> 
                                     <option selected disabled>Chọn lớp</option>    
                                     @foreach ($class as $classDetail)
@@ -69,13 +69,13 @@
                          
                         </div>
                         <div class="col-lg-4 px-5 py-2">
-                            <label for="mon"> Môn </label>
+                            <label for="mon"> <span class="px-3 font-weight-bold" >2</span>   Môn </label>
                             <select name="subject_id" id="mon" disabled class="form-control">
                                 <option selected disabled>Chọn môn</option>
                             </select>
                         </div>
                         <div class="col-lg-4 px-5 py-2">
-                            <label for="thu-hoc"> Chọn Các Thứ học trong tuần   </label>
+                            <label for="thu-hoc"> <span class="px-3 font-weight-bold" >3</span> Các Thứ học trong tuần   </label>
                             <select name="" id="thu-hoc" disabled class="form-control" >
                                 <option selected disabled>Chọn thứ </option>
                                 <option value="0">Chủ nhật</option>
@@ -113,23 +113,23 @@
                             </script>
                         </div>
                         <div class="col-lg-4 px-5 py-2">
-                            <label for="from-date">Từ ngày</label>
+                            <label for="from-date"> <span class="px-3 font-weight-bold" >4</span>   Từ ngày</label>
                             <input type="date" disabled name="datetime_start" id="from-date" class="form-control">
                         </div>
                         <div class="col-lg-4 px-5 py-2">
-                            <label for="to-date">Đến ngày</label>
+                            <label for="to-date"> <span class="px-3 font-weight-bold" >5</span>   Đến ngày</label>
                             <input type="date" disabled name="datetime_end" id="to-date" class="form-control">
                             
                         </div>
                         <div class="col-lg-4 px-5 py-2">
-                            <label for="ca"> Ca</label>
+                            <label for="ca"> <span class="px-3 font-weight-bold" >6</span>   Ca</label>
                             <select name="study_time_id" id="ca" disabled class="form-control">
                                 <option selected disabled>Chọn ca</option>
                             </select>
                             
                         </div>
                         <div class="col-lg-4 px-5 py-2">
-                                <label for=""> Giáo viên Phụ trách</label>
+                                <label for=""> <span class="px-3 font-weight-bold" >7</span>   Giáo viên Phụ trách</label>
                                 <button id="chon-giao-vien" type="button" class="btn btn-block btn-primary-neo" data-toggle="modal" data-target="#exampleModalCenter" disabled>
                                     Chọn giảng viên
                                 </button><div></div>
@@ -137,6 +137,7 @@
                         <div class="col-lg-4 px-5 py-2">
                                 
                             </div>
+                         
                         <div class="col-lg-4 px-5 py-2">
                             <label for=" ">  &nbsp; </label>
                             <button type="submit" class="btn  btn-block btn-success-neo" id="submit-form" disabled>Xác nhận</button>
@@ -254,7 +255,7 @@
                             let result = `
                                 <tr>
                                     <td>
-                                        <input type="radio" value="${teacher.uuid}" id="teacher" name="gv"> 
+                                        <input type="radio" value="${teacher.uuid}" id="${teacher.full_name}" name="gv"> 
                                         <label for="${teacher.full_name}"> ${teacher.full_name} </label>
                                     </td>
                                 </tr>

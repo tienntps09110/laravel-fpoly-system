@@ -1,7 +1,8 @@
-
-    <div class="myChart"  >
-        <div class="text-center alert-primary-neo mb-3 p-lg-2">Biểu đồ thể hiện theo tháng </div>
-        <canvas style="border: none" id="myChart"></canvas>
+<div class="myChart"  >
+	<div class="text-center alert-primary-neo my-3 p-2  ">Biểu đồ thể hiện theo tháng </div>
+	<div id="chartLine">
+		<canvas  id="myChart"></canvas>
+	</div>
 </div>
 
 {{-- DATA --}}

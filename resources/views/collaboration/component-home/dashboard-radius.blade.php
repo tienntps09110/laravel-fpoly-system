@@ -1,8 +1,9 @@
-
-		<div class="text-center alert-primary-neo p-2 mb-3" >Biểu đồ sinh viên vắng của môn học</div>
-		<div id="chartRadian">
-				<canvas id="myChartRadian"></canvas>
-			</div>   
+<div class="myChart"  >
+	<div class="text-center alert-primary-neo p-2 my-3" >Biểu đồ sinh viên vắng của môn học</div>
+	<div id="chartRadian">
+		<canvas id="myChartRadian"></canvas>
+	</div>   
+</div>
 {{-- DATA --}}
 <script>
     var dataRadiantClient = JSON.parse({!! json_encode($countClass) !!});

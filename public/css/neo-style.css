@@ -21,8 +21,8 @@
     .row-center{
         transition: all 0.3s;
     }
-    .row-center > td {
-        padding-top: 50px;  
+    .row-center > td   {
+        vertical-align: middle;
     }
 
     .btn-primary-neo{
@@ -253,7 +253,8 @@
 /* css student                  */
 /* ============================ */
     .title {
-        font-size: 1.8em;
+        font-size: 1.5em;
+        text-transform: uppercase;
     }
     .btn-link {
         color: #1ebd9e;

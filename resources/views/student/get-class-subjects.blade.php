@@ -2,9 +2,10 @@
 @section('content-student')
     <div class="container-fluid  p-4">
       <div class="box p-4">
-          <div class="title p-4">DANH SÁCH MÔN HỌC</div>
-          <div class="px-5">
-              <table class="table table-center">
+          <div class="title p-2 mb-5 text-center alert-primary-neo">DANH SÁCH MÔN HỌC</div>
+          <div class="px--lg-5 table-responsive">
+              <table class=" table-center" id="datatable">
+                <thead>
                   <tr>
                       <th>#</th>
                       <th>Môn học</th>
@@ -12,6 +13,8 @@
                       <th >Ca học</th>
                       <th></th>
                   </tr>
+                </thead>
+                <tbody>
                   @foreach ($classSubjects as $key => $classSub)
                       <tr>
                         <td>{{ ++$key }}</td>
@@ -23,7 +26,7 @@
                         </td>
                     </tr>
                   @endforeach
-                   
+                </tbody>
               </table>
           </div>
       </div>

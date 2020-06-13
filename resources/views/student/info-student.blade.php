@@ -18,36 +18,36 @@
                             </div>
                             <div class="col-lg-8 ">
                                 <div class="row">
-                                    <div class="col-lg-6 px-lg-5 py-2">
+                                    <div class="col-lg-6 px-lg-2 py-2">
                                           MSSV: 
                                           <span class="row-thong-tin-chung">{{ $CoreS::user()->student_code }} </span>  
                                     </div>
-                                    <div class="col-lg-6 px-lg-5 py-2">
+                                    <div class="col-lg-6 px-lg-2 py-2">
                                           Họ và Tên: 
                                           <span class="row-thong-tin-chung"> {{ $CoreS::user()->full_name }} </span>
                                           
                                     </div>
-                                    <div class="col-lg-6 px-lg-5 py-2">
+                                    <div class="col-lg-6 px-lg-2 py-2">
                                          Giới tính: 
                                          <span class="row-thong-tin-chung"> {{ $CoreS::user()->sex }} </span>
                                     </div>
-                                    <div class="col-lg-6 px-lg-5 py-2">
+                                    <div class="col-lg-6 px-lg-2 py-2">
                                          Số điện thoại: 
                                          <span class="row-thong-tin-chung">  {{ $CoreS::user()->phone_number }} </span>
                                     </div>
-                                    <div class="col-lg-6 px-lg-5 py-2">
+                                    <div class="col-lg-6 px-lg-2 py-2">
                                          Email: 
                                          <span class="row-thong-tin-chung">  {{ $CoreS::user()->email }} </span>
                                     </div>
-                                    <div class="col-lg-6 px-lg-5 py-2">
+                                    <div class="col-lg-6 px-lg-2 py-2">
                                          Địa chỉ 
                                          <span class="row-thong-tin-chung">  {{ $CoreS::user()->address }} </span>
                                     </div>
-                                    <div class="col-lg-6 px-lg-5 py-2" style="overflow:hidden">
+                                    <div class="col-lg-6 px-lg-2 py-2" style="overflow:hidden">
                                         Ngày Bắt đầu:
                                         <span class="row-thong-tin-chung">  {{  $classM->time_start }} </span>
                                     </div>
-                                    <div class="col-lg-6 px-lg-5 py-2">
+                                    <div class="col-lg-6 px-lg-2 py-2">
                                         Ngày Bắt đầu:
                                         <span class="row-thong-tin-chung">  {{  $classM->time_start }} </span>
                                     </div>

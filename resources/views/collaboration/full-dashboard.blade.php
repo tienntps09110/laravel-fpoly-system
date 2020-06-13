@@ -2,30 +2,58 @@
   @extends('collaboration.home')
   @section('content.collaboration')
 <!-- hàng 1 - các Nút tổng số lượng  -->
-<div class="container-fluid ">
-    <div class="container">
+<div class="container-fluid px-lg-5  my-lg-3 ">
+    <div class=" ">
         <div class="row" id="render-count-all"></div>
     </div>
 </div>
-<!-- hàng 2 - Biểu đồ theo tháng -->
-<div class="container-fluid ">
-    <div class="container">
-        <div id="component-dashboard-month" class="  py-3"></div>
+<!-- hàng 2 - Biểu đồ theo tháng & Biểu đồ hình tròn điểm danh theo lớp -->
+<div class="container-fluid px-lg-5 my-lg-3 ">
+    <div class=" ">
+        <div class="row">
+            <div  class="col-lg-8 d-flex flex-column justify-content-around ">
+ 
+                    <div id="component-dashboard-month" class=" mb-3 "></div>
+                    <div id="dashboard-radius" class="mb-lg-0 mb-3 "></div>
+     
+            </div>
+            <div class="col-lg-4 ">
+                <div class="myChart" style="height:100%">
+                    <div id="dashboard-news" class="" > 
+                        <div class="text-center alert-primary-neo my-3 p-2">Thông tin </div>
+                        <div style="">
+                            <div class="ml-3">  Thông tin học tập
+                                <div class="ml-5 p-2"><a href="" class=" btn-link">  [CS1]_DANH SÁCH THI LẠI CÁC MÔN ONLINE TUẦN 15.06 - 20.06 (DỰ KIẾN) </a> </div>
+                                <div class="ml-5 p-2"><a href="" class="  btn-link"> 2020_SPRING_KIỂM TRA THÔNG TIN SINH VIÊN  </a> </div>
+                                <div class="ml-5 p-2"><a href="" class="  btn-link">  Xem thêm ...  </a> </div>
+                            </div>
+                            <div class="ml-3">Thông tin hoạt động
+                                <div class="ml-5 p-2"><a href="" class="  btn-link">  THÔNG BÁO DANH SÁCH SINH VIÊN THÔI HỌC CHÍNH THỨC HỌC KỲ SUMMER 2020 </a> </div>
+                                <div class="ml-5 p-2"><a href="" class="  btn-link"> THÔNG BÁO PHÁT SÁCH HỌC KỲ SUMMER 2020_ĐỢT 1</a> </div>
+                                <div class="ml-5 p-2"><a href="" class="  btn-link"> Xem thêm ... </a> </div>
+                            </div>
+                            <div class="ml-3">Thông tin học phí
+                                <div class="ml-5 p-2"><a href="" class="  btn-link">  DANH SÁCH SINH VIÊN HOÀN THÀNH HỌC PHÍ HỌC KỲ SUMMER 2020 </a> </div>
+                                <div class="ml-5 p-2"> <a href="" class="  btn-link"> THÔNG BÁO HỌC PHÍ HỌC KỲ SUMMER 2020 </a> </div>
+                                <div class="ml-5 p-2"><a href="" class="  btn-link"> ĐÓNG TIỀN QUA NGÂN HÀNG KHÔNG RÕ THÔNG TIN </a> </div>
+                                <div class="ml-5 p-2"><a href="" class="  btn-link">  Xem thêm ... </a> </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- hàng 3 - nhận xét GV -->
-<div class="container-fluid ">
-    <div class="container">
-        <div id="note-teachers" class="  py-3"></div>
+<div class="container-fluid px-lg-5 my-lg-3">
+    <div class=" ">
+        <div id="note-teachers" class="px-lg-5 px-3 pt-3 pb-lg-0 pb-5"></div>
     </div>
 </div>
 
-<!-- hàng 4 - Biểu đồ hình tròn điểm danh theo lớp -->
-<div class="container-fluid ">
-    <div class="container">
-        <div id="dashboard-radius" class="col-lg-6  py-3"></div>
-    </div>
-</div>
+ 
     <!-- Biểu đồ hình tròn điểm danh theo lớp -->
 </div>
 <script>

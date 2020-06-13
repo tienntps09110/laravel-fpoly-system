@@ -1,5 +1,5 @@
 {{--  <div class="nhan-xet">  --}}
-    <h4 class="text-center alert-primary-neo p-2 mb-3"  >Nhận xét giáo viên</h5>
+    <div class="text-center alert-primary-neo p-2 my-3"  >Nhận xét giáo viên</div>
     <div class="table-responsive">
         <table class="table" id="datatable">
             <thead>

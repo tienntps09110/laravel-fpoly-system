@@ -32,9 +32,8 @@
             @method('put')
             @csrf
             <div class="box cong-cu-phan-lop p-4">
-                <h3 class="alert-primary-neo mx-lg-4 p-3 text-center">CẬP NHẬT THÔNG TIN CÁN BỘ NHÂN VIÊN</h3> 
-
-                <div class="py-lg-5  pl-lg-5">
+                <div class="alert-primary-neo mx-lg-4 p-3 text-center title">CẬP NHẬT THÔNG TIN GIẢNG VIÊN</div> 
+                <div class="py-5  pl-lg-5">
                     <div class="row">
                         <div class="col-lg-4 text-center">
                             <div id="avatar" style="background-image:url({{ $user->avatar_img_path }})"></div>
@@ -43,39 +42,39 @@
                         </div>
                         <div class="col-lg-8 ">
                             <div class="row">
-                                <div class="col-lg-6 px-5 py-2">
+                                <div class="col-lg-6 px-lg-3 py-2">
                                     <label for=""> Tên đăng nhập:   </label> 
                                     <input type="hidden" value="{{ $user->uuid }}" name="uuid">
                                     <span   class="form-control"  >{{ $user->user_name }}</span>
                                 </div>
-                                <div class="col-lg-6 px-5 py-2">
+                                <div class="col-lg-6 px-lg-3 py-2">
                                     <label for="full_name"> Họ và Tên: </label>
                                     <input type="text" id="full_name" name="full_name" value="{{ $user->full_name }}" class="form-control ">
                                 </div>
-                                <div class="col-lg-6 px-5 py-2">
+                                <div class="col-lg-6 px-lg-3 py-2">
                                     <label for="sex"> Giới tính: </label>
                                     <select name="sex" id="sex" class="form-control">
                                         <option value="Nam" {{ $user->sex == 'Nam'?'selected':'' }}>Nam</option>
                                         <option value="Nữ" {{ $user->sex == 'Nữ'?'selected':'' }}>Nữ</option>
                                     </select>
                                 </div>
-                                <div class="col-lg-6 px-5 py-2">
+                                <div class="col-lg-6 px-lg-3 py-2">
                                     <label for="phone_number">Số điện thoại:</label>
                                     <input type="text" name="phone_number" id="phone_number"  value="{{ $user->phone_number }}" class="form-control">
                                 </div>
-                                <div class="col-lg-6 px-5 py-2">
+                                <div class="col-lg-6 px-lg-3 py-2">
                                     <label for="email">Email:</label>
                                     <input type="text" id="email" name="email" value="{{ $user->email }}" class="form-control">
                                 </div>
-                                <div class="col-lg-6 px-5 py-2">
+                                <div class="col-lg-6 px-lg-3 py-2">
                                     <label for="address"> Địa chỉ</label>
                                     <input type="text" id="address" name="address" value="{{ $user->address }}" class="form-control">
                                 </div>
-                                <div class="col-lg-6 px-5 py-2" style="overflow:hidden">
+                                <div class="col-lg-6 px-lg-3 py-2" style="overflow:hidden">
                                     <label for=""> Hình đại diện</label>
                                     <input type="file" name="avatar_img_path" value="{{ $user->avatar_img_path }}" class="form-control" >
                                 </div>
-                                <div class="col-lg-6 px-5 py-2">
+                                <div class="col-lg-6 px-lg-3 py-2">
                                     <label for=" ">  &nbsp; </label>
                                     <button type="submit" class="btn btn-success-neo btn-block">Cập nhật</button>
                                 </div>

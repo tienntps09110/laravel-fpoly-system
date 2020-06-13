@@ -2,7 +2,7 @@
 @section('contentPDT')
 <div class="container-fluid  p-4">
     <div class="box p-4">
-        <div class="title p-lg-4 text-center">
+        <div class="title p-2 mb-3  text-center alert-primary-neo">
             Danh sách Lớp
         </div>
         <div></div>

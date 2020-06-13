@@ -76,6 +76,7 @@ a:focus {
 }
 .rounded-circle > img {
 	border-radius: 50%;
+	max-width: 17vw;
 }
 .fixed-sidebar {
 	position: fixed;
@@ -202,7 +203,8 @@ a.article {
 	width: 100%;
 	min-height: 100vh;
 	transition: all 0.3s;
-	padding: 2em 0;
+	/* padding: 2em 0; */
+	
 }
 .form-search {
 	position: relative;
