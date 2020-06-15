@@ -43,8 +43,9 @@ class Update extends Controller
         if($checkCode){
             return Json::getMess('Mã môn đã tồn tại', 422);
         }
+        $code = $req->code?$req->code:$subject->code;
         $subject->name = $req->name?$req->name:$subject->name;
-        $subject->code = $req->code?$req->code:$subject->code;
+        $subject->code = Str::lower(preg_replace('/\s+/', '_', $code));
         $subject->days_fail = $req->days_fail?$req->days_fail:$subject->days_fail;
         $subject->save();
         return Json::getMess('Cập nhật môn học thành công', 200);
