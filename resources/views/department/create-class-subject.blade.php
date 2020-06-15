@@ -140,7 +140,7 @@
                          
                         <div class="col-lg-4 px-5 py-2">
                             <label for=" ">  &nbsp; </label>
-                            <button type="submit" class="btn  btn-block btn-success-neo" id="submit-form" disabled>Xác nhận</button>
+                            <button type="submit" class="btn btn-block btn-success-neo" id="submit-form" disabled>Xác nhận</button>
                         </div>
                     </div>
                 </div>
@@ -169,6 +169,7 @@
             studyTime.append('<option selected disabled>Chọn ca</option>');
             studyTime.prop( "disabled", true );
             subject.prop( "disabled", false );
+            $('#submit-form').prop("disabled", true);
             checkCreateClass(1);
         });
         subject.change(function(){
@@ -181,6 +182,7 @@
             }
             studyTime.prop( "disabled", true );
             dayStudy.prop( "disabled", false );
+            $('#submit-form').prop("disabled", true);
         })
         dayStudy.change(function(){
             fromDate.val('');
@@ -189,16 +191,20 @@
             studyTime.html('')
             studyTime.append('<option selected disabled>Chọn ca</option>');
             studyTime.prop( "disabled", true );
+            $('#submit-form').prop("disabled", true);
         })
         fromDate.change(function(){
             toDate.prop( "disabled", false );
+            $('#submit-form').prop("disabled", true);
         })
         toDate.change(function(){
             studyTime.prop( "disabled", false );
+            $('#submit-form').prop("disabled", true);
             checkCreateClass(2);
         })
         studyTime.change(function(){
             $('#chon-giao-vien').prop("disabled", false);
+            $('#submit-form').prop("disabled", true);
             checkCreateClass(3);
         })
     });

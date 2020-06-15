@@ -71,6 +71,7 @@
                         </td>
                         <td  >
                             <button type="submit" class=" " id="luu" {{ $timeOut=='false'?'':'disabled' }}>Lưu lại</button>
+                            <div id="loading"></div>
                         </td>
                     </tr>
                 </form>
@@ -80,4 +81,12 @@
     </div>
     
 </div>
+<script>
+    $(document).ready(()=>{
+        $('#luu').click(()=>{
+            $('#luu').hide();
+            $('#loading').html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>')
+        })
+    })
+</script>
  @endsection
