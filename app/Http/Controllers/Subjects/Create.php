@@ -40,7 +40,7 @@ class Create extends Controller
         
         $subject = new Subjects;
         $subject->name = $req->name;
-        $subject->code = Str::lower($req->code);
+        $subject->code = Str::lower(preg_replace('/\s+/', '_', $req->code));
         $subject->days_fail = $req->day_fail;
         $subject->soft_deleted = Core::false();
         $subject->save();

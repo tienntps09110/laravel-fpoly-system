@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="css/neo-style.css">
     <link rel="stylesheet" href="css/datatable-neo.css">
     <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
-
+    <link rel="stylesheet" href="css/loading-tien.css">
+    <script src="js/jquery-3.5.1.js"></script>
 </head>
   <body>
       <div class="wrapper">
@@ -33,7 +34,6 @@
       </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.5.1.js"></script>
     {{-- <script src="https://cdn.datatables.net/plug-ins/1.10.21/i18n/Vietnamese.json"></script> --}}
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.js"></script>

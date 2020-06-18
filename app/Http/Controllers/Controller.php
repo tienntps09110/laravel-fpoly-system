@@ -29,7 +29,7 @@ class Controller extends BaseController
     protected $success = 'Success';
 
     // TIME ATTENDANCE
-    protected $timeAttendance = 999999;
+    protected $timeAttendance = 445;
 
     // NAME FILE EXCEL
     protected $nameExcelTeacher = 'PROQ_TEACHERS_';

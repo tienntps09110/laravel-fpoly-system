@@ -40,7 +40,7 @@ class Create extends Controller
         }
         $class = new ClassM;
         $class->name = $req->name;
-        $class->code = Str::lower($req->code);
+        $class->code = Str::lower(preg_replace('/\s+/', '_', $req->code));
         $class->time_start = $req->time_start .' ' .Carbon::now()->toTimeString();
         $class->time_end   = $req->time_end .' ' .Carbon::now()->toTimeString();
         $class->soft_deleted = Core::false();

@@ -14,8 +14,11 @@ use App\Model\Subjects;
 
 class Get extends Controller
 {
-    public function subjects(){
+    public function subjects(Request $req){
         $subjects = Subjects::where('soft_deleted', Core::false())->get();
+        if($req->get_json){
+            return view('department.com-subjects', ['subjects'=>$subjects]);
+        }
         return view(View::department('get-subjects'), ['subjects'=>$subjects]);
     }
     public function subject($id){

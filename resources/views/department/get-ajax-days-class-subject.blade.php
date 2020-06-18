@@ -26,7 +26,7 @@
 <div id="ajax-update"></div>
 <script>
     $(document).ready(function(){
-        console.log(resultAjaxSuccess)
+        // console.log(resultAjaxSuccess)
         var buttonChangeTeacher = $('.button-change-teacher');
         buttonChangeTeacher.each(function(){
             $(this).click( ()=> {
@@ -43,33 +43,7 @@
                     }
                 })
             })
-        })
-
-        $('#datatable').DataTable({
-			language:{
-				sProcessing: 'Đang xử lý...',
-				sLengthMenu: 'Xem _MENU_ mục',
-				sZeroRecords: 'Không tìm thấy dòng nào phù hợp',
-				sInfo: 'Đang xem <b> _START_ </b> đến <b> _END_ </b> trong tổng số <b> _TOTAL_ </b> mục',
-				sInfoEmpty: 'Đang xem 0 đến 0 trong tổng số 0 mục',
-				sInfoFiltered: '(được lọc từ _MAX_ mục)',
-				sInfoPostFix: '',
-				sSearch: 'Tìm:',
-				sUrl: '',
-				oPaginate: {
-					sFirst: 'Đầu',
-					sPrevious: 'Trước',
-					sNext: 'Tiếp',
-					sLast: 'Cuối'
-				}
-			}
-		});
-		$('#datatable_filter').find('input').addClass('table-input-search');
-		$("select[name='datatable_length']").addClass('length-select');
-		
-		if($('body').width() < 1000){
-			$(".title").next().children(':even').css("background-color","aliceblue");
-		}
-		
+        })		
     })
 </script>
+<script src="{{ asset('/js/script.js') }}"></script>
