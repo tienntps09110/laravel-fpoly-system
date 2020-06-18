@@ -52,7 +52,7 @@
                     <i class="fas fa-user-circle    "></i>
                 </div>
                 <div class="text-center text-white">
-                    <h2 class="font-weight-bold">ĐĂNG NHẬP HỌC SINH</h2>
+                    <h3 class="font-weight-bold">ĐĂNG NHẬP SINH VIÊN</h3>
                 </div>
                 <div class="my-3">
                     Mã số sinh viên:
@@ -69,6 +69,9 @@
                 </div>
                 <div class="my-3 float-right">
                     <button type="submit" class="btn btn-info">Đăng nhập</button>
+                </div>
+                <div class="my-3 ">
+                    <a href="{{ route('login') }}" style="font-size: 10pt">> Đăng nhập Nội bộ <</a>
                 </div>
             </div>
         </div>
