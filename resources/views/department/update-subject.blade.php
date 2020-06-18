@@ -24,8 +24,8 @@
                 </div>  
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                <button id="update-subject" type="button" data-dismiss="modal" class="btn btn-primary btn-primary-neo">Cập nhật</button>
+                <button id="close-modal" type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button id="update-subject" type="button" class="btn btn-primary btn-primary-neo">Cập nhật</button>
             </div>
         </div>
     </div>
@@ -64,7 +64,8 @@
                             toastMess (data.Message, 5000, status);
                         }
                     }else{
-                         $("#load-subjects").html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
+                        $('#close-modal').click()
+                        $("#load-subjects").html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
                         loadAjax($("#load-subjects"), window.location + '?get_json=fdsf36443wtrgfsc735yerf');
                         toastMess (data.Message, 5000, status);
                     }
