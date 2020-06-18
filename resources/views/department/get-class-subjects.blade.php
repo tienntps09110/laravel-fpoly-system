@@ -68,7 +68,7 @@
                                 });
                                 $('#table_all_classes_filter').find('input').addClass('table-input-search');
                                 $("select[name='table_all_classes_length']").addClass('length-select');
-                            })
+                            });
                         </script>
                   </tbody>
                 </table>
