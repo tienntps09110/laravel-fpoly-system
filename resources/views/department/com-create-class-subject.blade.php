@@ -110,11 +110,11 @@
                         </div>
                         <div class="col-lg-4 px-5 py-2">
                             <label for="from-date"> <span class="px-3 font-weight-bold" >4</span>   Từ ngày</label>
-                            <input type="date" disabled name="datetime_start" id="from-date" class="form-control">
+                            <input type="date" disabled name="datetime_start" id="from-date" class="form-control txtDate">
                         </div>
                         <div class="col-lg-4 px-5 py-2">
                             <label for="to-date"> <span class="px-3 font-weight-bold" >5</span>   Đến ngày</label>
-                            <input type="date" disabled name="datetime_end" id="to-date" class="form-control">
+                            <input type="date" disabled name="datetime_end" id="to-date" class="form-control txtDate">
                             
                         </div>
                         <div class="col-lg-4 px-5 py-2">
@@ -220,7 +220,7 @@
                     days_study:arrayDay?arrayDay:null
                 },
                 success(data) {
-                    console.log(data)
+                    // console.log(data)
                     if(data.Status == 200){
                         toastMess (data.Message);
                         loadAjax($('#load-view-create-class-subject'), '{{ route('com-create-class-subject') }}');
@@ -270,7 +270,7 @@
                     break;
                     case 2:
                         // CHECK AND RETURN STUDY DAY
-                        console.log('DATA: ' + JSON.stringify(data));
+                        // console.log('DATA: ' + JSON.stringify(data));
 
                         if(typeof data == 'string'){
                             // console.log(data);
@@ -290,7 +290,7 @@
                         }
                     break;
                     case 3:
-                        console.log(data);
+                        // console.log(data);
 
                         for(teacher of data){
                             let result = `
@@ -329,3 +329,4 @@
         })
     }
 </script>
+<script src="{{ asset('js/un-date-past.js') }}"></script>

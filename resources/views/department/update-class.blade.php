@@ -20,11 +20,11 @@
                 </div>
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Thời gian bắt đầu:</label>
-                    <input class="form-control" name="time_start" type="date" value="{{ $Carbon::parse($classMs->time_start)->toDateString() }}">
+                    <input class="form-control txtDate" name="time_start" type="date" value="{{ $Carbon::parse($classMs->time_start)->toDateString() }}">
                 </div>
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Thời gian kết thúc:</label>
-                    <input class="form-control" name="time_end" type="date" value="{{ $Carbon::parse($classMs->time_end)->toDateString() }}">
+                    <input class="form-control txtDate" name="time_end" type="date" value="{{ $Carbon::parse($classMs->time_end)->toDateString() }}">
                 </div>
             </div>
             <div class="modal-footer">
@@ -89,3 +89,4 @@
         component.load(route);
     };
 </script>
+<script src="{{ asset('js/un-date-past.js') }}"></script>

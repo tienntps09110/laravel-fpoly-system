@@ -12,13 +12,13 @@
    {{-- CODE<input type="text" name="code"> --}}
     <div class="form-group col-lg-8 mx-auto">
         <label for="time_start">Ngày Bắt đầu</label>
-        <input id="time_start" class="form-control" type="date" name="time_start" required>
+        <input id="time_start" class="form-control txtDate" type="date" name="time_start" required>
     </div>
 
    {{-- Datetime start<input type="date" name="time_start"> --}}
    <div class="form-group col-lg-8 mx-auto">
        <label for="time_end">Ngày kết thức</label>
-       <input id="time_end" class="form-control" type="date" name="time_end">
+       <input id="time_end" class="form-control txtDate" type="date" name="time_end">
    </div>
    {{-- Datetime end<input type="date" name="time_end"> --}}
     <div class="form-group col-lg-8 mx-auto text-right">
@@ -79,3 +79,4 @@
          
     });
 </script>
+<script src="{{ asset('js/un-date-past.js') }}"></script>
