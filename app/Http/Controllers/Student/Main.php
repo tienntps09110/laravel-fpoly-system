@@ -64,11 +64,13 @@ class Main extends Controller
     public function classSubjectAll()
     {
         $classSubjects = Main::classSubjects();
+        $todayCheck = Carbon::now()->toDateString();
         $data = [];
         foreach ($classSubjects as $classSub) {
             $classDetail = Main::classSubjectDetail($classSub->id, 'date')['daysClassSubject'];
             foreach ($classDetail as $cD) {
                 $cD->day_name   = Core::dayString(Carbon::parse($cD->date)->dayOfWeek);
+                $cD->day_checked   = $todayCheck == Carbon::parse($cD->date)->toDateString() ? 'true': 'false';
                 $cD->class_name = $classSub->class_name;
                 $cD->subject_name = $classSub->subject_name;
                 $cD->study_time_name = $classSub->study_time_name;

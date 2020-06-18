@@ -74,6 +74,5 @@ class Auth extends Controller
                 )->cookie(
                     'student_password', '', 0
                 );
-
     }
 }

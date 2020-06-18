@@ -133,7 +133,8 @@ class Get extends Controller
                 's.name as subject_name',
                 'dcs.note'
             )
-            ->take(15)
+            ->orderBy('dcs.updated_at', 'desc')
+            ->take(10)
             ->get();
     }
 

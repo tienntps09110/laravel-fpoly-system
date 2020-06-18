@@ -1,7 +1,7 @@
 {{--  <div class="nhan-xet">  --}}
     <div class="text-center alert-primary-neo p-2 my-3"  >Nhận xét giáo viên</div>
     <div class="table-responsive">
-        <table class="table" id="datatable">
+        <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
@@ -28,3 +28,4 @@
 
     </div>
 {{--  </div>  --}}
+{{-- <script src="{{ asset('js/script.js') }}"></script> --}}
