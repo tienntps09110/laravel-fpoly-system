@@ -32,6 +32,11 @@ $(document).ready(function() {
 				}
 		}
 	})
+	var url = window.location.href;
+	$('.fixed-sidebar').find('li').has('a[href="'+url+'"]').addClass('active');
+	$('.fixed-sidebar').find('li').has('a[href="'+url+'"]').siblings().removeClass('active');
+
+	// if(url === )
 	// *************************
 	// diem-danh 
 	// *************************

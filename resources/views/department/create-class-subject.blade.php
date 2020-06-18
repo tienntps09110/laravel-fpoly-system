@@ -245,6 +245,7 @@
                             // $(".navbar").after("<div id='danger' class='alert-danger-neo text-center'>"+data+"</div>")
                             // setTimeout( ()=>{$(".navbar").next().fadeOut();}, 3000);
                             toastMess (data, 5000,'error');
+                            
                         }else{
                             for(study of data){
                                 studyTime.prop( "disabled", false);

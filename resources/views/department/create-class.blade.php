@@ -35,7 +35,7 @@
         let time_end    = $("#createClass input[name='time_end']").val();
         let messSuccess = $("#resultAjaxSuccess");
         let messError   = $("#resultAjaxError");
-
+    
         $.ajax({
             type:'POST',
             url:'{{ route('create-class-post') }}',
@@ -49,6 +49,7 @@
             success:function(data) {
                 if(data.Status == 200){
                     toastMess (data.Message);
+                    $("#createClass input").val('')
                     // messSuccess.html(data.Message).removeClass('d-none');
                     // setTimeout( () => { messSuccess.addClass('d-none').html('')  }, 3000);
                     // console.log(data);
@@ -75,5 +76,6 @@
                 
             }
         });
+         
     });
 </script>

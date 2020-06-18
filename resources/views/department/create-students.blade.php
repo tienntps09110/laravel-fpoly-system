@@ -37,6 +37,7 @@
                     // messSuccess.html(data.Message).removeClass('d-none');
                     // setTimeout( () => { messSuccess.addClass('d-none').html('')  }, 3000);
                     toastMess (data.Message, 5000,'success');
+                    $("#createStudents input").val('');
                     console.log(data);
                 }else{
                     // messError.removeClass('d-none');

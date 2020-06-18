@@ -13,9 +13,6 @@
         {{ Auth::user()->full_name }}
      </li>
      <li class="date-teach">
-       <a href="{{ route('get-class-subject-teacher-today') }}"> <i class="fas fa-home    "></i> Trang chủ</a>
-     </li>
-     <li class="date-teach">
        <a href="{{ route('get-class-subject-teacher-today') }}"> <i class="fas fa-edit    "></i> Điểm danh</a>
      </li>
      <li class="date-teach">

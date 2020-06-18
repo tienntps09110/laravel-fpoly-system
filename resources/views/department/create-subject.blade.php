@@ -51,6 +51,7 @@
                     // setTimeout( () => { messSuccess.addClass('d-none').html('')  }, 3000);
                     // console.log(data);
                     toastMess (data.Message, 5000,'success');
+                    $("#createSubject input").val('');
                 }else{
                     // messError.removeClass('d-none');
                     if(typeof data.Message == 'object'){
