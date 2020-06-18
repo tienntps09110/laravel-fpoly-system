@@ -14,6 +14,9 @@ use App\User;
 class Get extends Controller
 {
     public function students(){
+        return view(View::department('get-students'));
+    }
+    public function getStudents(){
         $students = Students::where('soft_deleted', Core::false())->get();
         $arrayStudents = [];
         foreach($students as $student){
@@ -21,7 +24,7 @@ class Get extends Controller
             $student->class = $class;
             $arrayStudents[] = $student;
         }
-        return view(View::department('get-students'), ['students'=>$arrayStudents]);
+        return view('department.com-students', ['students'=>$arrayStudents]);
     }
     public function student($id){
         $student = Students::where('id', $id)->first();

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Core\Core;
 use App\Http\Controllers\Core\View;
+use App\Http\Controllers\Core\Json;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Auth;
@@ -20,6 +21,9 @@ use App\Model\DaysClassSubject;
 class Create extends Controller
 {
     public function classSubjectView(){
+        return view(View::department('create-class-subject'));
+    }
+    public function classSubjectViewAjax(){
         $class      = ClassM::where('soft_deleted', Core::false())->get();
         $subjects   = Subjects::where('soft_deleted', Core::false())->get();
         $studyTime  = StudyTime::where('soft_deleted', Core::false())->get();
@@ -31,7 +35,7 @@ class Create extends Controller
                 $arrayTeacher[] = $teacherDetail;
             }
         }
-        return view(View::department('create-class-subject'), [
+        return view('department.com-create-class-subject',  [
             'class'=>$class,
             'subjects' => $subjects,
             'studyTime'=> $studyTime,
@@ -177,7 +181,8 @@ class Create extends Controller
 
         // CHECK TIME START <> END
         if($req->datetime_start > $req->datetime_end){
-            return Core::toBack($this->danger, 'Thời gian kết thúc không thể nhỏ hơn thời gian bắt đầu');
+            // return Core::toBack($this->danger, 'Thời gian kết thúc không thể nhỏ hơn thời gian bắt đầu');
+            return Json::getMess('Thời gian kết thúc không thể nhỏ hơn thời gian bắt đầu', 422);
         }
 
         // CHECK CLASS
@@ -185,7 +190,8 @@ class Create extends Controller
                         ->where('soft_deleted', Core::false())
                         ->first();
         if(!$class){
-            return Core::toBack($this->danger, 'Không tìm thấy lớp theo yêu cầu');
+            // return Core::toBack($this->danger, 'Không tìm thấy lớp theo yêu cầu');
+            return Json::getMess('Không tìm thấy lớp theo yêu cầu', 422);
         }
 
         // CHECK SUBJECT
@@ -193,7 +199,8 @@ class Create extends Controller
                             ->where('soft_deleted', Core::false())
                             ->first();
         if(!$subjects){
-            return Core::toBack($this->danger, 'Không tìm thấy môn học theo yêu cầu');
+            // return Core::toBack($this->danger, 'Không tìm thấy môn học theo yêu cầu');
+            return Json::getMess('Không tìm thấy môn học theo yêu cầu', 422);
         }
 
         // CHECK STUDY TIME
@@ -201,7 +208,8 @@ class Create extends Controller
                             ->where('soft_deleted', Core::false())
                             ->first();
         if(!$studyTime){
-            return Core::toBack($this->danger, 'Không tìm thấy ca học theo yêu cầu');
+            // return Core::toBack($this->danger, 'Không tìm thấy ca học theo yêu cầu');
+            return Json::getMess('Không tìm thấy ca học theo yêu cầu', 422);
         }
 
         // CHECK TEACHER
@@ -209,7 +217,8 @@ class Create extends Controller
                             ->where('soft_deleted', Core::false())
                             ->first();
         if(!$user){
-            return Core::toBack($this->danger, 'Không tìm thấy giảng viên theo yêu cầu');
+            // return Core::toBack($this->danger, 'Không tìm thấy giảng viên theo yêu cầu');
+            return Json::getMess('Không tìm thấy giảng viên theo yêu cầu', 422);
         }
 
         // CHECK TIME AND CLASS
@@ -220,7 +229,8 @@ class Create extends Controller
                                     ->get();
         foreach($TimeCheck as $TimeCheckDetail){
             if($req->datetime_start < $TimeCheckDetail->datetime_end){
-                return Core::toBack($this->danger, 'Ca học của lớp trong khoảng thời gian đã có môn học');
+                // return Core::toBack($this->danger, 'Ca học của lớp trong khoảng thời gian đã có môn học');
+                return Json::getMess('Ca học của lớp trong khoảng thời gian đã có môn học', 422);
             }
         }
 
@@ -231,7 +241,8 @@ class Create extends Controller
                                     ->get();
         foreach($SubjectCheck as $SubjectCheckDetail){
             if($req->datetime_start < $SubjectCheckDetail->datetime_end){
-                return Core::toBack($this->danger, 'Môn học đã có trong khoảng thời gian này');
+                // return Core::toBack($this->danger, 'Môn học đã có trong khoảng thời gian này');
+                return Json::getMess('Môn học đã có trong khoảng thời gian này', 422);
             }
         }
         
@@ -249,7 +260,8 @@ class Create extends Controller
             for($i = 0; $i < count($arrayDaysStudy); $i++){
                 for($j = 0; $j < count($arrayTeacherDays); $j++){
                     if($arrayDaysStudy[$i] == $arrayTeacherDays[$j]){
-                        return Core::toBack($this->danger, 'Giảng viên bận vào ca này trong khoảng thời gian này');
+                        // return Core::toBack($this->danger, 'Giảng viên bận vào ca này trong khoảng thời gian này');
+                        return Json::getMess('Giảng viên bận vào ca này trong khoảng thời gian này', 422);
                     }
                 }
             }
@@ -270,7 +282,8 @@ class Create extends Controller
         // INSERT DAYS STUDY
         Create::insertDaysClassSubject($classSubject->id,$req->teacher_uuid, $arrayDays);
         
-        return Core::toBack($this->success, 'Tạo phân công giảng dạy thành công');
+        // return Core::toBack($this->success, 'Tạo phân công giảng dạy thành công');
+        return Json::getMess('Tạo phân công giảng dạy thành công', 200);
     }
     // INSERT DAYS CLASS SUBJECT
     protected static function insertDaysClassSubject(String $class_subject_id, String $user_manager_uuid, Array $arrayDays){

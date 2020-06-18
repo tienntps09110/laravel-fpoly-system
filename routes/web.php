@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'Route\Get@home');
+Route::get('/', function(){
+    return redirect()->route('login');
+});
+
+Route::get('routes', 'Route\Get@home');
 
 // Route::get('create-admin', function(){
 //     $u = new App\User;

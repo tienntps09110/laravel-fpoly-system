@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Core\Core;
 use App\Http\Controllers\Core\View;
+use App\Http\Controllers\Core\Json;
 use Illuminate\Support\Str;
+use Validator;
 use App\Model\Students;
 use App\Model\ClassM;
 use Auth;
@@ -19,18 +21,23 @@ class Update extends Controller
         return view(View::department('update-student'), ['student'=>$student]);
     }
     public function studentPut(Request $req){
-        $req->validate([
+        $validator = Validator::make($req->all(),[
             'id'                => 'required | min:1 | max:255',
             'full_name'         => 'required | min:1 | max:255',
             'phone_number'      => 'required | min:1 | max:255',
             'email'             => 'required | min:1 | max:255',
             'sex'               => 'required | min:1 | max:255',
-            'address'               => 'required | min:1 | max:255',
-            'avatar_img_path'   => 'min:1 | max:30000'
+            'address'           => 'required | min:1 | max:255',
+            'avatar_img_path'   => 'max: 30000'
         ]);
+        if ($validator->fails()) {
+            return Json::getMess($validator->errors(), 422);
+        }
+        // return $req;
         $student = Students::find($req->id);
         if(!$student){
-            return Core::toBack($this->danger, 'Không tìm thấy sinh viên yêu cầu');
+            // return Core::toBack($this->danger, 'Không tìm thấy sinh viên yêu cầu');
+            return Json::getMess('Không tìm thấy sinh viên yêu cầu', 422);
         }
         $full_name = $req->full_name?$req->full_name:$student->full_name;
         $sex = $req->sex?$req->sex:'Không xác định';
@@ -39,7 +46,7 @@ class Update extends Controller
         $address = $req->address?$req->address:$student->address;
         $avatar_img_path = $student->avatar_img_path;
 
-        if($req->avatar_img_path){
+        if($req->avatar_img_path != 'null'){
             $tmpName = $_FILES["avatar_img_path"]["tmp_name"];
             $typeImage = Str::afterLast($_FILES["avatar_img_path"]['type'], '/');
             $name = '/images/students/'.$student->student_code .Str::random(15) .'.' .$typeImage;
@@ -54,6 +61,7 @@ class Update extends Controller
         $student->avatar_img_path = $avatar_img_path;
         $student->save();
         
-        return Core::toBack($this->success, 'Cập nhật thông tin thành công');
+        // return Core::toBack($this->success, 'Cập nhật thông tin thành công');
+        return Json::getMess('Cập nhật thông tin thành công', 200);
     }
 }

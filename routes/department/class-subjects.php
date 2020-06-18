@@ -9,6 +9,8 @@ Route::post('check-class-subject', 'ClassSubject\Create@CheckCreateSubject')->na
 
 Route::post('create-class-subject', 'ClassSubject\Create@classSubjectPost')->name('create-class-subject-post');
 
+Route::get('com-create-class-subject', 'ClassSubject\Create@classSubjectViewAjax')->name('com-create-class-subject');
+
 Route::get('class-subjects', 'ClassSubject\Get@classSubjects')->name('get-class-subjects');
 
 Route::get('class-subject/{id}', 'ClassSubject\Get@classSubjectDetail')->name('get-class-subject');

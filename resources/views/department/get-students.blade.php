@@ -8,51 +8,25 @@
             Danh sách Sinh viên Toàn trường
         </div>
         <div class="p-lg-4">
-            <div class="table-responsive">
-                <table class="stripe " id="datatable" >
-                  <thead class="">
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Mã số</th>
-                      <th scope="col" class="row-width-200">Họ và tên</th>
-                      <th scope="col">Giới tính</th>
-                      <th scope="col">Lớp</th>
-                      {{-- <th scope="col" class="row-width-200">Bắt đầu khóa</th>
-                      <th scope="col" class="row-width-200">Kết thúc khóa</th> --}}
-                      <th scope="col">Số điện thoại</th>
-                      <th scope="col">Email</th>
-                      <th scope="col">Hình ảnh</th>
-                      <th scope="col"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($students as $key => $student)
-                        <tr>
-                            <td>{{++$key}}</td>
-                            <td>{{$student->student_code}}</td>
-                            <td class="row-width-200">{{$student->full_name}}</td>
-                            <td >{{$student->sex}}</td>
-                            <td>{{$student->class->name}}</td>
-                            {{-- <td class="row-width-200">{{$student->class->time_start}}</td>
-                            <td class="row-width-200">{{$student->class->time_end}}</td> --}}
-                            <td>{{$student->phone_number}}</td>
-                            <td>{{$student->email}}</td>
-                            <td class="text-center">
-                                <img src="{{$student->avatar_img_path}}" alt="{{$student->avatar_img_path}}" height="100px">
-                            </td>
-                            <td>
-                                <a href="{{ route('update-student', $student->id) }}" class="btn btn-link">Cập nhật</a>
-                            </td>
-                        </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-              </div>
+            <div id="load-students"></div>
+            <div id="view-modal-update"></div>
         </div>
     </div>
   </div>
 
-  
+<script>
+  $(document).ready(function(){
+    $('#load-students').html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>')
+        .attr('style', 'position: fixed; top: 50%; z-index: 2; left: 50%;');
+    $.ajax({
+      type: 'GET',
+      url: '{{ route('com-students') }}',
+      success(data){
+        $('#load-students').html('').attr('style', '')
+        $('#load-students').html(data)
+      }
+    })
+  })
+</script>
 
-    
 @endsection

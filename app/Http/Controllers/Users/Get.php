@@ -14,6 +14,11 @@ class Get extends Controller
 {
     // GET ALL USERS
     public function users(){
+        
+        return view('department.users');
+        // return $users;
+    }
+    public function getUsers(){
         $users = User::whereNotIn('uuid', [Auth::id()])->get();
         $arrayUsers = [];
         foreach($users as $user){
@@ -26,8 +31,7 @@ class Get extends Controller
             $arrayUsers[] = $user;
         }
         $arrayUsers = collect($arrayUsers)->sortBy('role_id')->values()->all();
-        return view('department.users',['users'=>$arrayUsers]);
-        // return $users;
+        return view('department.com-users',['users'=>$arrayUsers]);
     }
     // GET USER DETAIL
     public function user($uuid){

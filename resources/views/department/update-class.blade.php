@@ -71,8 +71,8 @@
                             toastMess (data.Message, 5000, status);
                         }
                     }else{
-                        // $("#load-days-cs").html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
-                        // loadAjax($("#load-days-cs"), window.location + '?get_json=ddsaahJIDSA3213hIHAO0e12jkUADI9231jdiI11');
+                        $("#load-class-all").html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
+                        loadAjax($("#load-class-all"), window.location + '?get_json=ddsaahJIDSA3213hIHAO0e12jkUADI9231jdiI11');
                         toastMess (data.Message, 5000, status);
                     }
                     
@@ -84,4 +84,7 @@
             });
         })
     })
+    function loadAjax(component, route){
+        component.load(route);
+    };
 </script>
