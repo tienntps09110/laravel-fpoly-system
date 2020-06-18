@@ -12,7 +12,7 @@
    {{-- CODE<input type="text" name="code"> --}}
     <div class="form-group col-lg-8 mx-auto">
         <label for="time_start">Ngày Bắt đầu</label>
-        <input id="time_start" class="form-control txtDate" type="date" name="time_start" required>
+        <input id="time_start" class="form-control" type="date" name="time_start" required>
     </div>
 
    {{-- Datetime start<input type="date" name="time_start"> --}}
