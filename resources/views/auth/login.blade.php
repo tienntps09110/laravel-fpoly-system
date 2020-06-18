@@ -72,8 +72,9 @@
                 <div class="my-3 float-right">
                     <button type="submit" class="btn btn-info">Đăng nhập</button>
                 </div>
-                <br>
-                <a href="{{ route('student-login-view') }}" style="font-size: 10pt">Sinh viên đăng nhập</a>
+                <div class="my-3">
+                    <a href="{{ route('student-login-view') }}" style="font-size: 10pt">> Sinh viên đăng nhập <</a>
+                </div>
             </div>
         </div>
     </form> 
