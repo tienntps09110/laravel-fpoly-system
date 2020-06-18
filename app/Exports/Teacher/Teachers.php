@@ -16,7 +16,7 @@ class Teachers implements FromCollection, WithHeadings, ShouldAutoSize
     public function collection()
     {
         $users = User::where('soft_deleted', Core::false())
-                    ->select('uuid', 'full_name', 'email', 'phone_number')
+                    ->select('uuid', 'full_name', 'sex', 'email', 'phone_number')
                     ->get();
         
         $arrayUser = [];
@@ -40,6 +40,7 @@ class Teachers implements FromCollection, WithHeadings, ShouldAutoSize
     {
         return [
             'Tên',
+            'Giới tính',
             'Email',
             'Số điện thoại',
             'Chức vụ'

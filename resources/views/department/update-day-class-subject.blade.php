@@ -19,8 +19,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                <button id="change-teacher" type="button" data-dismiss="modal" class="btn btn-primary btn-primary-neo">Đổi giáo viên</button>
+                <button id="close-modal" type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button id="change-teacher" type="button" class="btn btn-primary btn-primary-neo">Đổi giáo viên</button>
             </div>
         </div>
     </div>
@@ -46,6 +46,7 @@
                     if(data.Status != 200){
                         status = 'error';
                     }else{
+                        $('#close-modal').click()
                         $("#load-days-cs").html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
                         loadAjax($("#load-days-cs"), window.location + '?get_json=ddsaahJIDSA3213hIHAO0e12jkUADI9231jdiI11');
                     }

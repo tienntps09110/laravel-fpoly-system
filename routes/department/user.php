@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('users', 'Users\Get@users')->name('get-users');
+Route::get('com-users', 'Users\Get@getUsers')->name('com-users');
 
 Route::get('users/teachers', 'Users\Get@usersTeachers')->name('get-users-teachers');
 

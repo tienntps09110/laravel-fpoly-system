@@ -24,12 +24,12 @@
                 </div>
                 <div class="form-group">
                     <label for="recipient-name" class="col-form-label">Thời gian kết thúc:</label>
-                    <input class="form-control" name="time_end" type="date" value="{{ $Carbon::parse($classMs->time_end)->toDateString() }}">
+                    <input class="form-control txtDate" name="time_end" type="date" value="{{ $Carbon::parse($classMs->time_end)->toDateString() }}">
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                <button id="update-class" type="button" data-dismiss="modal" class="btn btn-primary btn-primary-neo">Cập nhật</button>
+                <button id="close-modal" type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button id="update-class" type="button" class="btn btn-primary btn-primary-neo">Cập nhật</button>
             </div>
         </div>
     </div>
@@ -71,8 +71,9 @@
                             toastMess (data.Message, 5000, status);
                         }
                     }else{
-                        // $("#load-days-cs").html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
-                        // loadAjax($("#load-days-cs"), window.location + '?get_json=ddsaahJIDSA3213hIHAO0e12jkUADI9231jdiI11');
+                        $('#close-modal').click()
+                        $("#load-class-all").html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
+                        loadAjax($("#load-class-all"), window.location + '?get_json=ddsaahJIDSA3213hIHAO0e12jkUADI9231jdiI11');
                         toastMess (data.Message, 5000, status);
                     }
                     
@@ -84,4 +85,8 @@
             });
         })
     })
+    function loadAjax(component, route){
+        component.load(route);
+    };
 </script>
+<script src="{{ asset('js/un-date-past.js') }}"></script>

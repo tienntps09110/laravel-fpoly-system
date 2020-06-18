@@ -134,7 +134,6 @@
             default:
                 console.log('not found function realtime');
         }
-    
     });
 </script>
 @endsection

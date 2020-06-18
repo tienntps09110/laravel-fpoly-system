@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Core\Core;
+use App\Http\Controllers\Core\Json;
 use App\User;
+use Validator;
 
 class Update extends Controller
 {
@@ -20,24 +22,28 @@ class Update extends Controller
         ]);
     }
     public function user(Request $req){
-        $req->validate([
+        $validator = Validator::make($req->all(),[
             'uuid'              => 'required | min:1 | max:255',
             'full_name'         => 'required | min:1 | max:255',
             'sex'               => 'required | min:1 | max:255',
-            'phone_number'      => 'min:1 | max:255',
-            'email'             => 'min:1 | max:255',
-            'address'           => 'min:1 | max:255',
-            'avatar_img_path'   => 'min:1 | max:30000'
+            'phone_number'      => 'required | min:1 | max:255',
+            'email'             => 'required | min:1 | max:255',
+            'address'           => 'required | min:1 | max:255',
+            'avatar_img_path'   => 'max: 30000'
         ]);
+        if ($validator->fails()) {
+            return Json::getMess($validator->errors(), 422);
+        }
         $userCheck = User::where('uuid', $req->uuid)
                         ->where('soft_deleted', Core::false())
                         ->first();
         if(!$userCheck){
-            return Core::toBack($this->danger, 'Không tìm thấy tài khoản cần cập nhật');
+            // return Core::toBack($this->danger, 'Không tìm thấy tài khoản cần cập nhật');
+            return Json::getMess('Không tìm thấy tài khoản cần cập nhật', 422);
         }
         $avatar_img_path = $userCheck->avatar_img_path;
 
-        if($req->avatar_img_path){
+        if($req->avatar_img_path != 'null'){
             // return $req->avatar_img_path;
             $tmpName = $_FILES["avatar_img_path"]["tmp_name"];
             $typeImage = Str::afterLast($_FILES["avatar_img_path"]['type'], '/');
@@ -52,6 +58,7 @@ class Update extends Controller
         $userCheck->address = $req->address;
         $userCheck->avatar_img_path = $avatar_img_path;
         $userCheck->save();
-        return Core::toBack($this->success, 'Cập nhật tài khoản thành công');
+        // return Core::toBack($this->success, 'Cập nhật tài khoản thành công');
+        return Json::getMess('Cập nhật tài khoản thành công', 200);
     }
 }

@@ -21,6 +21,7 @@ class Students implements FromCollection, WithHeadings, ShouldAutoSize
                         ->select(
                             'student_code',
                             'full_name',
+                            'sex',
                             'phone_number',
                             'email',
                             'c.name'
@@ -36,6 +37,7 @@ class Students implements FromCollection, WithHeadings, ShouldAutoSize
         return [
             'MSSV',
             'Tên',
+            'Giới tính',
             'Số điện thoại',
             'Email',
             'Lớp'

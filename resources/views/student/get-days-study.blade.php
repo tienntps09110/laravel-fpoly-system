@@ -17,7 +17,7 @@
                   </thead>
                   <tbody>
                       @foreach ($classSubjectDays as $key => $detail)
-                          <tr>
+                          <tr style="{{ $detail->day_checked=='true'? 'background-color: lightcyan;':'' }}">
                               <td>{{ ++$key }}</td>
                               <td> ({{ $detail->day_name }})  {{ $detail->date }}</td>
                               <td>{{ $detail->subject_name }}</td>
