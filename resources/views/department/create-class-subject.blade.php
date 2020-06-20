@@ -1,5 +1,5 @@
-@extends('department.home')
-@section('contentPDT')
+@extends(CheckRole::role()->code == 'admin' ? 'admin.home' : 'department.home')
+@section(CheckRole::role()->code == 'admin' ? 'contentAdmin' : 'contentPDT')
 
 <div id="load-view-create-class-subject"></div>
 <script>

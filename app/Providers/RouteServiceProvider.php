@@ -96,9 +96,9 @@ class RouteServiceProvider extends ServiceProvider
         // ROUTER LOGIN 
         for($i = 0; $i < count($auth); $i++){
             Route::middleware('web')
-                // ->prefix('api')
-                ->namespace($this->namespace)
-                ->group(base_path($auth[$i]));
+            // ->prefix('api')
+            ->namespace($this->namespace)
+            ->group(base_path($auth[$i]));
         }
 
         // ROUTER ADMIN

@@ -1,5 +1,5 @@
-@extends('department.home')
-@section('contentPDT')
+@extends(CheckRole::role()->code == 'admin' ? 'admin.home' : 'department.home')
+@section(CheckRole::role()->code == 'admin' ? 'contentAdmin' : 'contentPDT')
 <div class="container-fluid  p-4">
     <div class="box p-4">
        

@@ -1,26 +1,86 @@
+
 <!doctype html>
 <html lang="en">
   <head>
-    <title>HOME ADMIN</title>
+    <title>TRANG QUẢN TRỊ VIÊN</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <base href="{{ asset('') }}">
+    <link rel="shortcut icon" href="laravel-icon.svg" type="image/svg">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <script defer src="js/solid.min.js" ></script>
+    <script defer src="js/fontawesome.min.js" ></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/neo-style.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="css/datatable-neo.css">
+    <link rel="stylesheet" href="css/loading-tien.css">
+    <link rel="stylesheet" href="css/jquery.toast.css">
+    <script src="js/jquery.toast.js"></script>
+    <script>
+        function toastMess (mess = '', time = 4000, status = 'success'){   
+            $.toast({
+                text: mess, 
+                heading: 'Thông báo', 
+                icon: status,
+                showHideTransition: 'fade',
+                allowToastClose: true,
+                hideAfter: time, 
+                stack: 5,
+                position: 'top-right', 
+                textAlign: 'left',
+                loader: true,
+                loaderBg: '#9EC600',
+                beforeShow: function () {},
+                afterShown: function () {},
+                beforeHide: function () {},
+                afterHidden: function () {}
+            });
+        }
+    </script>
+</head>
   <body>
-    <div class="container">
-        <form action="{{ route('logout') }}" method="post">
-          @csrf
-          <button type="submit" class="text-center">({{ Auth::user()->full_name }}) LOGOUT</button>
-        </form>
-        <h1 class="text-center text-sucess">HOME ADMIN</h1>
-    </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+      <div class="wrapper">
+          <!-- aside menu -->
+           @include('admin.sidebar')
+          <!-- page content -->
+          <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-bg" style="padding:0rem">
+                <div class="container-fluid">
+                      <div class="col-lg-5"  > 
+                          <div class="title-navbar">
+                                  Trang Quản Trị
+                          </div> 
+                          </div>
+                      <div class="col-lg-4">
+                          <form class="form-inline form-search">
+                              <div class="col-12">
+                                  <input id="input-search" class="input-search " type="search" placeholder="Tìm kiếm..." aria-label="Search">
+                              </div>
+                              <label for="input-search" class="icone"> <i class="fas fa-search"></i></label>
+                          </form>
+                      </div>
+                      <div class="d-flex justify-content-center col-lg-3" id="navbar-icon">
+                          <a class="nav-link "style="color:#FFFFFF"  ><i class="fas fa-bell"></i></a>
+                          <a class="nav-link" style="color:#FFFFFF"  ><i class="fas fa-envelope"></i></a>
+                          <a class="nav-link" id="btn-menu" ><i class="fas fa-bars"></i></a>
+                      </div>
+                    </button>
+                </div>
+               
+              </nav>
+
+           @yield('contentAdmin')
+
+          </div>
+      </div>
+    
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js" ></script>    
+</body>
 </html>

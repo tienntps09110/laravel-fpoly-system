@@ -10,6 +10,7 @@ use App\Http\Controllers\Core\Json;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Auth;
+use Validator;
 use App\Model\Students;
 use App\User;
 use App\Model\ClassSubject;
@@ -168,7 +169,7 @@ class Create extends Controller
         return $studyTime;
     }
     public function classSubjectPost(Request $req){
-        $req->validate([
+        $validator = Validator::make($req->all(), [
             'class_id'          => 'required | min:1 | max:255',
             'subject_id'        => 'required | min:1 | max:255',
             'teacher_uuid'      => 'required | min:1 | max:255',
@@ -177,8 +178,10 @@ class Create extends Controller
             'datetime_end'      => 'required | min:1 | max:255',
             'days_study'        => 'required | min:1 | max:255'
         ]);
+        if ($validator->fails()) {
+            return Json::getMess($validator->errors(), 422);
+        }
         $arrayDaysStudy = $req->days_study;
-
         // CHECK TIME START <> END
         if($req->datetime_start > $req->datetime_end){
             // return Core::toBack($this->danger, 'Thời gian kết thúc không thể nhỏ hơn thời gian bắt đầu');

@@ -13,6 +13,7 @@ use Auth;
 class Get extends Controller
 {
     public function home(){
-        return view(View::admin('home'));
+        // return view('admin.1');
+        return redirect()->route('department-home');
     }
 }

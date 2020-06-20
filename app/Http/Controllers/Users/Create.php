@@ -12,6 +12,7 @@ use Auth;
 use App\User;
 use App\Model\Role;
 use App\Model\UserRole;
+use Validator;
 
 class Create extends Controller
 {
@@ -23,20 +24,22 @@ class Create extends Controller
         ]);
     }
     public function createUserPost(Request $req){
-        $req->validate([
+        $validator = Validator::make($req->all(), [
             'user_name'         => 'required | min:1 | max:255',
             'password'          => 'required | min:1 | max:255',
             'full_name'         => 'required | min:1 | max:255',
             'phone_number'      => 'required | min:1 | max:255',
             'email'             => 'required | min:1 | max:255',
-            'avatar_img_path'   => 'required | min:1 | max:255',
             'role'              => 'required | min:1 | max:255'
         ]);
-
+        if ($validator->fails()) {
+            return Json::getMess($validator->errors(), 422);
+        }
         $userNameCheck = User::where('user_name', $req->user_name)->first();
 
         if($userNameCheck){
-            return Core::toBack($this->danger, 'Tên tài khoản đã tồn tại');
+            // return Core::toBack($this->danger, 'Tên tài khoản đã tồn tại');
+            return Json::getMess('Tên tài khoản đã tồn tại', 422);
         }
         
         $data = (object) [
@@ -46,7 +49,7 @@ class Create extends Controller
             'full_name'         =>$req->full_name,
             'phone_number'      =>$req->phone_number,
             'email'             =>$req->email,
-            'avatar_img_path'   => $req->avatar_img_path,
+            'avatar_img_path'   => 'images/users/user.png',
             'soft_deleted'      => Core::false()
         ];
         $user = CoreUsers::create($data);
@@ -59,6 +62,7 @@ class Create extends Controller
         $userRole->save();
         // }
         Core::pushRealTime('collaboration-component-count-all');
-        return Core::toBack($this->success, "Tạo tài khoản thành công");
+        // return Core::toBack($this->success, "Tạo tài khoản thành công");
+        return Json::getMess('Tạo tài khoản thành công', 200);
     }
 }

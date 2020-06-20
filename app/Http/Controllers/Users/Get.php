@@ -23,14 +23,14 @@ class Get extends Controller
         $arrayUsers = [];
         foreach($users as $user){
             $role = Core::role($user);
-            if($role->code != 'teacher'){
+            if(Core::role(Auth::user())->code != 'admin' && $role->code != 'teacher'){
                 continue;
             }
             $user->role = $role;
             $user->role_id = $role->id;
             $arrayUsers[] = $user;
         }
-        $arrayUsers = collect($arrayUsers)->sortBy('role_id')->values()->all();
+        $arrayUsers = collect($arrayUsers)->sortByDesc('role_id')->values()->all();
         return view('department.com-users',['users'=>$arrayUsers]);
     }
     // GET USER DETAIL
