@@ -1,6 +1,7 @@
 /*
     DEMO STYLE
 */
+
 @import "compass/css3";
 @import "https://fonts.googleapis.com/css?family=Poppins:300, 400, 500, 600, 700";
 body {
@@ -76,7 +77,7 @@ a:focus {
 }
 .rounded-circle > img {
 	border-radius: 50%;
-	max-width: 17vw;
+	/* max-width: 17vw; */
 }
 .fixed-sidebar {
 	position: fixed;

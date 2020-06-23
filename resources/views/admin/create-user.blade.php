@@ -2,26 +2,54 @@
 @extends('admin.home')
 @section('contentAdmin')
     
-<div>FORM CREATE USER</div>
 <form id="form-create-user">
-    User name<input type="text" name="user_name">
-    <br>
-    Password<input type="password" name="password">
-    <br>
-    Role<select name="role">
-        @foreach ($roles as $role)
-            <option value="{{ $role->id }}">{{ $role->name }}</option>
-        @endforeach
-    </select>
-    <br>
-    full_name<input type="text" name="full_name">
-    <br>
-    phone_number<input type="text" name="phone_number">
-    <br>
-    email<input type="text" name="email">
-
-    <br>
-    <button id="submit-create" class="btn btn-primary float-right" type="button">Submit</button>
+    <div class="px-lg-5">
+        <div class="container-fluid py-3">
+            <div class="box cong-cu-phan-lop p-4">
+                <h3 class="alert-success-neo mx-lg-4 p-2 text-center">Tạo thành viên</h3> 
+                <div class="">
+                    <div class="row">
+                        <div class="col-lg-4 px-lg-5 py-lg-4 py-2">
+                            <label for="user_name"> <span class="px-3 font-weight-bold" >1</span>  Tên đăng nhập    </label> 
+                            <input type="text" id="user_name" name="user_name" class="form-control">
+                        </div>
+                        <div class="col-lg-4 px-lg-5 py-lg-4 py-2">
+                            <label for="password"> <span class="px-3 font-weight-bold" >2</span>  Mật khẩu </label>
+                            <input type="password" id="password" name="password" class="form-control">
+                        </div>
+                        <div class="col-lg-4 px-lg-5 py-lg-4 py-2">
+                            <label for="role"> <span class="px-3 font-weight-bold" >3</span> Các Thứ học trong tuần   </label>
+                            <select name="role" id="role" class="form-control">
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-lg-4 px-lg-5 py-lg-4 py-2">
+                            <label for="full_name"> <span class="px-3 font-weight-bold" >4</span> Họ và tên</label>
+                            <input type="text" name="full_name" id="full_name" class="form-control">
+                        </div>
+                        <div class="col-lg-4 px-lg-5 py-lg-4 py-2">
+                            <label for="phone_number"> <span class="px-3 font-weight-bold" >5</span> Số điện thoại</label>
+                            <input type="text" id="phone_number" name="phone_number" class="form-control">
+                        </div>
+                        <div class="col-lg-4 px-lg-5 py-lg-4 py-2">
+                            <label for="email"> <span class="px-3 font-weight-bold" >6</span> Email</label>
+                            <input type="text" name="email" id="email" class="form-control">
+                        </div>
+                        <div class="col-lg-4 px-5 py-2">
+                        </div>
+                        <div class="col-lg-4 px-5 py-2">
+                        </div>
+                        <div class="col-lg-4 px-5 py-2">
+                            <label for=" ">  &nbsp; </label>
+                            <button id="submit-create" class="btn btn-primary-neo float-right" type="button">Xác nhận</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
 
 <script>
