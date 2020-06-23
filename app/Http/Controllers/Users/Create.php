@@ -31,6 +31,16 @@ class Create extends Controller
             'phone_number'      => 'required | min:1 | max:255',
             'email'             => 'required | min:1 | max:255',
             'role'              => 'required | min:1 | max:255'
+        ],[
+            'user_name.min'         => 'Tài khoản không được nhỏ hơn năm kí tự',
+            'user_name.required'    => 'Tài khoản không được bỏ trống',
+            'password.min'          => 'Mật khẩu không được nhỏ hơn sáu kí tự',
+            'password.required'     => 'Mật khẩu không được bỏ trống',
+            'full_name.required'    => 'Họ và tên không được bỏ trống',
+            'phone_number.required' => 'Số điện thoại không được bỏ trống',
+            'email.required'        => 'Email không được bỏ trống',
+            'role.required'         => 'Phân quyền không được bỏ trống',
+
         ]);
         if ($validator->fails()) {
             return Json::getMess($validator->errors(), 422);

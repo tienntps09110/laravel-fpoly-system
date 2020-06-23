@@ -32,10 +32,19 @@ class Update extends Controller
     public function classPut(Request $req){
         $validator = Validator::make($req->all(), [
             'id'            => 'required | min:1 | max:255',
-            'code'          => 'required | min:1 | max:255',
-            'name'          => 'required | min:1 | max:255',
+            'code'          => 'required | min:5 | max:255',
+            'name'          => 'required | min:5 | max:255',
             'time_start'    => 'required | min:1 | max:255',
             'time_end'      => 'required | min:1 | max:255'
+        ], [
+            'name.required' => 'Tên lớp không được bỏ trống',
+            'name.min' => 'Tên lớp phải lớn hơn năm kí tự',
+            'code.required' => 'Mã lớp không được bỏ trống',
+            'code.min' => 'Mã lớp phải lớn hơn năm kí tự',
+            'time_start.required' => 'Thời gian bắt đầu không được bỏ trống',
+            'time_start.min' => 'Thời gian bắt đầu phải lớn hơn 1 kí tự',
+            'time_end.required' => 'Thời gian kết thúc không được bỏ trống',
+            'time_end.min' => 'Thời gian kết thúc phải lớn hơn 1 kí tự'
         ]);
         if ($validator->fails()) {
             return Json::getMess($validator->errors(), 422);

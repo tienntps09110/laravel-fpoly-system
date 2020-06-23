@@ -26,9 +26,16 @@ class Update extends Controller
     public function subject(Request $req){
         $validator = Validator::make($req->all(), [
             'id'        => 'required | min:1 | max:255',
-            'name'      => 'required | min:1 | max:255',
-            'code'      => 'required | min:1 | max:255',
+            'name'      => 'required | min:5 | max:255',
+            'code'      => 'required | min:5 | max:255',
             'days_fail' => 'required | min:1 | max:255'
+        ], [
+            'name.required' => 'Tên môn học không được bỏ trống',
+            'name.min' => 'Tên môn học phải lớn hơn năm kí tự',
+            'code.required' => 'Mã môn học không được bỏ trống',
+            'code.min' => 'Mã môn học phải lớn hơn năm kí tự',
+            'day_fail.required' => 'Ngày vắng tối đa không được bỏ trống',
+            'day_fail.min' => 'Ngày vắng tối đa phải lớn hơn 1 kí tự'
         ]);
         if ($validator->fails()) {
             return Json::getMess($validator->errors(), 422);
