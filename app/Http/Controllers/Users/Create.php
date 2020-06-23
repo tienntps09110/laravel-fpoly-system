@@ -25,8 +25,8 @@ class Create extends Controller
     }
     public function createUserPost(Request $req){
         $validator = Validator::make($req->all(), [
-            'user_name'         => 'required | min:1 | max:255',
-            'password'          => 'required | min:1 | max:255',
+            'user_name'         => 'required | min:5 | max:255',
+            'password'          => 'required | min:6 | max:255',
             'full_name'         => 'required | min:1 | max:255',
             'phone_number'      => 'required | min:1 | max:255',
             'email'             => 'required | min:1 | max:255',

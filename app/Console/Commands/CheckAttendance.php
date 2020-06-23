@@ -3,6 +3,10 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Http\Controllers\Core\Core;
+use Carbon\Carbon;
+use App\User;
+use App\Model\DaysClassSubject;
 
 class CheckAttendance extends Command
 {
@@ -37,6 +41,15 @@ class CheckAttendance extends Command
      */
     public function handle()
     {
-        echo "TEST";
+        $daysClassSubject = DB::table('days_class_subject as dcs')
+                                ->join('class_subject as cs', 'dcs.class_subject_id', '=', 'cs.id')
+                                
+                                ->whereDate('date', Carbon::now())
+                                ->where('checked', Core::false())
+                                ->get();
+        foreach($daysClassSubject as $detail){
+            
+        }
+        
     }
 }
