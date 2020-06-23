@@ -13,6 +13,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
     <!-- style.css -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/neo-style.css">
 
     <style>
         body{
@@ -40,11 +41,7 @@
     <div id='bg'>
         <img src="images/bg/login-bg-2.jpg" alt="images/bg/login-bg-1.jpg" height="100%">
     </div>
-    @if(session('Danger'))
-    <div class="alert alert-warning" style="position:fixed; right:10%; top:10%">
-        {{session('Danger')}}
-    </div>
-    @endif
+    
     <form method="POST">
         @csrf
         <div class="d-flex" style="height:100vh;">
@@ -56,7 +53,12 @@
                 <div class="text-center text-white">
                     <h2 class="font-weight-bold">ĐIỂM DANH ONLINE</h2>
                 </div>
-                <div class="my-3">
+                @if(session('Danger'))
+                    <div class="alert alert-danger-neo" style="">
+                        {{session('Danger')}}
+                    </div>
+                @endif
+                <div class="my-3" style="">
                     Tên Đăng nhập:
                     <input type="text" name="user_name" id="username" value="{{ $cookieUserName }}" class="form-control">
                 </div>
