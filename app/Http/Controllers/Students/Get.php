@@ -17,7 +17,8 @@ class Get extends Controller
         return view(View::department('get-students'));
     }
     public function getStudents(){
-        $students = Students::where('soft_deleted', Core::false())->get();
+        $students = Students::where('soft_deleted', Core::false())
+                            ->get();
         $arrayStudents = [];
         foreach($students as $student){
             $class = ClassM::find($student->class_id);

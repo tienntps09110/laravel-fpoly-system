@@ -8,6 +8,7 @@ use App\Http\Controllers\Core\Json;
 use App\Http\Controllers\Core\Core;
 use App\Http\Controllers\Core\View;
 use App\Http\Controllers\Users\CoreUsers;
+use Illuminate\Support\Str;
 use Auth;
 use App\User;
 use App\Model\Role;
@@ -53,7 +54,7 @@ class Create extends Controller
         }
         
         $data = (object) [
-            'user_name'         => $req->user_name,
+            'user_name'         => Str::lower(preg_replace('/\s+/', '_', Core::vnToEn($req->user_name))),
             'user_parent_uuid'  => Core::parent(),
             'password'          =>$req->password,
             'full_name'         =>$req->full_name,

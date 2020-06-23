@@ -30,6 +30,14 @@ class Update extends Controller
             'email'             => 'required | min:1 | max:255',
             'address'           => 'required | min:1 | max:255',
             'avatar_img_path'   => 'max: 30000'
+        ],[
+            'full_name.required'    => 'Họ và tên không được bỏ trống',
+            'phone_number.required' => 'Số điện thoại không được bỏ trống',
+            'email.required'        => 'Email không được bỏ trống',
+            'role.required'         => 'Phân quyền không được bỏ trống',
+            'address.required'      => 'Địa chỉ không được bỏ trống',
+            'address.min'           => 'Địa chỉ không được dưới một kí tự'
+
         ]);
         if ($validator->fails()) {
             return Json::getMess($validator->errors(), 422);

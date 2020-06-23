@@ -23,12 +23,22 @@ class Update extends Controller
     public function studentPut(Request $req){
         $validator = Validator::make($req->all(),[
             'id'                => 'required | min:1 | max:255',
-            'full_name'         => 'required | min:1 | max:255',
-            'phone_number'      => 'required | min:1 | max:255',
-            'email'             => 'required | min:1 | max:255',
+            'full_name'         => 'required | min:5 | max:255',
+            'phone_number'      => 'required | min:9 | max:255',
+            'email'             => 'required | email | min:5 | max:255',
             'sex'               => 'required | min:1 | max:255',
-            'address'           => 'required | min:1 | max:255',
+            'address'           => 'required | min:1 | max:1000',
             'avatar_img_path'   => 'max: 30000'
+        ], [
+            'full_name.required' => 'Họ và tên không được bỏ trống',
+            'full_name.min' => 'Họ và tên phải lớn hơn năm kí tự',
+            'phone_number.required' => 'Số điện thoại không được bỏ trống',
+            'phone_number.min' => 'Số điện thoại phải lớn hơn chín kí tự',
+            'email.required' => 'Email không được bỏ trống',
+            'email.min' => 'Email phải lớn hơn 5 kí tự',
+            'address.required' => 'Địa chỉ không được bỏ trống',
+            'address.min' => 'Địa chỉ phải lớn hơn một kí tự',
+            'avatar_img_path.max' => 'Ảnh phải nhỏ hơn 30mb',
         ]);
         if ($validator->fails()) {
             return Json::getMess($validator->errors(), 422);
