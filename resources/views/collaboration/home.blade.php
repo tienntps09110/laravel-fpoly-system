@@ -16,7 +16,7 @@
     <script src="js/pusher.min.js"></script>
     <script src="js/Chart.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="css/jquery.dataTables.min.css"> --}}
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
     {{-- <link rel="stylesheet" href="css/all.css">
     <script src="js/app.js"></script>--}}
     <style>
