@@ -52,7 +52,7 @@ class Update extends Controller
         }
         $code = $req->code?$req->code:$subject->code;
         $subject->name = $req->name?$req->name:$subject->name;
-        $subject->code = Str::lower(preg_replace('/\s+/', '_', $code));
+        $subject->code = Str::lower(preg_replace('/\s+/', '_', Core::vnToEn($code)));
         $subject->days_fail = $req->days_fail?$req->days_fail:$subject->days_fail;
         $subject->save();
         return Json::getMess('Cập nhật môn học thành công', 200);

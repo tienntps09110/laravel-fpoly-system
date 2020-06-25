@@ -60,7 +60,7 @@ class Update extends Controller
             return Json::getMess('Thời gian kết thúc không thể nhỏ hơn thời gian bắt đầu', 422);
         }
         $code = $req->code?$req->code: $classMs->code;
-        $classMs->code = Str::lower(preg_replace('/\s+/', '_', $code));
+        $classMs->code = Str::lower(preg_replace('/\s+/', '_', Core::vnToEn($code)));
         $classMs->name = $req->name?$req->name:$classMs->name;
         $classMs->time_start = $req->time_start?$req->time_start: $classMs->time_start;
         $classMs->time_end = $req->time_end?$req->time_end: $classMs->time_end;
