@@ -125,7 +125,6 @@
       </div>
     <!-- Optional JavaScript -->
     <script src="js/bootstrap.js"></script>
-    <script src="js/scriptchart.js"></script>
     <script defer src="js/solid.min.js" ></script>
     <script defer src="js/fontawesome.min.js" ></script>
     <script src="js/script.js" ></script>
