@@ -37,7 +37,7 @@
                         <th>#</th>
                         <th>Mã Sinh viên</th>
                         <th class="row-width-200">Họ và Tên</th>
-                        <th  >Hình</th>
+                        <th  >Hình ảnh</th>
                         <th  >
                             <button class="btn " id="kiem-tra-vang">Vắng</button>
                             <button class="btn btn-primary-neo" id="kiem-tra-tong">Tổng</button>

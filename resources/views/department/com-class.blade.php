@@ -3,8 +3,8 @@
       <thead class="">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Tên Lớp học</th>
-          <th scope="col">Mã Lớp học</th>
+          <th scope="col">Tên lớp học</th>
+          <th scope="col">Mã lớp học</th>
           <th scope="col" class="row-width-200">Thời gian bắt đầu</th>
           <th scope="col" class="row-width-200">Thời gian kết thúc</th>
           <th scope="col"></th>

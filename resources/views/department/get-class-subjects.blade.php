@@ -20,7 +20,7 @@
                       <th scope="col" class="row-width-200">Thứ học</th>
                       <th scope="col">Ca học</th>
                       <th scope="col">Ngày bắt đầu</th>
-                      <th scope="col">ngày kết thúc</th>
+                      <th scope="col">Ngày kết thúc</th>
                       <th scope="col"></th>
                     </tr>
                   </thead>

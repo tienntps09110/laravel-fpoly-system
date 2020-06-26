@@ -3,16 +3,16 @@
 <div class="container-fluid p-4">
     <div class="content box p-lg-5 p-3 ">
         <div class=" mb-lg-3 p-2 text-center alert-primary-neo">
-            <h3>Danh sách Lớp </h3>
+            <h3 class="title">Danh sách Lớp </h3>
             <span class="">Hôm nay, ngày {{ $Carbon::now()->format('d/m/Y') }} </span>
         </div>
         <div class="table-responsive" >
             <table class="table text-center">
                 <tr> 
                     <th>#</th>
-                    <th>Lớp</th>
-                    <th>Môn</th>
-                    <th class='row-width-300'>Ca</th>
+                    <th>Lớp học</th>
+                    <th>Môn học</th>
+                    <th class='row-width-300'>Ca học</th>
                     <th></th>
                 </tr>
                 @foreach ($classSubjects as $key => $detailCs)

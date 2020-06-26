@@ -35,8 +35,8 @@
         <table class="table col-12">
             <thead>
                 <tr>
-                    <td>Lớp</td>
-                    <td class="text-center">Môn</td>
+                    <td>Lớp học</td>
+                    <td class="text-center">Môn học</td>
                     <td>Ngày bắt đầu</td>
                     <td>Ngày kết thúc</td>
                     <td id="responsive-td4">Số buổi nghỉ tối đa</td>

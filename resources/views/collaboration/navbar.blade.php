@@ -2,7 +2,7 @@
     <div class="container-fluid">
           <div class="col-lg-5"  > 
               <div class="title-navbar">
-                    Công Tác Sinh viên
+                    CÔNG TÁC SINH VIÊN
               </div> 
               </div>
           <div class="col-lg-4">

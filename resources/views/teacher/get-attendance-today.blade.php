@@ -5,7 +5,7 @@
         <i class="fas fa-chevron-circle-up    "></i>
     </div>
     <div class="box p-lg-5 p-3 ">
-        <div class="text-center alert-primary-neo title p-2 mb-lg-3">ĐIỂM DANH </div>
+        <div class=" text-center alert-primary-neo title p-2 mb-lg-3">ĐIỂM DANH </div>
         {{-- ERROR --}}
         <div>
             @if($errors->any())
@@ -35,8 +35,8 @@
                 <tr>
                     <th>#</th>
                     <th>Mã sinh viên</th>
-                    <th class="row-width-200">Họ và Tên</th>
-                    <th  >Hình</th>
+                    <th class="row-width-200">Họ và tên</th>
+                    <th  >Hình ảnh</th>
                     <th  >
                         <button class="" id="kiem-tra-vang">Vắng</button>
                         <button class="btn btn-primary-neo" id="kiem-tra-tong">Tổng</button>

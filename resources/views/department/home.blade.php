@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Phòng Đào Tạo </title>
+    <title>PHÒNG ĐÀO TẠO </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -53,7 +53,7 @@
                 <div class="container-fluid">
                       <div class="col-lg-5"  > 
                           <div class="title-navbar">
-                                  Phòng Đào Tạo 
+                                  PHÒNG ĐÀO TẠO
                           </div> 
                           </div>
                       <div class="col-lg-4">

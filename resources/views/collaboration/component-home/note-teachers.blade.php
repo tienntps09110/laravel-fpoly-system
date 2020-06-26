@@ -6,8 +6,8 @@
                 <tr>
                     <th>#</th>
                     <th class="th-lg">Giáo viên</th>
-                    <th class="th-lg" >Lớp</th>
-                    <th class="th-lg" >Môn</th>
+                    <th class="th-lg" >Lớp học</th>
+                    <th class="th-lg" >Môn học</th>
                     <th class="th-lg">Nhận xét</th>
                 </tr>
 

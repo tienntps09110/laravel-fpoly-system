@@ -71,7 +71,7 @@
                     <button type="submit" class="btn btn-info">Đăng nhập</button>
                 </div>
                 <div class="my-3 ">
-                    <a href="{{ route('login') }}" style="font-size: 10pt">> Đăng nhập Nội bộ <</a>
+                    <a href="{{ route('login') }}" style="font-size: 10pt">> Đăng nhập nội bộ <</a>
                 </div>
             </div>
         </div>

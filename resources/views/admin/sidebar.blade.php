@@ -26,7 +26,7 @@
                         <a href="{{ route('get-class-subjects') }}">DS Tổng hợp<span style="float: left;"><i class="fas fa-list"></i></span> </a>
                     </li>
                     <li>
-                        <a href="{{ route('get-users') }}">DS thành viên<span style="float: left;"><i class="fas fa-list"></i></span> </a>
+                        <a href="{{ route('get-users') }}">DS Thành viên<span style="float: left;"><i class="fas fa-list"></i></span> </a>
                     </li>
                     <li>
                         <a href="{{ route('get-students') }}"> DS Sinh viên<span style="float: left;"><i class="fas fa-list"></i></span> </a>

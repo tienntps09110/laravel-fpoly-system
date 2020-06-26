@@ -5,7 +5,7 @@
     <div class="contain content box p-lg-5 p-3">
         <div class="d-flex justify-content-end">
                 <div id="form-search"  class="  col-lg-4 ">
-                        <input type="search" name="search-student" id="search" class="form-control" placeholder="ps09110" required>
+                        <input type="search" name="search-student" id="search" class="form-control" placeholder="Nhập mã số sinh viên" required>
                         <button type="button" style="border-radius:20px" class="btn btn-primary-neo mt-2">Tìm kiếm</button>
                     </div>
         </div>
@@ -24,6 +24,7 @@
     var viewInfoStudent = $('#info-student');
     buttonSearch.click( ()=> {
         // console.log(inputSearch);
+        if('#search')
         viewInfoStudent.html('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>');
         $.ajax({
             method: 'POST',

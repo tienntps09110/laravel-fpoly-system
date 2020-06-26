@@ -1,23 +1,23 @@
 <h4 class="alert-success-neo m-4 p-2 text-center">Tạo lớp học</h4> 
 <form id="createClass">
     <div class="form-group col-lg-8 mx-auto pd-4">
-      <label for="name">Nhập Tên Lớp *</label>
+      <label for="name">Nhập tên lớp</label>
       <input type="text" name="name" id="name" required class="form-control" placeholder="Vui lòng nhập tên lớp">
     </div>
    {{-- NAME<input type="text" name="name"> --}}
     <div class="form-group col-lg-8 mx-auto">
       <label for="code">Nhập mã lớp</label>
-      <input type="text" name="code" id="code" class="form-control" placeholder="Vui lòng nhập mã lóp" required>
+      <input type="text" name="code" id="code" class="form-control" placeholder="Vui lòng nhập mã lớp" required>
     </div>
    {{-- CODE<input type="text" name="code"> --}}
     <div class="form-group col-lg-8 mx-auto">
-        <label for="time_start">Ngày Bắt đầu</label>
+        <label for="time_start">Ngày bắt đầu</label>
         <input id="time_start" class="form-control" type="date" name="time_start" required>
     </div>
 
    {{-- Datetime start<input type="date" name="time_start"> --}}
    <div class="form-group col-lg-8 mx-auto">
-       <label for="time_end">Ngày kết thức</label>
+       <label for="time_end">Ngày kết thúc</label>
        <input id="time_end" class="form-control txtDate" type="date" name="time_end">
    </div>
    {{-- Datetime end<input type="date" name="time_end"> --}}

@@ -10,8 +10,8 @@
           <table class="table ">
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Lớp</th>
-              <th scope="col" class="row-width-200">Môn</th>
+              <th scope="col">Lớp học</th>
+              <th scope="col" class="row-width-200">Môn học</th>
               <th scope="col">Thời gian</th>
               <th scope="col" class="row-width-300">Ca học</th>
               <th scope="col" class="row-width-200" style="width: 300px;">Thứ học</th>

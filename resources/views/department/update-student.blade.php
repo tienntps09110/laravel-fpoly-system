@@ -5,7 +5,7 @@
             <div class="container-fluid py-3">
                 <form id="form-update-student" enctype="multipart/form-data">
                     <div class="box cong-cu-phan-lop p-4">
-                        <h3 class="alert-primary-neo mx-lg-4 p-3 text-center">Cập nhật thông tin sinh viên</h3> 
+                        <h3 class=" title alert-primary-neo mx-lg-4 p-3 text-center">Cập nhật thông tin sinh viên</h3> 
                         <input type="hidden" name="id" value="{{ $student->id }}">
                         <div class="py-lg-5  px-lg-5">
                             <div class="row">
@@ -19,12 +19,12 @@
                                 <div class="col-lg-8 ">
                                     <div class="row">
                                         <div class="col-lg-6 px-lg-3 py-2">
-                                            <label for=""> Mã số Sinh viên:   </label> 
+                                            <label for=""> Mã số sinh viên:   </label> 
                                             {{-- <span class="form-control"> {{ $student->student_code }}</span> --}}
                                             <input type="text" class="form-control" name="id" value="{{ $student->student_code }}" disabled>
                                         </div>
                                         <div class="col-lg-6 px-lg-3 py-2">
-                                            <label for="full_name"> Họ và Tên: </label>
+                                            <label for="full_name"> Họ và tên: </label>
                                             <input type="text" id="full_name" name="full_name" value="{{ $student->full_name }}" class="form-control ">
                                         </div>
                                         <div class="col-lg-6 px-lg-3 py-2">

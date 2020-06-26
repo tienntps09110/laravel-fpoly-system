@@ -6,36 +6,37 @@
     <div class="px-lg-5">
         <div class="container-fluid py-3">
             <div class="box cong-cu-phan-lop p-4">
-                <h3 class="alert-success-neo mx-lg-4 p-2 text-center">Tạo thành viên</h3> 
+                <h3 class="title alert-success-neo mx-lg-4 p-2 text-center">Tạo thành viên</h3> 
                 <div class="">
                     <div class="row">
                         <div class="col-lg-4 px-lg-5 py-lg-4 py-2">
                             <label for="user_name"> <span class="px-3 font-weight-bold" >1</span>  Tên đăng nhập    </label> 
-                            <input type="text" id="user_name" name="user_name" class="form-control">
+                            <input type="text" id="user_name" name="user_name" class="form-control" placeholder="Username">
                         </div>
                         <div class="col-lg-4 px-lg-5 py-lg-4 py-2">
                             <label for="password"> <span class="px-3 font-weight-bold" >2</span>  Mật khẩu </label>
-                            <input type="password" id="password" name="password" class="form-control">
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="col-lg-4 px-lg-5 py-lg-4 py-2">
-                            <label for="role"> <span class="px-3 font-weight-bold" >3</span> Các Thứ học trong tuần   </label>
+                            <label for="role"> <span class="px-3 font-weight-bold" >3</span> Chức vụ  </label>
                             <select name="role" id="role" class="form-control">
-                                @foreach ($roles as $role)
-                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    <option value="">Chọn chức vụ</option>
+                                @foreach ($roles as $key => $role)
+                                    <option value="{{ $role->id }}">{{++$key}}. {{ $role->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-lg-4 px-lg-5 py-lg-4 py-2">
                             <label for="full_name"> <span class="px-3 font-weight-bold" >4</span> Họ và tên</label>
-                            <input type="text" name="full_name" id="full_name" class="form-control">
+                            <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Nguyễn Thị A">
                         </div>
                         <div class="col-lg-4 px-lg-5 py-lg-4 py-2">
                             <label for="phone_number"> <span class="px-3 font-weight-bold" >5</span> Số điện thoại</label>
-                            <input type="text" id="phone_number" name="phone_number" class="form-control">
+                            <input type="text" id="phone_number" name="phone_number" class="form-control" placeholder="0902002000">
                         </div>
                         <div class="col-lg-4 px-lg-5 py-lg-4 py-2">
                             <label for="email"> <span class="px-3 font-weight-bold" >6</span> Email</label>
-                            <input type="text" name="email" id="email" class="form-control">
+                            <input type="text" name="email" id="email" class="form-control" placeholder="demo@email.com">
                         </div>
                         <div class="col-lg-4 px-5 py-2">
                         </div>

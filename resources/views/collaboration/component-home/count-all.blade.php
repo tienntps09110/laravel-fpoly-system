@@ -4,7 +4,7 @@
         <i class="fas fa-chalkboard-teacher    "></i>  
         Giảng viên 
         <a href="{{ route('collaboration-excel-teacher') }}" title="Xuất tệp tin excel">
-            <span id="chu-noi">{{ $countAll->teachers }}</span>
+            <span id="chu-noi">{{ $countAll->teachers }} <i class="fas fa-download   " style="font-size:0.6em"></i></span>
         </a>
       </div>
     </div>
@@ -15,7 +15,7 @@
         <i class="fas fa-leaf    "></i>  
         Sinh viên  
         <a href="{{ route('collaboration-excel-student') }}" title="Xuất tệp tin excel">
-            <span id="chu-noi">{{ $countAll->students }}</span>
+            <span id="chu-noi">{{ $countAll->students }}  <i class="fas fa-download    " style="font-size:0.6em"></i></span>
         </a>
       </div>
     </div>
@@ -26,7 +26,7 @@
             <i class="fas fa-tree    "></i>
             Lớp học  
         <a href="{{ route('collaboration-excel-class') }}" title="Xuất tệp tin excel">
-            <span id="chu-noi">{{ $countAll->class }}</span>
+            <span id="chu-noi">{{ $countAll->class }}  <i class="fas fa-download    " style="font-size:0.6em"></i></span>
         </a>
         </div>
     </div>

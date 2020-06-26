@@ -42,7 +42,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" id="chon-gv" data-dismiss="modal">Lưu </button>
+                  <button type="button" class="btn btn-primary-neo" id="chon-gv" data-dismiss="modal">Lưu </button>
                   {{-- <button type="button"  class="btn btn-primary">Save changes</button> --}}
                 </div>
               </div>
@@ -51,7 +51,7 @@
         <!-- Công cụ Phân lớp -->
         <div class="container-fluid py-3">
             <div class="box cong-cu-phan-lop p-4">
-                <h3 class="alert-success-neo mx-lg-4 p-2 text-center">Công cụ Phân lớp</h3> 
+                <h3 class="title alert-success-neo mx-lg-4 p-2 text-center">Công cụ Phân lớp</h3> 
                 <div class="">
                     <div class="row">
                         <div class="col-lg-4 px-5 py-2">
@@ -71,7 +71,7 @@
                             </select>
                         </div>
                         <div class="col-lg-4 px-5 py-2">
-                            <label for="thu-hoc"> <span class="px-3 font-weight-bold" >3</span> Các Thứ học trong tuần   </label>
+                            <label for="thu-hoc"> <span class="px-3 font-weight-bold" >3</span> Các thứ học trong tuần   </label>
                             <select name="" id="thu-hoc" disabled class="form-control" >
                                 <option selected disabled>Chọn thứ </option>
                                 <option value="0">Chủ nhật</option>
@@ -111,6 +111,7 @@
                         <div class="col-lg-4 px-5 py-2">
                             <label for="from-date"> <span class="px-3 font-weight-bold" >4</span>   Từ ngày</label>
                             <input type="date" disabled name="datetime_start" id="from-date" class="form-control txtDate">
+                            
                         </div>
                         <div class="col-lg-4 px-5 py-2">
                             <label for="to-date"> <span class="px-3 font-weight-bold" >5</span>   Đến ngày</label>
@@ -125,7 +126,7 @@
                             
                         </div>
                         <div class="col-lg-4 px-5 py-2">
-                                <label for=""> <span class="px-3 font-weight-bold" >7</span>   Giáo viên Phụ trách</label>
+                                <label for=""> <span class="px-3 font-weight-bold" >7</span>   Giáo viên phụ trách</label>
                                 <button id="chon-giao-vien" type="button" class="btn btn-block btn-primary-neo" data-toggle="modal" data-target="#exampleModalCenter" disabled>
                                     Chọn giảng viên
                                 </button><div></div>

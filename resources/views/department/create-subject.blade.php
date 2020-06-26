@@ -4,16 +4,16 @@
 <form id="createSubject">
     @csrf
     <div class="form-group col-lg-8 mx-auto pd-4">
-        <label for="name_subject">Nhập môn học *</label>
-        <input id="name_subject" class="form-control" type="text" name="name_subject">
+        <label for="name_subject">Nhập môn học</label>
+        <input id="name_subject" class="form-control" type="text" name="name_subject" placeholder="Vui lòng nhập môn học">
     </div>
     {{-- NAME<input type="text" name="name"> --}}
     <div class="form-group col-lg-8 mx-auto">
-        <label for="code_subject">Nhập mã môn *</label>
-        <input id="code_subject" class="form-control" type="text" name="code_subject">
+        <label for="code_subject">Nhập mã môn</label>
+        <input id="code_subject" class="form-control" type="text" name="code_subject" placeholder="Vui lòng nhập mã môn học">
     </div>
     <div class="form-group col-lg-8 mx-auto">
-        <label for="day_fail">Nhập số ngày vắng tối đa *</label>
+        <label for="day_fail">Nhập số ngày vắng tối đa</label>
         {{-- <input id="day_fail" class="form-control" type="number" name="day_fail" required> --}}
         <select id="day_fail"name="day_fail" class="form-control">
             @for($i = 1; $i <= 10; $i++)
