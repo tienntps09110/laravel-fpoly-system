@@ -271,6 +271,9 @@ a.article {
 	.rounded-circle > img {
 		max-width: 60vw;
 	}
+	.title-navbar{
+		font-size: 1.2em;
+	}
 }
 
 /****** giangvien ******/
